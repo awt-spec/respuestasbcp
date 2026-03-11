@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiagramBlock, QuestionItem } from "@/data/questions";
-import { references } from "@/data/references";
+import { references, ReferenceItem } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, MessageSquare, BarChart3, Users } from "lucide-react";
+import { CheckCircle2, MessageSquare, BarChart3, Users, MapPin, Layers, ChevronRight, X } from "lucide-react";
 import {
   AccordionContent,
   AccordionItem,
@@ -103,6 +103,103 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
   }
 };
 
+/* ─── Reference Card (grid style with expandable detail) ─── */
+
+const ReferenceCard = ({ ref: r, index }: { ref: ReferenceItem; index: number }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.div
+      layout
+      className={`rounded-2xl border bg-card shadow-sm cursor-pointer transition-all hover:shadow-md hover:border-primary/30 ${
+        expanded ? "border-primary/40 shadow-md" : ""
+      }`}
+      onClick={() => setExpanded(!expanded)}
+    >
+      <div className="p-5">
+        {/* Header row */}
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <h5 className={`text-sm font-bold ${expanded ? "text-primary" : "text-foreground"} transition-colors`}>
+            {r.name}
+          </h5>
+          <Badge className="shrink-0 text-[10px] bg-primary/10 text-primary border-primary/20 font-bold">
+            {r.product}
+          </Badge>
+        </div>
+
+        {/* Meta */}
+        <div className="space-y-1 mb-3">
+          <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+            <MapPin className="w-3 h-3" />
+            {r.region}
+          </div>
+          <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+            <Layers className="w-3 h-3" />
+            {r.deployment}
+          </div>
+        </div>
+
+        {/* Detail preview */}
+        <p className={`text-[11px] text-muted-foreground leading-relaxed ${expanded ? "" : "line-clamp-2"}`}>
+          {r.detail}
+        </p>
+
+        {/* Expand trigger */}
+        {!expanded && (
+          <button className="flex items-center gap-1 mt-3 text-[11px] text-primary font-semibold hover:underline">
+            Ver detalle <ChevronRight className="w-3 h-3" />
+          </button>
+        )}
+
+        {/* Expanded content */}
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-3 pt-3 border-t space-y-2">
+                <p className="text-[11px] text-foreground font-medium leading-relaxed">✅ {r.result}</p>
+                {r.modules && (
+                  <p className="text-[10px] text-muted-foreground">📦 <span className="font-semibold">Módulos:</span> {r.modules}</p>
+                )}
+                {r.contact && (
+                  <p className="text-[10px] text-muted-foreground">👤 <span className="font-semibold">Contacto:</span> {r.contact}</p>
+                )}
+                {r.web && (
+                  <p className="text-[10px]">🌐 <a href={r.web} target="_blank" rel="noopener noreferrer" className="text-primary underline" onClick={(e) => e.stopPropagation()}>{r.web}</a></p>
+                )}
+                <button className="flex items-center gap-1 mt-1 text-[10px] text-muted-foreground hover:text-foreground">
+                  <X className="w-3 h-3" /> Cerrar
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ─── References Grid ─── */
+
+const ReferencesGrid = () => (
+  <div>
+    <div className="mb-5">
+      <h4 className="text-sm font-bold text-foreground mb-1">Todas las empresas ({references.length} casos)</h4>
+      <p className="text-[11px] text-muted-foreground">Portafolio completo de clientes SYSDE a nivel global — click en cada tarjeta para ver más detalle</p>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      {references.map((r, i) => (
+        <ReferenceCard key={i} ref={r} index={i} />
+      ))}
+    </div>
+  </div>
+);
+
 /* ─── Tab Button ─── */
 interface TabDef {
   id: string;
@@ -141,7 +238,7 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  if (item.id === 1) {
+  if (item.id === 3) {
     tabs.push({ id: "references", label: t("card.references"), icon: Users });
   }
 
@@ -242,37 +339,7 @@ const DiagramCard = ({ item, index }: Props) => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="mb-4">
-                  <h4 className="text-sm font-bold text-foreground mb-1">Todas las empresas ({references.length} casos)</h4>
-                  <p className="text-[11px] text-muted-foreground">Portafolio completo de clientes SYSDE a nivel global</p>
-                </div>
-                <div className="space-y-3">
-                  {references.map((ref, i) => (
-                    <div key={i} className="rounded-xl border bg-card p-4 shadow-sm">
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-bold text-foreground">{i + 1}. {ref.name}</p>
-                          <div className="flex flex-wrap gap-1.5 mt-1.5">
-                            <Badge variant="outline" className="text-[10px]">{ref.region}</Badge>
-                            <Badge variant="secondary" className="text-[10px]">{ref.product}</Badge>
-                            <Badge variant="outline" className="text-[10px] bg-muted/50">{ref.deployment}</Badge>
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-[11px] text-muted-foreground leading-relaxed mb-1.5">{ref.detail}</p>
-                      <p className="text-[11px] text-foreground font-medium leading-relaxed">✅ {ref.result}</p>
-                      {ref.modules && (
-                        <p className="text-[10px] text-muted-foreground mt-1.5">📦 <span className="font-semibold">Módulos:</span> {ref.modules}</p>
-                      )}
-                      {ref.contact && (
-                        <p className="text-[10px] text-muted-foreground mt-1">👤 <span className="font-semibold">Contacto:</span> {ref.contact}</p>
-                      )}
-                      {ref.web && (
-                        <p className="text-[10px] mt-1">🌐 <a href={ref.web} target="_blank" rel="noopener noreferrer" className="text-primary underline">{ref.web}</a></p>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <ReferencesGrid />
               </motion.div>
             )}
 
