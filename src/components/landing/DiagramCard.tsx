@@ -194,10 +194,18 @@ const ReferenceCard = ({ item: r, index }: { item: ReferenceItem; index: number 
       layout
       className={`rounded-2xl border bg-card shadow-sm cursor-pointer transition-all hover:shadow-md hover:border-primary/30 ${
         expanded ? "border-primary/40 shadow-md" : ""
-      }`}
+      } ${r.inImplementation ? "ring-2 ring-primary/20" : ""}`}
       onClick={() => setExpanded(!expanded)}
     >
       <div className="p-5">
+        {/* Implementation badge */}
+        {r.inImplementation && (
+          <div className="mb-2">
+            <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
+              🔄 En implementación
+            </Badge>
+          </div>
+        )}
         {/* Header row */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <h5 className={`text-sm font-bold ${expanded ? "text-primary" : "text-foreground"} transition-colors`}>
