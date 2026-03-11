@@ -611,7 +611,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Informatización de 72 Systèmes Financiers Décentralisés (SFD) en Senegal.",
     result: "72 instituciones financieras descentralizadas informatizadas exitosamente.",
-    focus: ["core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
