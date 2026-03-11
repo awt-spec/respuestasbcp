@@ -210,7 +210,15 @@ const SafEcosystem = () => {
   const { lang } = useI18n();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
-  const currentModule = functionalModules.find((m) => m.id === selectedModule) || (selectedModule === "canales" ? canalesModule : undefined);
+  const getSubModule = (id: string | null): Module | undefined => {
+    if (!id) return undefined;
+    if (id === "canales") return canalesModule;
+    if (id === "pensiones") return pensionModule;
+    if (id === "retail") return retailModule;
+    if (id === "prestamos-sub") return prestamosModule;
+    return functionalModules.find((m) => m.id === id);
+  };
+  const currentModule = getSubModule(selectedModule);
 
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
