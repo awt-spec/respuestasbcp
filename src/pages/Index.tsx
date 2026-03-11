@@ -5,6 +5,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
 import DiagramCard from "@/components/landing/DiagramCard";
+import ChatBot from "@/components/ChatBot";
 
 import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
@@ -77,6 +78,7 @@ const Index = () => {
       </div>
 
       <FooterSection />
+      <ChatBot />
     </div>
   );
 };

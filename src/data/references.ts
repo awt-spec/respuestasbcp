@@ -14,10 +14,10 @@ export interface ReferenceItem {
 export const references: ReferenceItem[] = [
   {
     name: "Grupo CMI",
-    region: "Guatemala +11 países",
+    region: "🇬🇹🇸🇻🇭🇳🇳🇮🇨🇷🇵🇦🇲🇽🇺🇸🇩🇴🇪🇨🇨🇴🇵🇪🇪🇸🇵🇹🇮🇹🇫🇷🇬🇧 +20 países",
     deployment: "SaaS",
     product: "SAF+",
-    detail: "Implementación de SAF+ sobre la operación de Factoring y Leasing, estandarizando procesos multi-país y multi-moneda. Integración con SAP Business One.",
+    detail: "Implementación de SAF+ sobre la operación de Factoring y Leasing, estandarizando procesos multi-país y multi-moneda. Integración con SAP Business One.\n\nPresencia: Centroamérica (Guatemala, El Salvador, Honduras, Nicaragua, Costa Rica, Panamá) · Norteamérica (México, Estados Unidos) · Caribe (República Dominicana) · Sudamérica (Ecuador, Colombia, Perú) · Europa (España, Portugal, Italia, Francia, Reino Unido).",
     result: "En ejecución – Plataforma end-to-end para Factoring, Leasing y Crédito Puente.",
     modules: "Factoring, Leasing, Crédito Puente",
     web: "https://somoscmi.com/es/",
@@ -25,7 +25,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AMC",
-    region: "El Salvador",
+    region: "🇸🇻 El Salvador",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Desde agosto de 2025, implementación de SAF+: plataforma modular (modelo todo incluido) end-to-end, multimoneda con trazabilidad total, alineada a nuevas regulaciones.",
@@ -35,7 +35,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Dos Pinos",
-    region: "Costa Rica",
+    region: "🇨🇷 Costa Rica",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Implementación de SYSDE SAF+ optimizando operaciones con módulos de Seguridad, Clientes, Contabilidad, Reportes SICVECA, Préstamos, Líneas de Crédito. Integración con SAP Business One.",
@@ -46,7 +46,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Grupo Apex",
-    region: "Guatemala",
+    region: "🇬🇹 Guatemala",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Implementación de SAF+ para operaciones de Leasing y Préstamos, estandarizando procesos operativos y financieros.",
@@ -56,7 +56,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Grupo Aurum",
-    region: "Guatemala",
+    region: "🇬🇹 Guatemala",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Implementación de SAF+ para operaciones de Leasing y Préstamos, cubriendo el ciclo end-to-end de ambas líneas de negocio.",
@@ -66,17 +66,17 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Unicomer Caribbean Holding",
-    region: "Centroamérica",
+    region: "🇸🇻🇬🇹🇭🇳🇳🇮🇨🇷🇵🇦🇩🇴🇯🇲🇹🇹🇧🇧🇨🇼🇦🇼🇪🇨🇵🇾🇺🇸 +19 países",
     deployment: "On Premise / SaaS",
     product: "Banca2000 + Tarjetas2000",
-    detail: "Implementación de Banca2000 y Tarjetas2000 adaptando módulos clave: Cobranzas, Cuentas, Créditos (incluido Retail), Depósitos, Contabilidad, PLD, Central de Riesgos, Inversiones y más.",
+    detail: "Implementación de Banca2000 y Tarjetas2000 adaptando módulos clave: Cobranzas, Cuentas, Créditos (incluido Retail), Depósitos, Contabilidad, PLD, Central de Riesgos, Inversiones y más.\n\nPresencia: Centroamérica (El Salvador, Guatemala, Honduras, Nicaragua, Costa Rica, Panamá) · Caribe (Rep. Dominicana, Jamaica, Trinidad y Tobago, Barbados, Curazao, Aruba, Bonaire, St. Maarten) · Sudamérica (Ecuador, Paraguay) · Norteamérica (Estados Unidos).",
     result: "Operando desde 2008, con expansiones a El Salvador (2011) y Nicaragua (2014). Grupo Unicomer gestiona +30 marcas, +1,200 tiendas en 26 países con +13,000 colaboradores.",
     modules: "Cobranzas, Créditos, Depósitos, Contabilidad, PLD, Inversiones, Tarjetas",
     contact: "Guillermo J. Siman – Vice Chairman",
   },
   {
     name: "Financiera MultiMoney",
-    region: "Centroamérica",
+    region: "🌎 Centroamérica",
     deployment: "SaaS",
     product: "Banca2000",
     detail: "Implementación de Core Bancario Banca2000. Contribuimos a lograr su visión de crear productos eficientes, transparentes y honestos.",
@@ -87,7 +87,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "ION",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "On Premise / SaaS",
     product: "nSAF + SAF+",
     detail: "Implementación exitosa de nSAF para industria inmobiliaria: crédito puente, financiamiento de vivienda. SAF+ en proceso. App móvil para avance de obras.",
@@ -96,7 +96,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Factor y Valor",
-    region: "Colombia",
+    region: "🇨🇴 Colombia",
     deployment: "SaaS",
     product: "SAF+ (Factoring)",
     detail: "Administración de cartera de Factoring. Más de una década como aliado financiero de pymes colombianas.",
@@ -105,7 +105,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Broxel",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Implementación de SAF+ como core central para Banca Digital. Broxel lanzó una de las primeras Super Apps en México.",
@@ -114,7 +114,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Bankaool",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "On Premise / SaaS",
     product: "SAF+",
     detail: "Implementación y Evolución de SAF+. Desde cooperativa hasta Banco de primer piso. Banca 100% digital 24x7.",
@@ -123,7 +123,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Confía",
-    region: "El Salvador",
+    region: "🇸🇻 El Salvador",
     deployment: "On Premise / SaaS",
     product: "SYSDE Pensión",
     detail: "Implementación de SYSDE Pensión desde la fundación en 1998. Líderes en fondos previsionales en Centroamérica y el Caribe.",
@@ -133,7 +133,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Reservas",
-    region: "República Dominicana",
+    region: "🇩🇴 República Dominicana",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -141,7 +141,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Crecer",
-    region: "El Salvador",
+    region: "🇸🇻 El Salvador",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
@@ -149,7 +149,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Habitat",
-    region: "Perú",
+    region: "🇵🇪 Perú",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -157,7 +157,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFAP SURA",
-    region: "Uruguay",
+    region: "🇺🇾 Uruguay",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
@@ -165,7 +165,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "República AFAP",
-    region: "Uruguay",
+    region: "🇺🇾 Uruguay",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -173,7 +173,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Integración AFAP",
-    region: "Uruguay",
+    region: "🇺🇾 Uruguay",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
@@ -181,7 +181,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "CRAP",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
@@ -189,7 +189,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Porvenir",
-    region: "Colombia",
+    region: "🇨🇴 Colombia",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
@@ -197,7 +197,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Afore XXI Banorte",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
@@ -205,7 +205,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Banorte (Pensiones)",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de pensiones con SYSDE Pensión.",
@@ -213,7 +213,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "MetLife",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
@@ -221,7 +221,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Siembra",
-    region: "Ecuador",
+    region: "🇪🇨 Ecuador",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
@@ -229,7 +229,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Colfondos",
-    region: "Colombia",
+    region: "🇨🇴 Colombia",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones del Grupo Habitat con SYSDE Pensión.",
@@ -237,7 +237,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Futuro de Bolivia AFP",
-    region: "Bolivia",
+    region: "🇧🇴 Bolivia",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
@@ -245,7 +245,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Prima AFP",
-    region: "Perú",
+    region: "🇵🇪 Perú",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones del Grupo Crédito con SYSDE Pensión.",
@@ -253,7 +253,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Afore Pensionissste Contigo",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
@@ -261,7 +261,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "BN Vital",
-    region: "Costa Rica",
+    region: "🇨🇷 Costa Rica",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -269,7 +269,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Principal",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
@@ -277,7 +277,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Inbursa Afore",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
@@ -285,7 +285,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Profuturo",
-    region: "Perú",
+    region: "🇵🇪 Perú",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -293,7 +293,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Atlántida",
-    region: "Honduras",
+    region: "🇭🇳 Honduras",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de pensiones y cesantías con SYSDE Pensión.",
@@ -301,7 +301,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Atlántico",
-    region: "Honduras",
+    region: "🇭🇳 Honduras",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
@@ -309,7 +309,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFP Popular",
-    region: "República Dominicana",
+    region: "🇩🇴 República Dominicana",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
@@ -317,7 +317,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Popular Pensiones",
-    region: "Costa Rica",
+    region: "🇨🇷 Costa Rica",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -325,7 +325,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "ProFuturo (México)",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
@@ -333,7 +333,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Unión Capital AFAP",
-    region: "Uruguay",
+    region: "🇺🇾 Uruguay",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
@@ -341,7 +341,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Petros",
-    region: "Brasil",
+    region: "🇧🇷 Brasil",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
@@ -349,7 +349,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Alcatel-Lucent Enterprise",
-    region: "Francia",
+    region: "🇫🇷 Francia",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión. Hoy es Nokia.",
@@ -357,7 +357,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Mercantil",
-    region: "Venezuela",
+    region: "🇻🇪 Venezuela",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
@@ -365,7 +365,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Tokio Marine Seguradora",
-    region: "Brasil",
+    region: "🇧🇷 Brasil",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -373,7 +373,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Seguros Universal",
-    region: "República Dominicana",
+    region: "🇩🇴 República Dominicana",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
@@ -381,7 +381,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "AFPC Occidente",
-    region: "Guatemala",
+    region: "🇬🇹 Guatemala",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
@@ -389,7 +389,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Pensiones BAC Credomatic",
-    region: "Centroamérica",
+    region: "🌎 Centroamérica",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
@@ -397,7 +397,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Compañía de Seguros (México)",
-    region: "México",
+    region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
@@ -405,7 +405,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Banco ADOPEM",
-    region: "República Dominicana",
+    region: "🇩🇴 República Dominicana",
     deployment: "On Premise / SaaS",
     product: "Core Bancario",
     detail: "Core Bancario con 12 módulos. Institución orientada a finanzas productivas para sectores no bancarizados.",
@@ -414,7 +414,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "COOPECAR R.L.",
-    region: "Costa Rica",
+    region: "🇨🇷 Costa Rica",
     deployment: "On Premise / SaaS",
     product: "SAF+ (Cooperativas)",
     detail: "Sistema Sysde SAF+ para Cooperativas. Cuentas de Efectivo, Depósitos, Préstamos, Contabilidad, Cajas, SICVECA.",
@@ -424,7 +424,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "SOFIMSA",
-    region: "Costa Rica",
+    region: "🇨🇷 Costa Rica",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Servicio SaaS en Microsoft Azure de Factoring administrado por Sysde SAF+.",
@@ -432,7 +432,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "CCSS",
-    region: "Costa Rica",
+    region: "🇨🇷 Costa Rica",
     deployment: "On Premise / SaaS",
     product: "FileMaster",
     detail: "Migración exitosa de expedientes digitales de FileMaster con +6,120 usuarios activos hacia la nube.",
@@ -440,7 +440,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Financiera MVA",
-    region: "Guatemala",
+    region: "🇬🇹 Guatemala",
     deployment: "On Premise / SaaS",
     product: "Banca2000",
     detail: "Implementación de Banca2000 apoyando el crecimiento de PyMEs guatemaltecas.",
@@ -451,7 +451,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "CFE Rwanda",
-    region: "Ruanda",
+    region: "🇷🇼 Ruanda",
     deployment: "SaaS",
     product: "SAF",
     detail: "En 2004, implementación de SAF para automatizar contabilidad, préstamos y arrendamiento.",
@@ -459,7 +459,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "CNEC Djibouti",
-    region: "Yibuti",
+    region: "🇩🇯 Yibuti",
     deployment: "SaaS",
     product: "SAF",
     detail: "Implementación de SAF en 2009 para optimizar operaciones financieras para grupos vulnerables.",
@@ -467,7 +467,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Nyogondemeso-Soba",
-    region: "Mali",
+    region: "🇲🇱 Mali",
     deployment: "SaaS",
     product: "SAF+",
     detail: "Implementación de SAF+ tras fusión de dos cooperativas. Ahorro, crédito y transferencias.",
@@ -475,7 +475,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "CPECG",
-    region: "Guinea",
+    region: "🇬🇳 Guinea",
     deployment: "SaaS",
     product: "SAF",
     detail: "Implementación de SAF para gestión financiera. +150,000 clientes, 27 sucursales.",
@@ -483,7 +483,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "CTI",
-    region: "Senegal",
+    region: "🇸🇳 Senegal",
     deployment: "SaaS",
     product: "SAF",
     detail: "Informatización de 72 Systèmes Financiers Décentralisés (SFD) en Senegal.",
@@ -491,7 +491,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "Dunduliza",
-    region: "Tanzania",
+    region: "🇹🇿 Tanzania",
     deployment: "SaaS",
     product: "SAF",
     detail: "Fortalecimiento de cooperativas de ahorro y crédito (SACCOs) en Tanzania.",
@@ -499,7 +499,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "FCPB",
-    region: "Burkina Faso",
+    region: "🇧🇫 Burkina Faso",
     deployment: "SaaS",
     product: "SAF",
     detail: "Transformación digital de la red de microfinanzas más grande de Burkina Faso. Fundada en 1972.",
@@ -507,7 +507,7 @@ export const references: ReferenceItem[] = [
   },
   {
     name: "FCRMD",
-    region: "Mali",
+    region: "🇲🇱 Mali",
     deployment: "SaaS",
     product: "SAF",
     detail: "Modernización de cooperativas rurales mutualistas del Delta en Mali.",
