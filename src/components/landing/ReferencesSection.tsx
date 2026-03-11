@@ -147,7 +147,8 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
       </div>
     </motion.div>
   </motion.div>
-);
+  );
+};
 
 /* ─── Card ─── */
 const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index: number; onClick: () => void }) => (
