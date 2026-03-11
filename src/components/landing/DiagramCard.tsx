@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiagramBlock, QuestionItem } from "@/data/questions";
+import { references } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, MessageSquare, BarChart3, Lightbulb, Target } from "lucide-react";
+import { CheckCircle2, MessageSquare, BarChart3, Users } from "lucide-react";
 import {
   AccordionContent,
   AccordionItem,
