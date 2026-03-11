@@ -750,7 +750,7 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para el banco más grande de Nicaragua.",
-    result: "Operación activa con módulos de core bancario y préstamos.",
+    result: "Operación activa con módulos de préstamos en SYSDE PLUS.",
     focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
