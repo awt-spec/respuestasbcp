@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { counts, sections, questions } from "@/data/questions";
+import { counts } from "@/data/questions";
 import { Progress } from "@/components/ui/progress";
 import { CheckCircle2 } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
