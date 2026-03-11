@@ -138,7 +138,7 @@ const ChatBot = () => {
                     ¡Hola! Soy el asistente de SYSDE. Pregúntame sobre nuestras soluciones, clientes o capacidades.
                   </p>
                   <div className="flex flex-wrap justify-center gap-1.5">
-                    {["¿Qué es SAF+?", "Clientes de Leasing", "¿Cuántos países?"].map((q) => (
+                    {["¿Qué es SYSDE PLUS?", "Clientes de Leasing", "¿Cuántos países?"].map((q) => (
                       <button
                         key={q}
                         onClick={() => { setInput(q); }}
