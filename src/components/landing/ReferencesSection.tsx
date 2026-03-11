@@ -205,10 +205,7 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
 
 /* ─── Main Section ─── */
 const ReferencesSection = () => {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
   const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
-
-  const filtered = filterReferences(activeFilter);
 
   return (
     <div>
