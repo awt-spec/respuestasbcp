@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { questions, sections } from "@/data/questions";
+import { questions } from "@/data/questions";
 import HeroSection from "@/components/landing/HeroSection";
 import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
@@ -9,7 +8,6 @@ import ChatBot from "@/components/ChatBot";
 import AutoScrollBar from "@/components/landing/AutoScrollBar";
 
 import { Accordion } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
 import { useI18n } from "@/contexts/I18nContext";
 
 const Index = () => {
