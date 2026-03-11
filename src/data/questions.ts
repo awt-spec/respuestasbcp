@@ -65,18 +65,6 @@ export const questions: QuestionItem[] = [
         ],
       },
       {
-        type: "grid",
-        title: "Ecosistema SAF+ — Módulos",
-        items: [
-          "🏗️ Leasing — Financiero y Operativo",
-          "📄 Factoraje — Descuento de facturas",
-          "💳 Créditos — Core de créditos",
-          "👤 Vista Unificada del Cliente",
-          "🔗 Integración Nativa entre Módulos",
-          "⚙️ Adopción Modular Progresiva",
-        ],
-      },
-      {
         type: "list",
         title: "Otras Instituciones con SAF+",
         items: [
@@ -98,18 +86,6 @@ export const questions: QuestionItem[] = [
           ["CMI (Grupo Multi Inversiones)", "Central America", "Leasing", "In implementation"],
           ["Banco de Costa Rica", "Costa Rica", "Leasing", "Active"],
           ["GNP México", "Mexico", "Leasing", "Active"],
-        ],
-      },
-      {
-        type: "grid",
-        title: "SAF+ Ecosystem — Modules",
-        items: [
-          "🏗️ Leasing — Financial and Operating",
-          "📄 Factoring — Invoice discounting",
-          "💳 Credits — Credit core",
-          "👤 Unified Client View",
-          "🔗 Native Inter-Module Integration",
-          "⚙️ Progressive Modular Adoption",
         ],
       },
       {
