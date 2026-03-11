@@ -49,6 +49,12 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
   }, []);
 
   return (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm"
+    onClick={onClose}
   >
     <motion.div
       initial={{ scale: 0.92, opacity: 0, y: 20 }}
