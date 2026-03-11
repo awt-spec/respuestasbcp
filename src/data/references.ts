@@ -128,7 +128,7 @@ export const references: ReferenceItem[] = [
     name: "Factor y Valor",
     region: "🇨🇴 Colombia",
     deployment: "SaaS",
-    product: "SAF+ (Factoring)",
+    product: "SYSDE PLUS (Factoring)",
     detail: "Administración de cartera de Factoring. Más de una década como aliado financiero de pymes colombianas.",
     result: "Exitoso – Operación de Factoring para pymes colombianas con soluciones de capital de trabajo.",
     contact: "Jorge Ivan Bedoya Correa – Director General",
