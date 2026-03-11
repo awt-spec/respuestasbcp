@@ -1,3 +1,5 @@
+export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "core_bancario" | "otros";
+
 export interface ReferenceItem {
   name: string;
   region: string;
@@ -9,7 +11,19 @@ export interface ReferenceItem {
   contact?: string;
   web?: string;
   inImplementation?: boolean;
+  focus: FocusArea[];
+  core: "SYSDE PLUS" | "Fondos de Pensión" | "Core Bancario" | "FileMaster";
 }
+
+export const focusLabels: Record<FocusArea, string> = {
+  leasing: "Leasing",
+  factoring: "Factoring",
+  prestamos: "Préstamos",
+  tarjetas: "Tarjetas",
+  pension: "Fondos de Pensión",
+  core_bancario: "Core Bancario",
+  otros: "Otros",
+};
 
 export const references: ReferenceItem[] = [
   {
@@ -22,6 +36,8 @@ export const references: ReferenceItem[] = [
     modules: "Factoring, Leasing, Crédito Puente",
     web: "https://somoscmi.com/es/",
     inImplementation: true,
+    focus: ["factoring", "leasing", "prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "AMC",
@@ -32,6 +48,8 @@ export const references: ReferenceItem[] = [
     result: "En ejecución – Adaptado a regulaciones que entrarán en vigencia en El Salvador.",
     web: "https://amc.com.sv",
     inImplementation: true,
+    focus: ["prestamos", "factoring"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Dos Pinos",
@@ -43,6 +61,8 @@ export const references: ReferenceItem[] = [
     modules: "Seguridad, Clientes, Contabilidad, SICVECA, Préstamos, Líneas de Crédito",
     contact: "Kelvin Calvo Brown – Consultor de Estrategia TI",
     inImplementation: true,
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Grupo Apex",
@@ -53,6 +73,8 @@ export const references: ReferenceItem[] = [
     result: "En ejecución – Implementación activa de módulos de Leasing y Préstamos.",
     modules: "Leasing, Préstamos",
     inImplementation: true,
+    focus: ["leasing", "prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Grupo Aurum",
@@ -63,6 +85,8 @@ export const references: ReferenceItem[] = [
     result: "En ejecución – Implementación activa de módulos de Leasing y Préstamos.",
     modules: "Leasing, Préstamos",
     inImplementation: true,
+    focus: ["leasing", "prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Unicomer Caribbean Holding",
@@ -73,6 +97,8 @@ export const references: ReferenceItem[] = [
     result: "Operando desde 2008, con expansiones a El Salvador (2011) y Nicaragua (2014). Grupo Unicomer gestiona +30 marcas, +1,200 tiendas en 26 países con +13,000 colaboradores.",
     modules: "Cobranzas, Créditos, Depósitos, Contabilidad, PLD, Inversiones, Tarjetas",
     contact: "Guillermo J. Siman – Vice Chairman",
+    focus: ["tarjetas", "prestamos", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Financiera MultiMoney",
@@ -84,6 +110,8 @@ export const references: ReferenceItem[] = [
     modules: "Seguridad, Préstamos, Cobranza, Ahorros, Depósitos, Contabilidad, PLD, Factoraje",
     contact: "Ernesto Fernández Lang – Presidente",
     web: "https://multimoney.com/",
+    focus: ["prestamos", "factoring", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "ION",
@@ -93,6 +121,8 @@ export const references: ReferenceItem[] = [
     detail: "Implementación exitosa de nSAF para industria inmobiliaria: crédito puente, financiamiento de vivienda. SAF+ en proceso. App móvil para avance de obras.",
     result: "+1,090 sueños de vivienda cumplidos, +$15 mil MDP en construcción, +10 mil viviendas financiadas.",
     contact: "Edgar Rojas Flores – Líder nSAF",
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Factor y Valor",
@@ -102,6 +132,8 @@ export const references: ReferenceItem[] = [
     detail: "Administración de cartera de Factoring. Más de una década como aliado financiero de pymes colombianas.",
     result: "Exitoso – Operación de Factoring para pymes colombianas con soluciones de capital de trabajo.",
     contact: "Jorge Ivan Bedoya Correa – Director General",
+    focus: ["factoring"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Broxel",
@@ -111,6 +143,8 @@ export const references: ReferenceItem[] = [
     detail: "Implementación de SAF+ como core central para Banca Digital. Broxel lanzó una de las primeras Super Apps en México.",
     result: "Primera Fintech Digital en México. Tarjetas Débito/Crédito en entorno digital (México y USA).",
     contact: "Rodrigo Díaz – VP Operaciones",
+    focus: ["tarjetas", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Bankaool",
@@ -120,6 +154,8 @@ export const references: ReferenceItem[] = [
     detail: "Implementación y Evolución de SAF+. Desde cooperativa hasta Banco de primer piso. Banca 100% digital 24x7.",
     result: "+25 años en operación. +40 años de historia. Licencia bancaria desde 2019.",
     contact: "Randall González – CTO",
+    focus: ["prestamos", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "AFP Confía",
@@ -130,6 +166,8 @@ export const references: ReferenceItem[] = [
     result: "Afiliados: 1.8 millones. Fondos: $8,219 M USD.",
     contact: "Luis Diego Varaona Magaña – Dir. Operaciones y Tecnología",
     web: "https://www.confia.com.sv/",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Reservas",
@@ -138,6 +176,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 724,504. Fondos: $3,409 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Crecer",
@@ -146,6 +186,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 1.5 millones. Fondos: $4,505 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Habitat",
@@ -154,6 +196,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1 millón. Fondos: $3,942 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFAP SURA",
@@ -162,6 +206,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 7.8 millones. Fondos: $11,512 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "República AFAP",
@@ -170,6 +216,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1.6 millones. Fondos: $22,000 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Integración AFAP",
@@ -178,6 +226,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 1,654,967. Fondos: $22,103 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "CRAP",
@@ -186,6 +236,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 273,101. Fondos: $1,540 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Porvenir",
@@ -194,6 +246,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 14,842,405. Fondos: $47,000 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Afore XXI Banorte",
@@ -202,6 +256,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 7.2 millones. Fondos: $49,597 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Banorte (Pensiones)",
@@ -210,6 +266,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de pensiones con SYSDE Pensión.",
     result: "Afiliados: 12 M. Fondos: $39,633 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "MetLife",
@@ -218,6 +276,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 698,784. Fondos: $12 mil M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Siembra",
@@ -226,6 +286,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1.1 millones. Fondos: $4,228 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Colfondos",
@@ -234,6 +296,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones del Grupo Habitat con SYSDE Pensión.",
     result: "Afiliados: 5.2 M. Fondos: $12,500 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Futuro de Bolivia AFP",
@@ -242,6 +306,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 500,000. Fondos: $20,998 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Prima AFP",
@@ -250,6 +316,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones del Grupo Crédito con SYSDE Pensión.",
     result: "Afiliados: 2.3 millones. Fondos: $13,078 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Afore Pensionissste Contigo",
@@ -258,6 +326,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1 millón. Fondos: $27,000 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "BN Vital",
@@ -266,6 +336,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 540,946. Fondos: $4,981 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Principal",
@@ -274,6 +346,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 3,085,011 M. Fondos: $12,500 M.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Inbursa Afore",
@@ -282,6 +356,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1.1 millones. Fondos: $9,291 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Profuturo",
@@ -290,6 +366,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1.7 M. Fondos: $6,503 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Atlántida",
@@ -298,6 +376,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de pensiones y cesantías con SYSDE Pensión.",
     result: "Afiliados: 78,000. Fondos: $1,157 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Atlántico",
@@ -306,6 +386,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 104,047. Fondos: $382.7 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFP Popular",
@@ -314,6 +396,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1,644,169. Fondos: $6,576 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Popular Pensiones",
@@ -322,6 +406,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1,728,132. Fondos: $10,568 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "ProFuturo (México)",
@@ -330,6 +416,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1.7 M. Fondos: $26.3 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Unión Capital AFAP",
@@ -338,6 +426,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 375,255. Fondos: $3,789 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Petros",
@@ -346,6 +436,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 220,000. Fondos: $784 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Alcatel-Lucent Enterprise",
@@ -354,6 +446,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión. Hoy es Nokia.",
     result: "Afiliados: 78,400. Fondos: $40.67 B.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Mercantil",
@@ -362,6 +456,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 100,007. Fondos: $150.28 M.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Tokio Marine Seguradora",
@@ -370,6 +466,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 52,000. Fondos: $37.1 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Seguros Universal",
@@ -378,6 +476,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 38,498. Fondos: $95.1 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "AFPC Occidente",
@@ -386,6 +486,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 82,539. Fondos: $161.5 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Pensiones BAC Credomatic",
@@ -394,6 +496,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 472,148. Fondos: $3,969 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Compañía de Seguros (México)",
@@ -402,6 +506,8 @@ export const references: ReferenceItem[] = [
     product: "SYSDE Pensión",
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 587,097. Fondos: $821 M USD.",
+    focus: ["pension"],
+    core: "Fondos de Pensión",
   },
   {
     name: "Banco ADOPEM",
@@ -411,6 +517,8 @@ export const references: ReferenceItem[] = [
     detail: "Core Bancario con 12 módulos. Institución orientada a finanzas productivas para sectores no bancarizados.",
     result: "Parte del Grupo Fundación Microfinanzas BBVA. Impacto en inclusión financiera.",
     contact: "Mercedes Canalda – Presidente Ejecutiva",
+    focus: ["prestamos", "core_bancario"],
+    core: "Core Bancario",
   },
   {
     name: "COOPECAR R.L.",
@@ -421,6 +529,8 @@ export const references: ReferenceItem[] = [
     result: "Cliente activo desde 2006. Mantenimiento continuo y actualizaciones regulatorias.",
     modules: "Cuentas de Efectivo, Depósitos, Préstamos, Contabilidad, Cajas, SICVECA",
     contact: "MBA Carmen Milena Arce Alfaro – Gerente General",
+    focus: ["prestamos", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "SOFIMSA",
@@ -429,6 +539,8 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Servicio SaaS en Microsoft Azure de Factoring administrado por Sysde SAF+.",
     result: "Administración exitosa de cartera de Factoring con soluciones de capital de trabajo.",
+    focus: ["factoring"],
+    core: "SYSDE PLUS",
   },
   {
     name: "CCSS",
@@ -437,6 +549,8 @@ export const references: ReferenceItem[] = [
     product: "FileMaster",
     detail: "Migración exitosa de expedientes digitales de FileMaster con +6,120 usuarios activos hacia la nube.",
     result: "Optimización de gestión, seguridad y accesibilidad con infraestructura escalable.",
+    focus: ["otros"],
+    core: "FileMaster",
   },
   {
     name: "Financiera MVA",
@@ -448,6 +562,8 @@ export const references: ReferenceItem[] = [
     modules: "Seguridad, Préstamos, Cobranza, Ahorros, Depósitos, Contabilidad, PLD, Factoraje",
     contact: "Mario Ernesto López Pineda – Gerente General",
     web: "https://www.financieramva.com/",
+    focus: ["prestamos", "factoring", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "CFE Rwanda",
@@ -456,6 +572,8 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "En 2004, implementación de SAF para automatizar contabilidad, préstamos y arrendamiento.",
     result: "En 2015, Bank of Africa adquirió 90% de participación. Transformación a banco comercial.",
+    focus: ["prestamos", "leasing"],
+    core: "SYSDE PLUS",
   },
   {
     name: "CNEC Djibouti",
@@ -464,6 +582,8 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Implementación de SAF en 2009 para optimizar operaciones financieras para grupos vulnerables.",
     result: "En 2011, fusión con CPEC. Impacto en inclusión financiera de mujeres emprendedoras.",
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Nyogondemeso-Soba",
@@ -472,6 +592,8 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Implementación de SAF+ tras fusión de dos cooperativas. Ahorro, crédito y transferencias.",
     result: "Fusión exitosa. Gobernanza democrática y apoyo a lucha contra la pobreza.",
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "CPECG",
@@ -480,6 +602,8 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Implementación de SAF para gestión financiera. +150,000 clientes, 27 sucursales.",
     result: "Reconocimiento por desempeño en microfinanzas e inclusión financiera.",
+    focus: ["prestamos", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "CTI",
@@ -488,6 +612,8 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Informatización de 72 Systèmes Financiers Décentralisés (SFD) en Senegal.",
     result: "72 instituciones financieras descentralizadas informatizadas exitosamente.",
+    focus: ["core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "Dunduliza",
@@ -496,6 +622,8 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Fortalecimiento de cooperativas de ahorro y crédito (SACCOs) en Tanzania.",
     result: "Mejora en capacidad operativa. Fomento del desarrollo económico local.",
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "FCPB",
@@ -504,6 +632,8 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Transformación digital de la red de microfinanzas más grande de Burkina Faso. Fundada en 1972.",
     result: "+1,200 empleados, 455 dirigentes. Inclusión financiera exitosa.",
+    focus: ["prestamos", "core_bancario"],
+    core: "SYSDE PLUS",
   },
   {
     name: "FCRMD",
@@ -512,5 +642,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Modernización de cooperativas rurales mutualistas del Delta en Mali.",
     result: "Inclusión económica de mujeres y jóvenes en áreas rurales.",
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
 ];
