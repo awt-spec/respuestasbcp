@@ -146,7 +146,7 @@ const AutoScrollBar = () => {
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 30 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+          className="fixed inset-0 z-50 flex items-center justify-center"
         >
           <div className="bg-card/95 backdrop-blur-xl border shadow-2xl rounded-2xl px-5 py-4 max-w-sm text-center">
             <p className="text-sm font-semibold text-foreground mb-1">
