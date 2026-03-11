@@ -166,8 +166,8 @@ const SafEcosystem = () => {
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
 
-  const outerContainerSize = containerSize(OUTER_ORBIT_RADIUS, OUTER_PLANET_SIZE);
-  const outerCenter = center(OUTER_ORBIT_RADIUS, OUTER_PLANET_SIZE);
+  const mainContainerSize = containerSize(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE);
+  const mainCenter = center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE);
 
   return (
     <div className="w-full">
