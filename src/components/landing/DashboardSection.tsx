@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { counts, sections, questions } from "@/data/questions";
+import { counts } from "@/data/questions";
 import { Progress } from "@/components/ui/progress";
 import { CheckCircle2 } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
@@ -7,33 +7,8 @@ import { useI18n } from "@/contexts/I18nContext";
 const DashboardSection = () => {
   const { t } = useI18n();
 
-  const sectionCounts = sections.map((s) => ({
-    ...s,
-    count: questions.filter((q) => q.section === s.key).length,
-  }));
-
   return (
     <section id="dashboard" className="max-w-5xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-        {sectionCounts.map((s, i) => (
-          <motion.div
-            key={s.key}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="rounded-2xl border bg-card p-5 flex items-center gap-4 shadow-sm"
-          >
-            <div className="text-2xl">{s.emoji}</div>
-            <div>
-              <p className="text-sm font-bold text-foreground">{t(`nav.section${s.key}`)}</p>
-              <p className="text-xs text-muted-foreground">
-                {s.count} {t("dash.answered")}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
 
       <motion.div
         initial={{ opacity: 0 }}

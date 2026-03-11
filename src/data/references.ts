@@ -48,7 +48,7 @@ export const references: ReferenceItem[] = [
     result: "En ejecución – Adaptado a regulaciones que entrarán en vigencia en El Salvador.",
     web: "https://amc.com.sv",
     inImplementation: true,
-    focus: ["prestamos", "factoring"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {

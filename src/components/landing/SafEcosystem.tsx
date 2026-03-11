@@ -107,9 +107,17 @@ const functionalModules: Module[] = [
   },
 ];
 
+// Outer orbit: product lines
+const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
+  { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
+  { id: "tarjetas", icon: CreditCard, label: "Tarjetas", label_en: "Cards", color: "from-rose-500 to-rose-600" },
+];
+
 const MAIN_ORBIT_RADIUS = 200;
+const OUTER_ORBIT_RADIUS = 290;
 const MAIN_CORE_SIZE = 110;
 const MAIN_PLANET_SIZE = 52;
+const OUTER_PLANET_SIZE = 58;
 
 const SUB_ORBIT_RADIUS = 180;
 const SUB_CORE_SIZE = 120;
@@ -165,8 +173,8 @@ const SafEcosystem = () => {
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
 
-  const mainContainerSize = containerSize(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE);
-  const mainCenter = center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE);
+  const outerContainerSize = containerSize(OUTER_ORBIT_RADIUS, OUTER_PLANET_SIZE);
+  const outerCenter = center(OUTER_ORBIT_RADIUS, OUTER_PLANET_SIZE);
 
   return (
     <div className="w-full">
@@ -273,23 +281,34 @@ const SafEcosystem = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Main orbit */}
+            {/* Main + Outer orbit */}
             <div className="flex justify-center overflow-x-auto">
               <div
                 className="relative shrink-0"
                 style={{
-                  width: mainContainerSize,
-                  height: mainContainerSize,
+                  width: outerContainerSize,
+                  height: outerContainerSize,
                 }}
               >
-                {/* Orbit ring */}
+                {/* Outer orbit ring */}
+                <div
+                  className="absolute border-2 border-dotted border-primary/10 rounded-full"
+                  style={{
+                    width: OUTER_ORBIT_RADIUS * 2,
+                    height: OUTER_ORBIT_RADIUS * 2,
+                    top: outerCenter - OUTER_ORBIT_RADIUS,
+                    left: outerCenter - OUTER_ORBIT_RADIUS,
+                  }}
+                />
+
+                {/* Inner orbit ring */}
                 <div
                   className="absolute border-2 border-dashed border-muted-foreground/15 rounded-full"
                   style={{
                     width: MAIN_ORBIT_RADIUS * 2,
                     height: MAIN_ORBIT_RADIUS * 2,
-                    top: mainCenter - MAIN_ORBIT_RADIUS,
-                    left: mainCenter - MAIN_ORBIT_RADIUS,
+                    top: outerCenter - MAIN_ORBIT_RADIUS,
+                    left: outerCenter - MAIN_ORBIT_RADIUS,
                   }}
                 />
 
@@ -301,8 +320,8 @@ const SafEcosystem = () => {
                   style={{
                     width: MAIN_CORE_SIZE,
                     height: MAIN_CORE_SIZE,
-                    top: mainCenter - MAIN_CORE_SIZE / 2,
-                    left: mainCenter - MAIN_CORE_SIZE / 2,
+                    top: outerCenter - MAIN_CORE_SIZE / 2,
+                    left: outerCenter - MAIN_CORE_SIZE / 2,
                   }}
                 >
                   <p className="text-primary-foreground text-xs font-extrabold">SYSDE</p>
@@ -317,12 +336,41 @@ const SafEcosystem = () => {
                       key={mod.id}
                       Icon={mod.icon}
                       label={pick(mod.label, mod.label_en)}
-                      x={mainCenter + Math.cos(angle) * MAIN_ORBIT_RADIUS}
-                      y={mainCenter + Math.sin(angle) * MAIN_ORBIT_RADIUS}
+                      x={outerCenter + Math.cos(angle) * MAIN_ORBIT_RADIUS}
+                      y={outerCenter + Math.sin(angle) * MAIN_ORBIT_RADIUS}
                       size={MAIN_PLANET_SIZE}
                       delay={0.05 + i * 0.05}
                       onClick={() => setSelectedModule(mod.id)}
                     />
+                  );
+                })}
+
+                {/* Outer orbit: product lines */}
+                {productLines.map((pl, i) => {
+                  const angle = (i / productLines.length) * 2 * Math.PI - Math.PI / 2;
+                  const x = outerCenter + Math.cos(angle) * OUTER_ORBIT_RADIUS;
+                  const y = outerCenter + Math.sin(angle) * OUTER_ORBIT_RADIUS;
+                  const Icon = pl.icon;
+                  return (
+                    <motion.div
+                      key={pl.id}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.08, type: "spring", stiffness: 200, damping: 20 }}
+                      className="absolute flex flex-col items-center gap-1.5 z-[6]"
+                      style={{
+                        left: x - OUTER_PLANET_SIZE / 2,
+                        top: y - OUTER_PLANET_SIZE / 2,
+                        width: OUTER_PLANET_SIZE,
+                      }}
+                    >
+                      <div className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg`}>
+                        <Icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.8} />
+                      </div>
+                      <span className="text-[9px] font-bold text-foreground text-center leading-tight max-w-[90px]">
+                        {pick(pl.label, pl.label_en)}
+                      </span>
+                    </motion.div>
                   );
                 })}
               </div>

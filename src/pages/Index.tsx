@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { questions, sections } from "@/data/questions";
+import { questions } from "@/data/questions";
 import HeroSection from "@/components/landing/HeroSection";
 import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
@@ -9,7 +8,6 @@ import ChatBot from "@/components/ChatBot";
 import AutoScrollBar from "@/components/landing/AutoScrollBar";
 
 import { Accordion } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
 import { useI18n } from "@/contexts/I18nContext";
 
 const Index = () => {
@@ -47,36 +45,11 @@ const Index = () => {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 pb-24">
-        <div className="space-y-16">
-          {sections.map((section) => {
-            const items = questions.filter((q) => q.section === section.key);
-            if (items.length === 0) return null;
-
-            return (
-              <motion.section
-                key={section.key}
-                id={section.key}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-                  <span>{section.emoji}</span> {t(`section.${section.key}.title`)}
-                  <Badge variant="outline" className="ml-2 text-xs">
-                    {items.length}
-                  </Badge>
-                </h2>
-
-                <Accordion type="multiple" className="space-y-3">
-                  {items.map((q, i) => (
-                    <DiagramCard key={q.id} item={q} index={i} />
-                  ))}
-                </Accordion>
-              </motion.section>
-            );
-          })}
-        </div>
+        <Accordion type="multiple" className="space-y-3">
+          {questions.map((q, i) => (
+            <DiagramCard key={q.id} item={q} index={i} />
+          ))}
+        </Accordion>
       </div>
 
       <div id="footer-section">
