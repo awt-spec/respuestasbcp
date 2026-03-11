@@ -54,56 +54,12 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá validar la experiencia comprobada de SYSDE en instituciones financieras de escala regional, con implementaciones activas en Leasing que demuestran la madurez y estabilidad de la plataforma.",
     valor_en: "BCP will be able to validate SYSDE's proven experience in regional-scale financial institutions, with active Leasing implementations that demonstrate the platform's maturity and stability.",
     diagrams: [
-      {
-        type: "table",
-        title: "Clientes Activos en Leasing",
-        headers: ["Institución", "País", "Módulo", "Estado"],
-        rows: [
-          ["CMI (Grupo Multi Inversiones)", "Centroamérica", "Leasing", "En implementación"],
-          ["Banco de Costa Rica", "Costa Rica", "Leasing", "Activo"],
-          ["GNP México", "México", "Leasing", "Activo"],
-        ],
-      },
       { type: "ecosystem" as DiagramType },
       { type: "stats" as DiagramType },
-      {
-        type: "list",
-        title: "Otras Instituciones con SAF+",
-        items: [
-          "Unicomer — Créditos retail multi-país",
-          "Banco Nacional — Core crediticio",
-          "Credicomer — Financiera regional",
-          "Bankaool — Banca digital México",
-          "ADOPEM — Microfinanzas República Dominicana",
-          "SYSDE Pensión — 80%+ del mercado de pensiones LATAM",
-        ],
-      },
     ],
     diagrams_en: [
-      {
-        type: "table",
-        title: "Active Leasing Clients",
-        headers: ["Institution", "Country", "Module", "Status"],
-        rows: [
-          ["CMI (Grupo Multi Inversiones)", "Central America", "Leasing", "In implementation"],
-          ["Banco de Costa Rica", "Costa Rica", "Leasing", "Active"],
-          ["GNP México", "Mexico", "Leasing", "Active"],
-        ],
-      },
       { type: "ecosystem" as DiagramType },
       { type: "stats" as DiagramType },
-      {
-        type: "list",
-        title: "Other Institutions with SAF+",
-        items: [
-          "Unicomer — Multi-country retail credits",
-          "Banco Nacional — Credit core",
-          "Credicomer — Regional financial institution",
-          "Bankaool — Digital banking Mexico",
-          "ADOPEM — Microfinance Dominican Republic",
-          "SYSDE Pensión — 80%+ of LATAM pension market",
-        ],
-      },
     ],
   },
   {
