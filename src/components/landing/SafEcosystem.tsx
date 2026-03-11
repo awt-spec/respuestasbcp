@@ -61,16 +61,6 @@ const functionalModules: Module[] = [
     ],
   },
   {
-    id: "canales", icon: Smartphone, label: "Canales Digitales", label_en: "Digital Channels",
-    subs: [
-      { id: "movil", icon: Phone, label: "Banca Móvil", label_en: "Mobile Banking" },
-      { id: "web", icon: Globe, label: "Banca Web", label_en: "Web Banking" },
-      { id: "api", icon: Plug, label: "API Gateway", label_en: "API Gateway" },
-      { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Banking", label_en: "WhatsApp Banking" },
-      { id: "atm", icon: Landmark, label: "ATM / Kiosk", label_en: "ATM / Kiosk" },
-    ],
-  },
-  {
     id: "componentes", icon: Building2, label: "Componentes Integrados", label_en: "Integrated Components",
     subs: [
       { id: "workflow", icon: TrendingUp, label: "Motor de Workflow", label_en: "Workflow Engine" },
