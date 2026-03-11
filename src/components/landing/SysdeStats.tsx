@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
+import { Users, DollarSign, Globe, Shield, Zap, TrendingUp } from "lucide-react";
 
 const marketData = [
   { country: "Uruguay", pct: 100 },
@@ -19,109 +20,137 @@ const SysdeStats = () => {
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
 
   return (
-    <div className="space-y-6">
-      {/* Trust banner */}
-      <div className="rounded-2xl bg-gradient-to-br from-primary to-[hsl(340,70%,30%)] p-6 text-primary-foreground">
-        <p className="text-[10px] font-semibold uppercase tracking-widest opacity-70 mb-2">
-          {pick("Confianza comprobada", "Proven trust")}
-        </p>
-        <h4 className="text-lg font-extrabold mb-4">
-          {pick("Confianza comprobada por líderes de la industria", "Proven trust by industry leaders")}
-        </h4>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-xl bg-primary-foreground/10 backdrop-blur-sm p-4 text-center">
-            <p className="text-2xl md:text-3xl font-extrabold">+145M</p>
-            <p className="text-xs opacity-80">{pick("usuarios", "users")}</p>
-          </div>
-          <div className="rounded-xl bg-primary-foreground/10 backdrop-blur-sm p-4 text-center">
-            <p className="text-2xl md:text-3xl font-extrabold">USD +655.4B</p>
-            <p className="text-xs opacity-80">{pick("en activos administrados", "in managed assets")}</p>
-          </div>
-        </div>
-        <p className="text-[10px] opacity-60 mt-3 text-center">
-          {pick(
-            "gestionados a través de Sysde Pensión en toda Latinoamérica",
-            "managed through Sysde Pensión across Latin America"
-          )}
-        </p>
-      </div>
+    <div className="space-y-8">
 
-      {/* Key numbers */}
+      {/* ── Section 1: Trust Banner ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="rounded-2xl overflow-hidden"
+      >
+        <div className="bg-gradient-to-br from-primary via-[hsl(340,70%,35%)] to-[hsl(352,87%,22%)] p-8">
+          <div className="text-center mb-6">
+            <span className="inline-flex items-center gap-1.5 bg-primary-foreground/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-[10px] font-semibold text-primary-foreground/80 uppercase tracking-widest mb-3">
+              <Users className="w-3 h-3" />
+              {pick("Confianza comprobada", "Proven trust")}
+            </span>
+            <h4 className="text-xl md:text-2xl font-extrabold text-primary-foreground italic leading-tight">
+              {pick("Confianza comprobada por líderes de la industria", "Proven trust by industry leaders")}
+            </h4>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+            <div className="rounded-2xl bg-primary-foreground/10 backdrop-blur-sm p-5 text-center border border-primary-foreground/10">
+              <Users className="w-6 h-6 text-primary-foreground/60 mx-auto mb-2" />
+              <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+145M</p>
+              <p className="text-[11px] text-primary-foreground/70 mt-1">{pick("usuarios", "users")}</p>
+            </div>
+            <div className="rounded-2xl bg-primary-foreground/10 backdrop-blur-sm p-5 text-center border border-primary-foreground/10">
+              <DollarSign className="w-6 h-6 text-primary-foreground/60 mx-auto mb-2" />
+              <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+655B</p>
+              <p className="text-[11px] text-primary-foreground/70 mt-1">USD {pick("en activos", "in assets")}</p>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-primary-foreground/50 text-center mt-4">
+            {pick(
+              "gestionados a través de SYSDE Pensión en toda Latinoamérica",
+              "managed through SYSDE Pensión across Latin America"
+            )}
+          </p>
+        </div>
+      </motion.div>
+
+      {/* ── Section 2: SYSDE Pensión Numbers ── */}
       <div>
-        <p className="text-[10px] font-bold text-primary uppercase tracking-wider mb-3">
-          {pick("SYSDE en Números", "SYSDE in Numbers")}
-        </p>
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-1 h-5 rounded-full bg-primary" />
+          <h4 className="text-sm font-bold text-foreground uppercase tracking-wide">
+            {pick("SYSDE Pensión en Números", "SYSDE Pensión in Numbers")}
+          </h4>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { value: "+200", label: pick("funcionalidades en módulos", "module functionalities") },
-            { value: "+15", label: pick("operadoras de pensión confían en SYSDE", "pension operators trust SYSDE") },
-            { value: "+400", label: pick("módulos especializados en Pensión", "specialized Pension modules") },
-            { value: "+45", label: pick("operadoras de fondos de pensión", "pension fund operators") },
+            { value: "+200", label: pick("funcionalidades en los módulos relacionados entre sí", "functionalities in interrelated modules") },
+            { value: "+15", label: pick("operadoras de fondos de pensión confían en SYSDE", "pension fund operators trust SYSDE") },
+            { value: "+400", label: pick("módulos especializados disponibles en SYSDE Pensión", "specialized modules available in SYSDE Pensión") },
+            { value: "+45", label: pick("operadoras de fondos de pensión confían en SYSDE", "pension fund operators trust SYSDE") },
           ].map((stat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-4 rounded-xl border bg-card text-center"
+              transition={{ delay: i * 0.07 }}
+              className="p-4 rounded-2xl border bg-card hover:shadow-sm transition-shadow"
             >
-              <p className="text-xl font-extrabold text-primary">{stat.value}</p>
-              <p className="text-[10px] text-muted-foreground mt-1">{stat.label}</p>
+              <p className="text-2xl font-extrabold text-primary mb-1">{stat.value}</p>
+              <p className="text-[10px] text-muted-foreground leading-snug">{stat.label}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Market presence bars */}
-      <div className="rounded-xl border bg-card p-5">
+      {/* ── Section 3: Market Presence ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="rounded-2xl border bg-card p-6"
+      >
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-sm">📍</span>
+          <Globe className="w-4 h-4 text-primary" />
           <h5 className="text-sm font-bold text-foreground">
             {pick("Presencia que lidera", "Leading presence")}
           </h5>
         </div>
-        <p className="text-[10px] text-muted-foreground mb-4">
+        <p className="text-[10px] text-muted-foreground mb-5">
           {pick(
-            "Territorios ganados: Sysde domina con más del 50% del mercado",
-            "Won territories: Sysde dominates with 50%+ market share"
+            "Territorios ganados: SYSDE domina con más del 50% del mercado",
+            "Won territories: SYSDE dominates with 50%+ market share"
           )}
         </p>
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {marketData.map((item, i) => (
-            <div key={i}>
+            <div key={i} className="group">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-medium text-foreground">
+                <span className="text-[11px] font-medium text-foreground">
                   {pick(item.country, item.country_en)}
                 </span>
-                <span className="text-xs font-bold text-primary">{item.pct}%</span>
+                <span className="text-[11px] font-bold text-primary">{item.pct}%</span>
               </div>
-              <div className="h-2 rounded-full bg-muted overflow-hidden">
+              <div className="h-1.5 rounded-full bg-muted overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${item.pct}%` }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.05 }}
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-[hsl(340,70%,40%)]"
+                  transition={{ duration: 0.8, delay: i * 0.04, ease: "easeOut" }}
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-[hsl(340,70%,45%)]"
                 />
               </div>
             </div>
           ))}
         </div>
-        <p className="text-[9px] text-muted-foreground mt-4 flex items-center gap-1">
-          🌐 {pick(
+        <p className="text-[9px] text-muted-foreground mt-5 flex items-center gap-1.5 border-t pt-3">
+          <Globe className="w-3 h-3 text-muted-foreground/60" />
+          {pick(
             "También presente en Brasil, Paraguay, Corea, Polonia y Venezuela.",
             "Also present in Brazil, Paraguay, Korea, Poland, and Venezuela."
           )}
         </p>
-      </div>
+      </motion.div>
 
-      {/* Differentiators */}
+      {/* ── Section 4: Differentiators ── */}
       <div>
-        <p className="text-[10px] font-bold text-primary uppercase tracking-wider mb-3">
-          {pick("DIFERENCIADORES", "DIFFERENTIATORS")}
-        </p>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 mb-4">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-1 h-5 rounded-full bg-primary" />
+          <h4 className="text-sm font-bold text-foreground uppercase tracking-wide">
+            {pick("¿Por qué asociarse con nosotros?", "Why partner with us?")}
+          </h4>
+        </div>
+
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 mb-4">
           {[
             { value: "+39", label: pick("Países", "Countries") },
             { value: "+1,000", label: pick("Clientes", "Clients") },
@@ -129,33 +158,46 @@ const SysdeStats = () => {
             { value: "+250M", label: "API Calls/Day" },
             { value: "+1,500", label: pick("Implementaciones", "Implementations") },
           ].map((s, i) => (
-            <div key={i} className="p-3 rounded-xl border bg-card text-center">
-              <p className="text-base font-extrabold text-primary">{s.value}</p>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="p-3 rounded-xl border bg-card text-center"
+            >
+              <p className="text-lg font-extrabold text-primary">{s.value}</p>
               <p className="text-[9px] text-muted-foreground">{s.label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {[
-            { icon: "🌐", text: pick("Aceleradores pre-construidos para servicios financieros", "Pre-built accelerators for financial services") },
-            { icon: "✅", text: pick("Framework de cumplimiento multi-país para LATAM/Caribe", "Multi-country compliance framework for LATAM/Caribbean") },
-            { icon: "⚡", text: pick("Capacidades avanzadas de IA/ML en tiempo real", "Advanced real-time AI/ML capabilities") },
-            { icon: "📈", text: pick("Modelo de crecimiento ilimitado: usuarios, préstamos, clientes", "Unlimited growth model: users, loans, clients") },
-          ].map((f, i) => (
-            <div key={i} className="flex items-start gap-2 p-3 rounded-lg border bg-card">
-              <span className="text-sm shrink-0">{f.icon}</span>
-              <p className="text-[10px] text-foreground">{f.text}</p>
+            { Icon: Globe, text: pick("Aceleradores pre-construidos para servicios financieros", "Pre-built accelerators for financial services") },
+            { Icon: Shield, text: pick("Framework de cumplimiento multi-país para LATAM/Caribe", "Multi-country compliance framework for LATAM/Caribbean") },
+            { Icon: Zap, text: pick("Capacidades avanzadas de IA/ML en tiempo real", "Advanced real-time AI/ML capabilities") },
+            { Icon: TrendingUp, text: pick("Modelo de crecimiento ilimitado: usuarios, préstamos, clientes", "Unlimited growth model: users, loans, clients") },
+          ].map(({ Icon, text }, i) => (
+            <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl border bg-card">
+              <Icon className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+              <p className="text-[11px] text-foreground leading-snug">{text}</p>
             </div>
           ))}
         </div>
 
-        {/* SaaS certification banner */}
-        <div className="mt-4 rounded-xl bg-primary/5 border border-primary/20 p-4 text-center">
-          <p className="text-xs font-bold text-foreground">Cloud SaaS/PaaS — SOC 2 Certified</p>
-          <p className="text-[10px] text-muted-foreground mt-1">
-            99.95% - 99.99% SLA · Multi-zone · GDPR · {"<"}4hr RTO · {"<"}15min RPO
+        {/* Cloud certification */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-4 rounded-2xl bg-gradient-to-r from-primary/[0.06] to-primary/[0.02] border border-primary/15 p-5 text-center"
+        >
+          <p className="text-sm font-bold text-foreground">Cloud SaaS/PaaS — SOC 2 Certified</p>
+          <p className="text-[10px] text-muted-foreground mt-1.5">
+            99.95% – 99.99% SLA · Multi-zone · GDPR · {"<"}4hr RTO · {"<"}15min RPO
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
