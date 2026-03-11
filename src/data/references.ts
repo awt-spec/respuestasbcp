@@ -153,7 +153,7 @@ export const references: ReferenceItem[] = [
     detail: "Implementación y Evolución de SAF+. Desde cooperativa hasta Banco de primer piso. Banca 100% digital 24x7.",
     result: "+25 años en operación. +40 años de historia. Licencia bancaria desde 2019.",
     contact: "Randall González – CTO",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
