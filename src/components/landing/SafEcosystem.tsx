@@ -61,16 +61,6 @@ const functionalModules: Module[] = [
     ],
   },
   {
-    id: "canales", icon: Smartphone, label: "Canales Digitales", label_en: "Digital Channels",
-    subs: [
-      { id: "movil", icon: Phone, label: "Banca Móvil", label_en: "Mobile Banking" },
-      { id: "web", icon: Globe, label: "Banca Web", label_en: "Web Banking" },
-      { id: "api", icon: Plug, label: "API Gateway", label_en: "API Gateway" },
-      { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Banking", label_en: "WhatsApp Banking" },
-      { id: "atm", icon: Landmark, label: "ATM / Kiosk", label_en: "ATM / Kiosk" },
-    ],
-  },
-  {
     id: "componentes", icon: Building2, label: "Componentes Integrados", label_en: "Integrated Components",
     subs: [
       { id: "workflow", icon: TrendingUp, label: "Motor de Workflow", label_en: "Workflow Engine" },
@@ -111,6 +101,8 @@ const functionalModules: Module[] = [
 const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
   { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
   { id: "tarjetas", icon: CreditCard, label: "Tarjetas", label_en: "Cards", color: "from-rose-500 to-rose-600" },
+  { id: "canales", icon: Smartphone, label: "Canales Digitales", label_en: "Digital Channels", color: "from-blue-500 to-blue-600" },
+  { id: "retail", icon: Building2, label: "Retail", label_en: "Retail", color: "from-amber-500 to-amber-600" },
 ];
 
 const MAIN_ORBIT_RADIUS = 200;
