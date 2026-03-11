@@ -800,7 +800,7 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para operaciones de Scotiabank en la región.",
-    result: "Operación activa con módulos de core bancario.",
+    result: "Operación activa con SYSDE PLUS.",
     focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
