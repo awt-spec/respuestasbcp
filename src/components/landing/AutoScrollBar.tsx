@@ -53,9 +53,31 @@ const AutoScrollBar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [promptProgress, setPromptProgress] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const promptTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const stepsRef = useRef<TourStep[]>(buildSteps());
+
+  // Auto-dismiss prompt after 8 seconds
+  useEffect(() => {
+    if (!showPrompt) return;
+    const PROMPT_DURATION = 8000;
+    const tick = 50;
+    promptTimerRef.current = setInterval(() => {
+      setPromptProgress((prev) => {
+        const next = prev + (tick / PROMPT_DURATION) * 100;
+        if (next >= 100) {
+          setShowPrompt(false);
+          return 0;
+        }
+        return next;
+      });
+    }, tick);
+    return () => {
+      if (promptTimerRef.current) clearInterval(promptTimerRef.current);
+    };
+  }, [showPrompt]);
 
   const clearTimers = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
