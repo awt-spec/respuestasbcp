@@ -65,18 +65,6 @@ export const questions: QuestionItem[] = [
         ],
       },
       {
-        type: "grid",
-        title: "Ecosistema SAF+ — Módulos",
-        items: [
-          "🏗️ Leasing — Financiero y Operativo",
-          "📄 Factoraje — Descuento de facturas",
-          "💳 Créditos — Core de créditos",
-          "👤 Vista Unificada del Cliente",
-          "🔗 Integración Nativa entre Módulos",
-          "⚙️ Adopción Modular Progresiva",
-        ],
-      },
-      {
         type: "list",
         title: "Otras Instituciones con SAF+",
         items: [
