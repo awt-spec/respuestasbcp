@@ -64,6 +64,8 @@ export const questions: QuestionItem[] = [
           ["GNP México", "México", "Leasing", "Activo"],
         ],
       },
+      { type: "ecosystem" as DiagramType },
+      { type: "stats" as DiagramType },
       {
         type: "list",
         title: "Otras Instituciones con SAF+",
@@ -88,6 +90,8 @@ export const questions: QuestionItem[] = [
           ["GNP México", "Mexico", "Leasing", "Active"],
         ],
       },
+      { type: "ecosystem" as DiagramType },
+      { type: "stats" as DiagramType },
       {
         type: "list",
         title: "Other Institutions with SAF+",
@@ -119,8 +123,6 @@ export const questions: QuestionItem[] = [
     valor: "La transparencia de SYSDE al comunicar este punto genera confianza. La validación se sustenta en la experiencia real con instituciones financieras de la región y certificaciones ISO de calidad.",
     valor_en: "SYSDE's transparency in communicating this point builds trust. Validation is supported by real experience with financial institutions in the region and ISO quality certifications.",
     diagrams: [
-      { type: "ecosystem" as DiagramType },
-      { type: "stats" as DiagramType },
       {
         type: "grid",
         title: "Respaldo de SYSDE",
@@ -135,8 +137,6 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
-      { type: "ecosystem" as DiagramType },
-      { type: "stats" as DiagramType },
       {
         type: "grid",
         title: "SYSDE Backing",
