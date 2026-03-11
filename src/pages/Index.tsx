@@ -55,7 +55,7 @@ const Index = () => {
         <FooterSection />
       </div>
       <ChatBot />
-      <AutoScrollBar />
+      
     </div>
   );
 };
