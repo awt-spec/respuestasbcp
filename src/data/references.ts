@@ -117,7 +117,7 @@ export const references: ReferenceItem[] = [
     name: "ION",
     region: "🇲🇽 México",
     deployment: "On Premise / SaaS",
-    product: "nSAF + SAF+",
+    product: "SYSDE PLUS",
     detail: "Implementación exitosa de nSAF para industria inmobiliaria: crédito puente, financiamiento de vivienda. SAF+ en proceso. App móvil para avance de obras.",
     result: "+1,090 sueños de vivienda cumplidos, +$15 mil MDP en construcción, +10 mil viviendas financiadas.",
     contact: "Edgar Rojas Flores – Líder nSAF",
