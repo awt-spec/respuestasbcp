@@ -142,7 +142,7 @@ export const references: ReferenceItem[] = [
     detail: "Implementación de SAF+ como core central para Banca Digital. Broxel lanzó una de las primeras Super Apps en México.",
     result: "Primera Fintech Digital en México. Tarjetas Débito/Crédito en entorno digital (México y USA).",
     contact: "Rodrigo Díaz – VP Operaciones",
-    focus: ["tarjetas", "core_bancario"],
+    focus: ["tarjetas"],
     core: "SYSDE PLUS",
   },
   {
