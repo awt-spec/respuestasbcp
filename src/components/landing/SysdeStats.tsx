@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
 import { Users, DollarSign, Globe, Shield, Zap, TrendingUp, ChevronDown } from "lucide-react";
 
@@ -16,6 +16,30 @@ const marketData = [
   { country: "Honduras", pct: 40 },
 ];
 
+/* ─── Counting animation hook ─── */
+const useCountUp = (end: number, duration = 2000, startCounting = false) => {
+  const [count, setCount] = useState(0);
+  const hasStarted = useRef(false);
+
+  useEffect(() => {
+    if (!startCounting || hasStarted.current) return;
+    hasStarted.current = true;
+
+    const startTime = performance.now();
+    const animate = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutQuart
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(eased * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [end, duration, startCounting]);
+
+  return count;
+};
+
 interface Props {
   section: "trajectory" | "pension";
 }
@@ -24,6 +48,12 @@ const SysdeStats = ({ section }: Props) => {
   const { lang } = useI18n();
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
   const [showPresence, setShowPresence] = useState(false);
+
+  const trustRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(trustRef, { once: true, amount: 0.5 });
+
+  const usersCount = useCountUp(145, 2200, isInView);
+  const assetsCount = useCountUp(800, 2200, isInView);
 
   if (section === "trajectory") {
     return (
@@ -74,8 +104,8 @@ const SysdeStats = ({ section }: Props) => {
           </p>
         </div>
 
-        {/* Trust banner */}
-        <div className="rounded-2xl overflow-hidden">
+        {/* Trust banner with counting animation */}
+        <div className="rounded-2xl overflow-hidden" ref={trustRef}>
           <div className="bg-gradient-to-br from-primary via-[hsl(340,70%,35%)] to-[hsl(352,87%,22%)] p-8">
             <div className="text-center mb-6">
               <span className="inline-flex items-center gap-1.5 bg-primary-foreground/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-[10px] font-semibold text-primary-foreground/80 uppercase tracking-widest mb-3">
@@ -89,12 +119,16 @@ const SysdeStats = ({ section }: Props) => {
             <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
               <div className="rounded-2xl bg-primary-foreground/10 backdrop-blur-sm p-5 text-center border border-primary-foreground/10">
                 <Users className="w-6 h-6 text-primary-foreground/60 mx-auto mb-2" />
-                <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+145M</p>
+                <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">
+                  +{usersCount}M
+                </p>
                 <p className="text-[11px] text-primary-foreground/70 mt-1">{pick("usuarios", "users")}</p>
               </div>
               <div className="rounded-2xl bg-primary-foreground/10 backdrop-blur-sm p-5 text-center border border-primary-foreground/10">
                 <DollarSign className="w-6 h-6 text-primary-foreground/60 mx-auto mb-2" />
-                <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+800B</p>
+                <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">
+                  +{assetsCount}B
+                </p>
                 <p className="text-[11px] text-primary-foreground/70 mt-1">USD {pick("en activos gestionados", "in managed assets")}</p>
               </div>
             </div>
@@ -127,7 +161,6 @@ const SysdeStats = ({ section }: Props) => {
           "Over 30 years supporting pension fund management in the region."
         )}
       </p>
-
 
       <button
         onClick={() => setShowPresence(!showPresence)}

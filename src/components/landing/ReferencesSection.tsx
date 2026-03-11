@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { references, ReferenceItem, FocusArea, focusLabels } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, Layers } from "lucide-react";
+import { MapPin, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, Layers, ChevronRight } from "lucide-react";
 
 const focusIcons: Record<FocusArea, React.ElementType> = {
   leasing: Briefcase,
@@ -14,15 +14,23 @@ const focusIcons: Record<FocusArea, React.ElementType> = {
   otros: Building2,
 };
 
-const focusTabs: { key: FocusArea | "all"; label: string }[] = [
+type FilterKey = "all" | "coleccion" | "tarjetas" | "pension" | "core_bancario";
+
+const focusTabs: { key: FilterKey; label: string }[] = [
   { key: "all", label: "Todos" },
-  { key: "leasing", label: "Leasing" },
-  { key: "factoring", label: "Factoring" },
-  { key: "prestamos", label: "Préstamos" },
+  { key: "coleccion", label: "Colocación" },
   { key: "tarjetas", label: "Tarjetas" },
   { key: "pension", label: "Fondos de Pensión" },
   { key: "core_bancario", label: "Core Bancario" },
 ];
+
+const coleccionAreas: FocusArea[] = ["leasing", "factoring", "prestamos"];
+
+const filterReferences = (key: FilterKey): ReferenceItem[] => {
+  if (key === "all") return references;
+  if (key === "coleccion") return references.filter((r) => r.focus.some((f) => coleccionAreas.includes(f)));
+  return references.filter((r) => r.focus.includes(key as FocusArea));
+};
 
 const getCardAccent = (i: number) => {
   const accents = [
@@ -53,74 +61,86 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
       className="bg-card border rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto"
       onClick={(e) => e.stopPropagation()}
     >
-      {/* Header */}
-      <div className="sticky top-0 bg-card border-b px-5 py-4 flex items-start justify-between rounded-t-2xl z-10">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            {r.inImplementation && (
-              <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
-                En implementación
-              </Badge>
-            )}
-            <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
-              {r.core}
-            </Badge>
-          </div>
-          <h3 className="text-lg font-bold text-foreground">{r.name}</h3>
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1">
-            <MapPin className="w-3 h-3" /> {r.region}
+      {/* Header with gradient */}
+      <div className="sticky top-0 z-10 rounded-t-2xl overflow-hidden">
+        <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-b px-6 py-5">
+          <div className="flex items-start justify-between">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-2">
+                {r.inImplementation && (
+                  <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
+                    🔄 En implementación
+                  </Badge>
+                )}
+                <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
+                  {r.core}
+                </Badge>
+              </div>
+              <h3 className="text-xl font-extrabold text-foreground leading-tight">{r.name}</h3>
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1.5">
+                <MapPin className="w-3 h-3" /> {r.region}
+              </div>
+            </div>
+            <button onClick={onClose} className="p-2 rounded-full hover:bg-muted transition-colors shrink-0 ml-3">
+              <X className="w-4 h-4 text-muted-foreground" />
+            </button>
           </div>
         </div>
-        <button onClick={onClose} className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0">
-          <X className="w-4 h-4 text-muted-foreground" />
-        </button>
       </div>
 
       {/* Body */}
-      <div className="px-5 py-4 space-y-4">
-        {/* Focus areas */}
-        <div className="flex flex-wrap gap-1.5">
-          {r.focus.map((f) => {
-            const Icon = focusIcons[f];
-            return (
-              <span key={f} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-muted text-muted-foreground border">
-                <Icon className="w-3 h-3" />
-                {focusLabels[f]}
-              </span>
-            );
-          })}
+      <div className="px-6 py-5 space-y-5">
+        {/* Focus areas as chips */}
+        <div>
+          <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Enfoque</p>
+          <div className="flex flex-wrap gap-1.5">
+            {r.focus.map((f) => {
+              const Icon = focusIcons[f];
+              return (
+                <span key={f} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold bg-primary/5 text-primary border border-primary/15">
+                  <Icon className="w-3 h-3" />
+                  {focusLabels[f]}
+                </span>
+              );
+            })}
+          </div>
         </div>
 
         {/* Detail */}
-        <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
+        <div>
+          <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Detalle</p>
+          <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
+        </div>
 
         {/* Modules */}
         {r.modules && (
           <div>
-            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1.5">Módulos</p>
-            <div className="flex flex-wrap gap-1">
+            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Módulos</p>
+            <div className="flex flex-wrap gap-1.5">
               {r.modules.split(", ").map((m) => (
-                <Badge key={m} variant="outline" className="text-[10px] font-medium">{m}</Badge>
+                <Badge key={m} variant="outline" className="text-[10px] font-medium bg-muted/50">{m}</Badge>
               ))}
             </div>
           </div>
         )}
 
         {/* Result */}
-        <div className="rounded-xl bg-muted/60 border p-4">
-          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Resultado</p>
+        <div className="rounded-xl bg-gradient-to-br from-emerald-500/5 to-emerald-500/[0.02] border border-emerald-500/15 p-4">
+          <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest mb-1.5">✓ Resultado</p>
           <p className="text-sm text-foreground leading-relaxed">{r.result}</p>
         </div>
 
         {/* Contact & Web */}
-        {r.contact && (
-          <p className="text-xs text-muted-foreground"><span className="font-semibold">Contacto:</span> {r.contact}</p>
-        )}
-        {r.web && (
-          <a href={r.web} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
-            <ExternalLink className="w-3 h-3" /> {r.web}
-          </a>
-        )}
+        <div className="flex flex-col gap-2 pt-2 border-t">
+          {r.contact && (
+            <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Contacto:</span> {r.contact}</p>
+          )}
+          {r.web && (
+            <a href={r.web} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline">
+              <ExternalLink className="w-3 h-3" /> Visitar sitio web
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   </motion.div>
@@ -138,14 +158,12 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
     className={`group cursor-pointer rounded-2xl border bg-gradient-to-br ${getCardAccent(index)} shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
   >
     <div className="p-4">
-      {/* Implementation badge */}
       {r.inImplementation && (
         <Badge className="mb-2 text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
           🔄 En implementación
         </Badge>
       )}
 
-      {/* Name + core */}
       <div className="flex items-start justify-between gap-2 mb-2">
         <h5 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
           {r.name}
@@ -155,13 +173,11 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
         </Badge>
       </div>
 
-      {/* Region */}
       <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground mb-2">
         <MapPin className="w-3 h-3 shrink-0" />
         <span className="truncate">{r.region}</span>
       </div>
 
-      {/* Focus badges */}
       <div className="flex flex-wrap gap-1 mb-2">
         {r.focus.slice(0, 3).map((f) => {
           const Icon = focusIcons[f];
@@ -174,11 +190,10 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
         })}
       </div>
 
-      {/* Preview text */}
       <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>
 
-      <span className="inline-block mt-2 text-[10px] text-primary font-semibold group-hover:underline">
-        Ver detalle →
+      <span className="inline-flex items-center gap-1 mt-2 text-[10px] text-primary font-semibold group-hover:underline">
+        Ver detalle <ChevronRight className="w-3 h-3" />
       </span>
     </div>
   </motion.div>
@@ -186,16 +201,13 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
 
 /* ─── Main Section ─── */
 const ReferencesSection = () => {
-  const [activeFilter, setActiveFilter] = useState<FocusArea | "all">("all");
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
   const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
 
-  const filtered = activeFilter === "all"
-    ? references
-    : references.filter((r) => r.focus.includes(activeFilter));
+  const filtered = filterReferences(activeFilter);
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-4">
         <h4 className="text-sm font-bold text-foreground">
           Referencias SYSDE ({filtered.length} de {references.length})
@@ -205,13 +217,10 @@ const ReferencesSection = () => {
         </p>
       </div>
 
-      {/* Filter tabs */}
       <div className="flex flex-wrap gap-1.5 mb-4 p-1 rounded-xl bg-muted/40 border">
         {focusTabs.map((tab) => {
           const isActive = activeFilter === tab.key;
-          const count = tab.key === "all"
-            ? references.length
-            : references.filter((r) => r.focus.includes(tab.key as FocusArea)).length;
+          const count = filterReferences(tab.key).length;
           return (
             <button
               key={tab.key}
@@ -231,7 +240,6 @@ const ReferencesSection = () => {
         })}
       </div>
 
-      {/* Cards grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {filtered.map((r, i) => (
           <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
@@ -242,7 +250,6 @@ const ReferencesSection = () => {
         <div className="text-center py-8 text-sm text-muted-foreground">No hay referencias para este filtro.</div>
       )}
 
-      {/* Modal */}
       <AnimatePresence>
         {selectedRef && (
           <ReferenceModal item={selectedRef} onClose={() => setSelectedRef(null)} />
