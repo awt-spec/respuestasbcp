@@ -55,8 +55,8 @@ const SysdeStats = () => {
 
           <p className="text-[10px] text-primary-foreground/50 text-center mt-4">
             {pick(
-              "gestionados a través de SYSDE Pensión en toda Latinoamérica",
-              "managed through SYSDE Pensión across Latin America"
+              "a través de SYSDE en toda Latinoamérica",
+              "through SYSDE across Latin America"
             )}
           </p>
         </div>
