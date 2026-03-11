@@ -109,6 +109,44 @@ const canalesModule: Module = {
   ],
 };
 
+// Pensión sub-modules
+const pensionModule: Module = {
+  id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds",
+  subs: [
+    { id: "pension-afp", icon: Landmark, label: "Pensión AFP", label_en: "AFP Pension" },
+    { id: "pension-nicho", icon: Users, label: "Pensión de Nicho", label_en: "Niche Pension" },
+    { id: "pension-admin", icon: ClipboardCheck, label: "Administración de Fondos", label_en: "Fund Administration" },
+    { id: "pension-reportes", icon: FileSpreadsheet, label: "Reportes Regulatorios", label_en: "Regulatory Reports" },
+  ],
+};
+
+// Retail sub-modules (Portal Web + App Mobile)
+const retailModule: Module = {
+  id: "retail", icon: Building2, label: "Retail", label_en: "Retail",
+  subs: [
+    { id: "portal-web", icon: Globe, label: "Portal Web", label_en: "Web Portal" },
+    { id: "app-mobile", icon: Smartphone, label: "App Mobile", label_en: "Mobile App" },
+    { id: "gestion-pedido", icon: ShoppingCart, label: "Gestión de Pedido", label_en: "Order Management" },
+    { id: "gestion-cartera", icon: Wallet, label: "Gestión Cartera", label_en: "Portfolio Management" },
+    { id: "pagos-geo", icon: MapPin, label: "Pagos Georeferenciados", label_en: "Geo Payments" },
+    { id: "gestion-ruta", icon: Route, label: "Gestión de Ruta", label_en: "Route Management" },
+    { id: "reportes-retail", icon: FileBarChart, label: "Reportes", label_en: "Reports" },
+  ],
+};
+
+// Préstamos sub-modules
+const prestamosModule: Module = {
+  id: "prestamos-sub", icon: TrendingUp, label: "Préstamos", label_en: "Loans",
+  subs: [
+    { id: "originacion", icon: FileText, label: "Originación", label_en: "Origination" },
+    { id: "desembolso", icon: DollarSign, label: "Desembolso", label_en: "Disbursement" },
+    { id: "cobranza", icon: Receipt, label: "Cobranza", label_en: "Collections" },
+    { id: "reestructura", icon: Settings, label: "Reestructuración", label_en: "Restructuring" },
+    { id: "garantias", icon: Shield, label: "Garantías", label_en: "Guarantees" },
+    { id: "lineas-credito", icon: CreditCard, label: "Líneas de Crédito", label_en: "Credit Lines" },
+  ],
+};
+
 // Outer orbit: product lines
 const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
   { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
