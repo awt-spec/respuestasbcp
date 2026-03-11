@@ -415,8 +415,8 @@ const SafEcosystem = () => {
                       }}
                     >
                       <div
-                        className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg ${pl.id === "canales" ? "cursor-pointer hover:scale-110 transition-transform" : ""}`}
-                        onClick={pl.id === "canales" ? () => setSelectedModule("canales") : undefined}
+                        className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform`}
+                        onClick={() => setSelectedModule(pl.id === "canales" ? "canales" : pl.id === "pensiones" ? "pensiones" : pl.id === "retail" ? "retail" : pl.id)}
                       >
                         <Icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.8} />
                       </div>
