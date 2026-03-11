@@ -8,43 +8,53 @@ interface TourStep {
   action: () => void;
 }
 
-const AUTO_SCROLL_INTERVAL = 5000;
+const AUTO_SCROLL_INTERVAL = 7000;
+const NAV_HEIGHT = 60;
 
-const scrollToEl = (el: Element | null) => {
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+const scrollToElWithOffset = (el: Element | null) => {
+  if (!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT - 20;
+  window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
 };
 
 const openAccordion = (questionId: number) => {
   const el = document.querySelector(`[data-question-id="${questionId}"]`);
   if (!el) return;
-  scrollToEl(el);
-  setTimeout(() => {
-    const trigger = el.querySelector('button[data-state="closed"]') as HTMLElement;
-    if (trigger) {
-      trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+  // Close any other open accordions first
+  document.querySelectorAll('[data-question-id] button[data-state="open"]').forEach((btn) => {
+    const parent = btn.closest('[data-question-id]');
+    if (parent && parent.getAttribute('data-question-id') !== String(questionId)) {
+      (btn as HTMLElement).dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
     }
-  }, 800);
+  });
+  // Open this accordion if closed
+  const trigger = el.querySelector('button[data-state="closed"]') as HTMLElement;
+  if (trigger) {
+    trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+  }
+  // Wait for expansion animation, then scroll to show full content
+  setTimeout(() => scrollToElWithOffset(el), 500);
 };
 
 const clickTab = (questionId: number, tabId: string) => {
   const el = document.querySelector(`[data-question-id="${questionId}"]`);
   if (!el) return;
-  setTimeout(() => {
-    const tab = el.querySelector(`[data-tab-id="${tabId}"]`) as HTMLElement;
-    if (tab) tab.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-  }, 400);
+  const tab = el.querySelector(`[data-tab-id="${tabId}"]`) as HTMLElement;
+  if (tab) tab.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+  // Re-scroll after tab switch to ensure content is visible
+  setTimeout(() => scrollToElWithOffset(el), 300);
 };
 
 const buildSteps = (): TourStep[] => [
-  { id: "hero", label: "Inicio", action: () => scrollToEl(document.getElementById("hero-top")) },
-  { id: "dashboard", label: "Dashboard", action: () => scrollToEl(document.getElementById("dashboard-section")) },
+  { id: "hero", label: "Inicio", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+  { id: "dashboard", label: "Dashboard", action: () => scrollToElWithOffset(document.getElementById("dashboard-section")) },
   { id: "q1-open", label: "P1 — Respuesta", action: () => openAccordion(1) },
   { id: "q1-visual", label: "P1 — Visual", action: () => clickTab(1, "visual") },
   { id: "q2-open", label: "P2 — Respuesta", action: () => openAccordion(2) },
   { id: "q2-visual", label: "P2 — Visual", action: () => clickTab(2, "visual") },
   { id: "q3-open", label: "P3 — Respuesta", action: () => openAccordion(3) },
   { id: "q3-refs", label: "P3 — Referencias", action: () => clickTab(3, "references") },
-  { id: "footer", label: "Cierre", action: () => scrollToEl(document.getElementById("footer-section")) },
+  { id: "footer", label: "Cierre", action: () => scrollToElWithOffset(document.getElementById("footer-section")) },
 ];
 
 const AutoScrollBar = () => {
