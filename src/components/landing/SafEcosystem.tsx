@@ -17,7 +17,6 @@ interface Module {
   label: string;
   label_en?: string;
   subs: SubModule[];
-  isOuter?: boolean; // for outer orbit (product lines)
 }
 
 // Inner orbit: functional modules
