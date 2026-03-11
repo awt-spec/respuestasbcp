@@ -80,54 +80,43 @@ const GridDiagram = ({ block }: { block: DiagramBlock }) => {
     return Layers;
   };
 
-  const getAccent = (i: number) => {
-    const accents = [
-      "from-primary/10 to-primary/5 border-primary/20",
-      "from-emerald-500/10 to-emerald-500/5 border-emerald-500/20",
-      "from-blue-500/10 to-blue-500/5 border-blue-500/20",
-      "from-amber-500/10 to-amber-500/5 border-amber-500/20",
-      "from-violet-500/10 to-violet-500/5 border-violet-500/20",
-      "from-rose-500/10 to-rose-500/5 border-rose-500/20",
-    ];
-    return accents[i % accents.length];
-  };
-
-  const getIconColor = (i: number) => {
-    const colors = [
-      "text-primary",
-      "text-emerald-500",
-      "text-blue-500",
-      "text-amber-500",
-      "text-violet-500",
-      "text-rose-500",
-    ];
-    return colors[i % colors.length];
-  };
+  const cardStyles = [
+    { bg: "bg-gradient-to-br from-primary/[0.08] via-primary/[0.04] to-transparent", border: "border-primary/20", icon: "text-primary bg-primary/10", glow: "shadow-primary/5" },
+    { bg: "bg-gradient-to-br from-emerald-500/[0.08] via-emerald-500/[0.04] to-transparent", border: "border-emerald-500/20", icon: "text-emerald-500 bg-emerald-500/10", glow: "shadow-emerald-500/5" },
+    { bg: "bg-gradient-to-br from-blue-500/[0.08] via-blue-500/[0.04] to-transparent", border: "border-blue-500/20", icon: "text-blue-500 bg-blue-500/10", glow: "shadow-blue-500/5" },
+    { bg: "bg-gradient-to-br from-amber-500/[0.08] via-amber-500/[0.04] to-transparent", border: "border-amber-500/20", icon: "text-amber-500 bg-amber-500/10", glow: "shadow-amber-500/5" },
+    { bg: "bg-gradient-to-br from-violet-500/[0.08] via-violet-500/[0.04] to-transparent", border: "border-violet-500/20", icon: "text-violet-500 bg-violet-500/10", glow: "shadow-violet-500/5" },
+    { bg: "bg-gradient-to-br from-rose-500/[0.08] via-rose-500/[0.04] to-transparent", border: "border-rose-500/20", icon: "text-rose-500 bg-rose-500/10", glow: "shadow-rose-500/5" },
+  ];
 
   return (
     <div>
       {block.title && (
-        <h4 className="text-sm font-bold text-foreground mb-4 flex items-center gap-2">
-          <div className="w-1 h-5 rounded-full bg-primary" />
+        <h4 className="text-sm font-bold text-foreground mb-5 flex items-center gap-2">
+          <div className="w-1.5 h-6 rounded-full bg-gradient-to-b from-primary to-primary/50" />
           {block.title}
         </h4>
       )}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {block.items?.map((item, i) => {
           const Icon = getIcon(item);
+          const style = cardStyles[i % cardStyles.length];
           return (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 16, scale: 0.95 }}
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.35, ease: "easeOut" }}
-              whileHover={{ scale: 1.03, y: -2 }}
-              className={`group relative p-4 rounded-xl bg-gradient-to-br ${getAccent(i)} border shadow-sm cursor-default transition-shadow hover:shadow-md overflow-hidden`}
+              transition={{ delay: i * 0.1, duration: 0.4, type: "spring", stiffness: 200 }}
+              whileHover={{ scale: 1.04, y: -4 }}
+              className={`group relative p-5 rounded-2xl ${style.bg} border ${style.border} shadow-lg ${style.glow} cursor-default transition-all hover:shadow-xl overflow-hidden`}
             >
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/10 to-transparent rounded-bl-full" />
-              <Icon className={`w-5 h-5 mb-2.5 ${getIconColor(i)} transition-transform group-hover:scale-110`} />
-              <p className="text-xs text-foreground font-semibold leading-snug relative z-10">
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-bl from-foreground/[0.03] to-transparent" />
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className={`w-10 h-10 rounded-xl ${style.icon} flex items-center justify-center mb-3 transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+                <Icon className="w-5 h-5" />
+              </div>
+              <p className="text-[13px] text-foreground font-bold leading-snug relative z-10">
                 {item}
               </p>
             </motion.div>
