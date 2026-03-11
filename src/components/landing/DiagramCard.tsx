@@ -140,10 +140,6 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  if (displayConsideraciones) {
-    tabs.push({ id: "tech", label: t("card.considerations"), icon: Lightbulb });
-  }
-  tabs.push({ id: "value", label: t("card.value"), icon: Target });
 
   return (
     <motion.div
