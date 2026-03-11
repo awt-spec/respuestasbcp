@@ -881,7 +881,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Plataforma SYSDE para gestión de inversiones y valores del Banco Nacional de Costa Rica.",
     result: "Operación activa en gestión de inversiones.",
-    focus: ["core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
