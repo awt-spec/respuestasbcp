@@ -123,58 +123,8 @@ export const questions: QuestionItem[] = [
     consideraciones_en: "Reference contacts will be provided upon coordination with the institutions, respecting current confidentiality agreements.",
     valor: "BCP podrá contactar directamente a instituciones que operan con SAF+ Leasing para validar la experiencia real de uso, estabilidad y soporte de la plataforma.",
     valor_en: "BCP will be able to directly contact institutions operating with SAF+ Leasing to validate real usage experience, stability, and platform support.",
-    diagrams: [
-      {
-        type: "table",
-        title: "Referencias Disponibles",
-        headers: ["Institución", "País", "Módulo Principal", "Estado"],
-        rows: [
-          ["CMI (Grupo Multi Inversiones)", "Centroamérica", "Factoraje, Leasing", "🔄 En implementación"],
-          ["Grupo Apex", "Centroamérica", "Leasing", "🔄 En implementación"],
-          ["Grupo Aurum", "Centroamérica", "Leasing, Préstamos", "🔄 En implementación"],
-          ["Banco de Costa Rica", "Costa Rica", "Leasing", "✅ En producción"],
-          ["GNP México", "México", "Leasing", "✅ En producción"],
-          ["Unicomer", "Multi-país", "Créditos", "✅ En producción"],
-          ["Banco Nacional", "Costa Rica", "Créditos", "✅ En producción"],
-        ],
-      },
-      {
-        type: "flow",
-        title: "Proceso de Validación de Referencias",
-        steps: [
-          { label: "Solicitud BCP", description: "BCP indica instituciones de interés", icon: "📋" },
-          { label: "Coordinación SYSDE", description: "Gestión de agenda con el cliente referencia", icon: "🤝" },
-          { label: "Reunión de Referencia", description: "Llamada o reunión directa con el cliente", icon: "📞" },
-          { label: "Validación", description: "BCP confirma experiencia y estabilidad", icon: "✅" },
-        ],
-      },
-    ],
-    diagrams_en: [
-      {
-        type: "table",
-        title: "Available References",
-        headers: ["Institution", "Country", "Main Module", "Status"],
-        rows: [
-          ["CMI (Grupo Multi Inversiones)", "Central America", "Factoring, Leasing", "🔄 In implementation"],
-          ["Grupo Apex", "Central America", "Leasing", "🔄 In implementation"],
-          ["Grupo Aurum", "Central America", "Leasing, Loans", "🔄 In implementation"],
-          ["Banco de Costa Rica", "Costa Rica", "Leasing", "✅ In production"],
-          ["GNP México", "Mexico", "Leasing", "✅ In production"],
-          ["Unicomer", "Multi-country", "Credits", "✅ In production"],
-          ["Banco Nacional", "Costa Rica", "Credits", "✅ In production"],
-        ],
-      },
-      {
-        type: "flow",
-        title: "Reference Validation Process",
-        steps: [
-          { label: "BCP Request", description: "BCP indicates institutions of interest", icon: "📋" },
-          { label: "SYSDE Coordination", description: "Schedule management with reference client", icon: "🤝" },
-          { label: "Reference Meeting", description: "Direct call or meeting with client", icon: "📞" },
-          { label: "Validation", description: "BCP confirms experience and stability", icon: "✅" },
-        ],
-      },
-    ],
+    diagrams: [],
+    diagrams_en: [],
   },
 ];
 

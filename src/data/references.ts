@@ -58,9 +58,9 @@ export const references: ReferenceItem[] = [
     region: "Centroamérica",
     deployment: "SaaS",
     product: "SAF+",
-    detail: "Implementación de SAF+ para operaciones de Leasing, estandarizando procesos operativos y financieros.",
-    result: "En ejecución – Implementación activa del módulo de Leasing.",
-    modules: "Leasing",
+    detail: "Implementación de SAF+ para operaciones de Leasing y Préstamos, estandarizando procesos operativos y financieros.",
+    result: "En ejecución – Implementación activa de módulos de Leasing y Préstamos.",
+    modules: "Leasing, Préstamos",
     inImplementation: true,
   },
   {
