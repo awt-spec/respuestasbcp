@@ -1,3 +1,5 @@
+export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "core_bancario" | "otros";
+
 export interface ReferenceItem {
   name: string;
   region: string;
@@ -9,6 +11,8 @@ export interface ReferenceItem {
   contact?: string;
   web?: string;
   inImplementation?: boolean;
+  focus: FocusArea[];
+  core: "SYSDE PLUS" | "Fondos de Pensión" | "Core Bancario" | "FileMaster";
 }
 
 export const references: ReferenceItem[] = [
