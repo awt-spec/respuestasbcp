@@ -107,9 +107,17 @@ const functionalModules: Module[] = [
   },
 ];
 
+// Outer orbit: product lines
+const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
+  { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
+  { id: "tarjetas", icon: CreditCard, label: "Tarjetas", label_en: "Cards", color: "from-rose-500 to-rose-600" },
+];
+
 const MAIN_ORBIT_RADIUS = 200;
+const OUTER_ORBIT_RADIUS = 290;
 const MAIN_CORE_SIZE = 110;
 const MAIN_PLANET_SIZE = 52;
+const OUTER_PLANET_SIZE = 58;
 
 const SUB_ORBIT_RADIUS = 180;
 const SUB_CORE_SIZE = 120;
