@@ -528,7 +528,7 @@ export const references: ReferenceItem[] = [
     result: "Cliente activo desde 2006. Mantenimiento continuo y actualizaciones regulatorias.",
     modules: "Cuentas de Efectivo, Depósitos, Préstamos, Contabilidad, Cajas, SICVECA",
     contact: "MBA Carmen Milena Arce Alfaro – Gerente General",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
