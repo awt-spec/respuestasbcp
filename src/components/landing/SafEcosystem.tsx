@@ -274,34 +274,23 @@ const SafEcosystem = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Main + Outer orbit */}
+            {/* Main orbit */}
             <div className="flex justify-center overflow-x-auto">
               <div
                 className="relative shrink-0"
                 style={{
-                  width: outerContainerSize,
-                  height: outerContainerSize,
+                  width: mainContainerSize,
+                  height: mainContainerSize,
                 }}
               >
-                {/* Outer orbit ring */}
-                <div
-                  className="absolute border-2 border-dotted border-primary/10 rounded-full"
-                  style={{
-                    width: OUTER_ORBIT_RADIUS * 2,
-                    height: OUTER_ORBIT_RADIUS * 2,
-                    top: outerCenter - OUTER_ORBIT_RADIUS,
-                    left: outerCenter - OUTER_ORBIT_RADIUS,
-                  }}
-                />
-
-                {/* Inner orbit ring */}
+                {/* Orbit ring */}
                 <div
                   className="absolute border-2 border-dashed border-muted-foreground/15 rounded-full"
                   style={{
                     width: MAIN_ORBIT_RADIUS * 2,
                     height: MAIN_ORBIT_RADIUS * 2,
-                    top: outerCenter - MAIN_ORBIT_RADIUS,
-                    left: outerCenter - MAIN_ORBIT_RADIUS,
+                    top: mainCenter - MAIN_ORBIT_RADIUS,
+                    left: mainCenter - MAIN_ORBIT_RADIUS,
                   }}
                 />
 
@@ -313,15 +302,15 @@ const SafEcosystem = () => {
                   style={{
                     width: MAIN_CORE_SIZE,
                     height: MAIN_CORE_SIZE,
-                    top: outerCenter - MAIN_CORE_SIZE / 2,
-                    left: outerCenter - MAIN_CORE_SIZE / 2,
+                    top: mainCenter - MAIN_CORE_SIZE / 2,
+                    left: mainCenter - MAIN_CORE_SIZE / 2,
                   }}
                 >
                   <p className="text-primary-foreground text-xs font-extrabold">SYSDE</p>
                   <p className="text-primary-foreground text-[10px] font-bold">PLUS</p>
                 </motion.div>
 
-                {/* Inner orbit: functional modules */}
+                {/* Functional modules */}
                 {functionalModules.map((mod, i) => {
                   const angle = (i / functionalModules.length) * 2 * Math.PI - Math.PI / 2;
                   return (
@@ -329,41 +318,12 @@ const SafEcosystem = () => {
                       key={mod.id}
                       Icon={mod.icon}
                       label={pick(mod.label, mod.label_en)}
-                      x={outerCenter + Math.cos(angle) * MAIN_ORBIT_RADIUS}
-                      y={outerCenter + Math.sin(angle) * MAIN_ORBIT_RADIUS}
+                      x={mainCenter + Math.cos(angle) * MAIN_ORBIT_RADIUS}
+                      y={mainCenter + Math.sin(angle) * MAIN_ORBIT_RADIUS}
                       size={MAIN_PLANET_SIZE}
                       delay={0.05 + i * 0.05}
                       onClick={() => setSelectedModule(mod.id)}
                     />
-                  );
-                })}
-
-                {/* Outer orbit: product lines */}
-                {productLines.map((pl, i) => {
-                  const angle = (i / productLines.length) * 2 * Math.PI - Math.PI / 2;
-                  const x = outerCenter + Math.cos(angle) * OUTER_ORBIT_RADIUS;
-                  const y = outerCenter + Math.sin(angle) * OUTER_ORBIT_RADIUS;
-                  const Icon = pl.icon;
-                  return (
-                    <motion.div
-                      key={pl.id}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 + i * 0.08, type: "spring", stiffness: 200, damping: 20 }}
-                      className="absolute flex flex-col items-center gap-1.5 z-[6]"
-                      style={{
-                        left: x - OUTER_PLANET_SIZE / 2,
-                        top: y - OUTER_PLANET_SIZE / 2,
-                        width: OUTER_PLANET_SIZE,
-                      }}
-                    >
-                      <div className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg`}>
-                        <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
-                      </div>
-                      <span className="text-[9px] font-bold text-foreground text-center leading-tight max-w-[90px]">
-                        {pick(pl.label, pl.label_en)}
-                      </span>
-                    </motion.div>
                   );
                 })}
               </div>
