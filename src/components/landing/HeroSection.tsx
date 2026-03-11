@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { counts } from "@/data/questions";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, MessageCircle, Mail } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 const HeroSection = () => {
