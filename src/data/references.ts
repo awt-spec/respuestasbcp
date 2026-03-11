@@ -781,7 +781,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE implementadas en el banco estatal más grande de Costa Rica.",
     result: "Operación activa con módulos de préstamos y core bancario.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
