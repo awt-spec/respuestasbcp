@@ -89,18 +89,6 @@ export const questions: QuestionItem[] = [
         ],
       },
       {
-        type: "grid",
-        title: "SAF+ Ecosystem — Modules",
-        items: [
-          "🏗️ Leasing — Financial and Operating",
-          "📄 Factoring — Invoice discounting",
-          "💳 Credits — Credit core",
-          "👤 Unified Client View",
-          "🔗 Native Inter-Module Integration",
-          "⚙️ Progressive Modular Adoption",
-        ],
-      },
-      {
         type: "list",
         title: "Other Institutions with SAF+",
         items: [
