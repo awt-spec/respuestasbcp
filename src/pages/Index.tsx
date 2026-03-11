@@ -6,6 +6,7 @@ import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
 import DiagramCard from "@/components/landing/DiagramCard";
 import ChatBot from "@/components/ChatBot";
+import AutoScrollBar from "@/components/landing/AutoScrollBar";
 
 import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
@@ -16,7 +17,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection />
+      <div id="hero-top">
+        <HeroSection />
+      </div>
 
       {/* Language Toggle */}
       <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b">
@@ -42,7 +45,9 @@ const Index = () => {
         </div>
       </nav>
 
-      <DashboardSection />
+      <div id="dashboard-section">
+        <DashboardSection />
+      </div>
 
       <div className="max-w-5xl mx-auto px-4 pb-24">
         <div className="space-y-16">
@@ -77,8 +82,11 @@ const Index = () => {
         </div>
       </div>
 
-      <FooterSection />
+      <div id="footer-section">
+        <FooterSection />
+      </div>
       <ChatBot />
+      <AutoScrollBar />
     </div>
   );
 };
