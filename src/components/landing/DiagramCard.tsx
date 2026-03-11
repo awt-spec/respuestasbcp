@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiagramBlock, QuestionItem } from "@/data/questions";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, MessageSquare, BarChart3, Users, MapPin, Layers } from "lucide-react";
+import { CheckCircle2, MessageSquare, BarChart3, Users, MapPin, Layers, Briefcase, PiggyBank, TrendingUp } from "lucide-react";
 import ReferencesSection from "./ReferencesSection";
 import {
   AccordionContent,
