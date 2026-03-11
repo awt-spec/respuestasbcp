@@ -224,9 +224,6 @@ const ReferencesSection = () => {
         ))}
       </div>
 
-      {filtered.length === 0 && (
-        <div className="text-center py-8 text-sm text-muted-foreground">No hay referencias para este filtro.</div>
-      )}
 
       <AnimatePresence>
         {selectedRef && (
