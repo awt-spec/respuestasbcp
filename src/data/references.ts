@@ -689,7 +689,7 @@ export const references: ReferenceItem[] = [
     name: "Worldwide Foundation for Credit Unions",
     region: "🌎 Internacional",
     deployment: "SaaS",
-    product: "SAF+",
+    product: "SYSDE PLUS",
     detail: "Soporte tecnológico a cooperativas de ahorro y crédito a nivel mundial.",
     result: "Fortalecimiento de cooperativas financieras en mercados emergentes.",
     focus: ["prestamos"],
