@@ -182,7 +182,7 @@ const SafEcosystem = () => {
         <p className="text-sm text-muted-foreground mt-2">
           {selectedModule && currentModule
             ? `${pick("Explorando", "Exploring")}: ${pick(currentModule.label, currentModule.label_en)}`
-            : pick("Haz clic en un módulo para explorar — los planetas exteriores son las líneas de producto", "Click a module to explore — outer planets are product lines")
+            : pick("Haz clic en un módulo para explorar sus componentes", "Click a module to explore its components")
           }
         </p>
       </div>
