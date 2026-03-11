@@ -710,7 +710,7 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SAF+",
     detail: "Plataforma SAF+ para créditos y operaciones financieras.",
-    result: "Operación activa con módulos de préstamos y core bancario.",
+    result: "Operación activa con módulos de préstamos y plataforma SYSDE PLUS.",
     focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
