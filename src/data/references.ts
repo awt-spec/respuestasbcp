@@ -851,7 +851,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para el grupo cooperativo financiero más grande de Canadá.",
     result: "Operación activa en gestión de cooperativas financieras.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
