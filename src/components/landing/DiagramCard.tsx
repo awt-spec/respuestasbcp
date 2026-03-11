@@ -234,6 +234,48 @@ const DiagramCard = ({ item, index }: Props) => {
               </motion.div>
             )}
 
+            {activeTab === "references" && (
+              <motion.div
+                key="references"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="mb-4">
+                  <h4 className="text-sm font-bold text-foreground mb-1">Todas las empresas ({references.length} casos)</h4>
+                  <p className="text-[11px] text-muted-foreground">Portafolio completo de clientes SYSDE a nivel global</p>
+                </div>
+                <div className="space-y-3">
+                  {references.map((ref, i) => (
+                    <div key={i} className="rounded-xl border bg-card p-4 shadow-sm">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-foreground">{i + 1}. {ref.name}</p>
+                          <div className="flex flex-wrap gap-1.5 mt-1.5">
+                            <Badge variant="outline" className="text-[10px]">{ref.region}</Badge>
+                            <Badge variant="secondary" className="text-[10px]">{ref.product}</Badge>
+                            <Badge variant="outline" className="text-[10px] bg-muted/50">{ref.deployment}</Badge>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-[11px] text-muted-foreground leading-relaxed mb-1.5">{ref.detail}</p>
+                      <p className="text-[11px] text-foreground font-medium leading-relaxed">✅ {ref.result}</p>
+                      {ref.modules && (
+                        <p className="text-[10px] text-muted-foreground mt-1.5">📦 <span className="font-semibold">Módulos:</span> {ref.modules}</p>
+                      )}
+                      {ref.contact && (
+                        <p className="text-[10px] text-muted-foreground mt-1">👤 <span className="font-semibold">Contacto:</span> {ref.contact}</p>
+                      )}
+                      {ref.web && (
+                        <p className="text-[10px] mt-1">🌐 <a href={ref.web} target="_blank" rel="noopener noreferrer" className="text-primary underline">{ref.web}</a></p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
           </AnimatePresence>
         </AccordionContent>
       </AccordionItem>

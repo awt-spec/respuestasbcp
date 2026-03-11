@@ -37,6 +37,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "card.diagrams": { es: "Detalle Visual / Diagramas", en: "Visual Detail / Diagrams" },
   "card.example": { es: "Ejemplo Concreto", en: "Concrete Example" },
   "card.considerations": { es: "Consideraciones Técnicas", en: "Technical Considerations" },
+  "card.references": { es: "Referencias", en: "References" },
   "card.demo": { es: "🚀 Ver Demo Interactiva", en: "🚀 View Interactive Demo" },
 
   // Footer
