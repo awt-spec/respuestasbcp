@@ -64,6 +64,8 @@ export const questions: QuestionItem[] = [
           ["GNP México", "México", "Leasing", "Activo"],
         ],
       },
+      { type: "ecosystem" as DiagramType },
+      { type: "stats" as DiagramType },
       {
         type: "list",
         title: "Otras Instituciones con SAF+",
@@ -88,6 +90,8 @@ export const questions: QuestionItem[] = [
           ["GNP México", "Mexico", "Leasing", "Active"],
         ],
       },
+      { type: "ecosystem" as DiagramType },
+      { type: "stats" as DiagramType },
       {
         type: "list",
         title: "Other Institutions with SAF+",
