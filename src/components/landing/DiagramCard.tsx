@@ -161,7 +161,7 @@ interface VisualSubTab {
 }
 
 const visualSubTabs: VisualSubTab[] = [
-  { id: "ecosystem", label: "Ecosistema SAF+", label_en: "SAF+ Ecosystem", icon: Layers },
+  { id: "ecosystem", label: "Ecosistema SYSDE PLUS", label_en: "SYSDE PLUS Ecosystem", icon: Layers },
   { id: "trajectory", label: "Trayectoria SYSDE", label_en: "SYSDE Track Record", icon: BarChart3 },
   { id: "pension", label: "SYSDE Pensión", label_en: "SYSDE Pensión", icon: Users },
 ];

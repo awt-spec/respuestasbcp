@@ -17,7 +17,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.badge": { es: "CONFIDENCIAL — Respuesta a Consultas BCP | Marzo 2026", en: "CONFIDENTIAL — BCP Query Response | March 2026" },
   "hero.title1": { es: "Respuestas a Consultas", en: "Responses to Queries" },
   "hero.title2": { es: "Evaluación Solución Leasing — BCP", en: "Leasing Solution Evaluation — BCP" },
-  "hero.subtitle": { es: "BCP — Evaluación de SAF+ Leasing", en: "BCP — SAF+ Leasing Evaluation" },
+  "hero.subtitle": { es: "BCP — Evaluación de SYSDE PLUS Leasing", en: "BCP — SYSDE PLUS Leasing Evaluation" },
   "hero.prepared": { es: "Preparado por SYSDE S.A. | Referencia: Consultas Evaluación Leasing BCP", en: "Prepared by SYSDE S.A. | Ref: BCP Leasing Evaluation Queries" },
   "hero.answered": { es: "Consultas Respondidas", en: "Queries Answered" },
   "hero.sections": { es: "Sección", en: "Section" },
