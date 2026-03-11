@@ -333,6 +333,7 @@ const DiagramCard = ({ item, index }: Props) => {
               return (
                 <button
                   key={tab.id}
+                  data-tab-id={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all ${
                     isActive
