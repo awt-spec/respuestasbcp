@@ -870,7 +870,7 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE para operaciones bancarias en Bolivia.",
-    result: "Operación activa con módulos de core bancario y préstamos.",
+    result: "Operación activa con módulos de préstamos en SYSDE PLUS.",
     focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
