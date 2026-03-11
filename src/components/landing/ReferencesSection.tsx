@@ -141,11 +141,6 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
           {r.contact && (
             <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Contacto:</span> {r.contact}</p>
           )}
-          {r.web && (
-            <a href={r.web} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline">
-              <ExternalLink className="w-3 h-3" /> Visitar sitio web
-            </a>
-          )}
         </div>
       </div>
     </motion.div>

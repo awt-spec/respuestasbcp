@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { counts } from "@/data/questions";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, MessageCircle, Mail } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 const HeroSection = () => {
@@ -54,12 +54,24 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="space-y-2 mb-10">
+          <div className="space-y-3 mb-10">
             <p className="text-white/50 text-xs uppercase tracking-wider">
               {lang === "es" ? "Detalles de contacto" : "Contact details"}
             </p>
-            <p className="text-white/80 text-sm">📞 +506 8657 0390</p>
-            <p className="text-white/80 text-sm">✉ info@sysde.com</p>
+            <a href="mailto:alwheelock@sysde.com" className="inline-flex items-center gap-2 text-white/80 text-sm hover:text-white transition-colors">
+              <Mail className="w-4 h-4" /> alwheelock@sysde.com
+            </a>
+            <div>
+              <a
+                href="https://wa.link/u0wx1z"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/80 hover:bg-emerald-400 text-white text-xs font-bold transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                WhatsApp
+              </a>
+            </div>
           </div>
 
           <div className="flex items-center gap-4">

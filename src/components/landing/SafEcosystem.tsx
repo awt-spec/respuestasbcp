@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Users, Eye, PiggyBank, Briefcase, Smartphone, Building2, BarChart3, FileText, Shield, CreditCard, TrendingUp, Wallet, FolderOpen, Receipt, BookOpen, Scale, Droplets, ClipboardList, Lock, Phone, Globe, Plug, MessageCircle, Landmark, ClipboardCheck, Brain, Search, KeyRound, ScrollText, ShieldCheck, PenTool, Mail, Bell, Webhook, Calculator, FileCode, FileSpreadsheet, Package } from "lucide-react";
+import { ArrowLeft, Users, Eye, PiggyBank, Briefcase, Smartphone, Building2, BarChart3, FileText, Shield, CreditCard, TrendingUp, Wallet, FolderOpen, Receipt, BookOpen, Scale, Droplets, ClipboardList, Lock, Phone, Globe, Plug, MessageCircle, Landmark, ClipboardCheck, Brain, Search, KeyRound, ScrollText, ShieldCheck, PenTool, Mail, Bell, Webhook, Calculator, FileCode, FileSpreadsheet, Package, ShoppingCart, MapPin, Truck, QrCode, UserCheck, Settings, Route, FileBarChart, DollarSign } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 interface SubModule {
@@ -109,6 +109,44 @@ const canalesModule: Module = {
   ],
 };
 
+// Pensión sub-modules
+const pensionModule: Module = {
+  id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds",
+  subs: [
+    { id: "pension-afp", icon: Landmark, label: "Pensión AFP", label_en: "AFP Pension" },
+    { id: "pension-nicho", icon: Users, label: "Pensión de Nicho", label_en: "Niche Pension" },
+    { id: "pension-admin", icon: ClipboardCheck, label: "Administración de Fondos", label_en: "Fund Administration" },
+    { id: "pension-reportes", icon: FileSpreadsheet, label: "Reportes Regulatorios", label_en: "Regulatory Reports" },
+  ],
+};
+
+// Retail sub-modules (Portal Web + App Mobile)
+const retailModule: Module = {
+  id: "retail", icon: Building2, label: "Retail", label_en: "Retail",
+  subs: [
+    { id: "portal-web", icon: Globe, label: "Portal Web", label_en: "Web Portal" },
+    { id: "app-mobile", icon: Smartphone, label: "App Mobile", label_en: "Mobile App" },
+    { id: "gestion-pedido", icon: ShoppingCart, label: "Gestión de Pedido", label_en: "Order Management" },
+    { id: "gestion-cartera", icon: Wallet, label: "Gestión Cartera", label_en: "Portfolio Management" },
+    { id: "pagos-geo", icon: MapPin, label: "Pagos Georeferenciados", label_en: "Geo Payments" },
+    { id: "gestion-ruta", icon: Route, label: "Gestión de Ruta", label_en: "Route Management" },
+    { id: "reportes-retail", icon: FileBarChart, label: "Reportes", label_en: "Reports" },
+  ],
+};
+
+// Préstamos sub-modules
+const prestamosModule: Module = {
+  id: "prestamos-sub", icon: TrendingUp, label: "Préstamos", label_en: "Loans",
+  subs: [
+    { id: "originacion", icon: FileText, label: "Originación", label_en: "Origination" },
+    { id: "desembolso", icon: DollarSign, label: "Desembolso", label_en: "Disbursement" },
+    { id: "cobranza", icon: Receipt, label: "Cobranza", label_en: "Collections" },
+    { id: "reestructura", icon: Settings, label: "Reestructuración", label_en: "Restructuring" },
+    { id: "garantias", icon: Shield, label: "Garantías", label_en: "Guarantees" },
+    { id: "lineas-credito", icon: CreditCard, label: "Líneas de Crédito", label_en: "Credit Lines" },
+  ],
+};
+
 // Outer orbit: product lines
 const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
   { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
@@ -172,7 +210,15 @@ const SafEcosystem = () => {
   const { lang } = useI18n();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
-  const currentModule = functionalModules.find((m) => m.id === selectedModule) || (selectedModule === "canales" ? canalesModule : undefined);
+  const getSubModule = (id: string | null): Module | undefined => {
+    if (!id) return undefined;
+    if (id === "canales") return canalesModule;
+    if (id === "pensiones") return pensionModule;
+    if (id === "retail") return retailModule;
+    if (id === "prestamos-sub") return prestamosModule;
+    return functionalModules.find((m) => m.id === id);
+  };
+  const currentModule = getSubModule(selectedModule);
 
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
@@ -262,6 +308,7 @@ const SafEcosystem = () => {
                   const angle = (i / currentModule.subs.length) * 2 * Math.PI - Math.PI / 2;
                   const cx = center(SUB_ORBIT_RADIUS, SUB_PLANET_SIZE);
                   const cy = center(SUB_ORBIT_RADIUS, SUB_PLANET_SIZE);
+                  const isClickable = sub.id === "prestamos" && selectedModule === "colocacion";
                   return (
                     <OrbitNode
                       key={sub.id}
@@ -272,6 +319,7 @@ const SafEcosystem = () => {
                       size={SUB_PLANET_SIZE}
                       delay={0.1 + i * 0.06}
                       hasPlus={sub.hasPlus}
+                      onClick={isClickable ? () => setSelectedModule("prestamos-sub") : undefined}
                     />
                   );
                 })}
@@ -369,8 +417,8 @@ const SafEcosystem = () => {
                       }}
                     >
                       <div
-                        className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg ${pl.id === "canales" ? "cursor-pointer hover:scale-110 transition-transform" : ""}`}
-                        onClick={pl.id === "canales" ? () => setSelectedModule("canales") : undefined}
+                        className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform`}
+                        onClick={() => setSelectedModule(pl.id === "canales" ? "canales" : pl.id === "pensiones" ? "pensiones" : pl.id === "retail" ? "retail" : pl.id)}
                       >
                         <Icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.8} />
                       </div>
