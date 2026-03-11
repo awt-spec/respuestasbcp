@@ -9,6 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useI18n } from "@/contexts/I18nContext";
+import SafEcosystem from "./SafEcosystem";
+import SysdeStats from "./SysdeStats";
 
 /* ─── Collapsible Sub-section ─── */
 const CollapsibleSection = ({
