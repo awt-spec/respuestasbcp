@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { counts } from "@/data/questions";
-import { CheckCircle2, FileText } from "lucide-react";
+import { CheckCircle2, Building2 } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 const HeroSection = () => {
@@ -54,8 +54,8 @@ const HeroSection = () => {
               transition={{ delay: 0.6, duration: 0.4 }}
               className="flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-sm backdrop-blur-sm bg-white/10 text-white/70"
             >
-              <FileText className="w-5 h-5" />
-              <span className="text-xl font-bold">3</span>
+              <Building2 className="w-5 h-5" />
+              <span className="text-xl font-bold">1</span>
               <span className="opacity-80">{t("hero.sections")}</span>
             </motion.div>
           </div>

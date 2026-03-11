@@ -10,56 +10,25 @@ import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { useI18n } from "@/contexts/I18nContext";
 
-
 const Index = () => {
-  const [activeSection, setActiveSection] = useState<string>("all");
   const { lang, setLang, t } = useI18n();
-
-  const visibleSections =
-    activeSection === "all"
-      ? sections
-      : sections.filter((s) => s.key === activeSection);
 
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
 
-      {/* Section Nav + Language Toggle */}
+      {/* Language Toggle */}
       <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-2">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide flex-1">
-            <button
-              onClick={() => setActiveSection("all")}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeSection === "all"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-muted"
-              }`}
-            >
-              📋 {t("nav.all")}
-            </button>
-            {sections.map((s) => (
-              <button
-                key={s.key}
-                onClick={() => setActiveSection(s.key)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeSection === s.key
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted"
-                }`}
-              >
-                {s.emoji} {t(`nav.section${s.key}`)}
-              </button>
-            ))}
-          </div>
-
-          {/* Language Toggle */}
+        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+          <h2 className="text-sm font-bold text-foreground">
+            🏦 {t("nav.sectionA")}
+          </h2>
           <div className="shrink-0 flex items-center gap-1 border rounded-full overflow-hidden">
-            {(["es", "en", "fr"] as const).map((l) => (
+            {(["es", "en"] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
-                className={`px-2.5 py-1.5 text-xs font-bold transition-colors ${
+                className={`px-3 py-1.5 text-xs font-bold transition-colors ${
                   lang === l
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:bg-muted"
@@ -76,7 +45,7 @@ const Index = () => {
 
       <div className="max-w-5xl mx-auto px-4 pb-24">
         <div className="space-y-16">
-          {visibleSections.map((section) => {
+          {sections.map((section) => {
             const items = questions.filter((q) => q.section === section.key);
             if (items.length === 0) return null;
 
