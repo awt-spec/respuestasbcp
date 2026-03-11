@@ -165,34 +165,52 @@ const AutoScrollBar = () => {
       {/* Initial prompt */}
       {showPrompt && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 30 }}
-          className="fixed inset-0 z-50 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/30 backdrop-blur-sm"
+          onClick={handleDeclineTour}
         >
-          <div className="bg-card/95 backdrop-blur-xl border shadow-2xl rounded-2xl px-5 py-4 max-w-sm text-center">
-            <p className="text-sm font-semibold text-foreground mb-1">
-              🚀 ¿Deseas un tour guiado?
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 40 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="bg-card border shadow-2xl rounded-2xl px-6 py-6 max-w-sm w-full mx-4 text-center relative overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Progress bar at top */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-muted">
+              <motion.div
+                className="h-full bg-primary/60"
+                style={{ width: `${100 - promptProgress}%` }}
+              />
+            </div>
+
+            <div className="text-4xl mb-3">🚀</div>
+            <p className="text-base font-bold text-foreground mb-1">
+              ¿Deseas un tour guiado?
             </p>
-            <p className="text-[11px] text-muted-foreground mb-3">
-              Te mostraré automáticamente cada sección de la presentación.
+            <p className="text-xs text-muted-foreground mb-5 leading-relaxed">
+              Te mostraré automáticamente cada sección de la presentación para que no te pierdas nada.
             </p>
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-3">
               <button
                 onClick={handleAcceptTour}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:bg-primary/90 transition-colors"
+                className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
               >
-                <Play className="w-3 h-3" />
-                Sí, iniciar tour
+                <Play className="w-3.5 h-3.5" />
+                Iniciar tour
               </button>
               <button
                 onClick={handleDeclineTour}
-                className="px-4 py-2 rounded-lg border text-xs font-medium text-muted-foreground hover:bg-muted transition-colors"
+                className="px-5 py-2.5 rounded-xl border text-sm font-medium text-muted-foreground hover:bg-muted transition-colors"
               >
                 No, gracias
               </button>
             </div>
-          </div>
+            <p className="text-[9px] text-muted-foreground/50 mt-4">Se cerrará automáticamente</p>
+          </motion.div>
         </motion.div>
       )}
 
