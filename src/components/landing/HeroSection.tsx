@@ -1,68 +1,84 @@
 import { motion } from "framer-motion";
 import { counts } from "@/data/questions";
-import { CheckCircle2, Building2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 const HeroSection = () => {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
 
   return (
-    <section className="gradient-hero relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+    <section className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.07]">
+        <div className="absolute top-10 left-[10%] w-[500px] h-[500px] rounded-full border border-white/40" />
+        <div className="absolute top-20 left-[15%] w-[400px] h-[400px] rounded-full border border-white/30" />
+        <div className="absolute -bottom-20 -right-20 w-[600px] h-[600px] rounded-full border border-white/20" />
       </div>
 
-      <div className="relative max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
+      {/* Bottom-right white triangle accent */}
+      <div className="absolute bottom-0 right-0 w-[300px] h-[200px] overflow-hidden">
+        <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[200px] border-b-white border-l-[300px] border-l-transparent" />
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
+          className="max-w-3xl"
         >
-          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-5 py-2 mb-5 text-white/90 text-sm font-medium tracking-wide">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            {t("hero.badge")}
-          </div>
+          <p className="text-white/70 text-sm font-medium tracking-widest uppercase mb-6">
+            Sysde
+          </p>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 tracking-tight">
-            {t("hero.title1")}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[0.95] mb-8 tracking-tight uppercase">
+            {lang === "es" ? "Respuestas a" : "Responses to"}
             <br />
-            <span className="text-white/80">{t("hero.title2")}</span>
+            {lang === "es" ? "Consultas BCP" : "BCP Queries"}
           </h1>
 
-          <p className="text-base md:text-lg text-white/60 max-w-2xl mx-auto mb-2">
-            {t("hero.subtitle")}
-          </p>
-          <p className="text-sm text-white/40 max-w-xl mx-auto mb-8">
-            {t("hero.prepared")}
-          </p>
+          <div className="flex items-start gap-8 mb-10">
+            <div className="border-r border-white/30 pr-8">
+              <p className="text-white/50 text-xs uppercase tracking-wider mb-1">
+                {lang === "es" ? "Preparado por:" : "Prepared by:"}
+              </p>
+              <p className="text-white font-bold text-sm">SYSDE</p>
+            </div>
+            <div>
+              <p className="text-white/50 text-xs uppercase tracking-wider mb-1">
+                {lang === "es" ? "Preparado para:" : "Prepared for:"}
+              </p>
+              <p className="text-white font-bold text-sm">
+                {lang === "es" ? "BANCO DE CRÉDITO DEL PERÚ — LEASING" : "BANCO DE CRÉDITO DEL PERÚ — LEASING"}
+              </p>
+            </div>
+          </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="space-y-2 mb-10">
+            <p className="text-white/50 text-xs uppercase tracking-wider">
+              {lang === "es" ? "Detalles de contacto" : "Contact details"}
+            </p>
+            <p className="text-white/80 text-sm">📞 +506 8657 0390</p>
+            <p className="text-white/80 text-sm">✉ info@sysde.com</p>
+          </div>
+
+          <div className="flex items-center gap-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.4 }}
-              className="flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-sm backdrop-blur-sm bg-green-500/20 text-green-300"
+              className="flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-sm bg-white/10 backdrop-blur-sm text-white"
             >
               <CheckCircle2 className="w-5 h-5" />
               <span className="text-xl font-bold">{counts.answered}</span>
               <span className="opacity-80">{t("hero.answered")}</span>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.4 }}
-              className="flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-sm backdrop-blur-sm bg-white/10 text-white/70"
-            >
-              <Building2 className="w-5 h-5" />
-              <span className="text-xl font-bold">1</span>
-              <span className="opacity-80">{t("hero.sections")}</span>
-            </motion.div>
+            <span className="text-white/40 text-xs">
+              10 / {lang === "es" ? "marzo" : "March"} / 2026
+            </span>
           </div>
         </motion.div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
