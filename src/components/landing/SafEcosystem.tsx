@@ -308,6 +308,7 @@ const SafEcosystem = () => {
                   const angle = (i / currentModule.subs.length) * 2 * Math.PI - Math.PI / 2;
                   const cx = center(SUB_ORBIT_RADIUS, SUB_PLANET_SIZE);
                   const cy = center(SUB_ORBIT_RADIUS, SUB_PLANET_SIZE);
+                  const isClickable = sub.id === "prestamos" && selectedModule === "colocacion";
                   return (
                     <OrbitNode
                       key={sub.id}
@@ -318,6 +319,7 @@ const SafEcosystem = () => {
                       size={SUB_PLANET_SIZE}
                       delay={0.1 + i * 0.06}
                       hasPlus={sub.hasPlus}
+                      onClick={isClickable ? () => setSelectedModule("prestamos-sub") : undefined}
                     />
                   );
                 })}
