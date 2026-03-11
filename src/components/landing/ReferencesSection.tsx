@@ -222,7 +222,7 @@ const ReferencesSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {filtered.map((r, i) => (
+        {references.map((r, i) => (
           <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
         ))}
       </div>

@@ -55,17 +55,26 @@ const SysdeStats = ({ section }: Props) => {
   const usersCount = useCountUp(145, 2200, isInView);
   const assetsCount = useCountUp(800, 2200, isInView);
 
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef, { once: true, amount: 0.5 });
+
+  const countPaises = useCountUp(39, 1800, statsInView);
+  const countClientes = useCountUp(1000, 2200, statsInView);
+  const countIntegraciones = useCountUp(350, 2000, statsInView);
+  const countApi = useCountUp(250, 2000, statsInView);
+  const countImpl = useCountUp(1500, 2200, statsInView);
+
   if (section === "trajectory") {
     return (
       <div className="space-y-6">
         {/* Stats grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5" ref={statsRef}>
           {[
-            { value: "+39", label: pick("Países", "Countries") },
-            { value: "+1,000", label: pick("Clientes", "Clients") },
-            { value: "+350", label: pick("Integraciones", "Integrations") },
-            { value: "+250M", label: "API Calls/Day" },
-            { value: "+1,500", label: pick("Implementaciones", "Implementations") },
+            { value: `+${countPaises}`, label: pick("Países", "Countries") },
+            { value: `+${countClientes.toLocaleString()}`, label: pick("Clientes", "Clients") },
+            { value: `+${countIntegraciones}`, label: pick("Integraciones", "Integrations") },
+            { value: `+${countApi}M`, label: "API Calls/Day" },
+            { value: `+${countImpl.toLocaleString()}`, label: pick("Implementaciones", "Implementations") },
           ].map((s, i) => (
             <motion.div
               key={i}
