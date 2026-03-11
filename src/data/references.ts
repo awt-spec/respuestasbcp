@@ -96,7 +96,7 @@ export const references: ReferenceItem[] = [
     result: "Operando desde 2008, con expansiones a El Salvador (2011) y Nicaragua (2014). Grupo Unicomer gestiona +30 marcas, +1,200 tiendas en 26 países con +13,000 colaboradores.",
     modules: "Cobranzas, Créditos, Depósitos, Contabilidad, PLD, Inversiones, Tarjetas",
     contact: "Guillermo J. Siman – Vice Chairman",
-    focus: ["tarjetas", "prestamos", "core_bancario"],
+    focus: ["tarjetas", "prestamos"],
     core: "SYSDE PLUS",
   },
   {
