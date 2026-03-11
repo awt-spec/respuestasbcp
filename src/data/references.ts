@@ -8,6 +8,7 @@ export interface ReferenceItem {
   modules?: string;
   contact?: string;
   web?: string;
+  inImplementation?: boolean;
 }
 
 export const references: ReferenceItem[] = [
