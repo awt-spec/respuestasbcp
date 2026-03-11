@@ -49,14 +49,14 @@ const SysdeStats = () => {
             <div className="rounded-2xl bg-primary-foreground/10 backdrop-blur-sm p-5 text-center border border-primary-foreground/10">
               <DollarSign className="w-6 h-6 text-primary-foreground/60 mx-auto mb-2" />
               <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+655B</p>
-              <p className="text-[11px] text-primary-foreground/70 mt-1">USD {pick("en activos", "in assets")}</p>
+              <p className="text-[11px] text-primary-foreground/70 mt-1">USD {pick("en activos gestionados", "in managed assets")}</p>
             </div>
           </div>
 
           <p className="text-[10px] text-primary-foreground/50 text-center mt-4">
             {pick(
-              "gestionados a través de SYSDE Pensión en toda Latinoamérica",
-              "managed through SYSDE Pensión across Latin America"
+              "a través de SYSDE en toda Latinoamérica",
+              "through SYSDE across Latin America"
             )}
           </p>
         </div>
