@@ -109,7 +109,7 @@ export const references: ReferenceItem[] = [
     modules: "Seguridad, Préstamos, Cobranza, Ahorros, Depósitos, Contabilidad, PLD, Factoraje",
     contact: "Ernesto Fernández Lang – Presidente",
     web: "https://multimoney.com/",
-    focus: ["prestamos", "factoring", "core_bancario"],
+    focus: ["prestamos", "factoring"],
     core: "SYSDE PLUS",
   },
   {
