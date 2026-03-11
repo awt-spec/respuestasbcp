@@ -1,5 +1,5 @@
 import { useI18n } from "@/contexts/I18nContext";
-import { MessageCircle, Phone, Mail } from "lucide-react";
+import { MessageCircle, Mail } from "lucide-react";
 
 const FooterSection = () => {
   const { t } = useI18n();
@@ -19,20 +19,10 @@ const FooterSection = () => {
           <p className="text-white/80 text-sm font-semibold">
             Alberto Wheelock Talavera
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-white/60 text-xs">
-            <a href="mailto:alwheelock@sysde.com" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
-              <Mail className="w-3.5 h-3.5" />
-              alwheelock@sysde.com
-            </a>
-            <a href="mailto:info@sysde.com" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
-              <Mail className="w-3.5 h-3.5" />
-              info@sysde.com
-            </a>
-            <span className="inline-flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5" />
-              +506 8657 0390
-            </span>
-          </div>
+          <a href="mailto:alwheelock@sysde.com" className="inline-flex items-center gap-1.5 text-white/60 text-xs hover:text-white transition-colors">
+            <Mail className="w-3.5 h-3.5" />
+            alwheelock@sysde.com
+          </a>
         </div>
 
         <a
