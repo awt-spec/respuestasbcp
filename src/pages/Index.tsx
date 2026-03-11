@@ -78,6 +78,7 @@ const Index = () => {
       </div>
 
       <FooterSection />
+      <ChatBot />
     </div>
   );
 };
