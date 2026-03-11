@@ -63,18 +63,80 @@ const TableDiagram = ({ block }: { block: DiagramBlock }) => (
   </div>
 );
 
-const GridDiagram = ({ block }: { block: DiagramBlock }) => (
-  <div>
-    {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-      {block.items?.map((item, i) => (
-        <div key={i} className="p-3 rounded-xl bg-card border text-xs text-foreground font-medium shadow-sm">
-          {item}
-        </div>
-      ))}
+const GridDiagram = ({ block }: { block: DiagramBlock }) => {
+  const iconMap: Record<string, React.ElementType> = {
+    "34+": BarChart3,
+    "ISO": CheckCircle2,
+    "Relaciones": Users,
+    "Presencia": MapPin,
+    "878": Users,
+    "Crecimiento": BarChart3,
+  };
+
+  const getIcon = (text: string) => {
+    for (const key of Object.keys(iconMap)) {
+      if (text.includes(key)) return iconMap[key];
+    }
+    return Layers;
+  };
+
+  const getAccent = (i: number) => {
+    const accents = [
+      "from-primary/10 to-primary/5 border-primary/20",
+      "from-emerald-500/10 to-emerald-500/5 border-emerald-500/20",
+      "from-blue-500/10 to-blue-500/5 border-blue-500/20",
+      "from-amber-500/10 to-amber-500/5 border-amber-500/20",
+      "from-violet-500/10 to-violet-500/5 border-violet-500/20",
+      "from-rose-500/10 to-rose-500/5 border-rose-500/20",
+    ];
+    return accents[i % accents.length];
+  };
+
+  const getIconColor = (i: number) => {
+    const colors = [
+      "text-primary",
+      "text-emerald-500",
+      "text-blue-500",
+      "text-amber-500",
+      "text-violet-500",
+      "text-rose-500",
+    ];
+    return colors[i % colors.length];
+  };
+
+  return (
+    <div>
+      {block.title && (
+        <h4 className="text-sm font-bold text-foreground mb-4 flex items-center gap-2">
+          <div className="w-1 h-5 rounded-full bg-primary" />
+          {block.title}
+        </h4>
+      )}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {block.items?.map((item, i) => {
+          const Icon = getIcon(item);
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.35, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, y: -2 }}
+              className={`group relative p-4 rounded-xl bg-gradient-to-br ${getAccent(i)} border shadow-sm cursor-default transition-shadow hover:shadow-md overflow-hidden`}
+            >
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/10 to-transparent rounded-bl-full" />
+              <Icon className={`w-5 h-5 mb-2.5 ${getIconColor(i)} transition-transform group-hover:scale-110`} />
+              <p className="text-xs text-foreground font-semibold leading-snug relative z-10">
+                {item}
+              </p>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ListDiagram = ({ block }: { block: DiagramBlock }) => (
   <div>
