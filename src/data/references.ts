@@ -601,7 +601,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Implementación de SAF para gestión financiera. +150,000 clientes, 27 sucursales.",
     result: "Reconocimiento por desempeño en microfinanzas e inclusión financiera.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
