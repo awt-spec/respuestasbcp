@@ -1,6 +1,6 @@
 export type QuestionStatus = "answered";
 
-export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list";
+export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats";
 
 export interface DiagramBlock {
   type: DiagramType;
