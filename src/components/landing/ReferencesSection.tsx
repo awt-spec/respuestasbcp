@@ -14,14 +14,10 @@ const focusIcons: Record<FocusArea, React.ElementType> = {
   otros: Building2,
 };
 
-type FilterKey = "all" | "coleccion" | "tarjetas" | "pension" | "core_bancario";
+type FilterKey = "all";
 
 const focusTabs: { key: FilterKey; label: string }[] = [
   { key: "all", label: "Todos" },
-  { key: "coleccion", label: "Colocación" },
-  { key: "tarjetas", label: "Tarjetas" },
-  { key: "pension", label: "Fondos de Pensión" },
-  { key: "core_bancario", label: "Core Bancario" },
 ];
 
 const coleccionAreas: FocusArea[] = ["leasing", "factoring", "prestamos"];
