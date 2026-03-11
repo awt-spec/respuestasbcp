@@ -5,7 +5,6 @@ import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
 import DiagramCard from "@/components/landing/DiagramCard";
 import ChatBot from "@/components/ChatBot";
-import AutoScrollBar from "@/components/landing/AutoScrollBar";
 
 import { Accordion } from "@/components/ui/accordion";
 import { useI18n } from "@/contexts/I18nContext";
@@ -56,7 +55,7 @@ const Index = () => {
         <FooterSection />
       </div>
       <ChatBot />
-      <AutoScrollBar />
+      
     </div>
   );
 };
