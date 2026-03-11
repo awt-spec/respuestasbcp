@@ -631,7 +631,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Transformación digital de la red de microfinanzas más grande de Burkina Faso. Fundada en 1972.",
     result: "+1,200 empleados, 455 dirigentes. Inclusión financiera exitosa.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
