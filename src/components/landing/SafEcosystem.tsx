@@ -368,7 +368,10 @@ const SafEcosystem = () => {
                         width: OUTER_PLANET_SIZE,
                       }}
                     >
-                      <div className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg`}>
+                      <div
+                        className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg ${pl.id === "canales" ? "cursor-pointer hover:scale-110 transition-transform" : ""}`}
+                        onClick={pl.id === "canales" ? () => setSelectedModule("canales") : undefined}
+                      >
                         <Icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.8} />
                       </div>
                       <span className="text-[9px] font-bold text-foreground text-center leading-tight max-w-[90px]">
