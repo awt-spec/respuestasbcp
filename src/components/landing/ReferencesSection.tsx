@@ -41,13 +41,14 @@ const getCardAccent = (i: number) => {
 };
 
 /* ─── Detail Modal ─── */
-const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: () => void }) => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm"
-    onClick={onClose}
+const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: () => void }) => {
+  // Lock body scroll when modal is open
+  React.useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, []);
+
+  return (
   >
     <motion.div
       initial={{ scale: 0.92, opacity: 0, y: 20 }}
