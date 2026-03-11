@@ -214,34 +214,11 @@ const ReferencesSection = () => {
     <div>
       <div className="mb-4">
         <h4 className="text-sm font-bold text-foreground">
-          Referencias SYSDE ({filtered.length} de {references.length})
+          Referencias SYSDE ({references.length})
         </h4>
         <p className="text-[11px] text-muted-foreground">
-          Filtra por enfoque de negocio — haz clic en cada tarjeta para ver el detalle completo
+          Haz clic en cada tarjeta para ver el detalle completo
         </p>
-      </div>
-
-      <div className="flex flex-wrap gap-1.5 mb-4 p-1 rounded-xl bg-muted/40 border">
-        {focusTabs.map((tab) => {
-          const isActive = activeFilter === tab.key;
-          const count = filterReferences(tab.key).length;
-          return (
-            <button
-              key={tab.key}
-              onClick={() => setActiveFilter(tab.key)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold transition-all ${
-                isActive
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
-              }`}
-            >
-              {tab.label}
-              <span className={`text-[9px] rounded-full px-1.5 py-0.5 ${isActive ? "bg-primary-foreground/20" : "bg-muted"}`}>
-                {count}
-              </span>
-            </button>
-          );
-        })}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
