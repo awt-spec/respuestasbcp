@@ -69,9 +69,13 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-2">
-                {r.inImplementation && (
+                {r.inImplementation ? (
                   <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
                     🔄 En implementación
+                  </Badge>
+                ) : (
+                  <Badge className="text-[9px] bg-emerald-500/15 text-emerald-600 border-emerald-500/30 font-bold">
+                    ✓ Implementación exitosa
                   </Badge>
                 )}
                 <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
