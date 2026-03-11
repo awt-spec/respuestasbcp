@@ -97,6 +97,18 @@ const functionalModules: Module[] = [
   },
 ];
 
+// Canales Digitales sub-modules (for sub-zoom when clicked from outer orbit)
+const canalesModule: Module = {
+  id: "canales", icon: Smartphone, label: "Canales Digitales", label_en: "Digital Channels",
+  subs: [
+    { id: "movil", icon: Phone, label: "Banca Móvil", label_en: "Mobile Banking" },
+    { id: "web", icon: Globe, label: "Banca Web", label_en: "Web Banking" },
+    { id: "api", icon: Plug, label: "API Gateway", label_en: "API Gateway" },
+    { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Banking", label_en: "WhatsApp Banking" },
+    { id: "atm", icon: Landmark, label: "ATM / Kiosk", label_en: "ATM / Kiosk" },
+  ],
+};
+
 // Outer orbit: product lines
 const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
   { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
