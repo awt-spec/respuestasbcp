@@ -128,26 +128,6 @@ const SysdeStats = ({ section }: Props) => {
         )}
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-        {[
-          { value: "+200", label: pick("funcionalidades interrelacionadas", "interrelated functionalities") },
-          { value: "+15", label: pick("operadoras de fondos confían en SYSDE", "fund operators trust SYSDE") },
-          { value: "+400", label: pick("módulos especializados", "specialized modules") },
-          { value: "+45", label: pick("operadoras de fondos de pensión", "pension fund operators") },
-        ].map((stat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.07 }}
-            className="p-4 rounded-2xl border bg-card hover:shadow-sm transition-shadow"
-          >
-            <p className="text-2xl font-extrabold text-primary mb-1">{stat.value}</p>
-            <p className="text-[10px] text-muted-foreground leading-snug">{stat.label}</p>
-          </motion.div>
-        ))}
-      </div>
 
       <button
         onClick={() => setShowPresence(!showPresence)}
