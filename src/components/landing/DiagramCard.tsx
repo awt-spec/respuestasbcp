@@ -105,7 +105,7 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
 
 /* ─── Reference Card (grid style with expandable detail) ─── */
 
-const ReferenceCard = ({ ref: r, index }: { ref: ReferenceItem; index: number }) => {
+const ReferenceCard = ({ item: r, index }: { item: ReferenceItem; index: number }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
