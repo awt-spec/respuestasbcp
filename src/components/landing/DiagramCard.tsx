@@ -194,7 +194,7 @@ const ReferencesGrid = () => (
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       {references.map((r, i) => (
-        <ReferenceCard key={i} ref={r} index={i} />
+        <ReferenceCard key={i} item={r} index={i} />
       ))}
     </div>
   </div>
