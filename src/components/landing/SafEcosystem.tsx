@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Users, Eye, PiggyBank, Briefcase, Smartphone, Building2, BarChart3, FileText, Shield, CreditCard, TrendingUp, Wallet, FolderOpen, Receipt, BookOpen, Scale, Droplets, ClipboardList, Lock, Phone, Globe, Plug, MessageCircle, Landmark, ClipboardCheck, Brain, Search, KeyRound, ScrollText, ShieldCheck, PenTool, Mail, Bell, Webhook, Calculator, FileCode, FileSpreadsheet, Package } from "lucide-react";
+import { ArrowLeft, Users, Eye, PiggyBank, Briefcase, Smartphone, Building2, BarChart3, FileText, Shield, CreditCard, TrendingUp, Wallet, FolderOpen, Receipt, BookOpen, Scale, Droplets, ClipboardList, Lock, Phone, Globe, Plug, MessageCircle, Landmark, ClipboardCheck, Brain, Search, KeyRound, ScrollText, ShieldCheck, PenTool, Mail, Bell, Webhook, Calculator, FileCode, FileSpreadsheet, Package, ShoppingCart, MapPin, Truck, QrCode, UserCheck, Settings, Route, FileBarChart, DollarSign } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 interface SubModule {
