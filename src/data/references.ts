@@ -561,7 +561,7 @@ export const references: ReferenceItem[] = [
     modules: "Seguridad, Préstamos, Cobranza, Ahorros, Depósitos, Contabilidad, PLD, Factoraje",
     contact: "Mario Ernesto López Pineda – Gerente General",
     web: "https://www.financieramva.com/",
-    focus: ["prestamos", "factoring", "core_bancario"],
+    focus: ["prestamos", "factoring"],
     core: "SYSDE PLUS",
   },
   {
