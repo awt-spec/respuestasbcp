@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { references, ReferenceItem, FocusArea, focusLabels } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, ChevronDown, ChevronUp, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package } from "lucide-react";
+import { MapPin, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, Layers } from "lucide-react";
 
 const focusIcons: Record<FocusArea, React.ElementType> = {
   leasing: Briefcase,
@@ -24,138 +24,170 @@ const focusTabs: { key: FocusArea | "all"; label: string }[] = [
   { key: "core_bancario", label: "Core Bancario" },
 ];
 
-const ReferenceRow = ({ item: r, isOpen, onToggle }: { item: ReferenceItem; isOpen: boolean; onToggle: () => void }) => {
-  return (
-    <div className={`border-b last:border-b-0 transition-colors ${isOpen ? "bg-primary/5" : "hover:bg-muted/30"}`}>
-      {/* Row header - clickable */}
-      <button
-        onClick={onToggle}
-        className="w-full px-4 py-3.5 flex items-center gap-3 text-left"
-      >
-        {/* Status */}
-        {r.inImplementation && (
-          <Badge className="shrink-0 text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold px-1.5 py-0.5">
-            EN IMPL.
-          </Badge>
-        )}
+const getCardAccent = (i: number) => {
+  const accents = [
+    "from-primary/8 to-primary/3 border-primary/20",
+    "from-emerald-500/8 to-emerald-500/3 border-emerald-500/20",
+    "from-blue-500/8 to-blue-500/3 border-blue-500/20",
+    "from-amber-500/8 to-amber-500/3 border-amber-500/20",
+    "from-violet-500/8 to-violet-500/3 border-violet-500/20",
+    "from-rose-500/8 to-rose-500/3 border-rose-500/20",
+  ];
+  return accents[i % accents.length];
+};
 
-        {/* Name */}
-        <span className={`text-sm font-bold flex-1 min-w-0 truncate ${isOpen ? "text-primary" : "text-foreground"}`}>
-          {r.name}
-        </span>
+/* ─── Detail Modal ─── */
+const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: () => void }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm"
+    onClick={onClose}
+  >
+    <motion.div
+      initial={{ scale: 0.92, opacity: 0, y: 20 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
+      exit={{ scale: 0.92, opacity: 0, y: 20 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="bg-card border rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Header */}
+      <div className="sticky top-0 bg-card border-b px-5 py-4 flex items-start justify-between rounded-t-2xl z-10">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1">
+            {r.inImplementation && (
+              <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
+                En implementación
+              </Badge>
+            )}
+            <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
+              {r.core}
+            </Badge>
+          </div>
+          <h3 className="text-lg font-bold text-foreground">{r.name}</h3>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1">
+            <MapPin className="w-3 h-3" /> {r.region}
+          </div>
+        </div>
+        <button onClick={onClose} className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0">
+          <X className="w-4 h-4 text-muted-foreground" />
+        </button>
+      </div>
 
-        {/* Focus badges */}
-        <div className="hidden md:flex items-center gap-1 shrink-0">
+      {/* Body */}
+      <div className="px-5 py-4 space-y-4">
+        {/* Focus areas */}
+        <div className="flex flex-wrap gap-1.5">
           {r.focus.map((f) => {
             const Icon = focusIcons[f];
             return (
-              <span
-                key={f}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-semibold bg-muted text-muted-foreground border"
-                title={focusLabels[f]}
-              >
-                <Icon className="w-2.5 h-2.5" />
+              <span key={f} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-muted text-muted-foreground border">
+                <Icon className="w-3 h-3" />
                 {focusLabels[f]}
               </span>
             );
           })}
         </div>
 
-        {/* Region */}
-        <span className="text-[11px] text-muted-foreground shrink-0 hidden sm:block max-w-[180px] truncate">
-          {r.region}
-        </span>
+        {/* Detail */}
+        <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
 
-        {/* Core badge */}
+        {/* Modules */}
+        {r.modules && (
+          <div>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1.5">Módulos</p>
+            <div className="flex flex-wrap gap-1">
+              {r.modules.split(", ").map((m) => (
+                <Badge key={m} variant="outline" className="text-[10px] font-medium">{m}</Badge>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Result */}
+        <div className="rounded-xl bg-muted/60 border p-4">
+          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Resultado</p>
+          <p className="text-sm text-foreground leading-relaxed">{r.result}</p>
+        </div>
+
+        {/* Contact & Web */}
+        {r.contact && (
+          <p className="text-xs text-muted-foreground"><span className="font-semibold">Contacto:</span> {r.contact}</p>
+        )}
+        {r.web && (
+          <a href={r.web} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+            <ExternalLink className="w-3 h-3" /> {r.web}
+          </a>
+        )}
+      </div>
+    </motion.div>
+  </motion.div>
+);
+
+/* ─── Card ─── */
+const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index: number; onClick: () => void }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 16, scale: 0.97 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.03, duration: 0.3 }}
+    whileHover={{ scale: 1.02, y: -3 }}
+    onClick={onClick}
+    className={`group cursor-pointer rounded-2xl border bg-gradient-to-br ${getCardAccent(index)} shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
+  >
+    <div className="p-4">
+      {/* Implementation badge */}
+      {r.inImplementation && (
+        <Badge className="mb-2 text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
+          🔄 En implementación
+        </Badge>
+      )}
+
+      {/* Name + core */}
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <h5 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+          {r.name}
+        </h5>
         <Badge className="shrink-0 text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
           {r.core}
         </Badge>
+      </div>
 
-        {/* Chevron */}
-        {isOpen ? (
-          <ChevronUp className="w-4 h-4 text-muted-foreground shrink-0" />
-        ) : (
-          <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0" />
-        )}
-      </button>
+      {/* Region */}
+      <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground mb-2">
+        <MapPin className="w-3 h-3 shrink-0" />
+        <span className="truncate">{r.region}</span>
+      </div>
 
-      {/* Expanded detail */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="overflow-hidden"
-          >
-            <div className="px-4 pb-4 pt-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Left: Detail */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                  <MapPin className="w-3 h-3" /> {r.region}
-                </div>
+      {/* Focus badges */}
+      <div className="flex flex-wrap gap-1 mb-2">
+        {r.focus.slice(0, 3).map((f) => {
+          const Icon = focusIcons[f];
+          return (
+            <span key={f} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[8px] font-semibold bg-card/80 text-muted-foreground border">
+              <Icon className="w-2.5 h-2.5" />
+              {focusLabels[f]}
+            </span>
+          );
+        })}
+      </div>
 
-                {/* Focus on mobile */}
-                <div className="flex flex-wrap gap-1 md:hidden">
-                  {r.focus.map((f) => {
-                    const Icon = focusIcons[f];
-                    return (
-                      <span key={f} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-semibold bg-muted text-muted-foreground border">
-                        <Icon className="w-2.5 h-2.5" />
-                        {focusLabels[f]}
-                      </span>
-                    );
-                  })}
-                </div>
+      {/* Preview text */}
+      <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>
 
-                <p className="text-xs text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
-
-                {r.modules && (
-                  <div className="flex flex-wrap gap-1">
-                    {r.modules.split(", ").map((m) => (
-                      <Badge key={m} variant="outline" className="text-[9px] font-medium">
-                        {m}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Right: Result + contact */}
-              <div className="space-y-3">
-                <div className="rounded-lg bg-muted/60 border p-3">
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Resultado</p>
-                  <p className="text-xs text-foreground leading-relaxed">{r.result}</p>
-                </div>
-                {r.contact && (
-                  <p className="text-[11px] text-muted-foreground">
-                    <span className="font-semibold">Contacto:</span> {r.contact}
-                  </p>
-                )}
-                {r.web && (
-                  <a
-                    href={r.web}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink className="w-3 h-3" /> {r.web}
-                  </a>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <span className="inline-block mt-2 text-[10px] text-primary font-semibold group-hover:underline">
+        Ver detalle →
+      </span>
     </div>
-  );
-};
+  </motion.div>
+);
 
+/* ─── Main Section ─── */
 const ReferencesSection = () => {
   const [activeFilter, setActiveFilter] = useState<FocusArea | "all">("all");
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
 
   const filtered = activeFilter === "all"
     ? references
@@ -164,15 +196,13 @@ const ReferencesSection = () => {
   return (
     <div>
       {/* Header */}
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <h4 className="text-sm font-bold text-foreground">
-            Referencias SYSDE ({filtered.length} de {references.length})
-          </h4>
-          <p className="text-[11px] text-muted-foreground">
-            Filtra por enfoque de negocio — haz clic en cada referencia para expandir
-          </p>
-        </div>
+      <div className="mb-4">
+        <h4 className="text-sm font-bold text-foreground">
+          Referencias SYSDE ({filtered.length} de {references.length})
+        </h4>
+        <p className="text-[11px] text-muted-foreground">
+          Filtra por enfoque de negocio — haz clic en cada tarjeta para ver el detalle completo
+        </p>
       </div>
 
       {/* Filter tabs */}
@@ -185,7 +215,7 @@ const ReferencesSection = () => {
           return (
             <button
               key={tab.key}
-              onClick={() => { setActiveFilter(tab.key); setOpenId(null); }}
+              onClick={() => setActiveFilter(tab.key)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold transition-all ${
                 isActive
                   ? "bg-primary text-primary-foreground shadow-sm"
@@ -193,9 +223,7 @@ const ReferencesSection = () => {
               }`}
             >
               {tab.label}
-              <span className={`text-[9px] rounded-full px-1.5 py-0.5 ${
-                isActive ? "bg-primary-foreground/20" : "bg-muted"
-              }`}>
+              <span className={`text-[9px] rounded-full px-1.5 py-0.5 ${isActive ? "bg-primary-foreground/20" : "bg-muted"}`}>
                 {count}
               </span>
             </button>
@@ -203,22 +231,23 @@ const ReferencesSection = () => {
         })}
       </div>
 
-      {/* References list */}
-      <div className="rounded-xl border bg-card overflow-hidden shadow-sm">
+      {/* Cards grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {filtered.map((r, i) => (
-          <ReferenceRow
-            key={`${r.name}-${i}`}
-            item={r}
-            isOpen={openId === `${r.name}-${i}`}
-            onToggle={() => setOpenId(openId === `${r.name}-${i}` ? null : `${r.name}-${i}`)}
-          />
+          <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
         ))}
-        {filtered.length === 0 && (
-          <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-            No hay referencias para este filtro.
-          </div>
-        )}
       </div>
+
+      {filtered.length === 0 && (
+        <div className="text-center py-8 text-sm text-muted-foreground">No hay referencias para este filtro.</div>
+      )}
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedRef && (
+          <ReferenceModal item={selectedRef} onClose={() => setSelectedRef(null)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

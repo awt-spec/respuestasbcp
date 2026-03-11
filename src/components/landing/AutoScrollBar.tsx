@@ -1,22 +1,87 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, SkipForward, Navigation } from "lucide-react";
+import { Play, Pause, SkipForward } from "lucide-react";
 
-interface Section {
+interface TourStep {
   id: string;
   label: string;
+  action: () => void;
 }
 
-const sections: Section[] = [
-  { id: "hero-top", label: "Inicio" },
-  { id: "dashboard-section", label: "Dashboard" },
-  { id: "q-1", label: "Pregunta 1" },
-  { id: "q-2", label: "Pregunta 2" },
-  { id: "q-3", label: "Pregunta 3" },
-  { id: "footer-section", label: "Cierre" },
-];
+const AUTO_SCROLL_INTERVAL = 5000;
 
-const AUTO_SCROLL_INTERVAL = 6000; // 6s per section
+const scrollToEl = (el: Element | null) => {
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+
+const clickAccordion = (questionId: number) => {
+  const el = document.querySelector(`[data-question-id="${questionId}"]`);
+  if (!el) return;
+  scrollToEl(el);
+  // Open accordion if closed
+  setTimeout(() => {
+    const trigger = el.querySelector('[data-state="closed"]') as HTMLElement;
+    if (trigger) trigger.click();
+  }, 600);
+};
+
+const clickTab = (questionId: number, tabId: string) => {
+  const el = document.querySelector(`[data-question-id="${questionId}"]`);
+  if (!el) return;
+  scrollToEl(el);
+  setTimeout(() => {
+    const tab = el.querySelector(`[data-tab-id="${tabId}"]`) as HTMLElement;
+    if (tab) tab.click();
+  }, 400);
+};
+
+const buildSteps = (): TourStep[] => [
+  {
+    id: "hero",
+    label: "Inicio",
+    action: () => scrollToEl(document.getElementById("hero-top")),
+  },
+  {
+    id: "dashboard",
+    label: "Dashboard",
+    action: () => scrollToEl(document.getElementById("dashboard-section")),
+  },
+  {
+    id: "q1-open",
+    label: "P1 — Respuesta",
+    action: () => clickAccordion(1),
+  },
+  {
+    id: "q1-visual",
+    label: "P1 — Visual",
+    action: () => clickTab(1, "visual"),
+  },
+  {
+    id: "q2-open",
+    label: "P2 — Respuesta",
+    action: () => clickAccordion(2),
+  },
+  {
+    id: "q2-visual",
+    label: "P2 — Visual",
+    action: () => clickTab(2, "visual"),
+  },
+  {
+    id: "q3-open",
+    label: "P3 — Respuesta",
+    action: () => clickAccordion(3),
+  },
+  {
+    id: "q3-refs",
+    label: "P3 — Referencias",
+    action: () => clickTab(3, "references"),
+  },
+  {
+    id: "footer",
+    label: "Cierre",
+    action: () => scrollToEl(document.getElementById("footer-section")),
+  },
+];
 
 const AutoScrollBar = () => {
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
@@ -25,52 +90,52 @@ const AutoScrollBar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const stepsRef = useRef<TourStep[]>(buildSteps());
 
-  const scrollToSection = useCallback((index: number) => {
-    const section = sections[index];
-    if (!section) return;
-
-    // Try finding by data-question-id first for questions
-    let el: Element | null = null;
-    if (section.id.startsWith("q-")) {
-      const qId = section.id.replace("q-", "");
-      el = document.querySelector(`[data-question-id="${qId}"]`);
-    } else {
-      el = document.getElementById(section.id);
-    }
-
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, []);
-
-  const startAutoScroll = useCallback(() => {
-    setIsAutoScrolling(true);
-    setCurrentIndex(0);
-    setProgress(0);
-    scrollToSection(0);
-  }, [scrollToSection]);
-
-  const stopAutoScroll = useCallback(() => {
-    setIsAutoScrolling(false);
-    setProgress(0);
+  const clearTimers = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (progressRef.current) clearInterval(progressRef.current);
   }, []);
 
-  const skipToNext = useCallback(() => {
-    setCurrentIndex((prev) => {
-      const next = (prev + 1) % sections.length;
-      scrollToSection(next);
+  const stopAutoScroll = useCallback(() => {
+    setIsAutoScrolling(false);
+    setProgress(0);
+    clearTimers();
+  }, [clearTimers]);
+
+  const goToStep = useCallback((index: number) => {
+    const steps = stepsRef.current;
+    if (index >= 0 && index < steps.length) {
+      setCurrentIndex(index);
       setProgress(0);
+      steps[index].action();
+    }
+  }, []);
+
+  const startAutoScroll = useCallback(() => {
+    stepsRef.current = buildSteps();
+    setIsAutoScrolling(true);
+    setCurrentIndex(0);
+    setProgress(0);
+    stepsRef.current[0].action();
+  }, []);
+
+  const skipToNext = useCallback(() => {
+    const steps = stepsRef.current;
+    setCurrentIndex((prev) => {
+      const next = prev + 1;
+      if (next >= steps.length) {
+        stopAutoScroll();
+        return prev;
+      }
+      goToStep(next);
       return next;
     });
-  }, [scrollToSection]);
+  }, [goToStep, stopAutoScroll]);
 
   useEffect(() => {
     if (!isAutoScrolling) return;
 
-    // Progress bar
     const progressTick = 50;
     progressRef.current = setInterval(() => {
       setProgress((prev) => {
@@ -79,25 +144,23 @@ const AutoScrollBar = () => {
       });
     }, progressTick);
 
-    // Section advance
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => {
         const next = prev + 1;
-        if (next >= sections.length) {
+        if (next >= stepsRef.current.length) {
           stopAutoScroll();
           return prev;
         }
-        scrollToSection(next);
         setProgress(0);
+        stepsRef.current[next].action();
         return next;
       });
     }, AUTO_SCROLL_INTERVAL);
 
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      if (progressRef.current) clearInterval(progressRef.current);
-    };
-  }, [isAutoScrolling, scrollToSection, stopAutoScroll]);
+    return clearTimers;
+  }, [isAutoScrolling, stopAutoScroll, clearTimers]);
+
+  const steps = stepsRef.current;
 
   return (
     <AnimatePresence>
@@ -109,7 +172,7 @@ const AutoScrollBar = () => {
           className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
         >
           <div className="bg-card/95 backdrop-blur-xl border shadow-xl rounded-2xl px-3 py-2 flex items-center gap-2">
-            {/* Auto-scroll toggle */}
+            {/* Toggle */}
             {!isAutoScrolling ? (
               <button
                 onClick={startAutoScroll}
@@ -128,32 +191,24 @@ const AutoScrollBar = () => {
               </button>
             )}
 
-            {/* Section dots / nav */}
-            <div className="flex items-center gap-1 px-1">
-              {sections.map((s, i) => (
+            {/* Progress dots */}
+            <div className="flex items-center gap-0.5 px-1">
+              {steps.map((s, i) => (
                 <button
                   key={s.id}
                   onClick={() => {
-                    setCurrentIndex(i);
-                    scrollToSection(i);
-                    setProgress(0);
+                    goToStep(i);
+                    if (!isAutoScrolling) setCurrentIndex(i);
                   }}
                   title={s.label}
-                  className={`relative w-2 h-2 rounded-full transition-all ${
+                  className={`relative h-2 rounded-full transition-all ${
                     i === currentIndex
-                      ? "bg-primary w-5"
+                      ? "bg-primary w-4"
                       : i < currentIndex && isAutoScrolling
-                      ? "bg-primary/40"
-                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      ? "bg-primary/40 w-2"
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2"
                   }`}
-                >
-                  {i === currentIndex && isAutoScrolling && (
-                    <motion.div
-                      className="absolute inset-0 rounded-full bg-primary/30"
-                      style={{ width: `${progress}%` }}
-                    />
-                  )}
-                </button>
+                />
               ))}
             </div>
 
@@ -162,37 +217,16 @@ const AutoScrollBar = () => {
               <button
                 onClick={skipToNext}
                 className="p-1.5 rounded-lg hover:bg-muted transition-colors"
-                title="Siguiente sección"
+                title="Siguiente paso"
               >
                 <SkipForward className="w-3.5 h-3.5 text-muted-foreground" />
               </button>
             )}
 
-            {/* Current section label */}
-            {isAutoScrolling && (
-              <span className="text-[10px] text-muted-foreground font-medium min-w-[70px]">
-                {sections[currentIndex]?.label}
-              </span>
-            )}
-
-            {/* Manual nav buttons */}
-            {!isAutoScrolling && (
-              <div className="hidden sm:flex items-center gap-0.5 border-l pl-2 ml-1">
-                {sections.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => {
-                      const idx = sections.indexOf(s);
-                      setCurrentIndex(idx);
-                      scrollToSection(idx);
-                    }}
-                    className="px-2 py-1 rounded text-[10px] text-muted-foreground hover:text-foreground hover:bg-muted transition-colors font-medium"
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-            )}
+            {/* Current label */}
+            <span className="text-[10px] text-muted-foreground font-medium min-w-[80px] truncate">
+              {steps[currentIndex]?.label}
+            </span>
 
             {/* Close */}
             <button
