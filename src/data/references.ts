@@ -651,7 +651,7 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Plataforma SAF+ para operaciones de crédito y financiamiento en Costa Rica.",
     result: "Operación activa con módulos de préstamos y gestión de cartera.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
