@@ -23,10 +23,7 @@ const Index = () => {
 
       {/* Language Toggle */}
       <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-          <h2 className="text-sm font-bold text-foreground">
-            Consultas BCP — Leasing
-          </h2>
+        <div className="max-w-5xl mx-auto px-4 py-3 flex justify-end">
           <div className="shrink-0 flex items-center gap-1 border rounded-full overflow-hidden">
             {(["es", "en"] as const).map((l) => (
               <button

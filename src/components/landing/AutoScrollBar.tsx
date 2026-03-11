@@ -14,11 +14,10 @@ const scrollToEl = (el: Element | null) => {
   if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
 };
 
-const clickAccordion = (questionId: number) => {
+const openAccordion = (questionId: number) => {
   const el = document.querySelector(`[data-question-id="${questionId}"]`);
   if (!el) return;
   scrollToEl(el);
-  // Open accordion if closed
   setTimeout(() => {
     const trigger = el.querySelector('[data-state="closed"]') as HTMLElement;
     if (trigger) trigger.click();
@@ -49,7 +48,7 @@ const buildSteps = (): TourStep[] => [
   {
     id: "q1-open",
     label: "P1 — Respuesta",
-    action: () => clickAccordion(1),
+    action: () => openAccordion(1),
   },
   {
     id: "q1-visual",
@@ -59,7 +58,7 @@ const buildSteps = (): TourStep[] => [
   {
     id: "q2-open",
     label: "P2 — Respuesta",
-    action: () => clickAccordion(2),
+    action: () => openAccordion(2),
   },
   {
     id: "q2-visual",
@@ -69,7 +68,7 @@ const buildSteps = (): TourStep[] => [
   {
     id: "q3-open",
     label: "P3 — Respuesta",
-    action: () => clickAccordion(3),
+    action: () => openAccordion(3),
   },
   {
     id: "q3-refs",
@@ -172,7 +171,6 @@ const AutoScrollBar = () => {
           className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
         >
           <div className="bg-card/95 backdrop-blur-xl border shadow-xl rounded-2xl px-3 py-2 flex items-center gap-2">
-            {/* Toggle */}
             {!isAutoScrolling ? (
               <button
                 onClick={startAutoScroll}
@@ -191,7 +189,6 @@ const AutoScrollBar = () => {
               </button>
             )}
 
-            {/* Progress dots */}
             <div className="flex items-center gap-0.5 px-1">
               {steps.map((s, i) => (
                 <button
@@ -212,7 +209,6 @@ const AutoScrollBar = () => {
               ))}
             </div>
 
-            {/* Skip */}
             {isAutoScrolling && (
               <button
                 onClick={skipToNext}
@@ -223,12 +219,10 @@ const AutoScrollBar = () => {
               </button>
             )}
 
-            {/* Current label */}
             <span className="text-[10px] text-muted-foreground font-medium min-w-[80px] truncate">
               {steps[currentIndex]?.label}
             </span>
 
-            {/* Close */}
             <button
               onClick={() => { stopAutoScroll(); setIsVisible(false); }}
               className="p-1 rounded hover:bg-muted text-muted-foreground text-[10px]"
