@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Users, Eye, PiggyBank, Briefcase, Smartphone, Building2, BarChart3, FileText, Shield, CreditCard, TrendingUp, Wallet, FolderOpen, Receipt, BookOpen, Scale, Droplets, ClipboardList, Lock, Phone, Globe, Plug, MessageCircle, Landmark, ClipboardCheck, Brain, Search, KeyRound, ScrollText, ShieldCheck, PenTool, Mail, Bell, Webhook, Calculator, FileCode, FileSpreadsheet } from "lucide-react";
+import { ArrowLeft, Users, Eye, PiggyBank, Briefcase, Smartphone, Building2, BarChart3, FileText, Shield, CreditCard, TrendingUp, Wallet, FolderOpen, Receipt, BookOpen, Scale, Droplets, ClipboardList, Lock, Phone, Globe, Plug, MessageCircle, Landmark, ClipboardCheck, Brain, Search, KeyRound, ScrollText, ShieldCheck, PenTool, Mail, Bell, Webhook, Calculator, FileCode, FileSpreadsheet, Package } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
 interface SubModule {
@@ -17,9 +17,11 @@ interface Module {
   label: string;
   label_en?: string;
   subs: SubModule[];
+  isOuter?: boolean; // for outer orbit (product lines)
 }
 
-const modules: Module[] = [
+// Inner orbit: functional modules
+const functionalModules: Module[] = [
   {
     id: "colocacion", icon: Users, label: "Colocación", label_en: "Lending",
     subs: [
@@ -106,9 +108,21 @@ const modules: Module[] = [
   },
 ];
 
-const MAIN_ORBIT_RADIUS = 220;
-const MAIN_CORE_SIZE = 120;
-const MAIN_PLANET_SIZE = 56;
+// Outer orbit: product lines
+const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
+  { id: "leasing", icon: Briefcase, label: "Leasing", label_en: "Leasing", color: "from-blue-500 to-blue-600" },
+  { id: "factoring", icon: Package, label: "Factoring", label_en: "Factoring", color: "from-emerald-500 to-emerald-600" },
+  { id: "prestamos", icon: TrendingUp, label: "Préstamos", label_en: "Loans", color: "from-amber-500 to-amber-600" },
+  { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
+  { id: "tarjetas", icon: CreditCard, label: "Tarjetas", label_en: "Cards", color: "from-rose-500 to-rose-600" },
+  { id: "core", icon: Building2, label: "Core Bancario", label_en: "Banking Core", color: "from-cyan-500 to-cyan-600" },
+];
+
+const MAIN_ORBIT_RADIUS = 200;
+const OUTER_ORBIT_RADIUS = 310;
+const MAIN_CORE_SIZE = 110;
+const MAIN_PLANET_SIZE = 52;
+const OUTER_PLANET_SIZE = 58;
 
 const SUB_ORBIT_RADIUS = 180;
 const SUB_CORE_SIZE = 120;
@@ -159,17 +173,20 @@ const SafEcosystem = () => {
   const { lang } = useI18n();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
-  const currentModule = modules.find((m) => m.id === selectedModule);
+  const currentModule = functionalModules.find((m) => m.id === selectedModule);
 
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
+
+  const outerContainerSize = containerSize(OUTER_ORBIT_RADIUS, OUTER_PLANET_SIZE);
+  const outerCenter = center(OUTER_ORBIT_RADIUS, OUTER_PLANET_SIZE);
 
   return (
     <div className="w-full">
       {/* Header */}
       <div className="text-center mb-8">
         <p className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">
-          {pick("Ecosistema SAF+", "SAF+ Ecosystem")}
+          {pick("Ecosistema SYSDE PLUS", "SYSDE PLUS Ecosystem")}
         </p>
         <h3 className="text-2xl md:text-3xl font-extrabold text-foreground">
           {pick("Una plataforma ", "A comprehensive ")}
@@ -178,7 +195,7 @@ const SafEcosystem = () => {
         <p className="text-sm text-muted-foreground mt-2">
           {selectedModule && currentModule
             ? `${pick("Explorando", "Exploring")}: ${pick(currentModule.label, currentModule.label_en)}`
-            : pick("Haz clic en un módulo para explorar sus componentes", "Click a module to explore its components")
+            : pick("Haz clic en un módulo para explorar — los planetas exteriores son las líneas de producto", "Click a module to explore — outer planets are product lines")
           }
         </p>
       </div>
@@ -212,7 +229,6 @@ const SafEcosystem = () => {
                   height: containerSize(SUB_ORBIT_RADIUS, SUB_PLANET_SIZE),
                 }}
               >
-                {/* Orbit ring */}
                 <div
                   className="absolute border-2 border-dashed border-muted-foreground/15 rounded-full"
                   style={{
@@ -223,7 +239,6 @@ const SafEcosystem = () => {
                   }}
                 />
 
-                {/* Core */}
                 <motion.div
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -244,7 +259,6 @@ const SafEcosystem = () => {
                   </p>
                 </motion.div>
 
-                {/* Sub nodes */}
                 {currentModule.subs.map((sub, i) => {
                   const angle = (i / currentModule.subs.length) * 2 * Math.PI - Math.PI / 2;
                   const cx = center(SUB_ORBIT_RADIUS, SUB_PLANET_SIZE);
@@ -272,27 +286,38 @@ const SafEcosystem = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Main orbit */}
+            {/* Main + Outer orbit */}
             <div className="flex justify-center overflow-x-auto">
               <div
                 className="relative shrink-0"
                 style={{
-                  width: containerSize(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE),
-                  height: containerSize(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE),
+                  width: outerContainerSize,
+                  height: outerContainerSize,
                 }}
               >
-                {/* Orbit ring */}
+                {/* Outer orbit ring */}
+                <div
+                  className="absolute border-2 border-dotted border-primary/10 rounded-full"
+                  style={{
+                    width: OUTER_ORBIT_RADIUS * 2,
+                    height: OUTER_ORBIT_RADIUS * 2,
+                    top: outerCenter - OUTER_ORBIT_RADIUS,
+                    left: outerCenter - OUTER_ORBIT_RADIUS,
+                  }}
+                />
+
+                {/* Inner orbit ring */}
                 <div
                   className="absolute border-2 border-dashed border-muted-foreground/15 rounded-full"
                   style={{
                     width: MAIN_ORBIT_RADIUS * 2,
                     height: MAIN_ORBIT_RADIUS * 2,
-                    top: center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE) - MAIN_ORBIT_RADIUS,
-                    left: center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE) - MAIN_ORBIT_RADIUS,
+                    top: outerCenter - MAIN_ORBIT_RADIUS,
+                    left: outerCenter - MAIN_ORBIT_RADIUS,
                   }}
                 />
 
-                {/* Core */}
+                {/* Core - SYSDE PLUS */}
                 <motion.div
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -300,30 +325,57 @@ const SafEcosystem = () => {
                   style={{
                     width: MAIN_CORE_SIZE,
                     height: MAIN_CORE_SIZE,
-                    top: center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE) - MAIN_CORE_SIZE / 2,
-                    left: center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE) - MAIN_CORE_SIZE / 2,
+                    top: outerCenter - MAIN_CORE_SIZE / 2,
+                    left: outerCenter - MAIN_CORE_SIZE / 2,
                   }}
                 >
-                  <p className="text-primary-foreground text-sm font-extrabold">SYSDE</p>
-                  <p className="text-primary-foreground text-xs font-bold">SAF+</p>
+                  <p className="text-primary-foreground text-xs font-extrabold">SYSDE</p>
+                  <p className="text-primary-foreground text-[10px] font-bold">PLUS</p>
                 </motion.div>
 
-                {/* Module nodes */}
-                {modules.map((mod, i) => {
-                  const angle = (i / modules.length) * 2 * Math.PI - Math.PI / 2;
-                  const cx = center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE);
-                  const cy = center(MAIN_ORBIT_RADIUS, MAIN_PLANET_SIZE);
+                {/* Inner orbit: functional modules */}
+                {functionalModules.map((mod, i) => {
+                  const angle = (i / functionalModules.length) * 2 * Math.PI - Math.PI / 2;
                   return (
                     <OrbitNode
                       key={mod.id}
                       Icon={mod.icon}
                       label={pick(mod.label, mod.label_en)}
-                      x={cx + Math.cos(angle) * MAIN_ORBIT_RADIUS}
-                      y={cy + Math.sin(angle) * MAIN_ORBIT_RADIUS}
+                      x={outerCenter + Math.cos(angle) * MAIN_ORBIT_RADIUS}
+                      y={outerCenter + Math.sin(angle) * MAIN_ORBIT_RADIUS}
                       size={MAIN_PLANET_SIZE}
                       delay={0.05 + i * 0.05}
                       onClick={() => setSelectedModule(mod.id)}
                     />
+                  );
+                })}
+
+                {/* Outer orbit: product lines */}
+                {productLines.map((pl, i) => {
+                  const angle = (i / productLines.length) * 2 * Math.PI - Math.PI / 2;
+                  const x = outerCenter + Math.cos(angle) * OUTER_ORBIT_RADIUS;
+                  const y = outerCenter + Math.sin(angle) * OUTER_ORBIT_RADIUS;
+                  const Icon = pl.icon;
+                  return (
+                    <motion.div
+                      key={pl.id}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.08, type: "spring", stiffness: 200, damping: 20 }}
+                      className="absolute flex flex-col items-center gap-1.5 z-[6]"
+                      style={{
+                        left: x - OUTER_PLANET_SIZE / 2,
+                        top: y - OUTER_PLANET_SIZE / 2,
+                        width: OUTER_PLANET_SIZE,
+                      }}
+                    >
+                      <div className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg`}>
+                        <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
+                      </div>
+                      <span className="text-[9px] font-bold text-foreground text-center leading-tight max-w-[90px]">
+                        {pick(pl.label, pl.label_en)}
+                      </span>
+                    </motion.div>
                   );
                 })}
               </div>
