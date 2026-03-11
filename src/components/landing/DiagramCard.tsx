@@ -158,6 +158,8 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "table": return <TableDiagram key={key} block={block} />;
     case "layers": return <LayersDiagram key={key} block={block} />;
     case "list": return <ListDiagram key={key} block={block} />;
+    case "ecosystem": return <SafEcosystem key={key} />;
+    case "stats": return <SysdeStats key={key} />;
     default: return null;
   }
 };
