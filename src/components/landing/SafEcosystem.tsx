@@ -97,6 +97,18 @@ const functionalModules: Module[] = [
   },
 ];
 
+// Canales Digitales sub-modules (for sub-zoom when clicked from outer orbit)
+const canalesModule: Module = {
+  id: "canales", icon: Smartphone, label: "Canales Digitales", label_en: "Digital Channels",
+  subs: [
+    { id: "movil", icon: Phone, label: "Banca Móvil", label_en: "Mobile Banking" },
+    { id: "web", icon: Globe, label: "Banca Web", label_en: "Web Banking" },
+    { id: "api", icon: Plug, label: "API Gateway", label_en: "API Gateway" },
+    { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Banking", label_en: "WhatsApp Banking" },
+    { id: "atm", icon: Landmark, label: "ATM / Kiosk", label_en: "ATM / Kiosk" },
+  ],
+};
+
 // Outer orbit: product lines
 const productLines: { id: string; icon: React.ElementType; label: string; label_en: string; color: string }[] = [
   { id: "pensiones", icon: PiggyBank, label: "Fondos de Pensión", label_en: "Pension Funds", color: "from-violet-500 to-violet-600" },
@@ -160,7 +172,7 @@ const SafEcosystem = () => {
   const { lang } = useI18n();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
-  const currentModule = functionalModules.find((m) => m.id === selectedModule);
+  const currentModule = functionalModules.find((m) => m.id === selectedModule) || (selectedModule === "canales" ? canalesModule : undefined);
 
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
@@ -356,7 +368,10 @@ const SafEcosystem = () => {
                         width: OUTER_PLANET_SIZE,
                       }}
                     >
-                      <div className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg`}>
+                      <div
+                        className={`w-full aspect-square rounded-full bg-gradient-to-br ${pl.color} flex items-center justify-center shadow-lg ${pl.id === "canales" ? "cursor-pointer hover:scale-110 transition-transform" : ""}`}
+                        onClick={pl.id === "canales" ? () => setSelectedModule("canales") : undefined}
+                      >
                         <Icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.8} />
                       </div>
                       <span className="text-[9px] font-bold text-foreground text-center leading-tight max-w-[90px]">
