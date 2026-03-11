@@ -711,7 +711,7 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Plataforma SAF+ para créditos y operaciones financieras.",
     result: "Operación activa con módulos de préstamos y core bancario.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
