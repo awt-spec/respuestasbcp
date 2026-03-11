@@ -1,4 +1,4 @@
-export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "core_bancario" | "otros";
+export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "otros";
 
 export interface ReferenceItem {
   name: string;
@@ -12,7 +12,7 @@ export interface ReferenceItem {
   web?: string;
   inImplementation?: boolean;
   focus: FocusArea[];
-  core: "SYSDE PLUS" | "Fondos de Pensión" | "Core Bancario" | "FileMaster";
+  core: "SYSDE PLUS" | "Fondos de Pensión" | "FileMaster";
 }
 
 export const focusLabels: Record<FocusArea, string> = {
@@ -21,7 +21,6 @@ export const focusLabels: Record<FocusArea, string> = {
   prestamos: "Préstamos",
   tarjetas: "Tarjetas",
   pension: "Fondos de Pensión",
-  core_bancario: "Core Bancario",
   otros: "Otros",
 };
 
@@ -92,25 +91,25 @@ export const references: ReferenceItem[] = [
     name: "Unicomer Caribbean Holding",
     region: "🇸🇻🇬🇹🇭🇳🇳🇮🇨🇷🇵🇦🇩🇴🇯🇲🇹🇹🇧🇧🇨🇼🇦🇼🇪🇨🇵🇾🇺🇸 +19 países",
     deployment: "On Premise / SaaS",
-    product: "Banca2000 + Tarjetas2000",
-    detail: "Implementación de Banca2000 y Tarjetas2000 adaptando módulos clave: Cobranzas, Cuentas, Créditos (incluido Retail), Depósitos, Contabilidad, PLD, Central de Riesgos, Inversiones y más.\n\nPresencia: Centroamérica (El Salvador, Guatemala, Honduras, Nicaragua, Costa Rica, Panamá) · Caribe (Rep. Dominicana, Jamaica, Trinidad y Tobago, Barbados, Curazao, Aruba, Bonaire, St. Maarten) · Sudamérica (Ecuador, Paraguay) · Norteamérica (Estados Unidos).",
+    product: "SYSDE PLUS",
+    detail: "Implementación de SYSDE PLUS adaptando módulos clave: Cobranzas, Cuentas, Créditos (incluido Retail), Depósitos, Contabilidad, PLD, Central de Riesgos, Inversiones y más.\n\nPresencia: Centroamérica (El Salvador, Guatemala, Honduras, Nicaragua, Costa Rica, Panamá) · Caribe (Rep. Dominicana, Jamaica, Trinidad y Tobago, Barbados, Curazao, Aruba, Bonaire, St. Maarten) · Sudamérica (Ecuador, Paraguay) · Norteamérica (Estados Unidos).",
     result: "Operando desde 2008, con expansiones a El Salvador (2011) y Nicaragua (2014). Grupo Unicomer gestiona +30 marcas, +1,200 tiendas en 26 países con +13,000 colaboradores.",
     modules: "Cobranzas, Créditos, Depósitos, Contabilidad, PLD, Inversiones, Tarjetas",
     contact: "Guillermo J. Siman – Vice Chairman",
-    focus: ["tarjetas", "prestamos", "core_bancario"],
+    focus: ["tarjetas", "prestamos"],
     core: "SYSDE PLUS",
   },
   {
     name: "Financiera MultiMoney",
     region: "🌎 Centroamérica",
     deployment: "SaaS",
-    product: "Banca2000",
-    detail: "Implementación de Core Bancario Banca2000. Contribuimos a lograr su visión de crear productos eficientes, transparentes y honestos.",
+    product: "SYSDE PLUS",
+    detail: "Implementación de SYSDE PLUS. Contribuimos a lograr su visión de crear productos eficientes, transparentes y honestos.",
     result: "Exitoso – Más de 10 años en operación. Opera a nivel regional con Akros como Corporativo Tecnológico.",
     modules: "Seguridad, Préstamos, Cobranza, Ahorros, Depósitos, Contabilidad, PLD, Factoraje",
     contact: "Ernesto Fernández Lang – Presidente",
     web: "https://multimoney.com/",
-    focus: ["prestamos", "factoring", "core_bancario"],
+    focus: ["prestamos", "factoring"],
     core: "SYSDE PLUS",
   },
   {
@@ -143,7 +142,7 @@ export const references: ReferenceItem[] = [
     detail: "Implementación de SAF+ como core central para Banca Digital. Broxel lanzó una de las primeras Super Apps en México.",
     result: "Primera Fintech Digital en México. Tarjetas Débito/Crédito en entorno digital (México y USA).",
     contact: "Rodrigo Díaz – VP Operaciones",
-    focus: ["tarjetas", "core_bancario"],
+    focus: ["tarjetas"],
     core: "SYSDE PLUS",
   },
   {
@@ -154,7 +153,7 @@ export const references: ReferenceItem[] = [
     detail: "Implementación y Evolución de SAF+. Desde cooperativa hasta Banco de primer piso. Banca 100% digital 24x7.",
     result: "+25 años en operación. +40 años de historia. Licencia bancaria desde 2019.",
     contact: "Randall González – CTO",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -513,12 +512,12 @@ export const references: ReferenceItem[] = [
     name: "Banco ADOPEM",
     region: "🇩🇴 República Dominicana",
     deployment: "On Premise / SaaS",
-    product: "Core Bancario",
-    detail: "Core Bancario con 12 módulos. Institución orientada a finanzas productivas para sectores no bancarizados.",
+    product: "SYSDE PLUS",
+    detail: "SYSDE PLUS con 12 módulos. Institución orientada a finanzas productivas para sectores no bancarizados.",
     result: "Parte del Grupo Fundación Microfinanzas BBVA. Impacto en inclusión financiera.",
     contact: "Mercedes Canalda – Presidente Ejecutiva",
-    focus: ["prestamos", "core_bancario"],
-    core: "Core Bancario",
+    focus: ["prestamos"],
+    core: "SYSDE PLUS",
   },
   {
     name: "COOPECAR R.L.",
@@ -529,7 +528,7 @@ export const references: ReferenceItem[] = [
     result: "Cliente activo desde 2006. Mantenimiento continuo y actualizaciones regulatorias.",
     modules: "Cuentas de Efectivo, Depósitos, Préstamos, Contabilidad, Cajas, SICVECA",
     contact: "MBA Carmen Milena Arce Alfaro – Gerente General",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -556,13 +555,13 @@ export const references: ReferenceItem[] = [
     name: "Financiera MVA",
     region: "🇬🇹 Guatemala",
     deployment: "On Premise / SaaS",
-    product: "Banca2000",
-    detail: "Implementación de Banca2000 apoyando el crecimiento de PyMEs guatemaltecas.",
-    result: "Implementación exitosa con módulos completos de core bancario.",
+    product: "SYSDE PLUS",
+    detail: "Implementación de SYSDE PLUS apoyando el crecimiento de PyMEs guatemaltecas.",
+    result: "Implementación exitosa con módulos completos de la plataforma.",
     modules: "Seguridad, Préstamos, Cobranza, Ahorros, Depósitos, Contabilidad, PLD, Factoraje",
     contact: "Mario Ernesto López Pineda – Gerente General",
     web: "https://www.financieramva.com/",
-    focus: ["prestamos", "factoring", "core_bancario"],
+    focus: ["prestamos", "factoring"],
     core: "SYSDE PLUS",
   },
   {
@@ -602,7 +601,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Implementación de SAF para gestión financiera. +150,000 clientes, 27 sucursales.",
     result: "Reconocimiento por desempeño en microfinanzas e inclusión financiera.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -612,7 +611,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Informatización de 72 Systèmes Financiers Décentralisés (SFD) en Senegal.",
     result: "72 instituciones financieras descentralizadas informatizadas exitosamente.",
-    focus: ["core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -632,7 +631,7 @@ export const references: ReferenceItem[] = [
     product: "SAF",
     detail: "Transformación digital de la red de microfinanzas más grande de Burkina Faso. Fundada en 1972.",
     result: "+1,200 empleados, 455 dirigentes. Inclusión financiera exitosa.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -652,7 +651,7 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Plataforma SAF+ para operaciones de crédito y financiamiento en Costa Rica.",
     result: "Operación activa con módulos de préstamos y gestión de cartera.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -672,7 +671,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para operaciones bancarias en múltiples países de Centroamérica.",
     result: "Operación activa a nivel regional con presencia en 8+ países.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -692,7 +691,7 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Soporte tecnológico a cooperativas de ahorro y crédito a nivel mundial.",
     result: "Fortalecimiento de cooperativas financieras en mercados emergentes.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -702,7 +701,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para operaciones de leasing y financiamiento empresarial.",
     result: "Operación activa en uno de los bancos más grandes de Colombia.",
-    focus: ["leasing", "prestamos", "core_bancario"],
+    focus: ["leasing", "prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -711,8 +710,8 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SAF+",
     detail: "Plataforma SAF+ para créditos y operaciones financieras.",
-    result: "Operación activa con módulos de préstamos y core bancario.",
-    focus: ["prestamos", "core_bancario"],
+    result: "Operación activa con módulos de préstamos y plataforma SYSDE PLUS.",
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -722,7 +721,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE implementadas para operaciones financieras de uno de los principales bancos de Colombia.",
     result: "Operación activa con presencia en múltiples países de la región.",
-    focus: ["prestamos", "leasing", "core_bancario"],
+    focus: ["prestamos", "leasing"],
     core: "SYSDE PLUS",
   },
   {
@@ -751,8 +750,8 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para el banco más grande de Nicaragua.",
-    result: "Operación activa con módulos de core bancario y préstamos.",
-    focus: ["prestamos", "core_bancario"],
+    result: "Operación activa con módulos de préstamos en SYSDE PLUS.",
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -781,8 +780,8 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE implementadas en el banco estatal más grande de Costa Rica.",
-    result: "Operación activa con módulos de préstamos y core bancario.",
-    focus: ["prestamos", "core_bancario"],
+    result: "Operación activa con módulos de préstamos en SYSDE PLUS.",
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -801,8 +800,8 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para operaciones de Scotiabank en la región.",
-    result: "Operación activa con módulos de core bancario.",
-    focus: ["core_bancario", "prestamos"],
+    result: "Operación activa con SYSDE PLUS.",
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -852,7 +851,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Implementación de soluciones SYSDE para el grupo cooperativo financiero más grande de Canadá.",
     result: "Operación activa en gestión de cooperativas financieras.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -871,8 +870,8 @@ export const references: ReferenceItem[] = [
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE para operaciones bancarias en Bolivia.",
-    result: "Operación activa con módulos de core bancario y préstamos.",
-    focus: ["prestamos", "core_bancario"],
+    result: "Operación activa con módulos de préstamos en SYSDE PLUS.",
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
@@ -882,7 +881,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Plataforma SYSDE para gestión de inversiones y valores del Banco Nacional de Costa Rica.",
     result: "Operación activa en gestión de inversiones.",
-    focus: ["core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {

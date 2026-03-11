@@ -10,7 +10,6 @@ const focusIcons: Record<FocusArea, React.ElementType> = {
   prestamos: Landmark,
   tarjetas: CreditCard,
   pension: PiggyBank,
-  core_bancario: Building2,
   otros: Building2,
 };
 
