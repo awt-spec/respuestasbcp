@@ -97,10 +97,91 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "grid": return <GridDiagram key={key} block={block} />;
     case "table": return <TableDiagram key={key} block={block} />;
     case "list": return <ListDiagram key={key} block={block} />;
-    case "ecosystem": return <SafEcosystem key={key} />;
-    case "stats": return <SysdeStats key={key} />;
     default: return null;
   }
+};
+
+/* ─── Visual Sub-tabs for rich diagram sections ─── */
+interface VisualSubTab {
+  id: string;
+  label: string;
+  label_en?: string;
+  icon: React.ElementType;
+}
+
+const visualSubTabs: VisualSubTab[] = [
+  { id: "ecosystem", label: "Ecosistema SAF+", label_en: "SAF+ Ecosystem", icon: Layers },
+  { id: "trajectory", label: "Trayectoria SYSDE", label_en: "SYSDE Track Record", icon: BarChart3 },
+  { id: "pension", label: "SYSDE Pensión", label_en: "SYSDE Pensión", icon: Users },
+];
+
+const VisualDetailPanel = ({ diagrams }: { diagrams: DiagramBlock[] }) => {
+  const { lang } = useI18n();
+  const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
+  const [activeVisualTab, setActiveVisualTab] = useState("ecosystem");
+
+  const hasRichSections = diagrams.some((d) => d.type === "ecosystem" || d.type === "stats");
+  const plainDiagrams = diagrams.filter((d) => d.type !== "ecosystem" && d.type !== "stats");
+
+  if (!hasRichSections) {
+    return (
+      <div className="space-y-8">
+        {diagrams.map((d, i) => renderDiagram(d, i))}
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {/* Sub-tab buttons */}
+      <div className="flex flex-wrap gap-1.5 mb-6 p-1 rounded-xl bg-muted/40 border">
+        {visualSubTabs.map((tab) => {
+          const Icon = tab.icon;
+          const isActive = activeVisualTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveVisualTab(tab.id)}
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all ${
+                isActive
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
+              }`}
+            >
+              <Icon className="w-3.5 h-3.5" />
+              {pick(tab.label, tab.label_en)}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Sub-tab content */}
+      <AnimatePresence mode="wait">
+        {activeVisualTab === "ecosystem" && (
+          <motion.div key="eco" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
+            <SafEcosystem />
+          </motion.div>
+        )}
+        {activeVisualTab === "trajectory" && (
+          <motion.div key="traj" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
+            <SysdeStats section="trajectory" />
+          </motion.div>
+        )}
+        {activeVisualTab === "pension" && (
+          <motion.div key="pen" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
+            <SysdeStats section="pension" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Plain diagrams below */}
+      {plainDiagrams.length > 0 && (
+        <div className="space-y-8 mt-8">
+          {plainDiagrams.map((d, i) => renderDiagram(d, i))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 /* ─── Reference Card (grid style with expandable detail) ─── */
@@ -325,9 +406,7 @@ const DiagramCard = ({ item, index }: Props) => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="space-y-8">
-                  {displayDiagrams.map((d, i) => renderDiagram(d, i))}
-                </div>
+                <VisualDetailPanel diagrams={displayDiagrams} />
               </motion.div>
             )}
 
