@@ -172,7 +172,7 @@ const SafEcosystem = () => {
   const { lang } = useI18n();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
-  const currentModule = functionalModules.find((m) => m.id === selectedModule);
+  const currentModule = functionalModules.find((m) => m.id === selectedModule) || (selectedModule === "canales" ? canalesModule : undefined);
 
   const containerSize = (radius: number, planetSize: number) => (radius + planetSize) * 2 + 40;
   const center = (radius: number, planetSize: number) => radius + planetSize + 20;
