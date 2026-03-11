@@ -140,10 +140,6 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  if (displayConsideraciones) {
-    tabs.push({ id: "tech", label: t("card.considerations"), icon: Lightbulb });
-  }
-  tabs.push({ id: "value", label: t("card.value"), icon: Target });
 
   return (
     <motion.div
@@ -234,34 +230,6 @@ const DiagramCard = ({ item, index }: Props) => {
               </motion.div>
             )}
 
-            {activeTab === "tech" && displayConsideraciones && (
-              <motion.div
-                key="tech"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="rounded-xl bg-muted/30 border p-5">
-                  <p className="text-[13px] text-foreground leading-relaxed">{displayConsideraciones}</p>
-                </div>
-              </motion.div>
-            )}
-
-            {activeTab === "value" && (
-              <motion.div
-                key="value"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="rounded-xl bg-success/5 border border-success/20 p-5">
-                  <p className="text-[10px] font-bold text-success uppercase tracking-wider mb-2">🎯 {t("card.value")}</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">{displayValor}</p>
-                </div>
-              </motion.div>
-            )}
           </AnimatePresence>
         </AccordionContent>
       </AccordionItem>
