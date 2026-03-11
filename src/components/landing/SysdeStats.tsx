@@ -94,7 +94,7 @@ const SysdeStats = ({ section }: Props) => {
               </div>
               <div className="rounded-2xl bg-primary-foreground/10 backdrop-blur-sm p-5 text-center border border-primary-foreground/10">
                 <DollarSign className="w-6 h-6 text-primary-foreground/60 mx-auto mb-2" />
-                <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+655B</p>
+                <p className="text-3xl md:text-4xl font-extrabold text-primary-foreground tracking-tight">+800B</p>
                 <p className="text-[11px] text-primary-foreground/70 mt-1">USD {pick("en activos gestionados", "in managed assets")}</p>
               </div>
             </div>
