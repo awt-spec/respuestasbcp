@@ -691,7 +691,7 @@ export const references: ReferenceItem[] = [
     product: "SAF+",
     detail: "Soporte tecnológico a cooperativas de ahorro y crédito a nivel mundial.",
     result: "Fortalecimiento de cooperativas financieras en mercados emergentes.",
-    focus: ["prestamos", "core_bancario"],
+    focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
   {
