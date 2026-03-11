@@ -9,6 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useI18n } from "@/contexts/I18nContext";
+import SafEcosystem from "./SafEcosystem";
+import SysdeStats from "./SysdeStats";
 
 /* ─── Collapsible Sub-section ─── */
 const CollapsibleSection = ({
@@ -156,6 +158,8 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "table": return <TableDiagram key={key} block={block} />;
     case "layers": return <LayersDiagram key={key} block={block} />;
     case "list": return <ListDiagram key={key} block={block} />;
+    case "ecosystem": return <SafEcosystem key={key} />;
+    case "stats": return <SysdeStats key={key} />;
     default: return null;
   }
 };

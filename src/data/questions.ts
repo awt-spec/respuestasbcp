@@ -1,6 +1,6 @@
 export type QuestionStatus = "answered";
 
-export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list";
+export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats";
 
 export interface DiagramBlock {
   type: DiagramType;
@@ -143,6 +143,8 @@ export const questions: QuestionItem[] = [
     valor: "La transparencia de SYSDE al comunicar este punto genera confianza. La validación se sustenta en la experiencia real con instituciones financieras de la región y certificaciones ISO de calidad.",
     valor_en: "SYSDE's transparency in communicating this point builds trust. Validation is supported by real experience with financial institutions in the region and ISO quality certifications.",
     diagrams: [
+      { type: "ecosystem" as DiagramType },
+      { type: "stats" as DiagramType },
       {
         type: "grid",
         title: "Respaldo de SYSDE",
@@ -155,18 +157,10 @@ export const questions: QuestionItem[] = [
           "📈 Crecimiento orgánico sostenido",
         ],
       },
-      {
-        type: "flow",
-        title: "Modelo de Crecimiento SYSDE",
-        steps: [
-          { label: "Implementación Exitosa", description: "Entrega de valor comprobado al cliente", icon: "🚀" },
-          { label: "Referencia del Sector", description: "Clientes satisfechos recomiendan la solución", icon: "🤝" },
-          { label: "Nuevos Contratos", description: "Expansión orgánica basada en resultados", icon: "📈" },
-          { label: "Mejora Continua", description: "Retroalimentación impulsa evolución del producto", icon: "🔄" },
-        ],
-      },
     ],
     diagrams_en: [
+      { type: "ecosystem" as DiagramType },
+      { type: "stats" as DiagramType },
       {
         type: "grid",
         title: "SYSDE Backing",
@@ -177,16 +171,6 @@ export const questions: QuestionItem[] = [
           "🌎 Consolidated regional presence",
           "🏦 Active financial clients",
           "📈 Sustained organic growth",
-        ],
-      },
-      {
-        type: "flow",
-        title: "SYSDE Growth Model",
-        steps: [
-          { label: "Successful Implementation", description: "Proven value delivery to client", icon: "🚀" },
-          { label: "Industry Reference", description: "Satisfied clients recommend the solution", icon: "🤝" },
-          { label: "New Contracts", description: "Organic expansion based on results", icon: "📈" },
-          { label: "Continuous Improvement", description: "Feedback drives product evolution", icon: "🔄" },
         ],
       },
     ],
