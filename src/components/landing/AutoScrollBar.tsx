@@ -19,18 +19,21 @@ const openAccordion = (questionId: number) => {
   if (!el) return;
   scrollToEl(el);
   setTimeout(() => {
-    const trigger = el.querySelector('[data-state="closed"]') as HTMLElement;
-    if (trigger) trigger.click();
-  }, 600);
+    // Find the accordion trigger button
+    const trigger = el.querySelector('button[data-state="closed"]') as HTMLElement;
+    if (trigger) {
+      trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    }
+  }, 800);
 };
 
 const clickTab = (questionId: number, tabId: string) => {
   const el = document.querySelector(`[data-question-id="${questionId}"]`);
   if (!el) return;
-  scrollToEl(el);
+  // Don't scroll again, just click the tab
   setTimeout(() => {
     const tab = el.querySelector(`[data-tab-id="${tabId}"]`) as HTMLElement;
-    if (tab) tab.click();
+    if (tab) tab.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
   }, 400);
 };
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiagramBlock, QuestionItem } from "@/data/questions";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, MessageSquare, BarChart3, Users, MapPin, Layers } from "lucide-react";
+import { CheckCircle2, MessageSquare, BarChart3, Users, MapPin, Layers, Briefcase, PiggyBank, TrendingUp } from "lucide-react";
 import ReferencesSection from "./ReferencesSection";
 import {
   AccordionContent,
@@ -365,6 +365,55 @@ const DiagramCard = ({ item, index }: Props) => {
                 </div>
 
                 {item.id === 2 && (
+                  <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {[
+                      {
+                        Icon: Briefcase,
+                        stat: pick("Líder", "Leader"),
+                        label: pick("Leasing & Factoraje", "Leasing & Factoring"),
+                        desc: pick("Posición líder en la región", "Leading position in the region"),
+                        gradient: "from-blue-500/15 to-blue-500/5 border-blue-500/25",
+                        iconColor: "text-blue-500",
+                        statColor: "text-blue-600",
+                      },
+                      {
+                        Icon: TrendingUp,
+                        stat: "~30%",
+                        label: pick("Microfinanzas", "Microfinance"),
+                        desc: pick("del mercado en Latinoamérica", "of the market in Latin America"),
+                        gradient: "from-emerald-500/15 to-emerald-500/5 border-emerald-500/25",
+                        iconColor: "text-emerald-500",
+                        statColor: "text-emerald-600",
+                      },
+                      {
+                        Icon: PiggyBank,
+                        stat: "~82%",
+                        label: pick("Pensiones", "Pensions"),
+                        desc: pick("de plataformas de pensiones en la región", "of pension platforms in the region"),
+                        gradient: "from-violet-500/15 to-violet-500/5 border-violet-500/25",
+                        iconColor: "text-violet-500",
+                        statColor: "text-violet-600",
+                      },
+                    ].map((card, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 12, scale: 0.95 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1, duration: 0.35 }}
+                        className={`relative overflow-hidden rounded-2xl border bg-gradient-to-br ${card.gradient} p-5`}
+                      >
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-white/10 to-transparent rounded-bl-full" />
+                        <card.Icon className={`w-5 h-5 ${card.iconColor} mb-3`} />
+                        <p className={`text-2xl font-extrabold ${card.statColor} tracking-tight`}>{card.stat}</p>
+                        <p className="text-xs font-bold text-foreground mt-1">{card.label}</p>
+                        <p className="text-[10px] text-muted-foreground mt-0.5 leading-snug">{card.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+
+                {item.id === 2 && (
                   <div className="mt-5 rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
                     <div className="flex items-start gap-3">
                       <span className="text-xl shrink-0">💡</span>
@@ -377,8 +426,8 @@ const DiagramCard = ({ item, index }: Props) => {
                         </h4>
                         <p className="text-[12px] text-muted-foreground leading-relaxed">
                           {pick(
-                            "Si para BCP constituye un requisito contar con un proceso formal de evaluación o referenciación por parte de firmas especializadas de la industria, SYSDE se encuentra en total disposición de iniciar y participar activamente en dicho proceso. Estamos comprometidos con cumplir los estándares y criterios que BCP considere necesarios para la validación de nuestra solución.",
-                            "If BCP requires a formal evaluation or referencing process by specialized industry firms, SYSDE is fully willing to initiate and actively participate in such a process. We are committed to meeting the standards and criteria that BCP considers necessary for validating our solution."
+                            "Si para BCP constituye un requisito contar con un proceso formal de evaluación o referenciación por parte de firmas especializadas de la industria, SYSDE se encuentra en total disposición de iniciar y participar activamente en dicho proceso.",
+                            "If BCP requires a formal evaluation or referencing process by specialized industry firms, SYSDE is fully willing to initiate and actively participate in such a process."
                           )}
                         </p>
                       </div>
