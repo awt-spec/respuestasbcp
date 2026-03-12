@@ -467,7 +467,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 52,000. Fondos: $37.1 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Seguros Universal",
