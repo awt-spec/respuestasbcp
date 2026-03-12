@@ -270,7 +270,7 @@ const ReferencesSection = () => {
             }`}
           >
             <Crown className="w-3.5 h-3.5" />
-            Empresas Grandes ({largeRefs.length})
+            Clientes Similares a BCP ({largeRefs.length})
           </button>
           <button
             onClick={() => setActiveTab("other")}
@@ -286,7 +286,7 @@ const ReferencesSection = () => {
         </div>
         <p className="text-[11px] text-muted-foreground">
           {activeTab === "large"
-            ? "Instituciones de gran escala y complejidad comparable a BCP"
+            ? "Instituciones de tamaño y complejidad similar a BCP"
             : "Financieras, cooperativas, microfinanzas y otras instituciones"}
         </p>
       </div>
