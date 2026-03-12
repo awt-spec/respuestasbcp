@@ -179,9 +179,9 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
                   </Badge>
                 </div>
                 <h3 className="text-2xl font-extrabold text-primary-foreground leading-tight tracking-tight">{r.name}</h3>
-                <div className="flex items-center gap-2 mt-2">
-                  <MapPin className="w-3.5 h-3.5 text-primary-foreground/70" />
-                  <span className="text-sm text-primary-foreground/80 font-medium">{r.region}</span>
+                <div className="flex items-start gap-2 mt-2">
+                  <MapPin className="w-3.5 h-3.5 text-primary-foreground/70 shrink-0 mt-0.5" />
+                  <span className="text-sm text-primary-foreground/80 font-medium leading-relaxed break-words">{r.region}</span>
                 </div>
                 {r.web && (
                   <div className="flex items-center gap-1.5 mt-1.5">
