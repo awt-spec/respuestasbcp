@@ -357,6 +357,24 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
             </div>
           );
         }
+        if (r.name === "Arrendadora CREMI (Grupo BAL / GNP Seguros)") {
+          return (
+            <div className="grid grid-cols-3 gap-2 mt-1">
+              <div className="rounded-lg bg-card/80 border px-2 py-1.5">
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Ingresos</p>
+                <p className="text-xs font-extrabold text-foreground">$11,129 <span className="text-[7px] font-semibold text-muted-foreground">M USD</span></p>
+              </div>
+              <div className="rounded-lg bg-card/80 border px-2 py-1.5">
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Activos</p>
+                <p className="text-xs font-extrabold text-foreground">$25,973 <span className="text-[7px] font-semibold text-muted-foreground">M USD</span></p>
+              </div>
+              <div className="rounded-lg bg-card/80 border px-2 py-1.5">
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Empleados</p>
+                <p className="text-xs font-extrabold text-foreground">42,850</p>
+              </div>
+            </div>
+          );
+        }
         if (!stats) return <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>;
         return (
           <div className="flex gap-3 mt-1">
