@@ -12,7 +12,7 @@ export interface ReferenceItem {
   web?: string;
   inImplementation?: boolean;
   focus: FocusArea[];
-  core: "SYSDE PLUS" | "Fondos de Pensión" | "FileMaster";
+  core: "SYSDE PLUS" | "SYSDE Pensión" | "FileMaster";
 }
 
 export const focusLabels: Record<FocusArea, string> = {
