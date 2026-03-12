@@ -88,7 +88,7 @@ const PENSION_STATS: Record<string, { afiliados: string; fondos: string }> = {
   "AFAP SURA": { afiliados: "7.8M", fondos: "11,512" },
   "República AFAP": { afiliados: "1.6M", fondos: "22,000" },
   "Integración AFAP": { afiliados: "1.65M", fondos: "22,103" },
-  "CRAP": { afiliados: "273,101", fondos: "1,540" },
+  "RAP": { afiliados: "273,101", fondos: "1,540" },
   "Porvenir": { afiliados: "14.8M", fondos: "47,000" },
   "Afore XXI Banorte": { afiliados: "7.2M", fondos: "49,597" },
   "Banorte (Pensiones)": { afiliados: "12M", fondos: "39,633" },
