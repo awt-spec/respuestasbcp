@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { references, ReferenceItem, FocusArea, focusLabels } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, Layers, ChevronRight, Crown, Users } from "lucide-react";
+import { MapPin, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, ChevronRight, Crown, Users } from "lucide-react";
 
 const focusIcons: Record<FocusArea, React.ElementType> = {
   leasing: Briefcase,
@@ -13,8 +13,9 @@ const focusIcons: Record<FocusArea, React.ElementType> = {
   otros: Building2,
 };
 
-/** Companies with size and complexity comparable to BCP */
+/** Companies with size and complexity comparable to BCP (includes all AFPs/pension) */
 const LARGE_COMPANY_NAMES = new Set([
+  // Banks & large financials
   "Unicomer Caribbean Holding",
   "Grupo CMI",
   "Banco Promerica",
@@ -32,25 +33,46 @@ const LARGE_COMPANY_NAMES = new Set([
   "Banco ADOPEM",
   "Bancard",
   "abcdin",
+  "BN Valores",
+  "Credicomer",
+  "SYSRETAIL",
+  // All AFPs / Pension
   "AFP Confía",
+  "AFP Reservas",
+  "AFP Crecer",
+  "AFP Habitat",
+  "AFAP SURA",
+  "República AFAP",
+  "Integración AFAP",
+  "CRAP",
+  "Porvenir",
   "Afore XXI Banorte",
   "Banorte (Pensiones)",
-  "Porvenir",
   "MetLife",
+  "AFP Siembra",
   "Colfondos",
+  "Futuro de Bolivia AFP",
   "Prima AFP",
-  "República AFAP",
-  "Popular Pensiones",
-  "AFP Popular",
-  "Pensiones BAC Credomatic",
-  "Hanwha Life (한화생명)",
-  "Alcatel-Lucent Enterprise",
-  "Profuturo",
   "Afore Pensionissste Contigo",
-  "AFAP SURA",
+  "BN Vital",
   "Principal",
   "Inbursa Afore",
-  "Futuro de Bolivia AFP",
+  "Profuturo",
+  "AFP Atlántida",
+  "AFP Atlántico",
+  "AFP Popular",
+  "Popular Pensiones",
+  "ProFuturo (México)",
+  "Unión Capital AFAP",
+  "Petros",
+  "Alcatel-Lucent Enterprise",
+  "Mercantil",
+  "Tokio Marine Seguradora",
+  "Seguros Universal",
+  "AFPC Occidente",
+  "Pensiones BAC Credomatic",
+  "Compañía de Seguros (México)",
+  "Hanwha Life (한화생명)",
 ]);
 
 const largeRefs = references.filter((r) => LARGE_COMPANY_NAMES.has(r.name));
@@ -225,66 +247,65 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
   </motion.div>
 );
 
-/* ─── Section Header ─── */
-const SectionHeader = ({ icon: Icon, title, count, description, accent }: {
-  icon: React.ElementType;
-  title: string;
-  count: number;
-  description: string;
-  accent: string;
-}) => (
-  <div className="mb-4">
-    <div className="flex items-center gap-2 mb-1">
-      <div className={`p-1.5 rounded-lg ${accent}`}>
-        <Icon className="w-4 h-4" />
-      </div>
-      <h4 className="text-sm font-bold text-foreground">
-        {title} ({count})
-      </h4>
-    </div>
-    <p className="text-[11px] text-muted-foreground ml-9">
-      {description}
-    </p>
-  </div>
-);
+type ViewTab = "large" | "other";
 
 /* ─── Main Section ─── */
 const ReferencesSection = () => {
   const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
+  const [activeTab, setActiveTab] = useState<ViewTab>("large");
+
+  const currentRefs = activeTab === "large" ? largeRefs : otherRefs;
 
   return (
-    <div className="space-y-10">
-      {/* Large Companies Section */}
-      <div>
-        <SectionHeader
-          icon={Crown}
-          title="Empresas Grandes — Complejidad comparable a BCP"
-          count={largeRefs.length}
-          description="Instituciones financieras de gran escala, presencia multinacional y alta complejidad operativa"
-          accent="bg-amber-500/10 text-amber-600"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {largeRefs.map((r, i) => (
-            <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
-          ))}
+    <div>
+      {/* Toggle Buttons */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-5">
+        <div className="flex rounded-xl border bg-muted/50 p-1 gap-1">
+          <button
+            onClick={() => setActiveTab("large")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              activeTab === "large"
+                ? "bg-card text-foreground shadow-sm border"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Crown className="w-3.5 h-3.5" />
+            Empresas Grandes ({largeRefs.length})
+          </button>
+          <button
+            onClick={() => setActiveTab("other")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              activeTab === "other"
+                ? "bg-card text-foreground shadow-sm border"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Users className="w-3.5 h-3.5" />
+            Otras Referencias ({otherRefs.length})
+          </button>
         </div>
+        <p className="text-[11px] text-muted-foreground">
+          {activeTab === "large"
+            ? "Instituciones de gran escala y complejidad comparable a BCP"
+            : "Financieras, cooperativas, microfinanzas y otras instituciones"}
+        </p>
       </div>
 
-      {/* Other Companies Section */}
-      <div>
-        <SectionHeader
-          icon={Users}
-          title="Otras Referencias SYSDE"
-          count={otherRefs.length}
-          description="Financieras, cooperativas, microfinanzas y otras instituciones"
-          accent="bg-blue-500/10 text-blue-600"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {otherRefs.map((r, i) => (
+      {/* Grid */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.25 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+        >
+          {currentRefs.map((r, i) => (
             <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       <AnimatePresence>
         {selectedRef && (

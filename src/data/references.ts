@@ -20,7 +20,7 @@ export const focusLabels: Record<FocusArea, string> = {
   factoring: "Factoring",
   prestamos: "Préstamos",
   tarjetas: "Tarjetas",
-  pension: "SYSDE Pensión",
+  pension: "Fondos de Pensión",
   otros: "Otros",
 };
 
