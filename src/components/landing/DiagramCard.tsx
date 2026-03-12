@@ -320,23 +320,19 @@ const DiagramCard = ({ item, index }: Props) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
-              <motion.button
+              <button
                   key={tab.id}
                   data-tab-id={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  animate={!isActive ? { scale: [1, 1.06, 1], y: [0, -3, 0] } : {}}
-                  transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer ${
                     isActive
                       ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/80 ring-1 ring-primary/20"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/80 ring-1 ring-primary/20 animate-[pulse_2.5s_ease-in-out_infinite] hover:animate-none"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
                   {tab.label}
-                </motion.button>
+                </button>
               );
             })}
           </div>
