@@ -327,7 +327,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1 millón. Fondos: $27,000 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "BN Vital",
