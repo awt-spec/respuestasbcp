@@ -402,27 +402,6 @@ const DiagramCard = ({ item, index }: Props) => {
                   </div>
                 )}
 
-                {item.id === 2 && (
-                  <div className="mt-5 rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
-                    <div className="flex items-start gap-3">
-                      <span className="text-xl shrink-0">💡</span>
-                      <div>
-                        <h4 className="text-xs font-bold text-foreground mb-2">
-                          {pick(
-                            "Disponibilidad para Evaluación Formal",
-                            "Availability for Formal Evaluation"
-                          )}
-                        </h4>
-                        <p className="text-[12px] text-muted-foreground leading-relaxed">
-                          {pick(
-                            "Si para BCP constituye un requisito contar con un proceso formal de evaluación o referenciación por parte de firmas especializadas de la industria, SYSDE se encuentra en total disposición de iniciar y participar activamente en dicho proceso.",
-                            "If BCP requires a formal evaluation or referencing process by specialized industry firms, SYSDE is fully willing to initiate and actively participate in such a process."
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </motion.div>
             )}
 
