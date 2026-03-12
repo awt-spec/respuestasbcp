@@ -1,4 +1,4 @@
-export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "otros";
+export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "workflow" | "otros";
 
 export interface ReferenceItem {
   name: string;
@@ -21,6 +21,7 @@ export const focusLabels: Record<FocusArea, string> = {
   prestamos: "Préstamos",
   tarjetas: "Tarjetas",
   pension: "Fondos de Pensión",
+  workflow: "Workflow",
   otros: "Otros",
 };
 
@@ -745,7 +746,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE implementadas para operaciones financieras de uno de los principales bancos de Colombia.",
     result: "Operación activa con presencia en múltiples países de la región.",
-    focus: ["prestamos", "leasing"],
+    focus: ["prestamos", "workflow"],
     core: "SYSDE PLUS",
   },
   {
