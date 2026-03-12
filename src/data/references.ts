@@ -247,7 +247,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 14,842,405. Fondos: $47,000 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Afore XXI Banorte",
