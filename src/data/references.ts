@@ -447,7 +447,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión. Hoy es Nokia.",
     result: "Afiliados: 78,400. Fondos: $40.67 B.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Mercantil",
