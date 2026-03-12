@@ -418,10 +418,12 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
 type ViewTab = "large" | "other";
 
 /* ─── Main Section ─── */
-const ReferencesSection = () => {
+const ReferencesSection = ({ filter }: { filter?: "implementation" }) => {
   const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
   const [activeTab, setActiveTab] = useState<ViewTab>("large");
 
+  const implementationOnly = filter === "implementation";
+  const filteredRefs = implementationOnly ? references.filter(r => r.inImplementation) : null;
   const currentRefs = activeTab === "large" ? largeRefs : otherRefs;
 
   return (
