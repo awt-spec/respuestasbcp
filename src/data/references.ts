@@ -30,8 +30,8 @@ export const references: ReferenceItem[] = [
     region: "🇬🇹🇸🇻🇭🇳🇳🇮🇨🇷🇵🇦🇲🇽🇺🇸🇩🇴🇪🇨🇨🇴🇵🇪🇪🇸🇵🇹🇮🇹🇫🇷🇬🇧 +20 países",
     deployment: "SaaS",
     product: "SYSDE PLUS",
-    detail: "Implementación de SYSDE PLUS sobre la operación de Factoring y Leasing, estandarizando procesos multi-país y multi-moneda. Integración con SAP Business One.\n\nPresencia: Centroamérica (Guatemala, El Salvador, Honduras, Nicaragua, Costa Rica, Panamá) · Norteamérica (México, Estados Unidos) · Caribe (República Dominicana) · Sudamérica (Ecuador, Colombia, Perú) · Europa (España, Portugal, Italia, Francia, Reino Unido).",
-    result: "En ejecución – Plataforma end-to-end para Factoring, Leasing y Crédito Puente.",
+    detail: "Desde finales del 2025, SYSDE realiza la implementación de SYSDE PLUS sobre la operación de Factoring y Leasing de Grupo CMI, estandarizando procesos multi-país y multi-moneda bajo un modelo modular.\n\nLa plataforma SYSDE PLUS maneja y controla el ciclo end-to-end de Factoring y Leasing.\n\nAdemás, con el core de API's de SYSDE se realizará la integración con 4 cores de SAP.\n\nPresencia: Centroamérica (Guatemala, El Salvador, Honduras, Nicaragua, Costa Rica, Panamá) · Norteamérica (México, Estados Unidos) · Caribe (República Dominicana) · Sudamérica (Ecuador, Colombia, Perú) · Europa (España, Portugal, Italia, Francia, Reino Unido).",
+    result: "En ejecución – Plataforma end-to-end para Factoring, Leasing y Crédito Puente con integración a 4 cores SAP.",
 
     modules: "Factoring, Leasing, Crédito Puente",
     web: "https://somoscmi.com/es/",
