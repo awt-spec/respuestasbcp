@@ -116,7 +116,7 @@ const PENSION_STATS: Record<string, { afiliados: string; fondos: string }> = {
   "AFPC Occidente": { afiliados: "82,539", fondos: "161.5" },
   "Pensiones BAC Credomatic": { afiliados: "472,148", fondos: "3,969" },
   "Compañía de Seguros (México)": { afiliados: "587,097", fondos: "821" },
-  "Hanwha Life (한화생명)": { afiliados: "—", fondos: "—" },
+  
 };
 
 const getCardAccent = (i: number) => {
