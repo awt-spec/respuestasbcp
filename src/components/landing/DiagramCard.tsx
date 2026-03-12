@@ -275,8 +275,8 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  if (item.id === 3) {
-    tabs.push({ id: "references", label: t("card.references"), icon: Users });
+  if (item.id === 3 || item.id === 1) {
+    tabs.push({ id: "references", label: item.id === 1 ? pick("Implementación en Proceso", "Implementation in Progress") : t("card.references"), icon: Users });
   }
 
   return (
@@ -356,14 +356,12 @@ const DiagramCard = ({ item, index }: Props) => {
                 {item.id === 3 && (
                   <motion.button
                     onClick={() => setActiveTab("references")}
-                    className="mt-5 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary/20 transition-colors"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    animate={{ scale: [1, 1.04, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                    className="mt-5 flex items-center gap-2 px-5 py-3 rounded-xl bg-destructive/10 text-destructive border-2 border-destructive/40 text-sm font-bold hover:bg-destructive/20 transition-colors shadow-sm animate-[shake_0.6s_ease-in-out_infinite]"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <Users className="w-4 h-4" />
-                    {pick("Ver Referencias de Clientes", "View Client References")}
+                    {pick("👉 Ver Referencias de Clientes", "👉 View Client References")}
                   </motion.button>
                 )}
 
@@ -439,6 +437,12 @@ const DiagramCard = ({ item, index }: Props) => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
               >
+                {item.id === 1 && (
+                  <div className="mb-4 rounded-xl bg-amber-500/10 border border-amber-500/30 p-4">
+                    <p className="text-xs font-bold text-amber-600 mb-1">🚧 {pick("Implementación en Proceso", "Implementation in Progress")}</p>
+                    <p className="text-[11px] text-muted-foreground">{pick("Estas son las referencias de clientes que actualmente están en proceso de implementación.", "These are client references currently in the implementation process.")}</p>
+                  </div>
+                )}
                 <ReferencesSection />
               </motion.div>
             )}
