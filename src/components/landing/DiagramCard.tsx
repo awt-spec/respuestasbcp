@@ -163,7 +163,7 @@ interface VisualSubTab {
 const visualSubTabs: VisualSubTab[] = [
   { id: "ecosystem", label: "Ecosistema SYSDE PLUS", label_en: "SYSDE PLUS Ecosystem", icon: Layers },
   { id: "trajectory", label: "Trayectoria SYSDE", label_en: "SYSDE Track Record", icon: BarChart3 },
-  { id: "pension", label: "SYSDE Pensión", label_en: "SYSDE Pensión", icon: Users },
+  { id: "pension", label: "SYSDE PLUS Pensión", label_en: "SYSDE PLUS Pension", icon: Users },
 ];
 
 const VisualDetailPanel = ({ diagrams }: { diagrams: DiagramBlock[] }) => {
