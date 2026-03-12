@@ -1,4 +1,4 @@
-export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "otros";
+export type FocusArea = "leasing" | "factoring" | "prestamos" | "tarjetas" | "pension" | "workflow" | "otros";
 
 export interface ReferenceItem {
   name: string;
