@@ -45,7 +45,7 @@ const LARGE_COMPANY_NAMES = new Set([
   "AFAP SURA",
   "República AFAP",
   "Integración AFAP",
-  "CRAP",
+  "RAP",
   "Porvenir",
   "Afore XXI Banorte",
   "Banorte (Pensiones)",
