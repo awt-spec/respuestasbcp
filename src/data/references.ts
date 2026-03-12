@@ -432,7 +432,7 @@ export const references: ReferenceItem[] = [
     core: "SYSDE PLUS",
   },
   {
-    name: "CRAP",
+    name: "RAP",
     region: "🇲🇽 México",
     deployment: "SaaS",
     product: "SYSDE PLUS",
