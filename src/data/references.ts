@@ -21,6 +21,7 @@ export const focusLabels: Record<FocusArea, string> = {
   prestamos: "Préstamos",
   tarjetas: "Tarjetas",
   pension: "Fondos de Pensión",
+  workflow: "Workflow",
   otros: "Otros",
 };
 
