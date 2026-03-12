@@ -745,7 +745,7 @@ export const references: ReferenceItem[] = [
     product: "SYSDE PLUS",
     detail: "Soluciones SYSDE implementadas para operaciones financieras de uno de los principales bancos de Colombia.",
     result: "Operación activa con presencia en múltiples países de la región.",
-    focus: ["prestamos", "leasing"],
+    focus: ["prestamos", "workflow"],
     core: "SYSDE PLUS",
   },
   {
