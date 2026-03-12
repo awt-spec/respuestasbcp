@@ -457,7 +457,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 100,007. Fondos: $150.28 M.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Tokio Marine Seguradora",
