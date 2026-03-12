@@ -327,7 +327,7 @@ const DiagramCard = ({ item, index }: Props) => {
                   className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer ${
                     isActive
                       ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-destructive hover:text-foreground hover:bg-muted/80 animate-[blink_1.5s_ease-in-out_infinite]"
+                      : "text-destructive hover:text-foreground hover:bg-muted/80 border border-destructive/30 animate-shake"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -356,7 +356,7 @@ const DiagramCard = ({ item, index }: Props) => {
                 {item.id === 3 && (
                   <motion.button
                     onClick={() => setActiveTab("references")}
-                    className="mt-5 flex items-center gap-2 px-5 py-3 rounded-xl bg-destructive/10 text-destructive border-2 border-destructive/40 text-sm font-bold hover:bg-destructive/20 transition-colors shadow-sm animate-[shake_0.6s_ease-in-out_infinite]"
+                    className="mt-5 flex items-center gap-2 px-5 py-3 rounded-xl bg-destructive/10 text-destructive border-2 border-destructive/40 text-sm font-bold hover:bg-destructive/20 transition-colors shadow-md animate-shake"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -440,10 +440,10 @@ const DiagramCard = ({ item, index }: Props) => {
                 {item.id === 1 && (
                   <div className="mb-4 rounded-xl bg-amber-500/10 border border-amber-500/30 p-4">
                     <p className="text-xs font-bold text-amber-600 mb-1">🚧 {pick("Implementación en Proceso", "Implementation in Progress")}</p>
-                    <p className="text-[11px] text-muted-foreground">{pick("Estas son las referencias de clientes que actualmente están en proceso de implementación.", "These are client references currently in the implementation process.")}</p>
+                    <p className="text-[11px] text-muted-foreground">{pick("Clientes que actualmente están en proceso de implementación con SYSDE.", "Clients currently in the implementation process with SYSDE.")}</p>
                   </div>
                 )}
-                <ReferencesSection />
+                <ReferencesSection filter={item.id === 1 ? "implementation" : undefined} />
               </motion.div>
             )}
 
