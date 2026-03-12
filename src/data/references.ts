@@ -267,7 +267,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de pensiones con SYSDE Pensión.",
     result: "Afiliados: 12 M. Fondos: $39,633 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "MetLife",
