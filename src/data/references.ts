@@ -487,7 +487,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 82,539. Fondos: $161.5 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Pensiones BAC Credomatic",
