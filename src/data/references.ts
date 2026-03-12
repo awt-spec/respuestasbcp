@@ -297,7 +297,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones del Grupo Habitat con SYSDE Pensión.",
     result: "Afiliados: 5.2 M. Fondos: $12,500 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Futuro de Bolivia AFP",
