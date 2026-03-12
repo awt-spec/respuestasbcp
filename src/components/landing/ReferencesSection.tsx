@@ -138,61 +138,95 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
     return () => { document.body.style.overflow = ''; };
   }, []);
 
+  const stats = PENSION_STATS[r.name];
+  const detailParagraphs = r.detail.split("\n\n").filter(Boolean);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/60 backdrop-blur-md"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.92, opacity: 0, y: 20 }}
+        initial={{ scale: 0.9, opacity: 0, y: 30 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.92, opacity: 0, y: 20 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        className="bg-card border rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto"
+        exit={{ scale: 0.9, opacity: 0, y: 30 }}
+        transition={{ type: "spring", stiffness: 280, damping: 22 }}
+        className="bg-card rounded-3xl shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden flex flex-col border-0 ring-1 ring-border/50"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 rounded-t-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-b px-6 py-5">
+        {/* Hero Header */}
+        <div className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70" />
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+          <div className="relative px-7 py-6">
             <div className="flex items-start justify-between">
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-3">
                   {r.inImplementation ? (
-                    <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
+                    <Badge className="text-[10px] bg-white/20 text-primary-foreground border-white/30 font-bold backdrop-blur-sm">
                       🔄 En implementación
                     </Badge>
                   ) : (
-                    <Badge className="text-[9px] bg-emerald-500/15 text-emerald-600 border-emerald-500/30 font-bold">
-                      ✓ Implementación exitosa
+                    <Badge className="text-[10px] bg-white/20 text-primary-foreground border-white/30 font-bold backdrop-blur-sm">
+                      ✓ Caso de éxito
                     </Badge>
                   )}
-                  <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
+                  <Badge className="text-[10px] bg-white/15 text-primary-foreground border-white/25 font-bold backdrop-blur-sm">
                     {r.core}
                   </Badge>
                 </div>
-                <h3 className="text-xl font-extrabold text-foreground leading-tight">{r.name}</h3>
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1.5">
-                  <MapPin className="w-3 h-3" /> {r.region}
+                <h3 className="text-2xl font-extrabold text-primary-foreground leading-tight tracking-tight">{r.name}</h3>
+                <div className="flex items-center gap-2 mt-2">
+                  <MapPin className="w-3.5 h-3.5 text-primary-foreground/70" />
+                  <span className="text-sm text-primary-foreground/80 font-medium">{r.region}</span>
                 </div>
+                {r.web && (
+                  <div className="flex items-center gap-1.5 mt-1.5">
+                    <Globe className="w-3 h-3 text-primary-foreground/60" />
+                    <a href={r.web} target="_blank" rel="noopener noreferrer" className="text-[11px] text-primary-foreground/70 hover:text-primary-foreground underline-offset-2 hover:underline transition-colors">{r.web.replace(/^https?:\/\//, '')}</a>
+                  </div>
+                )}
               </div>
-              <button onClick={onClose} className="p-2 rounded-full hover:bg-muted transition-colors shrink-0 ml-3">
-                <X className="w-4 h-4 text-muted-foreground" />
+              <button onClick={onClose} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors shrink-0 ml-3 backdrop-blur-sm">
+                <X className="w-4 h-4 text-primary-foreground" />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="px-6 py-5 space-y-5">
+        {/* Content */}
+        <div className="overflow-y-auto flex-1 px-7 py-6 space-y-5">
+          {/* Pension Stats Banner */}
+          {stats && (
+            <div className="grid grid-cols-2 gap-3">
+              <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}
+                className="rounded-2xl bg-gradient-to-br from-primary/8 to-primary/3 border border-primary/15 p-4 text-center">
+                <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Afiliados</p>
+                <p className="text-2xl font-extrabold text-foreground">{stats.afiliados}</p>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
+                className="rounded-2xl bg-gradient-to-br from-success/8 to-success/3 border border-success/15 p-4 text-center">
+                <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Cartera</p>
+                <p className="text-2xl font-extrabold text-foreground">${stats.fondos} <span className="text-xs font-semibold text-muted-foreground">M USD</span></p>
+              </motion.div>
+            </div>
+          )}
+
+          {/* Focus Areas */}
           <div>
-            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Enfoque</p>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex items-center gap-2 mb-2.5">
+              <Zap className="w-3.5 h-3.5 text-primary" />
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Soluciones implementadas</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
               {r.focus.map((f) => {
                 const Icon = focusIcons[f];
                 return (
-                  <span key={f} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold bg-primary/5 text-primary border border-primary/15">
-                    <Icon className="w-3 h-3" />
+                  <span key={f} className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-semibold bg-primary/5 text-primary border border-primary/12 shadow-sm">
+                    <Icon className="w-3.5 h-3.5" />
                     {focusLabels[f]}
                   </span>
                 );
@@ -200,32 +234,59 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
             </div>
           </div>
 
+          {/* Detail */}
           <div>
-            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Detalle</p>
-            <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
+            <div className="flex items-center gap-2 mb-2.5">
+              <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Sobre el proyecto</p>
+            </div>
+            <div className="space-y-3">
+              {detailParagraphs.map((p, i) => (
+                <motion.p key={i} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.05 }}
+                  className="text-sm text-muted-foreground leading-relaxed">
+                  {p}
+                </motion.p>
+              ))}
+            </div>
           </div>
 
+          {/* Modules */}
           {r.modules && (
             <div>
-              <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Módulos</p>
+              <div className="flex items-center gap-2 mb-2.5">
+                <Package className="w-3.5 h-3.5 text-primary" />
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Módulos desplegados</p>
+              </div>
               <div className="flex flex-wrap gap-1.5">
                 {r.modules.split(", ").map((m) => (
-                  <Badge key={m} variant="outline" className="text-[10px] font-medium bg-muted/50">{m}</Badge>
+                  <Badge key={m} variant="outline" className="text-[10px] font-semibold bg-muted/40 border-border/60 px-3 py-1 rounded-lg">{m}</Badge>
                 ))}
               </div>
             </div>
           )}
 
-          <div className="rounded-xl bg-gradient-to-br from-emerald-500/5 to-emerald-500/[0.02] border border-emerald-500/15 p-4">
-            <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest mb-1.5">✓ Resultado</p>
-            <p className="text-sm text-foreground leading-relaxed">{r.result}</p>
-          </div>
+          {/* Result */}
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
+            className="rounded-2xl bg-gradient-to-br from-success/8 via-success/4 to-transparent border border-success/20 p-5">
+            <div className="flex items-center gap-2 mb-2">
+              <CheckCircle2 className="w-4 h-4 text-success" />
+              <p className="text-[10px] font-bold text-success uppercase tracking-widest">Impacto & Resultado</p>
+            </div>
+            <p className="text-sm text-foreground leading-relaxed font-medium">{r.result}</p>
+          </motion.div>
 
-          <div className="flex flex-col gap-2 pt-2 border-t">
-            {r.contact && (
-              <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Contacto:</span> {r.contact}</p>
-            )}
-          </div>
+          {/* Contact */}
+          {r.contact && (
+            <div className="flex items-center gap-3 pt-3 border-t border-border/50">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <Users className="w-4 h-4 text-primary" />
+              </div>
+              <div>
+                <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">Contacto de referencia</p>
+                <p className="text-sm font-semibold text-foreground">{r.contact}</p>
+              </div>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>
