@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { references, ReferenceItem, FocusArea, focusLabels } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, Layers, ChevronRight } from "lucide-react";
+import { MapPin, ExternalLink, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, Layers, ChevronRight, Crown, Users } from "lucide-react";
 
 const focusIcons: Record<FocusArea, React.ElementType> = {
   leasing: Briefcase,
@@ -13,19 +13,48 @@ const focusIcons: Record<FocusArea, React.ElementType> = {
   otros: Building2,
 };
 
-type FilterKey = "all";
+/** Companies with size and complexity comparable to BCP */
+const LARGE_COMPANY_NAMES = new Set([
+  "Unicomer Caribbean Holding",
+  "Grupo CMI",
+  "Banco Promerica",
+  "Banco de Bogotá",
+  "Davivienda",
+  "Banpro (Grupo Promerica)",
+  "Banco Nacional",
+  "Scotiabank",
+  "Desjardins",
+  "GMAC Financial Services",
+  "Bankaool",
+  "Broxel",
+  "BANDESAL",
+  "Banco Santa Cruz",
+  "Banco ADOPEM",
+  "Bancard",
+  "abcdin",
+  "AFP Confía",
+  "Afore XXI Banorte",
+  "Banorte (Pensiones)",
+  "Porvenir",
+  "MetLife",
+  "Colfondos",
+  "Prima AFP",
+  "República AFAP",
+  "Popular Pensiones",
+  "AFP Popular",
+  "Pensiones BAC Credomatic",
+  "Hanwha Life (한화생명)",
+  "Alcatel-Lucent Enterprise",
+  "Profuturo",
+  "Afore Pensionissste Contigo",
+  "AFAP SURA",
+  "Principal",
+  "Inbursa Afore",
+  "Futuro de Bolivia AFP",
+]);
 
-const focusTabs: { key: FilterKey; label: string }[] = [
-  { key: "all", label: "Todos" },
-];
-
-const coleccionAreas: FocusArea[] = ["leasing", "factoring", "prestamos"];
-
-const filterReferences = (key: FilterKey): ReferenceItem[] => {
-  if (key === "all") return references;
-  if (key === "coleccion") return references.filter((r) => r.focus.some((f) => coleccionAreas.includes(f)));
-  return references.filter((r) => r.focus.includes(key as FocusArea));
-};
+const largeRefs = references.filter((r) => LARGE_COMPANY_NAMES.has(r.name));
+const otherRefs = references.filter((r) => !LARGE_COMPANY_NAMES.has(r.name));
 
 const getCardAccent = (i: number) => {
   const accents = [
@@ -41,110 +70,102 @@ const getCardAccent = (i: number) => {
 
 /* ─── Detail Modal ─── */
 const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: () => void }) => {
-  // Lock body scroll when modal is open
   React.useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = ''; };
   }, []);
 
   return (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm"
-    onClick={onClose}
-  >
     <motion.div
-      initial={{ scale: 0.92, opacity: 0, y: 20 }}
-      animate={{ scale: 1, opacity: 1, y: 0 }}
-      exit={{ scale: 0.92, opacity: 0, y: 20 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="bg-card border rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto"
-      onClick={(e) => e.stopPropagation()}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm"
+      onClick={onClose}
     >
-      {/* Header with gradient */}
-      <div className="sticky top-0 z-10 rounded-t-2xl overflow-hidden">
-        <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-b px-6 py-5">
-          <div className="flex items-start justify-between">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                {r.inImplementation ? (
-                  <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
-                    🔄 En implementación
+      <motion.div
+        initial={{ scale: 0.92, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.92, opacity: 0, y: 20 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="bg-card border rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="sticky top-0 z-10 rounded-t-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-b px-6 py-5">
+            <div className="flex items-start justify-between">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-2">
+                  {r.inImplementation ? (
+                    <Badge className="text-[9px] bg-amber-500/15 text-amber-600 border-amber-500/30 font-bold">
+                      🔄 En implementación
+                    </Badge>
+                  ) : (
+                    <Badge className="text-[9px] bg-emerald-500/15 text-emerald-600 border-emerald-500/30 font-bold">
+                      ✓ Implementación exitosa
+                    </Badge>
+                  )}
+                  <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
+                    {r.core}
                   </Badge>
-                ) : (
-                  <Badge className="text-[9px] bg-emerald-500/15 text-emerald-600 border-emerald-500/30 font-bold">
-                    ✓ Implementación exitosa
-                  </Badge>
-                )}
-                <Badge className="text-[9px] bg-primary/10 text-primary border-primary/20 font-bold">
-                  {r.core}
-                </Badge>
+                </div>
+                <h3 className="text-xl font-extrabold text-foreground leading-tight">{r.name}</h3>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1.5">
+                  <MapPin className="w-3 h-3" /> {r.region}
+                </div>
               </div>
-              <h3 className="text-xl font-extrabold text-foreground leading-tight">{r.name}</h3>
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1.5">
-                <MapPin className="w-3 h-3" /> {r.region}
-              </div>
+              <button onClick={onClose} className="p-2 rounded-full hover:bg-muted transition-colors shrink-0 ml-3">
+                <X className="w-4 h-4 text-muted-foreground" />
+              </button>
             </div>
-            <button onClick={onClose} className="p-2 rounded-full hover:bg-muted transition-colors shrink-0 ml-3">
-              <X className="w-4 h-4 text-muted-foreground" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Body */}
-      <div className="px-6 py-5 space-y-5">
-        {/* Focus areas as chips */}
-        <div>
-          <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Enfoque</p>
-          <div className="flex flex-wrap gap-1.5">
-            {r.focus.map((f) => {
-              const Icon = focusIcons[f];
-              return (
-                <span key={f} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold bg-primary/5 text-primary border border-primary/15">
-                  <Icon className="w-3 h-3" />
-                  {focusLabels[f]}
-                </span>
-              );
-            })}
           </div>
         </div>
 
-        {/* Detail */}
-        <div>
-          <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Detalle</p>
-          <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
-        </div>
-
-        {/* Modules */}
-        {r.modules && (
+        <div className="px-6 py-5 space-y-5">
           <div>
-            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Módulos</p>
+            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Enfoque</p>
             <div className="flex flex-wrap gap-1.5">
-              {r.modules.split(", ").map((m) => (
-                <Badge key={m} variant="outline" className="text-[10px] font-medium bg-muted/50">{m}</Badge>
-              ))}
+              {r.focus.map((f) => {
+                const Icon = focusIcons[f];
+                return (
+                  <span key={f} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold bg-primary/5 text-primary border border-primary/15">
+                    <Icon className="w-3 h-3" />
+                    {focusLabels[f]}
+                  </span>
+                );
+              })}
             </div>
           </div>
-        )}
 
-        {/* Result */}
-        <div className="rounded-xl bg-gradient-to-br from-emerald-500/5 to-emerald-500/[0.02] border border-emerald-500/15 p-4">
-          <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest mb-1.5">✓ Resultado</p>
-          <p className="text-sm text-foreground leading-relaxed">{r.result}</p>
-        </div>
+          <div>
+            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Detalle</p>
+            <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">{r.detail}</p>
+          </div>
 
-        {/* Contact & Web */}
-        <div className="flex flex-col gap-2 pt-2 border-t">
-          {r.contact && (
-            <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Contacto:</span> {r.contact}</p>
+          {r.modules && (
+            <div>
+              <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Módulos</p>
+              <div className="flex flex-wrap gap-1.5">
+                {r.modules.split(", ").map((m) => (
+                  <Badge key={m} variant="outline" className="text-[10px] font-medium bg-muted/50">{m}</Badge>
+                ))}
+              </div>
+            </div>
           )}
+
+          <div className="rounded-xl bg-gradient-to-br from-emerald-500/5 to-emerald-500/[0.02] border border-emerald-500/15 p-4">
+            <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest mb-1.5">✓ Resultado</p>
+            <p className="text-sm text-foreground leading-relaxed">{r.result}</p>
+          </div>
+
+          <div className="flex flex-col gap-2 pt-2 border-t">
+            {r.contact && (
+              <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Contacto:</span> {r.contact}</p>
+            )}
+          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
-  </motion.div>
   );
 };
 
@@ -204,27 +225,66 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
   </motion.div>
 );
 
+/* ─── Section Header ─── */
+const SectionHeader = ({ icon: Icon, title, count, description, accent }: {
+  icon: React.ElementType;
+  title: string;
+  count: number;
+  description: string;
+  accent: string;
+}) => (
+  <div className="mb-4">
+    <div className="flex items-center gap-2 mb-1">
+      <div className={`p-1.5 rounded-lg ${accent}`}>
+        <Icon className="w-4 h-4" />
+      </div>
+      <h4 className="text-sm font-bold text-foreground">
+        {title} ({count})
+      </h4>
+    </div>
+    <p className="text-[11px] text-muted-foreground ml-9">
+      {description}
+    </p>
+  </div>
+);
+
 /* ─── Main Section ─── */
 const ReferencesSection = () => {
   const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
 
   return (
-    <div>
-      <div className="mb-4">
-        <h4 className="text-sm font-bold text-foreground">
-          Referencias SYSDE ({references.length})
-        </h4>
-        <p className="text-[11px] text-muted-foreground">
-          Haz clic en cada tarjeta para ver el detalle completo
-        </p>
+    <div className="space-y-10">
+      {/* Large Companies Section */}
+      <div>
+        <SectionHeader
+          icon={Crown}
+          title="Empresas Grandes — Complejidad comparable a BCP"
+          count={largeRefs.length}
+          description="Instituciones financieras de gran escala, presencia multinacional y alta complejidad operativa"
+          accent="bg-amber-500/10 text-amber-600"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {largeRefs.map((r, i) => (
+            <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {references.map((r, i) => (
-          <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
-        ))}
+      {/* Other Companies Section */}
+      <div>
+        <SectionHeader
+          icon={Users}
+          title="Otras Referencias SYSDE"
+          count={otherRefs.length}
+          description="Financieras, cooperativas, microfinanzas y otras instituciones"
+          accent="bg-blue-500/10 text-blue-600"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {otherRefs.map((r, i) => (
+            <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
+          ))}
+        </div>
       </div>
-
 
       <AnimatePresence>
         {selectedRef && (
