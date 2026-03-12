@@ -36,6 +36,7 @@ const LARGE_COMPANY_NAMES = new Set([
   "BN Valores",
   "Credicomer",
   "SYSRETAIL",
+  "Arrendadora CREMI (Grupo BAL / GNP Seguros)",
   // All AFPs / Pension
   "AFP Confía",
   "AFP Reservas",
