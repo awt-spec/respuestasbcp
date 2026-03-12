@@ -167,7 +167,7 @@ export const references: ReferenceItem[] = [
     contact: "Luis Diego Varaona Magaña – Dir. Operaciones y Tecnología",
     web: "https://www.confia.com.sv/",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Reservas",
