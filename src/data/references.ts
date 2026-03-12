@@ -317,7 +317,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones del Grupo Crédito con SYSDE Pensión.",
     result: "Afiliados: 2.3 millones. Fondos: $13,078 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Afore Pensionissste Contigo",
