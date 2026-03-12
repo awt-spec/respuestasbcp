@@ -278,7 +278,23 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
         })}
       </div>
 
-      <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>
+      {/* Pension stats visible on card */}
+      {(() => {
+        const stats = PENSION_STATS[r.name];
+        if (!stats) return <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>;
+        return (
+          <div className="flex gap-3 mt-1">
+            <div className="flex-1 rounded-lg bg-card/80 border px-2.5 py-1.5">
+              <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Afiliados</p>
+              <p className="text-sm font-extrabold text-foreground">{stats.afiliados}</p>
+            </div>
+            <div className="flex-1 rounded-lg bg-card/80 border px-2.5 py-1.5">
+              <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Cartera</p>
+              <p className="text-sm font-extrabold text-foreground">${stats.fondos} <span className="text-[8px] font-semibold text-muted-foreground">mil M USD</span></p>
+            </div>
+          </div>
+        );
+      })()}
 
       <span className="inline-flex items-center gap-1 mt-2 text-[10px] text-primary font-semibold group-hover:underline">
         Ver detalle <ChevronRight className="w-3 h-3" />
