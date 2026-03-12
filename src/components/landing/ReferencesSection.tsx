@@ -290,7 +290,7 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
             </div>
             <div className="flex-1 rounded-lg bg-card/80 border px-2.5 py-1.5">
               <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Cartera</p>
-              <p className="text-sm font-extrabold text-foreground">${stats.fondos} <span className="text-[8px] font-semibold text-muted-foreground">mil M USD</span></p>
+              <p className="text-sm font-extrabold text-foreground">${stats.fondos} <span className="text-[8px] font-semibold text-muted-foreground">M USD</span></p>
             </div>
           </div>
         );
