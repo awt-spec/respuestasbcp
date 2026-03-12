@@ -375,7 +375,24 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
             </div>
           );
         }
-        if (!stats) return <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>;
+        if (r.name === "Unicomer Caribbean Holding") {
+          return (
+            <div className="grid grid-cols-3 gap-2 mt-1">
+              <div className="rounded-lg bg-card/80 border px-2 py-1.5">
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Marcas</p>
+                <p className="text-xs font-extrabold text-foreground">+30</p>
+              </div>
+              <div className="rounded-lg bg-card/80 border px-2 py-1.5">
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Tiendas</p>
+                <p className="text-xs font-extrabold text-foreground">+1,200</p>
+              </div>
+              <div className="rounded-lg bg-card/80 border px-2 py-1.5">
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-wider">Colaboradores</p>
+                <p className="text-xs font-extrabold text-foreground">+13,000</p>
+              </div>
+            </div>
+          );
+        }
         return (
           <div className="flex gap-3 mt-1">
             <div className="flex-1 rounded-lg bg-card/80 border px-2.5 py-1.5">
