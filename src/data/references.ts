@@ -497,7 +497,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 472,148. Fondos: $3,969 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Compañía de Seguros (México)",
