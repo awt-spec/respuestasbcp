@@ -78,6 +78,46 @@ const LARGE_COMPANY_NAMES = new Set([
 const largeRefs = references.filter((r) => LARGE_COMPANY_NAMES.has(r.name));
 const otherRefs = references.filter((r) => !LARGE_COMPANY_NAMES.has(r.name));
 
+/** Pension stats: afiliados + fondos in mil millones USD */
+const PENSION_STATS: Record<string, { afiliados: string; fondos: string }> = {
+  "AFP Confía": { afiliados: "1.8M", fondos: "8.2" },
+  "AFP Reservas": { afiliados: "724K", fondos: "3.4" },
+  "AFP Crecer": { afiliados: "1.5M", fondos: "4.5" },
+  "AFP Habitat": { afiliados: "1M", fondos: "3.9" },
+  "AFAP SURA": { afiliados: "7.8M", fondos: "11.5" },
+  "República AFAP": { afiliados: "1.6M", fondos: "22.0" },
+  "Integración AFAP": { afiliados: "1.65M", fondos: "22.1" },
+  "CRAP": { afiliados: "273K", fondos: "1.5" },
+  "Porvenir": { afiliados: "14.8M", fondos: "47.0" },
+  "Afore XXI Banorte": { afiliados: "7.2M", fondos: "49.6" },
+  "Banorte (Pensiones)": { afiliados: "12M", fondos: "39.6" },
+  "MetLife": { afiliados: "699K", fondos: "12.0" },
+  "AFP Siembra": { afiliados: "1.1M", fondos: "4.2" },
+  "Colfondos": { afiliados: "5.2M", fondos: "12.5" },
+  "Futuro de Bolivia AFP": { afiliados: "500K", fondos: "21.0" },
+  "Prima AFP": { afiliados: "2.3M", fondos: "13.1" },
+  "Afore Pensionissste Contigo": { afiliados: "1M", fondos: "27.0" },
+  "BN Vital": { afiliados: "541K", fondos: "5.0" },
+  "Principal": { afiliados: "3.1M", fondos: "12.5" },
+  "Inbursa Afore": { afiliados: "1.1M", fondos: "9.3" },
+  "Profuturo": { afiliados: "1.7M", fondos: "6.5" },
+  "AFP Atlántida": { afiliados: "78K", fondos: "1.2" },
+  "AFP Atlántico": { afiliados: "104K", fondos: "0.4" },
+  "AFP Popular": { afiliados: "1.6M", fondos: "6.6" },
+  "Popular Pensiones": { afiliados: "1.7M", fondos: "10.6" },
+  "ProFuturo (México)": { afiliados: "1.7M", fondos: "0.03" },
+  "Unión Capital AFAP": { afiliados: "375K", fondos: "3.8" },
+  "Petros": { afiliados: "220K", fondos: "0.8" },
+  "Alcatel-Lucent Enterprise": { afiliados: "78K", fondos: "40.7" },
+  "Mercantil": { afiliados: "100K", fondos: "0.15" },
+  "Tokio Marine Seguradora": { afiliados: "52K", fondos: "0.04" },
+  "Seguros Universal": { afiliados: "38K", fondos: "0.1" },
+  "AFPC Occidente": { afiliados: "83K", fondos: "0.16" },
+  "Pensiones BAC Credomatic": { afiliados: "472K", fondos: "4.0" },
+  "Compañía de Seguros (México)": { afiliados: "587K", fondos: "0.8" },
+  "Hanwha Life (한화생명)": { afiliados: "—", fondos: "—" },
+};
+
 const getCardAccent = (i: number) => {
   const accents = [
     "from-primary/8 to-primary/3 border-primary/20",
