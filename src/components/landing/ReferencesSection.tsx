@@ -426,6 +426,30 @@ const ReferencesSection = ({ filter }: { filter?: "implementation" }) => {
   const filteredRefs = implementationOnly ? references.filter(r => r.inImplementation) : null;
   const currentRefs = activeTab === "large" ? largeRefs : otherRefs;
 
+  if (implementationOnly) {
+    return (
+      <div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+        >
+          {filteredRefs!.map((r, i) => (
+            <ReferenceCard key={`${r.name}-${i}`} item={r} index={i} onClick={() => setSelectedRef(r)} />
+          ))}
+        </motion.div>
+        <AnimatePresence>
+          {selectedRef && (
+            <ReferenceModal item={selectedRef} onClose={() => setSelectedRef(null)} />
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
+
+  const currentRefs = activeTab === "large" ? largeRefs : otherRefs;
+
   return (
     <div>
       {/* Toggle Buttons */}

@@ -440,10 +440,10 @@ const DiagramCard = ({ item, index }: Props) => {
                 {item.id === 1 && (
                   <div className="mb-4 rounded-xl bg-amber-500/10 border border-amber-500/30 p-4">
                     <p className="text-xs font-bold text-amber-600 mb-1">🚧 {pick("Implementación en Proceso", "Implementation in Progress")}</p>
-                    <p className="text-[11px] text-muted-foreground">{pick("Estas son las referencias de clientes que actualmente están en proceso de implementación.", "These are client references currently in the implementation process.")}</p>
+                    <p className="text-[11px] text-muted-foreground">{pick("Clientes que actualmente están en proceso de implementación con SYSDE.", "Clients currently in the implementation process with SYSDE.")}</p>
                   </div>
                 )}
-                <ReferencesSection />
+                <ReferencesSection filter={item.id === 1 ? "implementation" : undefined} />
               </motion.div>
             )}
 
