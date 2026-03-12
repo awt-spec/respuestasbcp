@@ -160,8 +160,8 @@ const SysdeStats = ({ section }: Props) => {
     >
       <h3 className="text-lg md:text-2xl font-extrabold text-foreground leading-snug mb-2">
         {pick(
-          "Actualmente el 82% de las AFPs en Latinoamérica utiliza SYSDE Pensión",
-          "Currently 82% of pension funds (AFPs) in Latin America use SYSDE Pensión"
+          "Actualmente el 82% de las AFPs en Latinoamérica utiliza SYSDE PLUS",
+          "Currently 82% of pension funds (AFPs) in Latin America use SYSDE PLUS"
         )}
       </h3>
       <p className="text-xs text-muted-foreground mb-4">
