@@ -270,7 +270,7 @@ const ReferencesSection = () => {
             }`}
           >
             <Crown className="w-3.5 h-3.5" />
-            Empresas Grandes ({largeRefs.length})
+            Clientes Similares a BCP ({largeRefs.length})
           </button>
           <button
             onClick={() => setActiveTab("other")}
