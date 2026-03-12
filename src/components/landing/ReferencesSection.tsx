@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { references, ReferenceItem, FocusArea, focusLabels } from "@/data/references";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, ChevronRight, Crown, Users } from "lucide-react";
+import { MapPin, Building2, Briefcase, CreditCard, PiggyBank, Landmark, Package, X, ChevronRight, Crown, Users, Globe, Zap, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 
 const focusIcons: Record<FocusArea, React.ElementType> = {
   leasing: Briefcase,
