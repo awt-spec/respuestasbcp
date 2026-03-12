@@ -307,7 +307,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 500,000. Fondos: $20,998 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Prima AFP",
