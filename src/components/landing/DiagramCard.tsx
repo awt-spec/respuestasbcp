@@ -437,6 +437,12 @@ const DiagramCard = ({ item, index }: Props) => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
               >
+                {item.id === 1 && (
+                  <div className="mb-4 rounded-xl bg-amber-500/10 border border-amber-500/30 p-4">
+                    <p className="text-xs font-bold text-amber-600 mb-1">🚧 {pick("Implementación en Proceso", "Implementation in Progress")}</p>
+                    <p className="text-[11px] text-muted-foreground">{pick("Estas son las referencias de clientes que actualmente están en proceso de implementación.", "These are client references currently in the implementation process.")}</p>
+                  </div>
+                )}
                 <ReferencesSection />
               </motion.div>
             )}
