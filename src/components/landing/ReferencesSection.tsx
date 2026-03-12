@@ -424,7 +424,6 @@ const ReferencesSection = ({ filter }: { filter?: "implementation" }) => {
 
   const implementationOnly = filter === "implementation";
   const filteredRefs = implementationOnly ? references.filter(r => r.inImplementation) : null;
-  const currentRefs = activeTab === "large" ? largeRefs : otherRefs;
 
   if (implementationOnly) {
     return (
