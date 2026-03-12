@@ -327,7 +327,7 @@ const DiagramCard = ({ item, index }: Props) => {
                   className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer ${
                     isActive
                       ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/80 ring-1 ring-primary/20 animate-[pulse_2.5s_ease-in-out_infinite] hover:animate-none"
+                      : "text-destructive hover:text-foreground hover:bg-muted/80 animate-[blink_1.5s_ease-in-out_infinite]"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
