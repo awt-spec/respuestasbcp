@@ -915,4 +915,16 @@ export const references: ReferenceItem[] = [
     focus: ["prestamos"],
     core: "SYSDE PLUS",
   },
+  {
+    name: "Arrendadora CREMI (Grupo BAL / GNP Seguros)",
+    region: "🇲🇽 México",
+    deployment: "On-Premise",
+    product: "SYSDE PLUS",
+    detail: "Constituida en 1975 como Arrendadora CREMI S.A. de C.V., O.A.C., perteneciente al Grupo BAL — conglomerado diversificado con presencia en los sectores comercial, agropecuario, industrial, financiero, salud y educación en México.\n\nIngresos: $11,129 M USD (2020)\nActivos: $25,973 M USD (2020)\nEmpleados: 42,850\nSede Central: Ciudad de México\n\nEn el año 2000 se convierte en subsidiaria de GNP Seguros y realiza un cambio de core tecnológico, seleccionando SYSDE PLUS como plataforma central para arrendamientos y factoraje.",
+    result: "Migración exitosa de core tecnológico a SYSDE PLUS para operaciones de leasing y factoraje dentro del Grupo BAL.",
+    modules: "Leasing, Factoring",
+    web: "https://www.bal.com.mx",
+    focus: ["leasing", "factoring"],
+    core: "SYSDE PLUS",
+  },
 ];
