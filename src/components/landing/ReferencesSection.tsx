@@ -393,6 +393,7 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
             </div>
           );
         }
+        if (!stats) return <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{r.detail}</p>;
         return (
           <div className="flex gap-3 mt-1">
             <div className="flex-1 rounded-lg bg-card/80 border px-2.5 py-1.5">
