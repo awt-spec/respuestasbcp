@@ -377,7 +377,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de pensiones y cesantías con SYSDE Pensión.",
     result: "Afiliados: 78,000. Fondos: $1,157 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Atlántico",
