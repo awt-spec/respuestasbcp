@@ -257,7 +257,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 7.2 millones. Fondos: $49,597 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Banorte (Pensiones)",
