@@ -225,7 +225,7 @@ const ReferenceModal = ({ item: r, onClose }: { item: ReferenceItem; onClose: ()
               {r.focus.map((f) => {
                 const Icon = focusIcons[f];
                 return (
-                  <span key={f} className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-semibold bg-primary/5 text-primary border border-primary/12 shadow-sm">
+                  <span key={f} className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-semibold bg-primary/15 text-primary border border-primary/25 shadow-sm">
                     <Icon className="w-3.5 h-3.5" />
                     {focusLabels[f]}
                   </span>
