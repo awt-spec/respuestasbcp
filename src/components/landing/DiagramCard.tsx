@@ -357,6 +357,20 @@ const DiagramCard = ({ item, index }: Props) => {
                   ))}
                 </div>
 
+                {item.id === 3 && (
+                  <motion.button
+                    onClick={() => setActiveTab("references")}
+                    className="mt-5 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary/20 transition-colors"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    animate={{ scale: [1, 1.04, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  >
+                    <Users className="w-4 h-4" />
+                    {pick("Ver Referencias de Clientes", "View Client References")}
+                  </motion.button>
+                )}
+
                 {item.id === 2 && (
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {[
