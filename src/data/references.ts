@@ -68,7 +68,7 @@ export const references: ReferenceItem[] = [
     region: "🇨🇷 Costa Rica",
     deployment: "SaaS",
     product: "SYSDE PLUS",
-    detail: "Implementación de SYSDE PLUS optimizando operaciones con módulos de Seguridad, Clientes, Contabilidad, Reportes SICVECA, Préstamos, Líneas de Crédito. Integración con SAP Business One.",
+    detail: "Implementación de SYSDE PLUS optimizando operaciones con módulos de Seguridad, Clientes, Contabilidad, Reportes SICVECA, Préstamos, Líneas de Crédito. Integración con SAP.",
     result: "+200 puntos de venta en Centroamérica, +70 años de experiencia, +10M consumidores.",
     modules: "Seguridad, Clientes, Contabilidad, SICVECA, Préstamos, Líneas de Crédito",
     contact: "Kelvin Calvo Brown – Consultor de Estrategia TI",
