@@ -12,7 +12,7 @@ export interface ReferenceItem {
   web?: string;
   inImplementation?: boolean;
   focus: FocusArea[];
-  core: "SYSDE PLUS" | "Fondos de Pensión" | "FileMaster";
+  core: "SYSDE PLUS" | "SYSDE Pensión" | "FileMaster";
 }
 
 export const focusLabels: Record<FocusArea, string> = {
@@ -20,7 +20,7 @@ export const focusLabels: Record<FocusArea, string> = {
   factoring: "Factoring",
   prestamos: "Préstamos",
   tarjetas: "Tarjetas",
-  pension: "Fondos de Pensión",
+  pension: "SYSDE Pensión",
   otros: "Otros",
 };
 
@@ -167,7 +167,7 @@ export const references: ReferenceItem[] = [
     contact: "Luis Diego Varaona Magaña – Dir. Operaciones y Tecnología",
     web: "https://www.confia.com.sv/",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Reservas",
@@ -177,7 +177,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 724,504. Fondos: $3,409 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Crecer",
@@ -187,7 +187,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 1.5 millones. Fondos: $4,505 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Habitat",
@@ -197,7 +197,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1 millón. Fondos: $3,942 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFAP SURA",
@@ -207,7 +207,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 7.8 millones. Fondos: $11,512 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "República AFAP",
@@ -217,7 +217,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1.6 millones. Fondos: $22,000 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Integración AFAP",
@@ -227,7 +227,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 1,654,967. Fondos: $22,103 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "CRAP",
@@ -237,7 +237,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 273,101. Fondos: $1,540 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Porvenir",
@@ -247,7 +247,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 14,842,405. Fondos: $47,000 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Afore XXI Banorte",
@@ -257,7 +257,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 7.2 millones. Fondos: $49,597 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Banorte (Pensiones)",
@@ -267,7 +267,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de pensiones con SYSDE Pensión.",
     result: "Afiliados: 12 M. Fondos: $39,633 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "MetLife",
@@ -277,7 +277,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 698,784. Fondos: $12 mil M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Siembra",
@@ -287,7 +287,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1.1 millones. Fondos: $4,228 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Colfondos",
@@ -297,7 +297,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones del Grupo Habitat con SYSDE Pensión.",
     result: "Afiliados: 5.2 M. Fondos: $12,500 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Futuro de Bolivia AFP",
@@ -307,7 +307,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 500,000. Fondos: $20,998 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Prima AFP",
@@ -317,7 +317,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones del Grupo Crédito con SYSDE Pensión.",
     result: "Afiliados: 2.3 millones. Fondos: $13,078 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Afore Pensionissste Contigo",
@@ -327,7 +327,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1 millón. Fondos: $27,000 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "BN Vital",
@@ -337,7 +337,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 540,946. Fondos: $4,981 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Principal",
@@ -347,7 +347,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 3,085,011 M. Fondos: $12,500 M.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Inbursa Afore",
@@ -357,7 +357,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1.1 millones. Fondos: $9,291 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Profuturo",
@@ -367,7 +367,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1.7 M. Fondos: $6,503 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Atlántida",
@@ -377,7 +377,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de pensiones y cesantías con SYSDE Pensión.",
     result: "Afiliados: 78,000. Fondos: $1,157 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Atlántico",
@@ -387,7 +387,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 104,047. Fondos: $382.7 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFP Popular",
@@ -397,7 +397,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1,644,169. Fondos: $6,576 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Popular Pensiones",
@@ -407,7 +407,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 1,728,132. Fondos: $10,568 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "ProFuturo (México)",
@@ -417,7 +417,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de retiro con SYSDE Pensión.",
     result: "Afiliados: 1.7 M. Fondos: $26.3 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Unión Capital AFAP",
@@ -427,7 +427,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 375,255. Fondos: $3,789 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Petros",
@@ -437,7 +437,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 220,000. Fondos: $784 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Alcatel-Lucent Enterprise",
@@ -447,7 +447,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión. Hoy es Nokia.",
     result: "Afiliados: 78,400. Fondos: $40.67 B.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Mercantil",
@@ -457,7 +457,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 100,007. Fondos: $150.28 M.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Tokio Marine Seguradora",
@@ -467,7 +467,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 52,000. Fondos: $37.1 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Seguros Universal",
@@ -477,7 +477,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión previsional con SYSDE Pensión.",
     result: "Afiliados: 38,498. Fondos: $95.1 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "AFPC Occidente",
@@ -487,7 +487,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 82,539. Fondos: $161.5 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Pensiones BAC Credomatic",
@@ -497,7 +497,7 @@ export const references: ReferenceItem[] = [
     detail: "Gestión de fondos de pensiones con SYSDE Pensión.",
     result: "Afiliados: 472,148. Fondos: $3,969 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Compañía de Seguros (México)",
@@ -507,7 +507,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos previsionales con SYSDE Pensión.",
     result: "Afiliados: 587,097. Fondos: $821 M USD.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "Banco ADOPEM",
@@ -823,7 +823,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión para una de las principales aseguradoras de Corea del Sur.",
     result: "Operación activa en gestión previsional internacional.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "FUNDEVI",
