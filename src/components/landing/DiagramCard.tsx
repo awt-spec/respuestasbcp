@@ -320,19 +320,23 @@ const DiagramCard = ({ item, index }: Props) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
-                <button
+              <motion.button
                   key={tab.id}
                   data-tab-id={tab.id}
                   onClick={() => setActiveTab(tab.id)}
+                  animate={!isActive ? { scale: [1, 1.06, 1], y: [0, -3, 0] } : {}}
+                  transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                   className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[11px] font-semibold transition-all ${
                     isActive
                       ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/80 ring-1 ring-primary/20"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
                   {tab.label}
-                </button>
+                </motion.button>
               );
             })}
           </div>
@@ -352,6 +356,20 @@ const DiagramCard = ({ item, index }: Props) => {
                     <p key={i} className="text-[13px] text-foreground leading-relaxed">{paragraph}</p>
                   ))}
                 </div>
+
+                {item.id === 3 && (
+                  <motion.button
+                    onClick={() => setActiveTab("references")}
+                    className="mt-5 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary/20 transition-colors"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    animate={{ scale: [1, 1.04, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  >
+                    <Users className="w-4 h-4" />
+                    {pick("Ver Referencias de Clientes", "View Client References")}
+                  </motion.button>
+                )}
 
                 {item.id === 2 && (
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
