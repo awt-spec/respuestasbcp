@@ -823,7 +823,7 @@ export const references: ReferenceItem[] = [
     detail: "Administración de fondos de pensiones con SYSDE Pensión para una de las principales aseguradoras de Corea del Sur.",
     result: "Operación activa en gestión previsional internacional.",
     focus: ["pension"],
-    core: "Fondos de Pensión",
+    core: "SYSDE Pensión",
   },
   {
     name: "FUNDEVI",
