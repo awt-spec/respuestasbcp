@@ -323,6 +323,19 @@ const DiagramCard = ({ item, index }: Props) => {
             <p className="text-xs text-foreground italic leading-relaxed">"{displayRequerimiento}"</p>
           </div>
 
+          {isPending ? (
+            <div className="rounded-xl bg-amber-500/10 border border-amber-500/30 p-6 text-center">
+              <Clock className="w-8 h-8 text-amber-500 mx-auto mb-3" />
+              <p className="text-sm font-bold text-amber-600 mb-1">
+                {pick("Respuesta en preparación", "Response in preparation")}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {pick("Esta consulta fue recibida el 20 de marzo de 2026. La respuesta será incorporada próximamente.", "This query was received on March 20, 2026. The response will be incorporated shortly.")}
+              </p>
+            </div>
+          ) : (
+            <>
+
           {/* Tab buttons */}
           <div className="flex flex-wrap gap-1.5 mb-5 p-1 rounded-xl bg-muted/40 border">
             {tabs.map((tab) => {
