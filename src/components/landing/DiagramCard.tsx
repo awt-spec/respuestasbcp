@@ -307,13 +307,20 @@ const DiagramCard = ({ item, index }: Props) => {
                 <p className="text-xs text-muted-foreground mt-0.5 font-normal">{displaySubtitle}</p>
               )}
             </div>
-            <Badge variant="outline" className={`ml-auto shrink-0 text-xs hidden sm:inline-flex ${
-              isPending 
-                ? "bg-amber-500/15 text-amber-600 border-amber-500/30"
-                : "bg-success/15 text-success border-success/30"
-            }`}>
-              {isPending ? t("card.pending") : t("card.answered")}
-            </Badge>
+            <div className="ml-auto shrink-0 flex items-center gap-2 hidden sm:flex">
+              {item.receivedDate && (
+                <span className="text-[10px] text-muted-foreground">
+                  📅 {item.receivedDate}
+                </span>
+              )}
+              <Badge variant="outline" className={`text-xs ${
+                isPending 
+                  ? "bg-amber-500/15 text-amber-600 border-amber-500/30"
+                  : "bg-success/15 text-success border-success/30"
+              }`}>
+                {isPending ? t("card.pending") : t("card.answered")}
+              </Badge>
+            </div>
           </div>
         </AccordionTrigger>
         <AccordionContent className="px-5 pb-5">

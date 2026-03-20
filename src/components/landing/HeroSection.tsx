@@ -74,7 +74,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -83,10 +83,19 @@ const HeroSection = () => {
             >
               <CheckCircle2 className="w-5 h-5" />
               <span className="text-xl font-bold">{counts.answered}</span>
-              <span className="opacity-80">{t("hero.answered")}</span>
+              <span className="opacity-80">{lang === "es" ? "respondidas" : "answered"}</span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+              className="flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-sm bg-white/10 backdrop-blur-sm text-white"
+            >
+              <span className="text-xl font-bold">{counts.pending}</span>
+              <span className="opacity-80">{lang === "es" ? "pendientes" : "pending"}</span>
             </motion.div>
             <span className="text-white/40 text-xs">
-              10 / {lang === "es" ? "marzo" : "March"} / 2026
+              {lang === "es" ? "Última actualización:" : "Last update:"} 20 / {lang === "es" ? "marzo" : "March"} / 2026
             </span>
           </div>
         </motion.div>

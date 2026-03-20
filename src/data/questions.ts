@@ -2,7 +2,7 @@ export type QuestionStatus = "answered" | "pending";
 
 export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats";
 
-export type SectionKey = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N";
+export type SectionKey = "A" | "B" | "C" | "D" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N";
 
 export interface DiagramBlock {
   type: DiagramType;
@@ -22,6 +22,7 @@ export interface QuestionItem {
   subtitle?: string;
   subtitle_en?: string;
   section: SectionKey;
+  receivedDate?: string;
   requerimiento: string;
   requerimiento_en: string;
   respuesta: string;
@@ -35,11 +36,10 @@ export interface QuestionItem {
 }
 
 export const sections = [
-  { key: "A" as const, label: "Encaje Funcional", label_en: "Functional Fit", emoji: "🏦" },
+  { key: "A" as const, label: "Funcional y Encaje", label_en: "Functional & Fit", emoji: "⚙️" },
   { key: "B" as const, label: "Presencia Regional", label_en: "Regional Presence", emoji: "🌎" },
   { key: "C" as const, label: "Modelo de Entrega", label_en: "Delivery Model", emoji: "☁️" },
   { key: "D" as const, label: "Licenciamiento", label_en: "Licensing", emoji: "📋" },
-  { key: "E" as const, label: "Funcional", label_en: "Functional", emoji: "⚙️" },
   { key: "F" as const, label: "Proceso E2E", label_en: "E2E Process", emoji: "🔄" },
   { key: "G" as const, label: "Operaciones", label_en: "Operations", emoji: "🛠️" },
   { key: "H" as const, label: "Arquitectura", label_en: "Architecture", emoji: "🏗️" },
@@ -52,13 +52,14 @@ export const sections = [
 ];
 
 export const questions: QuestionItem[] = [
-  // ── Q1-Q3: Encaje Funcional (answered) ──
+  // ── Funcional y Encaje (A) — originally "Encaje funcional" + "Funcional" ──
   {
     id: 1,
     title: "Implementaciones Recientes en Instituciones Financieras de Escala Comparable",
     title_en: "Recent Implementations in Comparable Financial Institutions",
     status: "answered",
     section: "A",
+    receivedDate: "10 marzo 2026",
     subtitle: "Portafolio activo en la región",
     subtitle_en: "Active portfolio in the region",
     requerimiento: "Confirmar si han realizado implementaciones recientes de la solución en instituciones financieras de tamaño y complejidad comparable a BCP, indicando de ser posible el alcance general de la implementación.",
@@ -84,6 +85,7 @@ export const questions: QuestionItem[] = [
     title_en: "Presence in Industry Benchmarks or Studies",
     status: "answered",
     section: "A",
+    receivedDate: "10 marzo 2026",
     subtitle: "Transparencia sobre posicionamiento en la industria",
     subtitle_en: "Transparency on industry positioning",
     requerimiento: "Indicar si la solución o la compañía aparece referenciada en algún benchmark, estudio o evaluación de la industria (por ejemplo, Gartner, Celent, Forrester u otras consultoras especializadas).",
@@ -129,6 +131,7 @@ export const questions: QuestionItem[] = [
     title_en: "Active Client References in Leasing",
     status: "answered",
     section: "A",
+    receivedDate: "10 marzo 2026",
     subtitle: "Validación directa con instituciones del sector",
     subtitle_en: "Direct validation with industry institutions",
     requerimiento: "Compartir referencias de clientes activos en el sector financiero, idealmente vinculados a operaciones de leasing financiero u operativo, que respalden la experiencia y estabilidad de la solución.",
@@ -143,67 +146,14 @@ export const questions: QuestionItem[] = [
     diagrams_en: [],
   },
 
-  // ── Q4: Presencia Regional ──
-  {
-    id: 4,
-    title: "Despliegue en Bancos de la Región LATAM",
-    title_en: "Deployment in LATAM Region Banks",
-    status: "pending",
-    section: "B",
-    subtitle: "Presencia bancaria regional",
-    subtitle_en: "Regional banking presence",
-    requerimiento: "¿Se encuentra la solución desplegada actualmente en algún banco de la región LATAM?",
-    requerimiento_en: "Is the solution currently deployed in any bank in the LATAM region?",
-    respuesta: "",
-    respuesta_en: "",
-    valor: "",
-    valor_en: "",
-    diagrams: [],
-  },
-
-  // ── Q5: Modelo de Entrega ──
-  {
-    id: 5,
-    title: "Modelo SaaS (Software as a Service)",
-    title_en: "SaaS Model (Software as a Service)",
-    status: "pending",
-    section: "C",
-    subtitle: "Modelo de entrega del software",
-    subtitle_en: "Software delivery model",
-    requerimiento: "¿El software se ofrece bajo un modelo SaaS (Software as a Service)?",
-    requerimiento_en: "Is the software offered under a SaaS (Software as a Service) model?",
-    respuesta: "",
-    respuesta_en: "",
-    valor: "",
-    valor_en: "",
-    diagrams: [],
-  },
-
-  // ── Q6: Licenciamiento ──
-  {
-    id: 6,
-    title: "Modelo de Licenciamiento",
-    title_en: "Licensing Model",
-    status: "pending",
-    section: "D",
-    subtitle: "Estructura de licenciamiento",
-    subtitle_en: "Licensing structure",
-    requerimiento: "¿Cuál es el modelo de licenciamiento de la herramienta? (número de clientes, número de créditos activos, cartera, número de operaciones).",
-    requerimiento_en: "What is the tool's licensing model? (number of clients, number of active credits, portfolio, number of operations).",
-    respuesta: "",
-    respuesta_en: "",
-    valor: "",
-    valor_en: "",
-    diagrams: [],
-  },
-
-  // ── Q7-Q11: Funcional ──
+  // ── Funcional (merged into A) — received 20 marzo 2026 ──
   {
     id: 7,
     title: "Problema Fundamental del Negocio Resuelto",
     title_en: "Fundamental Business Problem Solved",
     status: "pending",
-    section: "E",
+    section: "A",
+    receivedDate: "20 marzo 2026",
     subtitle: "Valor diferencial en implementaciones bancarias",
     subtitle_en: "Differential value in banking implementations",
     requerimiento: "En su experiencia y las implementaciones que hicieron en otros bancos (Leasing) ¿Qué problema fundamental del negocio resolvieron?",
@@ -219,7 +169,8 @@ export const questions: QuestionItem[] = [
     title: "Soporte de Leasing Financiero Bancario Regulado",
     title_en: "Regulated Bank Financial Leasing Support",
     status: "pending",
-    section: "E",
+    section: "A",
+    receivedDate: "20 marzo 2026",
     subtitle: "Entidades reguladas",
     subtitle_en: "Regulated entities",
     requerimiento: "¿La solución soporta leasing financiero bancario en entidades reguladas?",
@@ -235,7 +186,8 @@ export const questions: QuestionItem[] = [
     title: "Bancos Clientes con Leasing Financiero",
     title_en: "Client Banks with Financial Leasing",
     status: "pending",
-    section: "E",
+    section: "A",
+    receivedDate: "20 marzo 2026",
     subtitle: "Instituciones bancarias con leasing activo",
     subtitle_en: "Banking institutions with active leasing",
     requerimiento: "Indique bancos clientes donde opere leasing financiero.",
@@ -251,7 +203,8 @@ export const questions: QuestionItem[] = [
     title: "Opción de Compra, Valor Residual y Precuotas",
     title_en: "Purchase Option, Residual Value, and Pre-installments",
     status: "pending",
-    section: "E",
+    section: "A",
+    receivedDate: "20 marzo 2026",
     subtitle: "Gestión de elementos clave del leasing",
     subtitle_en: "Key leasing element management",
     requerimiento: "¿Cómo gestiona opción de compra, valor residual y precuotas?",
@@ -267,7 +220,8 @@ export const questions: QuestionItem[] = [
     title: "Relación del Leasing con Líneas de Crédito",
     title_en: "Leasing Relationship with Credit Lines",
     status: "pending",
-    section: "E",
+    section: "A",
+    receivedDate: "20 marzo 2026",
     subtitle: "Integración con líneas de crédito",
     subtitle_en: "Integration with credit lines",
     requerimiento: "¿Cómo se relaciona el leasing con líneas de crédito?",
@@ -279,13 +233,71 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q12-Q13: Proceso E2E ──
+  // ── Presencia Regional (B) ──
+  {
+    id: 4,
+    title: "Despliegue en Bancos de la Región LATAM",
+    title_en: "Deployment in LATAM Region Banks",
+    status: "pending",
+    section: "B",
+    receivedDate: "20 marzo 2026",
+    subtitle: "Presencia bancaria regional",
+    subtitle_en: "Regional banking presence",
+    requerimiento: "¿Se encuentra la solución desplegada actualmente en algún banco de la región LATAM?",
+    requerimiento_en: "Is the solution currently deployed in any bank in the LATAM region?",
+    respuesta: "",
+    respuesta_en: "",
+    valor: "",
+    valor_en: "",
+    diagrams: [],
+  },
+
+  // ── Modelo de Entrega (C) ──
+  {
+    id: 5,
+    title: "Modelo SaaS (Software as a Service)",
+    title_en: "SaaS Model (Software as a Service)",
+    status: "pending",
+    section: "C",
+    receivedDate: "20 marzo 2026",
+    subtitle: "Modelo de entrega del software",
+    subtitle_en: "Software delivery model",
+    requerimiento: "¿El software se ofrece bajo un modelo SaaS (Software as a Service)?",
+    requerimiento_en: "Is the software offered under a SaaS (Software as a Service) model?",
+    respuesta: "",
+    respuesta_en: "",
+    valor: "",
+    valor_en: "",
+    diagrams: [],
+  },
+
+  // ── Licenciamiento (D) ──
+  {
+    id: 6,
+    title: "Modelo de Licenciamiento",
+    title_en: "Licensing Model",
+    status: "pending",
+    section: "D",
+    receivedDate: "20 marzo 2026",
+    subtitle: "Estructura de licenciamiento",
+    subtitle_en: "Licensing structure",
+    requerimiento: "¿Cuál es el modelo de licenciamiento de la herramienta? (número de clientes, número de créditos activos, cartera, número de operaciones).",
+    requerimiento_en: "What is the tool's licensing model? (number of clients, number of active credits, portfolio, number of operations).",
+    respuesta: "",
+    respuesta_en: "",
+    valor: "",
+    valor_en: "",
+    diagrams: [],
+  },
+
+  // ── Proceso E2E (F) ──
   {
     id: 12,
     title: "Fases del Ciclo de Vida Cubiertas Nativamente",
     title_en: "Natively Covered Lifecycle Phases",
     status: "pending",
     section: "F",
+    receivedDate: "20 marzo 2026",
     subtitle: "Cobertura nativa end-to-end",
     subtitle_en: "Native end-to-end coverage",
     requerimiento: "¿Qué fases del ciclo de vida cubre nativamente la solución?",
@@ -302,6 +314,7 @@ export const questions: QuestionItem[] = [
     title_en: "Phases Requiring External Systems",
     status: "pending",
     section: "F",
+    receivedDate: "20 marzo 2026",
     subtitle: "Dependencias con sistemas terceros",
     subtitle_en: "Third-party system dependencies",
     requerimiento: "¿Qué fases requieren sistemas externos?",
@@ -313,13 +326,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q14: Operaciones ──
+  // ── Operaciones (G) ──
   {
     id: 14,
     title: "Gestión de Seguros, Impuestos, Multas y Siniestros",
     title_en: "Insurance, Taxes, Fines, and Claims Management",
     status: "pending",
     section: "G",
+    receivedDate: "20 marzo 2026",
     subtitle: "Administración operativa",
     subtitle_en: "Operational management",
     requerimiento: "¿Cómo se gestionan seguros, impuestos, multas y siniestros?",
@@ -331,13 +345,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q15-Q16: Arquitectura ──
+  // ── Arquitectura (H) ──
   {
     id: 15,
     title: "Capacidades de Integración vía APIs o Eventos",
     title_en: "Integration Capabilities via APIs or Events",
     status: "pending",
     section: "H",
+    receivedDate: "20 marzo 2026",
     subtitle: "Interoperabilidad con sistemas del banco",
     subtitle_en: "Interoperability with bank systems",
     requerimiento: "¿Cuenta con capacidad de integración vía APIs o eventos para el intercambio de información con otros sistemas (CRM, ERP, Pricing, Data Warehouse)?",
@@ -354,6 +369,7 @@ export const questions: QuestionItem[] = [
     title_en: "Pre-built API Layer",
     status: "pending",
     section: "H",
+    receivedDate: "20 marzo 2026",
     subtitle: "APIs base para integración con canales digitales",
     subtitle_en: "Base APIs for digital channel integration",
     requerimiento: "¿Ofrecen alguna capa de APIs preconstruidas base, para integrar la plataforma a otras plataformas del banco, por ejemplo un canal digital que necesite consultar info, o ingresar algún dato al flujo del leasing?",
@@ -365,13 +381,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q17-Q18: Datos y Reporting ──
+  // ── Datos y Reporting (I) ──
   {
     id: 17,
     title: "Reportes Regulatorios y Contables",
     title_en: "Regulatory and Accounting Reports",
     status: "pending",
     section: "I",
+    receivedDate: "20 marzo 2026",
     subtitle: "Generación de reportes",
     subtitle_en: "Report generation",
     requerimiento: "¿Cómo genera reportes regulatorios y contables?",
@@ -388,6 +405,7 @@ export const questions: QuestionItem[] = [
     title_en: "Separation of Operational, Accounting, and Regulatory Data",
     status: "pending",
     section: "I",
+    receivedDate: "20 marzo 2026",
     subtitle: "Segregación de datos",
     subtitle_en: "Data segregation",
     requerimiento: "¿Existe separación de datos operativos, contables y regulatorios?",
@@ -399,13 +417,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q19-Q20: Configuración ──
+  // ── Configuración (J) ──
   {
     id: 19,
     title: "Flexibilidad del Flujo de Leasing",
     title_en: "Leasing Flow Flexibility",
     status: "pending",
     section: "J",
+    receivedDate: "20 marzo 2026",
     subtitle: "Parametrización de entradas del flujo",
     subtitle_en: "Flow input parameterization",
     requerimiento: "¿La herramienta permite configurar y ajustar parámetros de entrada dentro del flujo de Leasing?",
@@ -422,6 +441,7 @@ export const questions: QuestionItem[] = [
     title_en: "No-code Configuration vs. Development",
     status: "pending",
     section: "J",
+    receivedDate: "20 marzo 2026",
     subtitle: "Alcance de parametrización",
     subtitle_en: "Parameterization scope",
     requerimiento: "¿Qué se configura sin desarrollo y qué requiere desarrollo?",
@@ -433,13 +453,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q21: Escalabilidad ──
+  // ── Escalabilidad (K) ──
   {
     id: 21,
     title: "Volumen Máximo de Operaciones Soportadas",
     title_en: "Maximum Supported Operations Volume",
     status: "pending",
     section: "K",
+    receivedDate: "20 marzo 2026",
     subtitle: "Capacidad de procesamiento",
     subtitle_en: "Processing capacity",
     requerimiento: "¿Volumen máximo de operaciones soportadas actualmente?",
@@ -451,13 +472,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q22: Gobernanza ──
+  // ── Gobernanza (L) ──
   {
     id: 22,
     title: "Roadmap de Leasing a 3 Años",
     title_en: "3-Year Leasing Roadmap",
     status: "pending",
     section: "L",
+    receivedDate: "20 marzo 2026",
     subtitle: "Visión de evolución del producto",
     subtitle_en: "Product evolution vision",
     requerimiento: "¿Cuál es el roadmap de leasing a 3 años?",
@@ -469,13 +491,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q23: Transparencia ──
+  // ── Transparencia (M) ──
   {
     id: 23,
     title: "Funcionalidades No Cubiertas Actualmente",
     title_en: "Currently Uncovered Functionalities",
     status: "pending",
     section: "M",
+    receivedDate: "20 marzo 2026",
     subtitle: "Transparencia sobre limitaciones",
     subtitle_en: "Transparency on limitations",
     requerimiento: "¿Qué funcionalidades de leasing bancario NO cubre hoy la solución?",
@@ -487,13 +510,14 @@ export const questions: QuestionItem[] = [
     diagrams: [],
   },
 
-  // ── Q24-Q27: Soporte y Técnico ──
+  // ── Soporte y Técnico (N) ──
   {
     id: 24,
     title: "Representante Local o Regional",
     title_en: "Local or Regional Representative",
     status: "pending",
     section: "N",
+    receivedDate: "20 marzo 2026",
     subtitle: "Soporte e implementación local",
     subtitle_en: "Local support and implementation",
     requerimiento: "¿Tienen algún representante que implemente y soporte la aplicación de forma local o en la región?",
@@ -510,6 +534,7 @@ export const questions: QuestionItem[] = [
     title_en: "Observability and OpenTelemetry",
     status: "pending",
     section: "N",
+    receivedDate: "20 marzo 2026",
     subtitle: "Trazabilidad y monitoreo",
     subtitle_en: "Traceability and monitoring",
     requerimiento: "¿La solución puede emitir trazas hacia un colector externo (idealmente con estándar de OpenTelemetry) o solo soporta herramientas propias/terceras específicas para la Observabilidad?",
@@ -526,6 +551,7 @@ export const questions: QuestionItem[] = [
     title_en: "Sensitive Data, Audit, and ISO Certifications",
     status: "pending",
     section: "N",
+    receivedDate: "20 marzo 2026",
     subtitle: "Seguridad y cumplimiento",
     subtitle_en: "Security and compliance",
     requerimiento: "¿Cómo gestionan datos sensibles y auditoría? ¿Cuentan con certificaciones tipo ISO?",
@@ -542,6 +568,7 @@ export const questions: QuestionItem[] = [
     title_en: "Integrations with Municipalities or SAT",
     status: "pending",
     section: "N",
+    receivedDate: "20 marzo 2026",
     subtitle: "Consulta de papeletas y entidades gubernamentales",
     subtitle_en: "Government entity and ticket queries",
     requerimiento: "¿Tienen integraciones existentes (o experiencias reales) con municipalidades o entidades como SAT para consulta/actualización de papeletas? Si sí: ¿cuál entidad, qué modalidad (API, batch, portal), y qué periodicidad?",
