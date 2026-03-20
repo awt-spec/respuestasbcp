@@ -547,20 +547,17 @@ export const questions: QuestionItem[] = [
       {
         type: "flow" as const,
         title: "Flujo de Observabilidad — SYSDE PLUS",
-        title_en: "Observability Flow — SYSDE PLUS",
         steps: [
-          { icon: "📡", label: "Instrumentación", label_en: "Instrumentation", description: "Trazas automáticas en flujos transaccionales", description_en: "Automatic traces in transactional flows" },
-          { icon: "📤", label: "Exportación OTLP", label_en: "OTLP Export", description: "Protocolo estándar OpenTelemetry", description_en: "OpenTelemetry standard protocol" },
-          { icon: "🔗", label: "Colector Externo", label_en: "External Collector", description: "Jaeger, Datadog, Grafana, etc.", description_en: "Jaeger, Datadog, Grafana, etc." },
-          { icon: "📊", label: "Dashboards", label_en: "Dashboards", description: "Visualización y alertas en tiempo real", description_en: "Real-time visualization and alerts" },
+          { icon: "📡", label: "Instrumentación", description: "Trazas automáticas en flujos transaccionales" },
+          { icon: "📤", label: "Exportación OTLP", description: "Protocolo estándar OpenTelemetry" },
+          { icon: "🔗", label: "Colector Externo", description: "Jaeger, Datadog, Grafana, etc." },
+          { icon: "📊", label: "Dashboards", description: "Visualización y alertas en tiempo real" },
         ],
       },
       {
         type: "table" as const,
         title: "Compatibilidad de Herramientas",
-        title_en: "Tool Compatibility",
         headers: ["Categoría", "Herramientas Soportadas", "Protocolo"],
-        headers_en: ["Category", "Supported Tools", "Protocol"],
         rows: [
           ["Trazas distribuidas", "Jaeger, Zipkin, Grafana Tempo, Datadog, New Relic", "OTLP / W3C Trace Context"],
           ["Métricas", "Prometheus, Datadog, Dynatrace, CloudWatch", "OTLP / Prometheus"],
