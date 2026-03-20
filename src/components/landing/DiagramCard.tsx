@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiagramBlock, QuestionItem } from "@/data/questions";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, MessageSquare, BarChart3, Users, MapPin, Layers, Briefcase, PiggyBank, TrendingUp } from "lucide-react";
+import { CheckCircle2, Clock, MessageSquare, BarChart3, Users, MapPin, Layers, Briefcase, PiggyBank, TrendingUp } from "lucide-react";
 import ReferencesSection from "./ReferencesSection";
 import {
   AccordionContent,
@@ -254,6 +254,7 @@ interface Props {
 const DiagramCard = ({ item, index }: Props) => {
   const { lang, t } = useI18n();
   const [activeTab, setActiveTab] = useState<string>("response");
+  const isPending = item.status === "pending";
 
   const pick = <T,>(es: T, en?: T): T => {
     if (lang === "en") return en ?? es;
@@ -293,7 +294,11 @@ const DiagramCard = ({ item, index }: Props) => {
       >
         <AccordionTrigger className="px-5 py-4 hover:no-underline hover:bg-muted/30 transition-colors">
           <div className="flex items-center gap-3 text-left">
-            <CheckCircle2 className="w-5 h-5 shrink-0 text-success" />
+            {isPending ? (
+              <Clock className="w-5 h-5 shrink-0 text-amber-500" />
+            ) : (
+              <CheckCircle2 className="w-5 h-5 shrink-0 text-success" />
+            )}
             <div className="flex-1 min-w-0">
               <span className="font-semibold text-sm md:text-base">
                 #{item.id} — {displayTitle}
@@ -302,8 +307,12 @@ const DiagramCard = ({ item, index }: Props) => {
                 <p className="text-xs text-muted-foreground mt-0.5 font-normal">{displaySubtitle}</p>
               )}
             </div>
-            <Badge variant="outline" className="ml-auto shrink-0 text-xs bg-success/15 text-success border-success/30 hidden sm:inline-flex">
-              {t("card.answered")}
+            <Badge variant="outline" className={`ml-auto shrink-0 text-xs hidden sm:inline-flex ${
+              isPending 
+                ? "bg-amber-500/15 text-amber-600 border-amber-500/30"
+                : "bg-success/15 text-success border-success/30"
+            }`}>
+              {isPending ? t("card.pending") : t("card.answered")}
             </Badge>
           </div>
         </AccordionTrigger>
@@ -313,6 +322,19 @@ const DiagramCard = ({ item, index }: Props) => {
             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1.5">📌 {t("card.requirement")}</p>
             <p className="text-xs text-foreground italic leading-relaxed">"{displayRequerimiento}"</p>
           </div>
+
+          {isPending ? (
+            <div className="rounded-xl bg-amber-500/10 border border-amber-500/30 p-6 text-center">
+              <Clock className="w-8 h-8 text-amber-500 mx-auto mb-3" />
+              <p className="text-sm font-bold text-amber-600 mb-1">
+                {pick("Respuesta en preparación", "Response in preparation")}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {pick("Esta consulta fue recibida el 20 de marzo de 2026. La respuesta será incorporada próximamente.", "This query was received on March 20, 2026. The response will be incorporated shortly.")}
+              </p>
+            </div>
+          ) : (
+            <>
 
           {/* Tab buttons */}
           <div className="flex flex-wrap gap-1.5 mb-5 p-1 rounded-xl bg-muted/40 border">
@@ -448,6 +470,8 @@ const DiagramCard = ({ item, index }: Props) => {
             )}
 
           </AnimatePresence>
+          </>
+          )}
         </AccordionContent>
       </AccordionItem>
     </motion.div>

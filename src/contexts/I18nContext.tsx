@@ -23,7 +23,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.sections": { es: "Sección", en: "Section" },
 
   // Dashboard
-  "dash.answered": { es: "consultas respondidas", en: "queries answered" },
+  "dash.answered": { es: "respondidas", en: "answered" },
+  "dash.pending": { es: "pendientes", en: "pending" },
   "dash.of": { es: "de", en: "of" },
 
   // Sections
@@ -31,6 +32,7 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Cards
   "card.answered": { es: "✅ Respondida", en: "✅ Answered" },
+  "card.pending": { es: "⏳ Pendiente", en: "⏳ Pending" },
   "card.requirement": { es: "Consulta BCP", en: "BCP Query" },
   "card.response": { es: "Respuesta SYSDE", en: "SYSDE Response" },
   "card.value": { es: "Valor para BCP", en: "Value for BCP" },
