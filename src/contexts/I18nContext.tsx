@@ -23,7 +23,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.sections": { es: "Sección", en: "Section" },
 
   // Dashboard
-  "dash.answered": { es: "consultas respondidas", en: "queries answered" },
+  "dash.answered": { es: "respondidas", en: "answered" },
+  "dash.pending": { es: "pendientes", en: "pending" },
   "dash.of": { es: "de", en: "of" },
 
   // Sections
