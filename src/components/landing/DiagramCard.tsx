@@ -470,6 +470,8 @@ const DiagramCard = ({ item, index }: Props) => {
             )}
 
           </AnimatePresence>
+          </>
+          )}
         </AccordionContent>
       </AccordionItem>
     </motion.div>
