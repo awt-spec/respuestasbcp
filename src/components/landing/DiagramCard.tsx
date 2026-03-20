@@ -254,6 +254,7 @@ interface Props {
 const DiagramCard = ({ item, index }: Props) => {
   const { lang, t } = useI18n();
   const [activeTab, setActiveTab] = useState<string>("response");
+  const isPending = item.status === "pending";
 
   const pick = <T,>(es: T, en?: T): T => {
     if (lang === "en") return en ?? es;
