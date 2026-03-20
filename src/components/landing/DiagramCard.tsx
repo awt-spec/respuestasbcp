@@ -294,7 +294,11 @@ const DiagramCard = ({ item, index }: Props) => {
       >
         <AccordionTrigger className="px-5 py-4 hover:no-underline hover:bg-muted/30 transition-colors">
           <div className="flex items-center gap-3 text-left">
-            <CheckCircle2 className="w-5 h-5 shrink-0 text-success" />
+            {isPending ? (
+              <Clock className="w-5 h-5 shrink-0 text-amber-500" />
+            ) : (
+              <CheckCircle2 className="w-5 h-5 shrink-0 text-success" />
+            )}
             <div className="flex-1 min-w-0">
               <span className="font-semibold text-sm md:text-base">
                 #{item.id} — {displayTitle}
@@ -303,8 +307,12 @@ const DiagramCard = ({ item, index }: Props) => {
                 <p className="text-xs text-muted-foreground mt-0.5 font-normal">{displaySubtitle}</p>
               )}
             </div>
-            <Badge variant="outline" className="ml-auto shrink-0 text-xs bg-success/15 text-success border-success/30 hidden sm:inline-flex">
-              {t("card.answered")}
+            <Badge variant="outline" className={`ml-auto shrink-0 text-xs hidden sm:inline-flex ${
+              isPending 
+                ? "bg-amber-500/15 text-amber-600 border-amber-500/30"
+                : "bg-success/15 text-success border-success/30"
+            }`}>
+              {isPending ? t("card.pending") : t("card.answered")}
             </Badge>
           </div>
         </AccordionTrigger>
