@@ -32,6 +32,7 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Cards
   "card.answered": { es: "✅ Respondida", en: "✅ Answered" },
+  "card.pending": { es: "⏳ Pendiente", en: "⏳ Pending" },
   "card.requirement": { es: "Consulta BCP", en: "BCP Query" },
   "card.response": { es: "Respuesta SYSDE", en: "SYSDE Response" },
   "card.value": { es: "Valor para BCP", en: "Value for BCP" },
