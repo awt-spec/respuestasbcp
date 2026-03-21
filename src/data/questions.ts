@@ -436,11 +436,23 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Integration with credit lines",
     requerimiento: "¿Cómo se relaciona el leasing con líneas de crédito?",
     requerimiento_en: "How does leasing relate to credit lines?",
-    respuesta: "𝗚𝗲𝘀𝘁𝗶ó𝗻 𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝗱𝗮: SYSDE PLUS gestiona la relación entre leasing y líneas de crédito nativamente a través de su módulo de exposición crediticia.\n\n𝗖𝗮𝗽𝗮𝗰𝗶𝗱𝗮𝗱𝗲𝘀 𝗣𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹𝗲𝘀:\n• 𝗔𝘀𝗶𝗴𝗻𝗮𝗰𝗶ó𝗻 𝗮𝘂𝘁𝗼𝗺á𝘁𝗶𝗰𝗮: Cada operación de leasing consume cupo al desembolso y lo libera al amortizar\n• 𝗟í𝗻𝗲𝗮𝘀 𝗰𝗼𝗺𝗽𝗮𝗿𝘁𝗶𝗱𝗮𝘀: Una línea puede cubrir leasing, factoring y créditos con visión consolidada\n• 𝗖𝗼𝗻𝘁𝗿𝗼𝗹 𝗲𝗻 𝘁𝗶𝗲𝗺𝗽𝗼 𝗿𝗲𝗮𝗹: Validación automática de cupo disponible antes de autorizar desembolso\n• 𝗦𝘂𝗯𝗹í𝗺𝗶𝘁𝗲𝘀: Soporte para sublíneas dentro de una línea maestra\n• 𝗩𝗶𝘀𝘁𝗮 𝗰𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝗱𝗮: Panel unificado con líneas aprobadas, cupo por producto, disponible y vencimiento\n• 𝗥𝗲𝗻𝗼𝘃𝗮𝗰𝗶ó𝗻: Flujos parametrizables con impacto automático en operaciones vigentes",
-    respuesta_en: "𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗲𝗱 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁: SYSDE PLUS natively manages the leasing-credit line relationship through its credit exposure module.\n\n𝗞𝗲𝘆 𝗖𝗮𝗽𝗮𝗯𝗶𝗹𝗶𝘁𝗶𝗲𝘀:\n• 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝗰 𝗮𝘀𝘀𝗶𝗴𝗻𝗺𝗲𝗻𝘁: Each leasing operation consumes limit on disbursement and releases on amortization\n• 𝗦𝗵𝗮𝗿𝗲𝗱 𝗹𝗶𝗻𝗲𝘀: One line can cover leasing, factoring, and credits with consolidated view\n• 𝗥𝗲𝗮𝗹-𝘁𝗶𝗺𝗲 𝗰𝗼𝗻𝘁𝗿𝗼𝗹: Automatic available limit validation before authorizing disbursement\n• 𝗦𝘂𝗯-𝗹𝗶𝗺𝗶𝘁𝘀: Support for sub-lines within a master line\n• 𝗖𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝘁𝗲𝗱 𝘃𝗶𝗲𝘄: Unified panel with approved lines, limit by product, available, and expiration\n• 𝗥𝗲𝗻𝗲𝘄𝗮𝗹: Parameterizable flows with automatic impact on active operations",
+    respuesta: "𝗚𝗲𝘀𝘁𝗶ó𝗻 𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝗱𝗮: SYSDE PLUS gestiona la relación entre leasing y líneas de crédito nativamente a través de su Módulo de Cliente, el cual actúa como el núcleo central del ecosistema.\n\n𝗘𝗹 𝗠ó𝗱𝘂𝗹𝗼 𝗱𝗲 𝗖𝗹𝗶𝗲𝗻𝘁𝗲 𝗰𝗼𝗺𝗼 𝗻ú𝗰𝗹𝗲𝗼: Todo parte del cliente. El Módulo de Cliente es el sol del ecosistema SYSDE PLUS, y alrededor de él orbitan todos los productos financieros: Leasing, Factoraje, Préstamos, Pensiones, Workflow y más. Esto garantiza una vista 360° del cliente y su exposición crediticia consolidada.\n\n𝗖𝗮𝗽𝗮𝗰𝗶𝗱𝗮𝗱𝗲𝘀 𝗣𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹𝗲𝘀:\n• 𝗔𝘀𝗶𝗴𝗻𝗮𝗰𝗶ó𝗻 𝗮𝘂𝘁𝗼𝗺á𝘁𝗶𝗰𝗮: Cada operación de leasing consume cupo al desembolso y lo libera al amortizar\n• 𝗟í𝗻𝗲𝗮𝘀 𝗰𝗼𝗺𝗽𝗮𝗿𝘁𝗶𝗱𝗮𝘀: Una línea puede cubrir leasing, factoring y créditos con visión consolidada\n• 𝗖𝗼𝗻𝘁𝗿𝗼𝗹 𝗲𝗻 𝘁𝗶𝗲𝗺𝗽𝗼 𝗿𝗲𝗮𝗹: Validación automática de cupo disponible antes de autorizar desembolso\n• 𝗦𝘂𝗯𝗹í𝗺𝗶𝘁𝗲𝘀: Soporte para sublíneas dentro de una línea maestra\n• 𝗩𝗶𝘀𝘁𝗮 𝗰𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝗱𝗮: Panel unificado con líneas aprobadas, cupo por producto, disponible y vencimiento\n• 𝗥𝗲𝗻𝗼𝘃𝗮𝗰𝗶ó𝗻: Flujos parametrizables con impacto automático en operaciones vigentes",
+    respuesta_en: "𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗲𝗱 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁: SYSDE PLUS natively manages the leasing-credit line relationship through its Client Module, which acts as the central hub of the ecosystem.\n\n𝗖𝗹𝗶𝗲𝗻𝘁 𝗠𝗼𝗱𝘂𝗹𝗲 𝗮𝘀 𝘁𝗵𝗲 𝗖𝗼𝗿𝗲: Everything starts with the client. The Client Module is the sun of the SYSDE PLUS ecosystem, with all financial products orbiting around it: Leasing, Factoring, Loans, Pensions, Workflow, and more. This guarantees a 360° client view with consolidated credit exposure.\n\n𝗞𝗲𝘆 𝗖𝗮𝗽𝗮𝗯𝗶𝗹𝗶𝘁𝗶𝗲𝘀:\n• 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝗰 𝗮𝘀𝘀𝗶𝗴𝗻𝗺𝗲𝗻𝘁: Each leasing operation consumes limit on disbursement and releases on amortization\n• 𝗦𝗵𝗮𝗿𝗲𝗱 𝗹𝗶𝗻𝗲𝘀: One line can cover leasing, factoring, and credits with consolidated view\n• 𝗥𝗲𝗮𝗹-𝘁𝗶𝗺𝗲 𝗰𝗼𝗻𝘁𝗿𝗼𝗹: Automatic available limit validation before authorizing disbursement\n• 𝗦𝘂𝗯-𝗹𝗶𝗺𝗶𝘁𝘀: Support for sub-lines within a master line\n• 𝗖𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝘁𝗲𝗱 𝘃𝗶𝗲𝘄: Unified panel with approved lines, limit by product, available, and expiration\n• 𝗥𝗲𝗻𝗲𝘄𝗮𝗹: Parameterizable flows with automatic impact on active operations",
     valor: "La gestión integrada de líneas de crédito permite a BCP tener control en tiempo real de la exposición crediticia de cada cliente a través de todos los productos financieros.",
     valor_en: "Integrated credit line management allows BCP to have real-time control of each client's credit exposure across all financial products.",
     diagrams: [
+      {
+        type: "grid" as const,
+        title: "☀️ Sistema Solar SYSDE PLUS — Módulo de Cliente como Núcleo",
+        items: [
+          "☀️ MÓDULO DE CLIENTE — Núcleo central del ecosistema, vista 360° del cliente",
+          "🪐 LEASING — Leasing financiero y operativo integrado al cliente",
+          "🪐 FACTORAJE — Factoring con líneas compartidas y exposición consolidada",
+          "🪐 PRÉSTAMOS — Créditos directos vinculados a la línea maestra",
+          "🪐 PENSIONES — Fondos de pensión con gestión centralizada",
+          "🪐 WORKFLOW — Motor de procesos y flujos de aprobación",
+        ],
+      },
       {
         type: "flow" as const,
         title: "Flujo de Línea de Crédito en Leasing",
@@ -464,6 +476,18 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      {
+        type: "grid" as const,
+        title: "☀️ SYSDE PLUS Solar System — Client Module as the Core",
+        items: [
+          "☀️ CLIENT MODULE — Central hub of the ecosystem, 360° client view",
+          "🪐 LEASING — Financial and operational leasing integrated to the client",
+          "🪐 FACTORING — Factoring with shared lines and consolidated exposure",
+          "🪐 LOANS — Direct credits linked to the master line",
+          "🪐 PENSIONS — Pension funds with centralized management",
+          "🪐 WORKFLOW — Process engine and approval flows",
+        ],
+      },
       {
         type: "flow" as const,
         title: "Credit Line Flow in Leasing",
