@@ -742,54 +742,10 @@ export const questions: QuestionItem[] = [
     valor: "La capa de APIs y eventos permite integrar SYSDE PLUS con cualquier sistema del ecosistema tecnológico de BCP de forma estandarizada y segura.",
     valor_en: "The API and event layer enables integrating SYSDE PLUS with any system in BCP's technology ecosystem in a standardized and secure manner.",
     diagrams: [
-      {
-        type: "flow" as const,
-        title: "Arquitectura de Integración",
-        steps: [
-          { icon: "🔌", label: "APIs REST", description: "200+ endpoints documentados" },
-          { icon: "📡", label: "Eventos", description: "Webhooks + Message Brokers" },
-          { icon: "🔐", label: "Seguridad", description: "OAuth 2.0 / JWT" },
-          { icon: "🏦", label: "Sistemas Banco", description: "CRM, ERP, Core, DWH" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Integraciones Soportadas",
-        headers: ["Sistema", "Tipo de Integración", "Dirección", "Protocolo"],
-        rows: [
-          ["CRM", "API REST", "Bidireccional", "OAuth 2.0"],
-          ["ERP / SAP", "API REST + Batch", "SYSDE → ERP", "API / Archivos"],
-          ["Core Bancario", "API REST + Eventos", "Bidireccional", "OAuth 2.0 / Webhooks"],
-          ["Data Warehouse", "API REST + DB Views", "SYSDE → DWH", "API / Conexión directa"],
-          ["Pricing", "API REST", "Pricing → SYSDE", "OAuth 2.0"],
-          ["Canales Digitales", "API REST", "Canales → SYSDE", "OAuth 2.0 / JWT"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "flow" as const,
-        title: "Integration Architecture",
-        steps: [
-          { icon: "🔌", label: "REST APIs", description: "200+ documented endpoints" },
-          { icon: "📡", label: "Events", description: "Webhooks + Message Brokers" },
-          { icon: "🔐", label: "Security", description: "OAuth 2.0 / JWT" },
-          { icon: "🏦", label: "Bank Systems", description: "CRM, ERP, Core, DWH" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Supported Integrations",
-        headers: ["System", "Integration Type", "Direction", "Protocol"],
-        rows: [
-          ["CRM", "REST API", "Bidirectional", "OAuth 2.0"],
-          ["ERP / SAP", "REST API + Batch", "SYSDE → ERP", "API / Files"],
-          ["Core Banking", "REST API + Events", "Bidirectional", "OAuth 2.0 / Webhooks"],
-          ["Data Warehouse", "REST API + DB Views", "SYSDE → DWH", "API / Direct connection"],
-          ["Pricing", "REST API", "Pricing → SYSDE", "OAuth 2.0"],
-          ["Digital Channels", "REST API", "Channels → SYSDE", "OAuth 2.0 / JWT"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
   },
   {
