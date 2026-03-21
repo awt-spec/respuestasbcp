@@ -176,6 +176,7 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "interactive-apis": return <InteractiveAPIs key={key} />;
     case "licensing": return <LicensingShowcase key={key} />;
     case "lifecycle": return <InteractiveLifecycle key={key} />;
+    case "interactive-security": return <InteractiveSecurity key={key} />;
     default: return null;
   }
 };
