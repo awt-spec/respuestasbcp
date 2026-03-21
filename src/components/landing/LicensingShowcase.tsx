@@ -27,7 +27,7 @@ const LicensingShowcase = () => {
           className="relative"
         >
           <div className="w-36 h-36 rounded-full bg-gradient-to-br from-primary via-primary to-[hsl(352,70%,35%)] flex flex-col items-center justify-center shadow-2xl shadow-primary/30">
-            <Infinity className="w-10 h-10 text-primary-foreground mb-1" />
+            <InfinityIcon className="w-10 h-10 text-primary-foreground mb-1" />
             <p className="text-primary-foreground text-sm font-extrabold">{pick("ILIMITADO", "UNLIMITED")}</p>
             <p className="text-primary-foreground/80 text-[9px] font-medium">{pick("Suscripción", "Subscription")}</p>
           </div>

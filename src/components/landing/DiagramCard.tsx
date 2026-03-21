@@ -195,7 +195,7 @@ const VisualDetailPanel = ({ diagrams }: { diagrams: DiagramBlock[] }) => {
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
   const [activeVisualTab, setActiveVisualTab] = useState("ecosystem");
 
-  const hasRichSections = diagrams.some((d) => d.type === "ecosystem" || d.type === "stats");
+  const hasRichSections = diagrams.some((d) => d.type === "ecosystem") && diagrams.some((d) => d.type === "stats");
   const plainDiagrams = diagrams.filter((d) => d.type !== "ecosystem" && d.type !== "stats");
 
   if (!hasRichSections) {
