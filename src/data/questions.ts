@@ -764,54 +764,10 @@ export const questions: QuestionItem[] = [
     valor: "El core de APIs preconstruidas permite a BCP integrar el leasing en sus canales digitales (banca en línea, app móvil) de forma rápida y estandarizada, sin desarrollo desde cero.",
     valor_en: "The pre-built API core allows BCP to integrate leasing into its digital channels (online banking, mobile app) quickly and standardizedly, without building from scratch.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Categorías de APIs Preconstruidas",
-        headers: ["Categoría", "Endpoints Clave", "Uso Típico"],
-        rows: [
-          ["Consulta (Read)", "Estados, saldos, planes de pago, documentos", "Portal web, app móvil, reportería"],
-          ["Ingreso (Write)", "Solicitudes, documentos, pagos, simulaciones", "Canales digitales, CRM"],
-          ["Flujo (Workflow)", "Aprobaciones, estados, notificaciones", "Automatización de procesos"],
-          ["Documentación", "OpenAPI/Swagger + sandbox de pruebas", "Equipo de desarrollo del banco"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Herramientas para Desarrolladores",
-        items: [
-          "📖 Documentación OpenAPI/Swagger completa",
-          "🧪 Sandbox de pruebas disponible",
-          "🧩 SDKs de referencia para integración",
-          "📘 Guías de integración paso a paso",
-          "🔐 OAuth 2.0 / JWT en todos los endpoints",
-          "🔄 Versionamiento de APIs para compatibilidad",
-        ],
-      },
+      { type: "interactive-apis" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Pre-built API Categories",
-        headers: ["Category", "Key Endpoints", "Typical Use"],
-        rows: [
-          ["Query (Read)", "Statuses, balances, payment plans, documents", "Web portal, mobile app, reporting"],
-          ["Input (Write)", "Applications, documents, payments, simulations", "Digital channels, CRM"],
-          ["Workflow", "Approvals, statuses, notifications", "Process automation"],
-          ["Documentation", "OpenAPI/Swagger + test sandbox", "Bank development team"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Developer Tools",
-        items: [
-          "📖 Complete OpenAPI/Swagger documentation",
-          "🧪 Test sandbox available",
-          "🧩 Reference SDKs for integration",
-          "📘 Step-by-step integration guides",
-          "🔐 OAuth 2.0 / JWT on all endpoints",
-          "🔄 API versioning for compatibility",
-        ],
-      },
+      { type: "interactive-apis" as DiagramType },
     ],
   },
 
