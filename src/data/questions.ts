@@ -672,9 +672,11 @@ export const questions: QuestionItem[] = [
     valor: "La cobertura end-to-end nativa elimina la necesidad de sistemas auxiliares para las operaciones core de leasing, reduciendo complejidad y riesgo operativo.",
     valor_en: "Native end-to-end coverage eliminates the need for auxiliary systems for core leasing operations, reducing complexity and operational risk.",
     diagrams: [
+      { type: "lifecycle" as DiagramType },
       { type: "embed" as DiagramType, title: "Demo Interactiva — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
     diagrams_en: [
+      { type: "lifecycle" as DiagramType },
       { type: "embed" as DiagramType, title: "Interactive Demo — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
   },
