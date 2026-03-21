@@ -305,7 +305,8 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  if (item.id === 3 || item.id === 1) {
+  const clientRefIds = [1, 3, 4, 7, 8, 9, 11, 24];
+  if (clientRefIds.includes(item.id)) {
     tabs.push({ id: "references", label: item.id === 1 ? pick("Implementación en Proceso", "Implementation in Progress") : t("card.references"), icon: Users });
   }
 
@@ -419,7 +420,7 @@ const DiagramCard = ({ item, index }: Props) => {
                   </div>
                 )}
 
-                {item.id === 3 && (
+                {clientRefIds.includes(item.id) && item.id !== 1 && (
                   <motion.button
                     onClick={() => setActiveTab("references")}
                     className="mt-5 flex items-center gap-2 px-5 py-3 rounded-xl bg-destructive/10 text-destructive border-2 border-destructive/40 text-sm font-bold hover:bg-destructive/20 transition-colors shadow-md animate-bounce"
