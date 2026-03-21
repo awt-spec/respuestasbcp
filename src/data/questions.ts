@@ -667,16 +667,14 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Native end-to-end coverage",
     requerimiento: "¿Qué fases del ciclo de vida cubre nativamente la solución?",
     requerimiento_en: "What lifecycle phases does the solution natively cover?",
-    respuesta: "𝗖𝗼𝗯𝗲𝗿𝘁𝘂𝗿𝗮: SYSDE PLUS cubre nativamente el ciclo de vida completo (end-to-end) del leasing financiero, desde originación hasta finalización del contrato.\n\n𝗙𝗮𝘀𝗲𝘀 𝗱𝗲𝗹 𝗖𝗶𝗰𝗹𝗼:\n① 𝗢𝗿𝗶𝗴𝗶𝗻𝗮𝗰𝗶ó𝗻: Captura de solicitud, datos de cliente/activo, simulación de condiciones, propuesta comercial\n② 𝗘𝘃𝗮𝗹𝘂𝗮𝗰𝗶ó𝗻 𝗖𝗿𝗲𝗱𝗶𝘁𝗶𝗰𝗶𝗮: Integración con burós, scoring interno, análisis de capacidad de pago\n③ 𝗔𝗽𝗿𝗼𝗯𝗮𝗰𝗶ó𝗻: Flujos parametrizables por monto, tipo de activo y nivel jerárquico\n④ 𝗙𝗼𝗿𝗺𝗮𝗹𝗶𝘇𝗮𝗰𝗶ó𝗻: Generación de contratos, pagarés, firma electrónica, gestión documental\n⑤ 𝗗𝗲𝘀𝗲𝗺𝗯𝗼𝗹𝘀𝗼: Autorización y ejecución con integración a sistemas de pago\n⑥ 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗰𝗶ó𝗻: Cuotas, facturación, ajustes de tasa, restructuraciones, cesiones\n⑦ 𝗚𝗲𝘀𝘁𝗶ó𝗻 𝗱𝗲 𝗔𝗰𝘁𝗶𝘃𝗼𝘀: Registro, valuaciones, depreciación, seguros, garantías\n⑧ 𝗖𝗼𝗯𝗿𝗼: Aplicación de pagos, gestión de mora, intereses moratorios\n⑨ 𝗖𝗼𝗻𝘁𝗮𝗯𝗶𝗹𝗶𝗱𝗮𝗱: Asientos automáticos NIIF/IFRS 16, conciliación, cierre contable\n⑩ 𝗙𝗶𝗻𝗮𝗹𝗶𝘇𝗮𝗰𝗶ó𝗻: Opción de compra, devolución, renovación o terminación anticipada\n\nPara ver una demostración interactiva del ciclo de vida, explore el tab de Detalle Visual.",
-    respuesta_en: "𝗖𝗼𝘃𝗲𝗿𝗮𝗴𝗲: SYSDE PLUS natively covers the complete leasing lifecycle (end-to-end), from origination to contract finalization.\n\n𝗟𝗶𝗳𝗲𝗰𝘆𝗰𝗹𝗲 𝗣𝗵𝗮𝘀𝗲𝘀:\n① 𝗢𝗿𝗶𝗴𝗶𝗻𝗮𝘁𝗶𝗼𝗻 ② 𝗖𝗿𝗲𝗱𝗶𝘁 𝗘𝘃𝗮𝗹𝘂𝗮𝘁𝗶𝗼𝗻 ③ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 ④ 𝗙𝗼𝗿𝗺𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻 ⑤ 𝗗𝗶𝘀𝗯𝘂𝗿𝘀𝗲𝗺𝗲𝗻𝘁 ⑥ 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝘁𝗶𝗼𝗻 ⑦ 𝗔𝘀𝘀𝗲𝘁 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 ⑧ 𝗖𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 ⑨ 𝗔𝗰𝗰𝗼𝘂𝗻𝘁𝗶𝗻𝗴 ⑩ 𝗙𝗶𝗻𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻\n\nExplore the Visual Detail tab for an interactive demo.",
+    respuesta: "SYSDE PLUS cubre nativamente el ciclo de vida completo (end-to-end) del leasing financiero, desde originación hasta finalización del contrato. Haga click en cada fase para ver el detalle.",
+    respuesta_en: "SYSDE PLUS natively covers the complete leasing lifecycle (end-to-end), from origination to contract finalization. Click on each phase for details.",
     valor: "La cobertura end-to-end nativa elimina la necesidad de sistemas auxiliares para las operaciones core de leasing, reduciendo complejidad y riesgo operativo.",
     valor_en: "Native end-to-end coverage eliminates the need for auxiliary systems for core leasing operations, reducing complexity and operational risk.",
     diagrams: [
-      { type: "lifecycle" as DiagramType },
       { type: "embed" as DiagramType, title: "Demo Interactiva — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
     diagrams_en: [
-      { type: "lifecycle" as DiagramType },
       { type: "embed" as DiagramType, title: "Interactive Demo — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
   },
