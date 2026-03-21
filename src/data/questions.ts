@@ -1,6 +1,6 @@
 export type QuestionStatus = "answered" | "pending";
 
-export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing";
+export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing" | "lifecycle";
 
 export type SectionKey = "A" | "B" | "C" | "D" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N";
 
@@ -672,9 +672,11 @@ export const questions: QuestionItem[] = [
     valor: "La cobertura end-to-end nativa elimina la necesidad de sistemas auxiliares para las operaciones core de leasing, reduciendo complejidad y riesgo operativo.",
     valor_en: "Native end-to-end coverage eliminates the need for auxiliary systems for core leasing operations, reducing complexity and operational risk.",
     diagrams: [
+      { type: "lifecycle" as DiagramType },
       { type: "embed" as DiagramType, title: "Demo Interactiva — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
     diagrams_en: [
+      { type: "lifecycle" as DiagramType },
       { type: "embed" as DiagramType, title: "Interactive Demo — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
   },
