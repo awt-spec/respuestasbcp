@@ -12,6 +12,10 @@ import {
 import { useI18n } from "@/contexts/I18nContext";
 import SafEcosystem from "./SafEcosystem";
 import SysdeStats from "./SysdeStats";
+import IntegrationOrbit from "./IntegrationOrbit";
+import InteractiveOperations from "./InteractiveOperations";
+import InteractiveAPIs from "./InteractiveAPIs";
+import LicensingShowcase from "./LicensingShowcase";
 
 /* ─── Diagram Renderers ─── */
 
@@ -141,6 +145,20 @@ const ListDiagram = ({ block }: { block: DiagramBlock }) => (
   </div>
 );
 
+const EmbedDiagram = ({ block }: { block: DiagramBlock }) => (
+  <div>
+    {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
+    <div className="rounded-xl overflow-hidden border shadow-sm">
+      <iframe
+        src={block.url}
+        className="w-full h-[500px] md:h-[650px] border-0"
+        title={block.title || "Demo"}
+        allowFullScreen
+      />
+    </div>
+  </div>
+);
+
 const renderDiagram = (block: DiagramBlock, idx: number) => {
   const key = `${block.type}-${idx}`;
   switch (block.type) {
@@ -148,6 +166,12 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "grid": return <GridDiagram key={key} block={block} />;
     case "table": return <TableDiagram key={key} block={block} />;
     case "list": return <ListDiagram key={key} block={block} />;
+    case "embed": return <EmbedDiagram key={key} block={block} />;
+    case "ecosystem": return <SafEcosystem key={key} />;
+    case "integration-orbit": return <IntegrationOrbit key={key} />;
+    case "interactive-ops": return <InteractiveOperations key={key} />;
+    case "interactive-apis": return <InteractiveAPIs key={key} />;
+    case "licensing": return <LicensingShowcase key={key} />;
     default: return null;
   }
 };
@@ -171,7 +195,7 @@ const VisualDetailPanel = ({ diagrams }: { diagrams: DiagramBlock[] }) => {
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
   const [activeVisualTab, setActiveVisualTab] = useState("ecosystem");
 
-  const hasRichSections = diagrams.some((d) => d.type === "ecosystem" || d.type === "stats");
+  const hasRichSections = diagrams.some((d) => d.type === "ecosystem") && diagrams.some((d) => d.type === "stats");
   const plainDiagrams = diagrams.filter((d) => d.type !== "ecosystem" && d.type !== "stats");
 
   if (!hasRichSections) {

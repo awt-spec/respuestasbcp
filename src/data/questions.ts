@@ -1,12 +1,13 @@
 export type QuestionStatus = "answered" | "pending";
 
-export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats";
+export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing";
 
 export type SectionKey = "A" | "B" | "C" | "D" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N";
 
 export interface DiagramBlock {
   type: DiagramType;
   title?: string;
+  url?: string;
   steps?: { label: string; description: string; icon?: string }[];
   headers?: string[];
   rows?: string[][];
@@ -441,18 +442,7 @@ export const questions: QuestionItem[] = [
     valor: "La gestión integrada de líneas de crédito permite a BCP tener control en tiempo real de la exposición crediticia de cada cliente a través de todos los productos financieros.",
     valor_en: "Integrated credit line management allows BCP to have real-time control of each client's credit exposure across all financial products.",
     diagrams: [
-      {
-        type: "grid" as const,
-        title: "☀️ Sistema Solar SYSDE PLUS — Módulo de Cliente como Núcleo",
-        items: [
-          "☀️ MÓDULO DE CLIENTE — Núcleo central del ecosistema, vista 360° del cliente",
-          "🪐 LEASING — Leasing financiero y operativo integrado al cliente",
-          "🪐 FACTORAJE — Factoring con líneas compartidas y exposición consolidada",
-          "🪐 PRÉSTAMOS — Créditos directos vinculados a la línea maestra",
-          "🪐 PENSIONES — Fondos de pensión con gestión centralizada",
-          "🪐 WORKFLOW — Motor de procesos y flujos de aprobación",
-        ],
-      },
+      { type: "ecosystem" as DiagramType },
       {
         type: "flow" as const,
         title: "Flujo de Línea de Crédito en Leasing",
@@ -476,18 +466,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
-      {
-        type: "grid" as const,
-        title: "☀️ SYSDE PLUS Solar System — Client Module as the Core",
-        items: [
-          "☀️ CLIENT MODULE — Central hub of the ecosystem, 360° client view",
-          "🪐 LEASING — Financial and operational leasing integrated to the client",
-          "🪐 FACTORING — Factoring with shared lines and consolidated exposure",
-          "🪐 LOANS — Direct credits linked to the master line",
-          "🪐 PENSIONS — Pension funds with centralized management",
-          "🪐 WORKFLOW — Process engine and approval flows",
-        ],
-      },
+      { type: "ecosystem" as DiagramType },
       {
         type: "flow" as const,
         title: "Credit Line Flow in Leasing",
@@ -524,8 +503,8 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Regional banking presence",
     requerimiento: "¿Se encuentra la solución desplegada actualmente en algún banco de la región LATAM?",
     requerimiento_en: "Is the solution currently deployed in any bank in the LATAM region?",
-    respuesta: "𝗥𝗲𝘀𝗽𝘂𝗲𝘀𝘁𝗮: Sí, SYSDE PLUS se encuentra desplegada activamente en múltiples bancos e instituciones financieras de la región LATAM.\n\n𝗜𝗻𝘀𝘁𝗶𝘁𝘂𝗰𝗶𝗼𝗻𝗲𝘀 𝗗𝗲𝘀𝘁𝗮𝗰𝗮𝗱𝗮𝘀:\n• 𝗕𝗖𝗥 (Costa Rica) — Banco estatal con leasing financiero activo\n• 𝗕𝗮𝗻𝗰𝗼 𝗡𝗮𝗰𝗶𝗼𝗻𝗮𝗹 (Costa Rica) — Suite SYSDE PLUS completa\n• 𝗖𝗠𝗜 (Guatemala / 15 países) — Implementación en proceso desde 2025\n• 𝗚𝗡𝗣 (México) — Módulo de Leasing activo\n• 𝗕𝗮𝗻𝗸𝗮𝗼𝗼𝗹 (México) — Plataforma SYSDE PLUS\n• 𝗔𝗗𝗢𝗣𝗘𝗠 (Rep. Dominicana) — Microfinanzas y crédito\n\n𝗔𝗹𝗰𝗮𝗻𝗰𝗲 𝗚𝗹𝗼𝗯𝗮𝗹: +1,000 instituciones en LATAM y África, con operaciones en Costa Rica, Guatemala, Honduras, El Salvador, Nicaragua, Panamá, Rep. Dominicana, México, Colombia, Ecuador, Perú y África.\n\n𝗔𝗿𝗾𝘂𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗮 𝗠𝘂𝗹𝘁𝗶: Soporta despliegues multi-país, multi-moneda, multi-idioma y multi-regulación desde una misma plataforma base.",
-    respuesta_en: "𝗔𝗻𝘀𝘄𝗲𝗿: Yes, SYSDE PLUS is actively deployed in multiple LATAM banks and financial institutions.\n\n𝗞𝗲𝘆 𝗜𝗻𝘀𝘁𝗶𝘁𝘂𝘁𝗶𝗼𝗻𝘀:\n• 𝗕𝗖𝗥 (Costa Rica) — State bank with active financial leasing\n• 𝗕𝗮𝗻𝗰𝗼 𝗡𝗮𝗰𝗶𝗼𝗻𝗮𝗹 (Costa Rica) — Full SYSDE PLUS suite\n• 𝗖𝗠𝗜 (Guatemala / 15 countries) — Implementation in progress since 2025\n• 𝗚𝗡𝗣 (Mexico) — Active Leasing module\n• 𝗕𝗮𝗻𝗸𝗮𝗼𝗼𝗹 (Mexico) — SYSDE PLUS platform\n• 𝗔𝗗𝗢𝗣𝗘𝗠 (Dominican Republic) — Microfinance and credit\n\n𝗚𝗹𝗼𝗯𝗮𝗹 𝗥𝗲𝗮𝗰𝗵: +1,000 institutions in LATAM and Africa.\n\n𝗠𝘂𝗹𝘁𝗶 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲: Supports multi-country, multi-currency, multi-language, and multi-regulation deployments from a single base platform.",
+    respuesta: "𝗥𝗲𝘀𝗽𝘂𝗲𝘀𝘁𝗮: Sí, SYSDE PLUS se encuentra desplegada activamente en múltiples bancos e instituciones financieras de la región LATAM.\n\n𝗜𝗻𝘀𝘁𝗶𝘁𝘂𝗰𝗶𝗼𝗻𝗲𝘀 𝗗𝗲𝘀𝘁𝗮𝗰𝗮𝗱𝗮𝘀:\n• 𝗕𝗖𝗥 (Costa Rica) — Banco estatal con leasing financiero activo\n• 𝗕𝗮𝗻𝗰𝗼 𝗡𝗮𝗰𝗶𝗼𝗻𝗮𝗹 (Costa Rica) — Suite SYSDE PLUS completa\n• 𝗖𝗠𝗜 (Guatemala / 15 países) — Implementación en proceso desde 2025\n• 𝗚𝗡𝗣 (México) — Módulo de Leasing activo\n• 𝗕𝗮𝗻𝗸𝗮𝗼𝗼𝗹 (México) — Plataforma SYSDE PLUS\n• 𝗔𝗗𝗢𝗣𝗘𝗠 (Rep. Dominicana) — Microfinanzas y crédito\n\n𝗔𝗹𝗰𝗮𝗻𝗰𝗲 𝗚𝗹𝗼𝗯𝗮𝗹: +1,000 instituciones en LATAM y África, con operaciones en Costa Rica, Guatemala, Honduras, El Salvador, Nicaragua, Panamá, Rep. Dominicana, México, Colombia, Ecuador, Perú y África.\n\n𝗔𝗿𝗾𝘂𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗮 𝗠𝘂𝗹𝘁𝗶 𝘆 𝗠𝗼𝗱𝘂𝗹𝗮𝗿: SYSDE PLUS utiliza una arquitectura multi y modular que soporta despliegues multi-país, multi-moneda, multi-idioma y multi-regulación desde una misma plataforma base. Cada módulo (Leasing, Factoring, Créditos, Pensiones) se activa independientemente según las necesidades de la institución, permitiendo una adopción progresiva sin comprometer la integración nativa entre componentes.",
+    respuesta_en: "𝗔𝗻𝘀𝘄𝗲𝗿: Yes, SYSDE PLUS is actively deployed in multiple LATAM banks and financial institutions.\n\n𝗞𝗲𝘆 𝗜𝗻𝘀𝘁𝗶𝘁𝘂𝘁𝗶𝗼𝗻𝘀:\n• 𝗕𝗖𝗥 (Costa Rica) — State bank with active financial leasing\n• 𝗕𝗮𝗻𝗰𝗼 𝗡𝗮𝗰𝗶𝗼𝗻𝗮𝗹 (Costa Rica) — Full SYSDE PLUS suite\n• 𝗖𝗠𝗜 (Guatemala / 15 countries) — Implementation in progress since 2025\n• 𝗚𝗡𝗣 (Mexico) — Active Leasing module\n• 𝗕𝗮𝗻𝗸𝗮𝗼𝗼𝗹 (Mexico) — SYSDE PLUS platform\n• 𝗔𝗗𝗢𝗣𝗘𝗠 (Dominican Republic) — Microfinance and credit\n\n𝗚𝗹𝗼𝗯𝗮𝗹 𝗥𝗲𝗮𝗰𝗵: +1,000 institutions in LATAM and Africa.\n\n𝗠𝘂𝗹𝘁𝗶 & 𝗠𝗼𝗱𝘂𝗹𝗮𝗿 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲: SYSDE PLUS uses a multi and modular architecture supporting multi-country, multi-currency, multi-language, and multi-regulation deployments from a single base platform. Each module (Leasing, Factoring, Credits, Pensions) activates independently per institution needs, enabling progressive adoption without compromising native integration between components.",
     valor: "SYSDE PLUS tiene presencia comprobada en bancos regulados de la región LATAM, lo que reduce el riesgo de implementación para BCP y valida la capacidad de la solución en entornos similares.",
     valor_en: "SYSDE PLUS has proven presence in regulated LATAM banks, reducing implementation risk for BCP and validating the solution's capability in similar environments.",
     diagrams: [
@@ -587,66 +566,66 @@ export const questions: QuestionItem[] = [
   // ── Modelo de Entrega (C) ──
   {
     id: 5,
-    title: "Modelo SaaS (Software as a Service)",
-    title_en: "SaaS Model (Software as a Service)",
+    title: "Modelo de Entrega: SaaS, PaaS y On-Premise",
+    title_en: "Delivery Model: SaaS, PaaS & On-Premise",
     status: "answered",
     section: "C",
     receivedDate: "20 marzo 2026",
-    subtitle: "Modelo de entrega del software",
-    subtitle_en: "Software delivery model",
+    subtitle: "Flexibilidad en modelos de entrega",
+    subtitle_en: "Delivery model flexibility",
     requerimiento: "¿El software se ofrece bajo un modelo SaaS (Software as a Service)?",
     requerimiento_en: "Is the software offered under a SaaS (Software as a Service) model?",
-    respuesta: "𝗥𝗲𝘀𝗽𝘂𝗲𝘀𝘁𝗮: Sí, SYSDE PLUS se ofrece bajo modelo SaaS sobre Microsoft Azure con arquitectura de microservicios.\n\n𝗖𝗮𝗿𝗮𝗰𝘁𝗲𝗿í𝘀𝘁𝗶𝗰𝗮𝘀 𝗱𝗲𝗹 𝗠𝗼𝗱𝗲𝗹𝗼:\n• 𝗗𝗲𝘀𝗽𝗹𝗶𝗲𝗴𝘂𝗲 𝗲𝗻 𝗹𝗮 𝗻𝘂𝗯𝗲: Alta disponibilidad, escalabilidad elástica y redundancia geográfica\n• 𝗔𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗮𝗰𝗶𝗼𝗻𝗲𝘀 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗮𝘀: Mejoras funcionales, parches de seguridad y evoluciones regulatorias sin impacto operativo\n• 𝗜𝗻𝗳𝗿𝗮𝗲𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗮 𝗴𝗲𝘀𝘁𝗶𝗼𝗻𝗮𝗱𝗮: SYSDE gestiona infraestructura, monitoreo, respaldos y DR\n• 𝗦𝗟𝗔 𝟵𝟵.𝟵%: Disponibilidad garantizada con tiempos de respuesta definidos y soporte 24/7\n\n𝗠𝗼𝗱𝗲𝗹𝗼𝘀 𝗱𝗲 𝗧𝗲𝗻𝗲𝗻𝗰𝗶𝗮:\n• Multi-tenant (aislamiento lógico de datos)\n• Single-tenant dedicado\n\n𝗙𝗹𝗲𝘅𝗶𝗯𝗶𝗹𝗶𝗱𝗮𝗱: También soporta despliegue on-premise e híbrido para instituciones con requerimientos regulatorios específicos, manteniendo las mismas funcionalidades.",
-    respuesta_en: "𝗔𝗻𝘀𝘄𝗲𝗿: Yes, SYSDE PLUS is offered as SaaS on Microsoft Azure with microservices architecture.\n\n𝗠𝗼𝗱𝗲𝗹 𝗖𝗵𝗮𝗿𝗮𝗰𝘁𝗲𝗿𝗶𝘀𝘁𝗶𝗰𝘀:\n• 𝗖𝗹𝗼𝘂𝗱 𝗱𝗲𝗽𝗹𝗼𝘆𝗺𝗲𝗻𝘁: High availability, elastic scalability, geographic redundancy\n• 𝗖𝗼𝗻𝘁𝗶𝗻𝘂𝗼𝘂𝘀 𝘂𝗽𝗱𝗮𝘁𝗲𝘀: Functional improvements, security patches, regulatory evolutions without operational impact\n• 𝗠𝗮𝗻𝗮𝗴𝗲𝗱 𝗶𝗻𝗳𝗿𝗮𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲: SYSDE manages infrastructure, monitoring, backups, and DR\n• 𝟵𝟵.𝟵% 𝗦𝗟𝗔: Guaranteed availability with defined response times and 24/7 support\n\n𝗧𝗲𝗻𝗮𝗻𝗰𝘆 𝗠𝗼𝗱𝗲𝗹𝘀: Multi-tenant (logical isolation) and dedicated single-tenant.\n\n𝗙𝗹𝗲𝘅𝗶𝗯𝗶𝗹𝗶𝘁𝘆: Also supports on-premise and hybrid deployment for specific regulatory requirements, maintaining the same functionalities.",
+    respuesta: "𝗥𝗲𝘀𝗽𝘂𝗲𝘀𝘁𝗮: Sí, SYSDE PLUS se ofrece bajo tres modelos de entrega para adaptarse a las necesidades de cada institución:\n\n𝗠𝗼𝗱𝗲𝗹𝗼 𝗦𝗮𝗮𝗦 (𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲 𝗮𝘀 𝗮 𝗦𝗲𝗿𝘃𝗶𝗰𝗲):\n• Despliegue en Microsoft Azure con alta disponibilidad y escalabilidad elástica\n• SYSDE gestiona infraestructura, monitoreo, respaldos y DR\n• Actualizaciones continuas sin impacto operativo\n• SLA 99.9% con soporte 24/7\n• Tenencia multi-tenant (aislamiento lógico) o single-tenant dedicado\n\n𝗠𝗼𝗱𝗲𝗹𝗼 𝗣𝗮𝗮𝗦 (𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 𝗮𝘀 𝗮 𝗦𝗲𝗿𝘃𝗶𝗰𝗲):\n• SYSDE provee la plataforma y herramientas de desarrollo\n• El banco puede personalizar y extender funcionalidades sobre la plataforma\n• Acceso a APIs, SDKs y herramientas de configuración avanzada\n• Ideal para bancos con equipos técnicos internos que desean mayor control\n\n𝗠𝗼𝗱𝗲𝗹𝗼 𝗢𝗻-𝗣𝗿𝗲𝗺𝗶𝘀𝗲:\n• Instalación en infraestructura propia del banco\n• Control total del entorno, datos y seguridad\n• Mismas funcionalidades que el modelo SaaS\n• Ideal para instituciones con requerimientos regulatorios específicos de residencia de datos\n\n𝗙𝗹𝗲𝘅𝗶𝗯𝗶𝗹𝗶𝗱𝗮𝗱: También soporta modelos híbridos combinando cloud y on-premise según las necesidades del banco.",
+    respuesta_en: "𝗔𝗻𝘀𝘄𝗲𝗿: Yes, SYSDE PLUS is offered under three delivery models to adapt to each institution's needs:\n\n𝗦𝗮𝗮𝗦 𝗠𝗼𝗱𝗲𝗹 (𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲 𝗮𝘀 𝗮 𝗦𝗲𝗿𝘃𝗶𝗰𝗲):\n• Deployment on Microsoft Azure with high availability and elastic scalability\n• SYSDE manages infrastructure, monitoring, backups, and DR\n• Continuous updates without operational impact\n• 99.9% SLA with 24/7 support\n• Multi-tenant (logical isolation) or dedicated single-tenant\n\n𝗣𝗮𝗮𝗦 𝗠𝗼𝗱𝗲𝗹 (𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 𝗮𝘀 𝗮 𝗦𝗲𝗿𝘃𝗶𝗰𝗲):\n• SYSDE provides the platform and development tools\n• The bank can customize and extend functionalities on the platform\n• Access to APIs, SDKs, and advanced configuration tools\n• Ideal for banks with internal technical teams seeking greater control\n\n𝗢𝗻-𝗣𝗿𝗲𝗺𝗶𝘀𝗲 𝗠𝗼𝗱𝗲𝗹:\n• Installation on the bank's own infrastructure\n• Full control of environment, data, and security\n• Same functionalities as the SaaS model\n• Ideal for institutions with specific data residency regulatory requirements\n\n𝗙𝗹𝗲𝘅𝗶𝗯𝗶𝗹𝗶𝘁𝘆: Also supports hybrid models combining cloud and on-premise per bank needs.",
     valor: "El modelo SaaS reduce los costos de infraestructura y operación para BCP, garantizando acceso a la versión más actualizada de la plataforma sin esfuerzo adicional.",
     valor_en: "The SaaS model reduces infrastructure and operation costs for BCP, ensuring access to the most up-to-date platform version without additional effort.",
     diagrams: [
       {
         type: "table" as const,
-        title: "Modelos de Despliegue Disponibles",
+        title: "Modelos de Entrega Disponibles",
         headers: ["Modelo", "Infraestructura", "Gestión", "Ideal para"],
         rows: [
-          ["SaaS Multi-tenant", "Azure compartido, datos aislados", "100% SYSDE", "Bancos que priorizan agilidad y costo"],
-          ["SaaS Single-tenant", "Azure dedicado exclusivo", "100% SYSDE", "Bancos con requerimientos de aislamiento"],
-          ["Híbrido", "Azure + infraestructura local", "Compartida", "Bancos con datos sensibles on-premise"],
-          ["On-premise", "Infraestructura del cliente", "Cliente + SYSDE", "Requerimientos regulatorios específicos"],
+          ["☁️ SaaS", "Azure, datos aislados", "100% SYSDE", "Bancos que priorizan agilidad"],
+          ["🔧 PaaS", "Azure + herramientas SYSDE", "Compartida", "Bancos con equipos técnicos internos"],
+          ["🏢 On-Premise", "Infraestructura del banco", "Cliente + SYSDE", "Requerimientos de residencia de datos"],
+          ["🔄 Híbrido", "Azure + infraestructura local", "Compartida", "Combinación cloud + on-premise"],
         ],
       },
       {
         type: "grid" as const,
-        title: "Beneficios del Modelo SaaS",
+        title: "Beneficios Comunes a Todos los Modelos",
         items: [
-          "Arquitectura de microservicios en Azure",
+          "Arquitectura de microservicios",
           "Actualizaciones sin impacto operativo",
           "SLA 99.9% con soporte 24/7",
-          "Backups y DR gestionados por SYSDE",
-          "Escalabilidad elástica automática",
-          "Despliegue en semanas, no meses",
+          "Backups y DR gestionados",
+          "Escalabilidad elástica",
+          "Mismas funcionalidades en cualquier modelo",
         ],
       },
     ],
     diagrams_en: [
       {
         type: "table" as const,
-        title: "Available Deployment Models",
+        title: "Available Delivery Models",
         headers: ["Model", "Infrastructure", "Management", "Ideal for"],
         rows: [
-          ["SaaS Multi-tenant", "Shared Azure, isolated data", "100% SYSDE", "Banks prioritizing agility and cost"],
-          ["SaaS Single-tenant", "Exclusive dedicated Azure", "100% SYSDE", "Banks with isolation requirements"],
-          ["Hybrid", "Azure + local infrastructure", "Shared", "Banks with on-premise sensitive data"],
-          ["On-premise", "Client infrastructure", "Client + SYSDE", "Specific regulatory requirements"],
+          ["☁️ SaaS", "Azure, isolated data", "100% SYSDE", "Banks prioritizing agility"],
+          ["🔧 PaaS", "Azure + SYSDE tools", "Shared", "Banks with internal technical teams"],
+          ["🏢 On-Premise", "Bank infrastructure", "Client + SYSDE", "Data residency requirements"],
+          ["🔄 Hybrid", "Azure + local infra", "Shared", "Cloud + on-premise combination"],
         ],
       },
       {
         type: "grid" as const,
-        title: "SaaS Model Benefits",
+        title: "Benefits Common to All Models",
         items: [
-          "Microservices architecture on Azure",
+          "Microservices architecture",
           "Updates without operational impact",
           "99.9% SLA with 24/7 support",
-          "Backups and DR managed by SYSDE",
-          "Automatic elastic scalability",
-          "Deployment in weeks, not months",
+          "Managed backups and DR",
+          "Elastic scalability",
+          "Same functionalities in any model",
         ],
       },
     ],
@@ -664,59 +643,15 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Licensing structure",
     requerimiento: "¿Cuál es el modelo de licenciamiento de la herramienta? (número de clientes, número de créditos activos, cartera, número de operaciones).",
     requerimiento_en: "What is the tool's licensing model? (number of clients, number of active credits, portfolio, number of operations).",
-    respuesta: "𝗠𝗼𝗱𝗲𝗹𝗼: SYSDE PLUS opera bajo licenciamiento por suscripción (subscription-based), diseñado para ser predecible y escalable.\n\n𝗖𝗼𝗺𝗽𝗼𝗻𝗲𝗻𝘁𝗲𝘀 𝗱𝗲𝗹 𝗠𝗼𝗱𝗲𝗹𝗼:\n• 𝗟𝗶𝗰𝗲𝗻𝗰𝗶𝗮 𝗯𝗮𝘀𝗲 𝗽𝗼𝗿 𝗺ó𝗱𝘂𝗹𝗼: Tarifa mensual/anual por módulo contratado (Leasing, Factoring, Créditos)\n• 𝗘𝘀𝗰𝗮𝗹𝗮𝗺𝗶𝗲𝗻𝘁𝗼 𝗽𝗼𝗿 𝘃𝗼𝗹𝘂𝗺𝗲𝗻: Tarifas escalonadas a partir de ciertos umbrales de operaciones activas\n• 𝗨𝘀𝘂𝗮𝗿𝗶𝗼𝘀 𝗶𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼𝘀: Sin restricción de usuarios concurrentes ni clientes registrados\n• 𝗦𝗶𝗻 𝗰𝗼𝗯𝗿𝗼 𝗽𝗼𝗿 𝘁𝗿𝗮𝗻𝘀𝗮𝗰𝗰𝗶ó𝗻: Desembolsos, cobros, consultas no generan cargo adicional\n\n𝗗𝗶𝗺𝗲𝗻𝘀𝗶𝗼𝗻𝗮𝗺𝗶𝗲𝗻𝘁𝗼: El precio específico se define considerando módulos requeridos, volumen proyectado, modelo de despliegue (SaaS/híbrido/on-premise) y servicios profesionales de implementación.",
-    respuesta_en: "𝗠𝗼𝗱𝗲𝗹: SYSDE PLUS operates under subscription-based licensing, designed to be predictable and scalable.\n\n𝗠𝗼𝗱𝗲𝗹 𝗖𝗼𝗺𝗽𝗼𝗻𝗲𝗻𝘁𝘀:\n• 𝗣𝗲𝗿-𝗺𝗼𝗱𝘂𝗹𝗲 𝗯𝗮𝘀𝗲 𝗹𝗶𝗰𝗲𝗻𝘀𝗲: Monthly/annual fee per contracted module (Leasing, Factoring, Credits)\n• 𝗩𝗼𝗹𝘂𝗺𝗲 𝘀𝗰𝗮𝗹𝗶𝗻𝗴: Graduated tiers from certain active operation thresholds\n• 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝘂𝘀𝗲𝗿𝘀: No concurrent user or registered client restrictions\n• 𝗡𝗼 𝗽𝗲𝗿-𝘁𝗿𝗮𝗻𝘀𝗮𝗰𝘁𝗶𝗼𝗻 𝗰𝗵𝗮𝗿𝗴𝗲𝘀: Disbursements, collections, queries incur no additional charge\n\n𝗗𝗶𝗺𝗲𝗻𝘀𝗶𝗼𝗻𝗶𝗻𝗴: Specific pricing defined considering required modules, projected volume, deployment model (SaaS/hybrid/on-premise), and implementation professional services.",
-    valor: "El modelo de licenciamiento por suscripción con usuarios ilimitados y sin cobro por transacción ofrece predictibilidad de costos para BCP conforme escala sus operaciones de leasing.",
-    valor_en: "The subscription licensing model with unlimited users and no per-transaction charges offers cost predictability for BCP as it scales leasing operations.",
+    respuesta: "𝗠𝗼𝗱𝗲𝗹𝗼 𝗱𝗲 𝗦𝘂𝘀𝗰𝗿𝗶𝗽𝗰𝗶ó𝗻 𝗜𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼: SYSDE PLUS opera bajo un modelo de suscripción mensual o anual diseñado para ser completamente predecible, sin sorpresas ni costos ocultos.\n\n𝗧𝗼𝗱𝗼 𝗜𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼:\n• 𝗘𝗺𝗽𝗿𝗲𝘀𝗮𝘀 𝗶𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗮𝘀: Sin restricción de entidades o sucursales\n• 𝗨𝘀𝘂𝗮𝗿𝗶𝗼𝘀 𝗶𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼𝘀: Sin cobro por usuario concurrente o registrado\n• 𝗦𝗼𝗽𝗼𝗿𝘁𝗲 𝗶𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼: Soporte 24/7 incluido en la suscripción, sin cargos adicionales por ticket o incidente\n• 𝗖𝗮𝗽𝗮𝗰𝗶𝘁𝗮𝗰𝗶ó𝗻 𝗶𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗮: Formación continua incluida en el modelo, sin cobro por sesión o participante\n• 𝗦𝗶𝗻 𝗰𝗼𝗯𝗿𝗼 𝗽𝗼𝗿 𝘁𝗿𝗮𝗻𝘀𝗮𝗰𝗰𝗶ó𝗻: Desembolsos, cobros y consultas no generan cargo adicional\n\n𝗖𝗼𝗺𝗽𝗼𝗻𝗲𝗻𝘁𝗲 𝗠𝗼𝗱𝘂𝗹𝗮𝗿: Al ser una plataforma modular, BCP activa únicamente los módulos que necesita (Leasing, Factoring, Créditos) y puede expandir progresivamente sin renegociar el contrato base.\n\n𝗥𝗼𝗮𝗱𝗺𝗮𝗽 𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝘃𝗼 𝗕𝗖𝗣: El modelo incluye un roadmap evolutivo exclusivo para BCP. Cualquier mejora, ajuste o nueva funcionalidad desarrollada dentro del alcance del proyecto se entrega 𝘀𝗶𝗻 𝗰𝗼𝘀𝘁𝗼 𝗮𝗱𝗶𝗰𝗶𝗼𝗻𝗮𝗹 como parte de la evolución continua de la plataforma.",
+    respuesta_en: "𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 𝗠𝗼𝗱𝗲𝗹: SYSDE PLUS operates under a monthly or annual subscription model designed to be completely predictable, with no surprises or hidden costs.\n\n𝗘𝘃𝗲𝗿𝘆𝘁𝗵𝗶𝗻𝗴 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱:\n• 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗰𝗼𝗺𝗽𝗮𝗻𝗶𝗲𝘀: No entity or branch restrictions\n• 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝘂𝘀𝗲𝗿𝘀: No concurrent or registered user charges\n• 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝘀𝘂𝗽𝗽𝗼𝗿𝘁: 24/7 support included, no per-ticket charges\n• 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝘁𝗿𝗮𝗶𝗻𝗶𝗻𝗴: Ongoing training included, no per-session charges\n• 𝗡𝗼 𝗽𝗲𝗿-𝘁𝗿𝗮𝗻𝘀𝗮𝗰𝘁𝗶𝗼𝗻 𝗰𝗵𝗮𝗿𝗴𝗲𝘀: Disbursements, collections, queries at no extra cost\n\n𝗠𝗼𝗱𝘂𝗹𝗮𝗿 𝗖𝗼𝗺𝗽𝗼𝗻𝗲𝗻𝘁: As a modular platform, BCP activates only needed modules and can expand progressively without renegotiating the base contract.\n\n𝗕𝗖𝗣 𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝗼𝗻𝗮𝗿𝘆 𝗥𝗼𝗮𝗱𝗺𝗮𝗽: The model includes an exclusive evolutionary roadmap for BCP. Any improvement or new functionality within the project scope is delivered 𝗮𝘁 𝗻𝗼 𝗮𝗱𝗱𝗶𝘁𝗶𝗼𝗻𝗮𝗹 𝗰𝗼𝘀𝘁.",
+    valor: "El modelo de suscripción ilimitado con soporte y capacitación incluidos ofrece total predictibilidad de costos para BCP, eliminando sorpresas y facilitando la planificación presupuestaria.",
+    valor_en: "The unlimited subscription model with included support and training offers total cost predictability for BCP, eliminating surprises and facilitating budget planning.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Estructura de Licenciamiento",
-        headers: ["Componente", "Descripción", "Beneficio"],
-        rows: [
-          ["Licencia por módulo", "Tarifa mensual/anual por Leasing, Factoring o Créditos", "Activación modular según necesidad"],
-          ["Escalamiento", "Tarifas graduales por volumen de operaciones", "Sin saltos bruscos de costo"],
-          ["Usuarios", "Ilimitados (concurrentes y registrados)", "Sin cuellos de botella por licencia"],
-          ["Transacciones", "Sin cobro por operación procesada", "Costos predecibles a cualquier escala"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Ventajas del Modelo",
-        items: [
-          "Suscripción mensual/anual predecible",
-          "Usuarios concurrentes ilimitados",
-          "Sin cobro por transacción",
-          "Escalamiento gradual por volumen",
-          "Módulos activables independientemente",
-          "Precios definidos en dimensionamiento",
-        ],
-      },
+      { type: "licensing" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Licensing Structure",
-        headers: ["Component", "Description", "Benefit"],
-        rows: [
-          ["Per-module license", "Monthly/annual fee for Leasing, Factoring, or Credits", "Modular activation as needed"],
-          ["Scaling", "Gradual tiers by operation volume", "No abrupt cost jumps"],
-          ["Users", "Unlimited (concurrent and registered)", "No license bottlenecks"],
-          ["Transactions", "No charge per processed operation", "Predictable costs at any scale"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Model Advantages",
-        items: [
-          "Predictable monthly/annual subscription",
-          "Unlimited concurrent users",
-          "No per-transaction charges",
-          "Gradual volume-based scaling",
-          "Independently activatable modules",
-          "Pricing defined during dimensioning",
-        ],
-      },
+      { type: "licensing" as DiagramType },
     ],
   },
 
@@ -732,71 +667,15 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Native end-to-end coverage",
     requerimiento: "¿Qué fases del ciclo de vida cubre nativamente la solución?",
     requerimiento_en: "What lifecycle phases does the solution natively cover?",
-    respuesta: "𝗖𝗼𝗯𝗲𝗿𝘁𝘂𝗿𝗮: SYSDE PLUS cubre nativamente el ciclo de vida completo (end-to-end) del leasing financiero, desde originación hasta finalización del contrato.\n\n𝗙𝗮𝘀𝗲𝘀 𝗱𝗲𝗹 𝗖𝗶𝗰𝗹𝗼:\n① 𝗢𝗿𝗶𝗴𝗶𝗻𝗮𝗰𝗶ó𝗻: Captura de solicitud, datos de cliente/activo, simulación de condiciones, propuesta comercial\n② 𝗘𝘃𝗮𝗹𝘂𝗮𝗰𝗶ó𝗻 𝗖𝗿𝗲𝗱𝗶𝘁𝗶𝗰𝗶𝗮: Integración con burós, scoring interno, análisis de capacidad de pago\n③ 𝗔𝗽𝗿𝗼𝗯𝗮𝗰𝗶ó𝗻: Flujos parametrizables por monto, tipo de activo y nivel jerárquico\n④ 𝗙𝗼𝗿𝗺𝗮𝗹𝗶𝘇𝗮𝗰𝗶ó𝗻: Generación de contratos, pagarés, firma electrónica, gestión documental\n⑤ 𝗗𝗲𝘀𝗲𝗺𝗯𝗼𝗹𝘀𝗼: Autorización y ejecución con integración a sistemas de pago\n⑥ 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗰𝗶ó𝗻: Cuotas, facturación, ajustes de tasa, restructuraciones, cesiones\n⑦ 𝗚𝗲𝘀𝘁𝗶ó𝗻 𝗱𝗲 𝗔𝗰𝘁𝗶𝘃𝗼𝘀: Registro, valuaciones, depreciación, seguros, garantías\n⑧ 𝗖𝗼𝗯𝗿𝗼: Aplicación de pagos, gestión de mora, intereses moratorios\n⑨ 𝗖𝗼𝗻𝘁𝗮𝗯𝗶𝗹𝗶𝗱𝗮𝗱: Asientos automáticos NIIF/IFRS 16, conciliación, cierre contable\n⑩ 𝗙𝗶𝗻𝗮𝗹𝗶𝘇𝗮𝗰𝗶ó𝗻: Opción de compra, devolución, renovación o terminación anticipada",
-    respuesta_en: "𝗖𝗼𝘃𝗲𝗿𝗮𝗴𝗲: SYSDE PLUS natively covers the complete leasing lifecycle (end-to-end), from origination to contract finalization.\n\n𝗟𝗶𝗳𝗲𝗰𝘆𝗰𝗹𝗲 𝗣𝗵𝗮𝘀𝗲𝘀:\n① 𝗢𝗿𝗶𝗴𝗶𝗻𝗮𝘁𝗶𝗼𝗻: Application capture, client/asset data, condition simulation, commercial proposal\n② 𝗖𝗿𝗲𝗱𝗶𝘁 𝗘𝘃𝗮𝗹𝘂𝗮𝘁𝗶𝗼𝗻: Bureau integration, internal scoring, payment capacity analysis\n③ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹: Parameterizable flows by amount, asset type, and hierarchy level\n④ 𝗙𝗼𝗿𝗺𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻: Contract generation, promissory notes, e-signature, document management\n⑤ 𝗗𝗶𝘀𝗯𝘂𝗿𝘀𝗲𝗺𝗲𝗻𝘁: Authorization and execution with payment system integration\n⑥ 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝘁𝗶𝗼𝗻: Installments, billing, rate adjustments, restructurings, assignments\n⑦ 𝗔𝘀𝘀𝗲𝘁 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁: Registration, valuations, depreciation, insurance, guarantees\n⑧ 𝗖𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻: Payment application, arrears management, default interest\n⑨ 𝗔𝗰𝗰𝗼𝘂𝗻𝘁𝗶𝗻𝗴: Automatic IFRS 16 entries, reconciliation, closing\n⑩ 𝗙𝗶𝗻𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻: Purchase option, return, renewal, or early termination",
+    respuesta: "𝗖𝗼𝗯𝗲𝗿𝘁𝘂𝗿𝗮: SYSDE PLUS cubre nativamente el ciclo de vida completo (end-to-end) del leasing financiero, desde originación hasta finalización del contrato.\n\n𝗙𝗮𝘀𝗲𝘀 𝗱𝗲𝗹 𝗖𝗶𝗰𝗹𝗼:\n① 𝗢𝗿𝗶𝗴𝗶𝗻𝗮𝗰𝗶ó𝗻: Captura de solicitud, datos de cliente/activo, simulación de condiciones, propuesta comercial\n② 𝗘𝘃𝗮𝗹𝘂𝗮𝗰𝗶ó𝗻 𝗖𝗿𝗲𝗱𝗶𝘁𝗶𝗰𝗶𝗮: Integración con burós, scoring interno, análisis de capacidad de pago\n③ 𝗔𝗽𝗿𝗼𝗯𝗮𝗰𝗶ó𝗻: Flujos parametrizables por monto, tipo de activo y nivel jerárquico\n④ 𝗙𝗼𝗿𝗺𝗮𝗹𝗶𝘇𝗮𝗰𝗶ó𝗻: Generación de contratos, pagarés, firma electrónica, gestión documental\n⑤ 𝗗𝗲𝘀𝗲𝗺𝗯𝗼𝗹𝘀𝗼: Autorización y ejecución con integración a sistemas de pago\n⑥ 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗰𝗶ó𝗻: Cuotas, facturación, ajustes de tasa, restructuraciones, cesiones\n⑦ 𝗚𝗲𝘀𝘁𝗶ó𝗻 𝗱𝗲 𝗔𝗰𝘁𝗶𝘃𝗼𝘀: Registro, valuaciones, depreciación, seguros, garantías\n⑧ 𝗖𝗼𝗯𝗿𝗼: Aplicación de pagos, gestión de mora, intereses moratorios\n⑨ 𝗖𝗼𝗻𝘁𝗮𝗯𝗶𝗹𝗶𝗱𝗮𝗱: Asientos automáticos NIIF/IFRS 16, conciliación, cierre contable\n⑩ 𝗙𝗶𝗻𝗮𝗹𝗶𝘇𝗮𝗰𝗶ó𝗻: Opción de compra, devolución, renovación o terminación anticipada\n\nPara ver una demostración interactiva del ciclo de vida, explore el tab de Detalle Visual.",
+    respuesta_en: "𝗖𝗼𝘃𝗲𝗿𝗮𝗴𝗲: SYSDE PLUS natively covers the complete leasing lifecycle (end-to-end), from origination to contract finalization.\n\n𝗟𝗶𝗳𝗲𝗰𝘆𝗰𝗹𝗲 𝗣𝗵𝗮𝘀𝗲𝘀:\n① 𝗢𝗿𝗶𝗴𝗶𝗻𝗮𝘁𝗶𝗼𝗻 ② 𝗖𝗿𝗲𝗱𝗶𝘁 𝗘𝘃𝗮𝗹𝘂𝗮𝘁𝗶𝗼𝗻 ③ 𝗔𝗽𝗽𝗿𝗼𝘃𝗮𝗹 ④ 𝗙𝗼𝗿𝗺𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻 ⑤ 𝗗𝗶𝘀𝗯𝘂𝗿𝘀𝗲𝗺𝗲𝗻𝘁 ⑥ 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝘁𝗶𝗼𝗻 ⑦ 𝗔𝘀𝘀𝗲𝘁 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 ⑧ 𝗖𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 ⑨ 𝗔𝗰𝗰𝗼𝘂𝗻𝘁𝗶𝗻𝗴 ⑩ 𝗙𝗶𝗻𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻\n\nExplore the Visual Detail tab for an interactive demo.",
     valor: "La cobertura end-to-end nativa elimina la necesidad de sistemas auxiliares para las operaciones core de leasing, reduciendo complejidad y riesgo operativo.",
     valor_en: "Native end-to-end coverage eliminates the need for auxiliary systems for core leasing operations, reducing complexity and operational risk.",
     diagrams: [
-      {
-        type: "flow" as const,
-        title: "Ciclo de Vida E2E del Leasing — SYSDE PLUS",
-        steps: [
-          { icon: "📝", label: "Originación", description: "Solicitud y simulación" },
-          { icon: "🔍", label: "Evaluación", description: "Análisis crediticio" },
-          { icon: "✅", label: "Aprobación", description: "Flujos por nivel" },
-          { icon: "📄", label: "Formalización", description: "Contratos y firma" },
-          { icon: "💰", label: "Desembolso", description: "Transferencia de fondos" },
-          { icon: "⚙️", label: "Administración", description: "Cuotas y facturación" },
-          { icon: "🏗️", label: "Activos", description: "Seguimiento y valuación" },
-          { icon: "💳", label: "Cobro", description: "Pagos y mora" },
-          { icon: "📊", label: "Contabilidad", description: "NIIF/IFRS 16" },
-          { icon: "🏁", label: "Finalización", description: "Opción compra / devolución" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Detalle de Fases y Funcionalidades",
-        headers: ["Fase", "Funcionalidades Clave", "Automatización"],
-        rows: [
-          ["Originación", "Solicitud, simulación, propuesta comercial", "Cálculo automático de cuotas"],
-          ["Evaluación", "Burós, scoring, análisis de capacidad", "Pre-aprobación automática"],
-          ["Aprobación", "Comités, matrices de escalamiento", "Flujos configurables sin código"],
-          ["Formalización", "Contratos, pagarés, firma electrónica", "Generación automática de documentos"],
-          ["Administración", "Cuotas, ajustes, restructuraciones", "Facturación periódica automática"],
-          ["Contabilidad", "NIIF/IFRS 16, conciliación, cierre", "Asientos contables automáticos"],
-        ],
-      },
+      { type: "embed" as DiagramType, title: "Demo Interactiva — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
     diagrams_en: [
-      {
-        type: "flow" as const,
-        title: "Leasing E2E Lifecycle — SYSDE PLUS",
-        steps: [
-          { icon: "📝", label: "Origination", description: "Application and simulation" },
-          { icon: "🔍", label: "Evaluation", description: "Credit analysis" },
-          { icon: "✅", label: "Approval", description: "Tiered flows" },
-          { icon: "📄", label: "Formalization", description: "Contracts and signing" },
-          { icon: "💰", label: "Disbursement", description: "Fund transfer" },
-          { icon: "⚙️", label: "Administration", description: "Installments and billing" },
-          { icon: "🏗️", label: "Assets", description: "Tracking and valuation" },
-          { icon: "💳", label: "Collection", description: "Payments and arrears" },
-          { icon: "📊", label: "Accounting", description: "IFRS 16" },
-          { icon: "🏁", label: "Finalization", description: "Purchase option / return" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Phase Detail and Functionalities",
-        headers: ["Phase", "Key Functionalities", "Automation"],
-        rows: [
-          ["Origination", "Application, simulation, commercial proposal", "Automatic installment calculation"],
-          ["Evaluation", "Bureaus, scoring, capacity analysis", "Automatic pre-approval"],
-          ["Approval", "Committees, escalation matrices", "No-code configurable flows"],
-          ["Formalization", "Contracts, promissory notes, e-signature", "Automatic document generation"],
-          ["Administration", "Installments, adjustments, restructurings", "Automatic periodic billing"],
-          ["Accounting", "IFRS 16, reconciliation, closing", "Automatic accounting entries"],
-        ],
-      },
+      { type: "embed" as DiagramType, title: "Interactive Demo — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
     ],
   },
   {
@@ -815,38 +694,10 @@ export const questions: QuestionItem[] = [
     valor: "Las dependencias externas son complementarias, no estructurales. SYSDE PLUS mantiene la lógica de negocio completa internamente y se conecta con los sistemas del banco mediante APIs estándar.",
     valor_en: "External dependencies are complementary, not structural. SYSDE PLUS maintains complete business logic internally and connects with bank systems via standard APIs.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Fases Nativas vs. Integraciones Externas",
-        headers: ["Fase", "SYSDE PLUS (Nativo)", "Sistema Externo", "Integración"],
-        rows: [
-          ["Captación", "Recepción de solicitud", "CRM del banco", "API REST"],
-          ["Evaluación crediticia", "Scoring interno, análisis", "Burós de crédito", "API / Web Service"],
-          ["Aprobación", "✅ 100% nativo", "—", "—"],
-          ["Formalización", "Contratos, documentos", "Firma electrónica (opcional)", "API"],
-          ["Desembolso", "Autorización y registro", "Core bancario / Pagos", "API / Mensajería"],
-          ["Administración", "✅ 100% nativo", "—", "—"],
-          ["Cobro", "Gestión y aplicación", "Sistema de pagos / ACH", "API"],
-          ["Contabilidad", "Asientos automáticos", "ERP / GL central (exportación)", "API / Batch"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Native Phases vs. External Integrations",
-        headers: ["Phase", "SYSDE PLUS (Native)", "External System", "Integration"],
-        rows: [
-          ["Prospecting", "Application reception", "Bank CRM", "REST API"],
-          ["Credit evaluation", "Internal scoring, analysis", "Credit bureaus", "API / Web Service"],
-          ["Approval", "✅ 100% native", "—", "—"],
-          ["Formalization", "Contracts, documents", "E-signature (optional)", "API"],
-          ["Disbursement", "Authorization and recording", "Core banking / Payments", "API / Messaging"],
-          ["Administration", "✅ 100% native", "—", "—"],
-          ["Collection", "Management and application", "Payment system / ACH", "API"],
-          ["Accounting", "Automatic entries", "ERP / Central GL (export)", "API / Batch"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
   },
 
@@ -867,50 +718,10 @@ export const questions: QuestionItem[] = [
     valor: "La gestión integrada de seguros, impuestos, multas y siniestros reduce el riesgo operativo y automatiza procesos que típicamente se manejan manualmente en hojas de cálculo.",
     valor_en: "Integrated management of insurance, taxes, fines, and claims reduces operational risk and automates processes typically handled manually in spreadsheets.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Gestión Operativa — Componentes",
-        headers: ["Componente", "Capacidades Principales", "Automatización"],
-        rows: [
-          ["Seguros", "Pólizas, vigencia, cobro de primas, integración aseguradoras", "Alertas de vencimiento, cobro en cuota"],
-          ["Impuestos", "IVA, ISR, retenciones, facturación electrónica", "Cálculo y documentos automáticos"],
-          ["Multas", "Registro, notificación, traslado al arrendatario", "Flujo de cobro parametrizable"],
-          ["Siniestros", "Registro, reclamación, impacto financiero, cierre", "Contabilidad automática del evento"],
-        ],
-      },
-      {
-        type: "flow" as const,
-        title: "Flujo de Gestión de Siniestros",
-        steps: [
-          { icon: "⚠️", label: "Registro", description: "Tipo de pérdida o daño" },
-          { icon: "📋", label: "Reclamación", description: "Ante aseguradora" },
-          { icon: "💵", label: "Evaluación", description: "Saldo vs. indemnización" },
-          { icon: "📊", label: "Cierre", description: "Contabilidad automática" },
-        ],
-      },
+      { type: "interactive-ops" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Operational Management — Components",
-        headers: ["Component", "Key Capabilities", "Automation"],
-        rows: [
-          ["Insurance", "Policies, validity, premium collection, insurer integration", "Expiration alerts, in-installment collection"],
-          ["Taxes", "VAT, income tax, withholdings, e-invoicing", "Automatic calculation and documents"],
-          ["Fines", "Registration, notification, lessee transfer", "Parameterizable collection flow"],
-          ["Claims", "Registration, claim, financial impact, closure", "Automatic event accounting"],
-        ],
-      },
-      {
-        type: "flow" as const,
-        title: "Claims Management Flow",
-        steps: [
-          { icon: "⚠️", label: "Registration", description: "Loss or damage type" },
-          { icon: "📋", label: "Claim", description: "With insurer" },
-          { icon: "💵", label: "Evaluation", description: "Balance vs. indemnity" },
-          { icon: "📊", label: "Closure", description: "Automatic accounting" },
-        ],
-      },
+      { type: "interactive-ops" as DiagramType },
     ],
   },
 
@@ -931,54 +742,10 @@ export const questions: QuestionItem[] = [
     valor: "La capa de APIs y eventos permite integrar SYSDE PLUS con cualquier sistema del ecosistema tecnológico de BCP de forma estandarizada y segura.",
     valor_en: "The API and event layer enables integrating SYSDE PLUS with any system in BCP's technology ecosystem in a standardized and secure manner.",
     diagrams: [
-      {
-        type: "flow" as const,
-        title: "Arquitectura de Integración",
-        steps: [
-          { icon: "🔌", label: "APIs REST", description: "200+ endpoints documentados" },
-          { icon: "📡", label: "Eventos", description: "Webhooks + Message Brokers" },
-          { icon: "🔐", label: "Seguridad", description: "OAuth 2.0 / JWT" },
-          { icon: "🏦", label: "Sistemas Banco", description: "CRM, ERP, Core, DWH" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Integraciones Soportadas",
-        headers: ["Sistema", "Tipo de Integración", "Dirección", "Protocolo"],
-        rows: [
-          ["CRM", "API REST", "Bidireccional", "OAuth 2.0"],
-          ["ERP / SAP", "API REST + Batch", "SYSDE → ERP", "API / Archivos"],
-          ["Core Bancario", "API REST + Eventos", "Bidireccional", "OAuth 2.0 / Webhooks"],
-          ["Data Warehouse", "API REST + DB Views", "SYSDE → DWH", "API / Conexión directa"],
-          ["Pricing", "API REST", "Pricing → SYSDE", "OAuth 2.0"],
-          ["Canales Digitales", "API REST", "Canales → SYSDE", "OAuth 2.0 / JWT"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "flow" as const,
-        title: "Integration Architecture",
-        steps: [
-          { icon: "🔌", label: "REST APIs", description: "200+ documented endpoints" },
-          { icon: "📡", label: "Events", description: "Webhooks + Message Brokers" },
-          { icon: "🔐", label: "Security", description: "OAuth 2.0 / JWT" },
-          { icon: "🏦", label: "Bank Systems", description: "CRM, ERP, Core, DWH" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Supported Integrations",
-        headers: ["System", "Integration Type", "Direction", "Protocol"],
-        rows: [
-          ["CRM", "REST API", "Bidirectional", "OAuth 2.0"],
-          ["ERP / SAP", "REST API + Batch", "SYSDE → ERP", "API / Files"],
-          ["Core Banking", "REST API + Events", "Bidirectional", "OAuth 2.0 / Webhooks"],
-          ["Data Warehouse", "REST API + DB Views", "SYSDE → DWH", "API / Direct connection"],
-          ["Pricing", "REST API", "Pricing → SYSDE", "OAuth 2.0"],
-          ["Digital Channels", "REST API", "Channels → SYSDE", "OAuth 2.0 / JWT"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
   },
   {
@@ -997,54 +764,10 @@ export const questions: QuestionItem[] = [
     valor: "El core de APIs preconstruidas permite a BCP integrar el leasing en sus canales digitales (banca en línea, app móvil) de forma rápida y estandarizada, sin desarrollo desde cero.",
     valor_en: "The pre-built API core allows BCP to integrate leasing into its digital channels (online banking, mobile app) quickly and standardizedly, without building from scratch.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Categorías de APIs Preconstruidas",
-        headers: ["Categoría", "Endpoints Clave", "Uso Típico"],
-        rows: [
-          ["Consulta (Read)", "Estados, saldos, planes de pago, documentos", "Portal web, app móvil, reportería"],
-          ["Ingreso (Write)", "Solicitudes, documentos, pagos, simulaciones", "Canales digitales, CRM"],
-          ["Flujo (Workflow)", "Aprobaciones, estados, notificaciones", "Automatización de procesos"],
-          ["Documentación", "OpenAPI/Swagger + sandbox de pruebas", "Equipo de desarrollo del banco"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Herramientas para Desarrolladores",
-        items: [
-          "📖 Documentación OpenAPI/Swagger completa",
-          "🧪 Sandbox de pruebas disponible",
-          "🧩 SDKs de referencia para integración",
-          "📘 Guías de integración paso a paso",
-          "🔐 OAuth 2.0 / JWT en todos los endpoints",
-          "🔄 Versionamiento de APIs para compatibilidad",
-        ],
-      },
+      { type: "interactive-apis" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Pre-built API Categories",
-        headers: ["Category", "Key Endpoints", "Typical Use"],
-        rows: [
-          ["Query (Read)", "Statuses, balances, payment plans, documents", "Web portal, mobile app, reporting"],
-          ["Input (Write)", "Applications, documents, payments, simulations", "Digital channels, CRM"],
-          ["Workflow", "Approvals, statuses, notifications", "Process automation"],
-          ["Documentation", "OpenAPI/Swagger + test sandbox", "Bank development team"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Developer Tools",
-        items: [
-          "📖 Complete OpenAPI/Swagger documentation",
-          "🧪 Test sandbox available",
-          "🧩 Reference SDKs for integration",
-          "📘 Step-by-step integration guides",
-          "🔐 OAuth 2.0 / JWT on all endpoints",
-          "🔄 API versioning for compatibility",
-        ],
-      },
+      { type: "interactive-apis" as DiagramType },
     ],
   },
 
