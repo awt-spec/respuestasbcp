@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
-import { Infinity, Users, Building2, HeadphonesIcon, GraduationCap, Map, Puzzle, DollarSign, Zap } from "lucide-react";
+import { Infinity as InfinityIcon, Users, Building2, HeadphonesIcon, GraduationCap, Map, Puzzle, DollarSign, Zap } from "lucide-react";
 
 const benefits = [
   { icon: Users, label: "Usuarios Ilimitados", label_en: "Unlimited Users", desc: "Sin restricción de usuarios concurrentes", desc_en: "No concurrent user restrictions", color: "from-blue-500/15 to-blue-500/5 border-blue-500/25" },
