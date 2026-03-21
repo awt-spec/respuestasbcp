@@ -1710,3 +1710,9 @@ export const questions: QuestionItem[] = [
     ],
   },
 ];
+
+export const counts = {
+  total: questions.length,
+  answered: questions.filter((q) => q.status === "answered").length,
+  pending: questions.filter((q) => q.status === "pending").length,
+};
