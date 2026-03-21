@@ -442,18 +442,7 @@ export const questions: QuestionItem[] = [
     valor: "La gestión integrada de líneas de crédito permite a BCP tener control en tiempo real de la exposición crediticia de cada cliente a través de todos los productos financieros.",
     valor_en: "Integrated credit line management allows BCP to have real-time control of each client's credit exposure across all financial products.",
     diagrams: [
-      {
-        type: "grid" as const,
-        title: "☀️ Sistema Solar SYSDE PLUS — Módulo de Cliente como Núcleo",
-        items: [
-          "☀️ MÓDULO DE CLIENTE — Núcleo central del ecosistema, vista 360° del cliente",
-          "🪐 LEASING — Leasing financiero y operativo integrado al cliente",
-          "🪐 FACTORAJE — Factoring con líneas compartidas y exposición consolidada",
-          "🪐 PRÉSTAMOS — Créditos directos vinculados a la línea maestra",
-          "🪐 PENSIONES — Fondos de pensión con gestión centralizada",
-          "🪐 WORKFLOW — Motor de procesos y flujos de aprobación",
-        ],
-      },
+      { type: "ecosystem" as DiagramType },
       {
         type: "flow" as const,
         title: "Flujo de Línea de Crédito en Leasing",
@@ -477,18 +466,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
-      {
-        type: "grid" as const,
-        title: "☀️ SYSDE PLUS Solar System — Client Module as the Core",
-        items: [
-          "☀️ CLIENT MODULE — Central hub of the ecosystem, 360° client view",
-          "🪐 LEASING — Financial and operational leasing integrated to the client",
-          "🪐 FACTORING — Factoring with shared lines and consolidated exposure",
-          "🪐 LOANS — Direct credits linked to the master line",
-          "🪐 PENSIONS — Pension funds with centralized management",
-          "🪐 WORKFLOW — Process engine and approval flows",
-        ],
-      },
+      { type: "ecosystem" as DiagramType },
       {
         type: "flow" as const,
         title: "Credit Line Flow in Leasing",
