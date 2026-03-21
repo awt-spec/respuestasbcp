@@ -305,7 +305,8 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  if (item.id === 3 || item.id === 1) {
+  const clientRefIds = [1, 3, 4, 7, 8, 9, 11, 24];
+  if (clientRefIds.includes(item.id)) {
     tabs.push({ id: "references", label: item.id === 1 ? pick("Implementación en Proceso", "Implementation in Progress") : t("card.references"), icon: Users });
   }
 
