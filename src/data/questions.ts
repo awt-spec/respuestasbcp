@@ -1340,58 +1340,10 @@ export const questions: QuestionItem[] = [
     valor: "Las certificaciones ISO 9001 y 27001, junto con los controles de seguridad implementados, garantizan a BCP que SYSDE cumple con estándares internacionales de calidad y seguridad de la información.",
     valor_en: "ISO 9001 and 27001 certifications, along with implemented security controls, assure BCP that SYSDE meets international quality and information security standards.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Controles de Seguridad Implementados",
-        headers: ["Control", "Detalle", "Alcance"],
-        rows: [
-          ["Cifrado en reposo", "AES-256", "Toda la información almacenada"],
-          ["Cifrado en tránsito", "TLS 1.2/1.3", "Todas las comunicaciones"],
-          ["Enmascaramiento", "PII/PCI por roles", "Interfaces y logs"],
-          ["Tokenización", "Datos financieros críticos", "Números de cuenta, tarjetas"],
-          ["Audit Trail", "Inmutable y completo", "Todas las acciones del sistema"],
-          ["SIEM", "Integración con herramientas del banco", "Eventos de seguridad"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Certificaciones y Seguridad",
-        items: [
-          "🔐 Cifrado AES-256 en reposo + TLS 1.3 en tránsito",
-          "🎭 Enmascaramiento PII/PCI por roles",
-          "📝 Audit trail inmutable completo",
-          "🏅 ISO 9001:2015 — Gestión de Calidad",
-          "🛡️ ISO 27001:2013 — Seguridad de la Información",
-          "🔗 Integración SIEM para eventos de seguridad",
-        ],
-      },
+      { type: "interactive-security" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Implemented Security Controls",
-        headers: ["Control", "Detail", "Scope"],
-        rows: [
-          ["Encryption at rest", "AES-256", "All stored information"],
-          ["Encryption in transit", "TLS 1.2/1.3", "All communications"],
-          ["Masking", "PII/PCI by roles", "Interfaces and logs"],
-          ["Tokenization", "Critical financial data", "Account numbers, cards"],
-          ["Audit Trail", "Immutable and complete", "All system actions"],
-          ["SIEM", "Integration with bank tools", "Security events"],
-        ],
-      },
-      {
-        type: "grid" as const,
-        title: "Certifications and Security",
-        items: [
-          "🔐 AES-256 encryption at rest + TLS 1.3 in transit",
-          "🎭 PII/PCI masking by roles",
-          "📝 Complete immutable audit trail",
-          "🏅 ISO 9001:2015 — Quality Management",
-          "🛡️ ISO 27001:2013 — Information Security",
-          "🔗 SIEM integration for security events",
-        ],
-      },
+      { type: "interactive-security" as DiagramType },
     ],
   },
   {
