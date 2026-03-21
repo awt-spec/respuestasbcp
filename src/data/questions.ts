@@ -718,50 +718,10 @@ export const questions: QuestionItem[] = [
     valor: "La gestión integrada de seguros, impuestos, multas y siniestros reduce el riesgo operativo y automatiza procesos que típicamente se manejan manualmente en hojas de cálculo.",
     valor_en: "Integrated management of insurance, taxes, fines, and claims reduces operational risk and automates processes typically handled manually in spreadsheets.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Gestión Operativa — Componentes",
-        headers: ["Componente", "Capacidades Principales", "Automatización"],
-        rows: [
-          ["Seguros", "Pólizas, vigencia, cobro de primas, integración aseguradoras", "Alertas de vencimiento, cobro en cuota"],
-          ["Impuestos", "IVA, ISR, retenciones, facturación electrónica", "Cálculo y documentos automáticos"],
-          ["Multas", "Registro, notificación, traslado al arrendatario", "Flujo de cobro parametrizable"],
-          ["Siniestros", "Registro, reclamación, impacto financiero, cierre", "Contabilidad automática del evento"],
-        ],
-      },
-      {
-        type: "flow" as const,
-        title: "Flujo de Gestión de Siniestros",
-        steps: [
-          { icon: "⚠️", label: "Registro", description: "Tipo de pérdida o daño" },
-          { icon: "📋", label: "Reclamación", description: "Ante aseguradora" },
-          { icon: "💵", label: "Evaluación", description: "Saldo vs. indemnización" },
-          { icon: "📊", label: "Cierre", description: "Contabilidad automática" },
-        ],
-      },
+      { type: "interactive-ops" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Operational Management — Components",
-        headers: ["Component", "Key Capabilities", "Automation"],
-        rows: [
-          ["Insurance", "Policies, validity, premium collection, insurer integration", "Expiration alerts, in-installment collection"],
-          ["Taxes", "VAT, income tax, withholdings, e-invoicing", "Automatic calculation and documents"],
-          ["Fines", "Registration, notification, lessee transfer", "Parameterizable collection flow"],
-          ["Claims", "Registration, claim, financial impact, closure", "Automatic event accounting"],
-        ],
-      },
-      {
-        type: "flow" as const,
-        title: "Claims Management Flow",
-        steps: [
-          { icon: "⚠️", label: "Registration", description: "Loss or damage type" },
-          { icon: "📋", label: "Claim", description: "With insurer" },
-          { icon: "💵", label: "Evaluation", description: "Balance vs. indemnity" },
-          { icon: "📊", label: "Closure", description: "Automatic accounting" },
-        ],
-      },
+      { type: "interactive-ops" as DiagramType },
     ],
   },
 
