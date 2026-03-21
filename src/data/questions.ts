@@ -694,38 +694,10 @@ export const questions: QuestionItem[] = [
     valor: "Las dependencias externas son complementarias, no estructurales. SYSDE PLUS mantiene la lógica de negocio completa internamente y se conecta con los sistemas del banco mediante APIs estándar.",
     valor_en: "External dependencies are complementary, not structural. SYSDE PLUS maintains complete business logic internally and connects with bank systems via standard APIs.",
     diagrams: [
-      {
-        type: "table" as const,
-        title: "Fases Nativas vs. Integraciones Externas",
-        headers: ["Fase", "SYSDE PLUS (Nativo)", "Sistema Externo", "Integración"],
-        rows: [
-          ["Captación", "Recepción de solicitud", "CRM del banco", "API REST"],
-          ["Evaluación crediticia", "Scoring interno, análisis", "Burós de crédito", "API / Web Service"],
-          ["Aprobación", "✅ 100% nativo", "—", "—"],
-          ["Formalización", "Contratos, documentos", "Firma electrónica (opcional)", "API"],
-          ["Desembolso", "Autorización y registro", "Core bancario / Pagos", "API / Mensajería"],
-          ["Administración", "✅ 100% nativo", "—", "—"],
-          ["Cobro", "Gestión y aplicación", "Sistema de pagos / ACH", "API"],
-          ["Contabilidad", "Asientos automáticos", "ERP / GL central (exportación)", "API / Batch"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "table" as const,
-        title: "Native Phases vs. External Integrations",
-        headers: ["Phase", "SYSDE PLUS (Native)", "External System", "Integration"],
-        rows: [
-          ["Prospecting", "Application reception", "Bank CRM", "REST API"],
-          ["Credit evaluation", "Internal scoring, analysis", "Credit bureaus", "API / Web Service"],
-          ["Approval", "✅ 100% native", "—", "—"],
-          ["Formalization", "Contracts, documents", "E-signature (optional)", "API"],
-          ["Disbursement", "Authorization and recording", "Core banking / Payments", "API / Messaging"],
-          ["Administration", "✅ 100% native", "—", "—"],
-          ["Collection", "Management and application", "Payment system / ACH", "API"],
-          ["Accounting", "Automatic entries", "ERP / Central GL (export)", "API / Batch"],
-        ],
-      },
+      { type: "integration-orbit" as DiagramType },
     ],
   },
 
