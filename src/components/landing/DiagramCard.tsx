@@ -420,7 +420,7 @@ const DiagramCard = ({ item, index }: Props) => {
                   </div>
                 )}
 
-                {item.id === 3 && (
+                {clientRefIds.includes(item.id) && item.id !== 1 && (
                   <motion.button
                     onClick={() => setActiveTab("references")}
                     className="mt-5 flex items-center gap-2 px-5 py-3 rounded-xl bg-destructive/10 text-destructive border-2 border-destructive/40 text-sm font-bold hover:bg-destructive/20 transition-colors shadow-md animate-bounce"
