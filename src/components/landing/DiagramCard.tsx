@@ -405,11 +405,19 @@ const DiagramCard = ({ item, index }: Props) => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="space-y-3">
-                  {displayRespuesta.split("\n\n").map((paragraph, i) => (
-                    <p key={i} className="text-[13px] text-foreground leading-relaxed">{paragraph}</p>
-                  ))}
-                </div>
+                {/* March 20 questions use interactive response cards */}
+                {item.receivedDate === "20 marzo 2026" ? (
+                  <InteractiveResponseCard response={displayRespuesta}>
+                    {item.id === 12 && <InteractiveLifecycle />}
+                    {item.id === 26 && <InteractiveSecurity />}
+                  </InteractiveResponseCard>
+                ) : (
+                  <div className="space-y-3">
+                    {displayRespuesta.split("\n\n").map((paragraph, i) => (
+                      <p key={i} className="text-[13px] text-foreground leading-relaxed">{paragraph}</p>
+                    ))}
+                  </div>
+                )}
 
                 {item.id === 3 && (
                   <motion.button
