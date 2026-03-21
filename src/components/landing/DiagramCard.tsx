@@ -12,6 +12,10 @@ import {
 import { useI18n } from "@/contexts/I18nContext";
 import SafEcosystem from "./SafEcosystem";
 import SysdeStats from "./SysdeStats";
+import IntegrationOrbit from "./IntegrationOrbit";
+import InteractiveOperations from "./InteractiveOperations";
+import InteractiveAPIs from "./InteractiveAPIs";
+import LicensingShowcase from "./LicensingShowcase";
 
 /* ─── Diagram Renderers ─── */
 
