@@ -17,6 +17,8 @@ import InteractiveOperations from "./InteractiveOperations";
 import InteractiveAPIs from "./InteractiveAPIs";
 import LicensingShowcase from "./LicensingShowcase";
 import InteractiveLifecycle from "./InteractiveLifecycle";
+import InteractiveResponseCard from "./InteractiveResponseCard";
+import InteractiveSecurity from "./InteractiveSecurity";
 
 /* ─── Diagram Renderers ─── */
 
