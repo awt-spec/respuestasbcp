@@ -16,6 +16,7 @@ import IntegrationOrbit from "./IntegrationOrbit";
 import InteractiveOperations from "./InteractiveOperations";
 import InteractiveAPIs from "./InteractiveAPIs";
 import LicensingShowcase from "./LicensingShowcase";
+import InteractiveLifecycle from "./InteractiveLifecycle";
 
 /* ─── Diagram Renderers ─── */
 
