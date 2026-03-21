@@ -44,7 +44,7 @@ function parseResponse(text: string): { confirmation: string; sections: Response
     if (!p) continue;
     
     // Check for bold header line
-    const headerMatch = p.match(/^([𝗔-𝘇𝟬-𝟵\s/\-—–()&+.,:']+?)[:：]\s*(.*)/s);
+    const headerMatch = p.match(/^([\u{1D5D4}-\u{1D647}\u{1D7EC}-\u{1D7F5}\s/\-—–()&+.,:']+?)[:：]\s*(.*)/su);
     
     if (headerMatch) {
       if (currentSection) sections.push(currentSection);
