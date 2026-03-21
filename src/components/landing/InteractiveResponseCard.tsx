@@ -20,7 +20,7 @@ function parseResponse(text: string): { confirmation: string; sections: Response
   for (; i < paragraphs.length; i++) {
     const p = paragraphs[i];
     // Check if it starts with a bold unicode header (𝗕𝗼𝗹𝗱)
-    const hasBoldHeader = /^[𝗔-𝘇𝟬-𝟵]/.test(p.trim());
+    const hasBoldHeader = /^[\u{1D5D4}-\u{1D647}\u{1D7EC}-\u{1D7F5}]/u.test(p.trim());
     if (hasBoldHeader && i > 0) break;
     if (i === 0) {
       // First paragraph - check if it IS a bold header
