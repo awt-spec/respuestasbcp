@@ -645,12 +645,8 @@ export const questions: QuestionItem[] = [
     respuesta_en: "SYSDE PLUS operates under an unlimited subscription model that includes:\n\n𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗦𝘂𝗽𝗽𝗼𝗿𝘁: Technical and functional support included at no additional cost, no per-ticket charges, no per-incident charges. Always premium, no restrictions.\n\n𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝗼𝗻𝗮𝗿𝘆 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁: Functional improvements, regulatory adjustments and new functionalities are delivered at no additional cost as part of continuous platform evolution.\n\n𝗧𝗿𝗮𝗶𝗻𝗶𝗻𝗴 & 𝗖𝗮𝗽𝗮𝗰𝗶𝘁𝗮𝘁𝗶𝗼𝗻: Includes ongoing training at no additional cost — scheduled training and enablement sessions, as well as ad-hoc consultations at no charge. BCP's team will always have access to functional and technical support.\n\n𝗡𝗼 𝗛𝗶𝗱𝗱𝗲𝗻 𝗖𝗵𝗮𝗿𝗴𝗲𝘀: No per-user, per-transaction, per-company or per-module charges. One subscription, everything unlimited.",
     valor: "El modelo de suscripción ilimitado con soporte, capacitación y consultas puntuales incluidos sin costo ofrece total predictibilidad de costos para BCP, eliminando sorpresas y facilitando la planificación presupuestaria.",
     valor_en: "The unlimited subscription model with included support, training, and ad-hoc consultations at no cost offers total cost predictability for BCP, eliminating surprises and facilitating budget planning.",
-    diagrams: [
-      { type: "licensing" as DiagramType },
-    ],
-    diagrams_en: [
-      { type: "licensing" as DiagramType },
-    ],
+    diagrams: [],
+    diagrams_en: [],
   },
 
   // ── Proceso E2E (F) ──
