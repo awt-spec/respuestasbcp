@@ -1091,51 +1091,13 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Product evolution vision",
     requerimiento: "¿Cuál es el roadmap de leasing a 3 años?",
     requerimiento_en: "What is the 3-year leasing roadmap?",
-    respuesta: "El roadmap de SYSDE PLUS contempla tres ejes de evolución:\n\n𝟮𝟬𝟮𝟲 — 𝗖𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝗰𝗶ó𝗻 𝘆 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝘇𝗮𝗰𝗶ó𝗻:\n• Motor de decisión crediticia con IA para pre-aprobación automática\n• Automatización de procesos operativos repetitivos (RPA)\n• Portal de autoservicio para arrendatarios\n• Expansión de conectores de integración preconstruidos\n\n𝟮𝟬𝟮𝟳 — 𝗜𝗻𝘁𝗲𝗹𝗶𝗴𝗲𝗻𝗰𝗶𝗮 𝘆 𝗣𝗿𝗲𝗱𝗶𝗰𝗰𝗶ó𝗻:\n• Analytics predictivo y scoring comportamental para anticipar mora\n• Optimización de portafolio (maximizar rentabilidad, minimizar riesgo)\n• Marketplace de activos devueltos o recuperados\n• Soporte para leasing verde / ESG con tracking de impacto ambiental\n\n𝟮𝟬𝟮𝟴 — 𝗘𝗰𝗼𝘀𝗶𝘀𝘁𝗲𝗺𝗮 𝗔𝗯𝗶𝗲𝗿𝘁𝗼:\n• Open Finance — APIs abiertas para Leasing-as-a-Service\n• Exploración de tokenización de activos (blockchain)\n• Smart contracts para ciertos tipos de operaciones\n• Expansión regulatoria a Sudamérica (Colombia, Chile, Argentina)",
-    respuesta_en: "The SYSDE PLUS roadmap encompasses three evolution axes:\n\n𝟮𝟬𝟮𝟲 — 𝗖𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝘁𝗶𝗼𝗻 & 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝗼𝗻:\n• AI-powered credit decision engine for automatic pre-approval\n• Repetitive operational process automation (RPA)\n• Lessee self-service portal\n• Expansion of pre-built integration connectors\n\n𝟮𝟬𝟮𝟳 — 𝗜𝗻𝘁𝗲𝗹𝗹𝗶𝗴𝗲𝗻𝗰𝗲 & 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝗼𝗻:\n• Predictive analytics and behavioral scoring for arrears anticipation\n• Portfolio optimization (maximize profitability, minimize risk)\n• Marketplace for returned or recovered assets\n• Green leasing / ESG support with environmental impact tracking\n\n𝟮𝟬𝟮𝟴 — 𝗢𝗽𝗲𝗻 𝗘𝗰𝗼𝘀𝘆𝘀𝘁𝗲𝗺:\n• Open Finance — open APIs for Leasing-as-a-Service\n• Asset tokenization exploration (blockchain)\n• Smart contracts for certain operation types\n• Regulatory expansion to South America (Colombia, Chile, Argentina)",
-    valor: "El roadmap demuestra una visión estratégica clara con inversión continua en innovación, lo que asegura a BCP que la plataforma seguirá evolucionando con las tendencias del mercado.",
-    valor_en: "The roadmap demonstrates a clear strategic vision with continuous innovation investment, assuring BCP the platform will continue evolving with market trends.",
+    respuesta: "Sí. SYSDE PLUS cuenta con un roadmap evolutivo detallado con tres ejes principales de innovación. Vea el detalle interactivo a continuación.",
+    respuesta_en: "Yes. SYSDE PLUS has a detailed evolution roadmap with three main innovation axes. See the interactive detail below.",
     diagrams: [
-      {
-        type: "flow" as const,
-        title: "Roadmap de Leasing — SYSDE PLUS",
-        steps: [
-          { icon: "🤖", label: "2026", description: "IA crediticia + Automatización + Portal" },
-          { icon: "📈", label: "2027", description: "Predictivo + Portafolio + ESG" },
-          { icon: "🌐", label: "2028", description: "Open Finance + Tokenización + Expansión" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Detalle del Roadmap por Año",
-        headers: ["Año", "Eje Principal", "Funcionalidades Clave", "Impacto"],
-        rows: [
-          ["2026", "Automatización", "IA crediticia, RPA, portal autoservicio", "Reducción de tiempos operativos"],
-          ["2027", "Inteligencia", "Predictivo de mora, portafolio, marketplace, ESG", "Decisiones basadas en datos"],
-          ["2028", "Ecosistema", "Open Finance, tokenización, smart contracts", "Nuevos modelos de negocio"],
-        ],
-      },
+      { type: "interactive-roadmap" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "flow" as const,
-        title: "Leasing Roadmap — SYSDE PLUS",
-        steps: [
-          { icon: "🤖", label: "2026", description: "AI credit + Automation + Portal" },
-          { icon: "📈", label: "2027", description: "Predictive + Portfolio + ESG" },
-          { icon: "🌐", label: "2028", description: "Open Finance + Tokenization + Expansion" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Roadmap Detail by Year",
-        headers: ["Year", "Main Axis", "Key Features", "Impact"],
-        rows: [
-          ["2026", "Automation", "AI credit, RPA, self-service portal", "Operational time reduction"],
-          ["2027", "Intelligence", "Arrears prediction, portfolio, marketplace, ESG", "Data-driven decisions"],
-          ["2028", "Ecosystem", "Open Finance, tokenization, smart contracts", "New business models"],
-        ],
-      },
+      { type: "interactive-roadmap" as DiagramType },
     ],
   },
 
