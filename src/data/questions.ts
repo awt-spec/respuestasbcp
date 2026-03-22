@@ -1353,6 +1353,7 @@ export const questions: QuestionItem[] = [
           ["Municipalities — Properties", "Costa Rica", "Batch", "Configurable"],
           ["National Registry — Property", "Costa Rica", "API / Web Service", "On-demand"],
           ["Tax Authority — Invoicing", "Costa Rica", "API", "Real-time"],
+          ["Judicial Branch", "Costa Rica", "API / Web Service", "On-demand"],
         ],
       },
       {
@@ -1363,6 +1364,7 @@ export const questions: QuestionItem[] = [
           ["SUNAT", "Electronic invoicing", "API", "Low (experience with SAT Guatemala)"],
           ["SUNARP", "Property and lien registry", "API / Web Service", "Low (experience with CR National Registry)"],
           ["Municipalities", "Vehicle ticket queries", "API / Batch", "Low (experience with CR municipalities)"],
+          ["Judicial Branch", "Process and lien queries", "API / Web Service", "Low (experience with CR Judicial Branch)"],
           ["SBS", "Regulatory reports", "Batch / API", "Medium (new jurisdiction config)"],
         ],
       },
