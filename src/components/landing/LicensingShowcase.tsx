@@ -58,9 +58,9 @@ const LicensingShowcase = () => {
     },
     {
       icon: HeadphonesIcon,
-      number: "24/7",
-      title: pick("Soporte", "Support"),
-      subtitle: pick("Incluido e ilimitado. Sin tickets de pago. Sin cobro por incidente.", "Included and unlimited. No paid tickets. No per-incident charges."),
+      number: "∞",
+      title: pick("Soporte Ilimitado", "Unlimited Support"),
+      subtitle: pick("Soporte ilimitado sin costo adicional. Sin tickets de pago. Sin cobro por incidente.", "Unlimited support at no additional cost. No paid tickets. No per-incident charges."),
       detail: pick(
         "Soporte técnico y funcional ilimitado, incluido en la suscripción sin costo adicional. Sin cobro por ticket, sin cobro por incidente, sin tiers de servicio. Siempre premium, sin restricciones.",
         "Unlimited technical and functional support, included in the subscription at no additional cost. No per-ticket charges, no per-incident charges, no service tiers. Always premium, no restrictions."
@@ -84,12 +84,12 @@ const LicensingShowcase = () => {
     },
     {
       icon: DollarSign,
-      number: "$0",
-      title: pick("Por Transacción", "Per Transaction"),
-      subtitle: pick("Desembolsos, cobros, consultas — sin cargo.", "Disbursements, collections, queries — no charge."),
+      number: "∞",
+      title: pick("Transacciones Ilimitadas", "Unlimited Transactions"),
+      subtitle: pick("Desembolsos, cobros, consultas — ilimitados sin costo adicional.", "Disbursements, collections, queries — unlimited at no additional cost."),
       detail: pick(
-        "No importa el volumen: 100 o 100,000 operaciones mensuales, el costo no cambia.",
-        "Volume doesn't matter: 100 or 100,000 monthly operations, the cost stays the same."
+        "No importa el volumen: 100 o 100,000 operaciones mensuales, el costo no cambia. Transacciones ilimitadas incluidas en la suscripción.",
+        "Volume doesn't matter: 100 or 100,000 monthly operations, the cost stays the same. Unlimited transactions included in the subscription."
       ),
       accent: "from-rose-500 to-rose-600",
       bg: "from-rose-500/10 to-rose-600/5",
@@ -97,12 +97,12 @@ const LicensingShowcase = () => {
     },
     {
       icon: Sparkles,
-      number: "$0",
-      title: pick("Desarrollo Evolutivo", "Evolutionary Development"),
-      subtitle: pick("Mejoras, nuevas funcionalidades y regulatorio — sin costo adicional.", "Improvements, new features and regulatory — at no additional cost."),
+      number: "∞",
+      title: pick("Desarrollo Evolutivo Ilimitado", "Unlimited Evolutionary Dev."),
+      subtitle: pick("Mejoras, nuevas funcionalidades y regulatorio — ilimitado sin costo adicional.", "Improvements, new features and regulatory — unlimited at no additional cost."),
       detail: pick(
-        "Todas las mejoras funcionales, ajustes regulatorios y nuevas funcionalidades se entregan como parte de la suscripción. Sin cargos por desarrollo evolutivo.",
-        "All functional improvements, regulatory adjustments and new functionalities are delivered as part of the subscription. No evolutionary development charges."
+        "Todas las mejoras funcionales, ajustes regulatorios y nuevas funcionalidades se entregan como parte de la suscripción sin límite. Desarrollo evolutivo ilimitado.",
+        "All functional improvements, regulatory adjustments and new functionalities are delivered as part of the subscription without limit. Unlimited evolutionary development."
       ),
       accent: "from-teal-500 to-teal-600",
       bg: "from-teal-500/10 to-teal-600/5",

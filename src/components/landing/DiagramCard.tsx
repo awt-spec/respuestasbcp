@@ -173,11 +173,14 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
   return (
     <div>
       {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
-      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background group"
-        onMouseEnter={() => setShowHint(false)}
-      >
+      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background group">
         {showHint && (
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm pointer-events-none transition-opacity">
+          <div
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm cursor-pointer transition-opacity"
+            onClick={() => setShowHint(false)}
+            onMouseEnter={() => setShowHint(false)}
+            onTouchStart={() => setShowHint(false)}
+          >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -186,8 +189,8 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
               </div>
-              <p className="text-sm font-bold text-foreground">Cómo empezar</p>
-              <p className="text-xs text-muted-foreground">Pase el mouse para explorar el mapa funcional</p>
+              <p className="text-sm font-bold text-foreground">Toque o pase el mouse para explorar</p>
+              <p className="text-xs text-muted-foreground">Haga clic aquí para comenzar</p>
             </motion.div>
           </div>
         )}
@@ -490,7 +493,7 @@ const DiagramCard = ({ item, index }: Props) => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Users className="w-4 h-4" />
-                    {pick("👉 Ver Referencias de Clientes", "👉 View Client References")}
+                    {pick("👉 Referencias con Mayores Volúmenes", "👉 References with Highest Volumes")}
                   </motion.button>
                 )}
 
@@ -573,7 +576,7 @@ const DiagramCard = ({ item, index }: Props) => {
                     <p className="text-[11px] text-muted-foreground">{pick("Clientes que actualmente están en proceso de implementación con SYSDE.", "Clients currently in the implementation process with SYSDE.")}</p>
                   </div>
                 )}
-                <ReferencesSection filter={item.id === 1 ? "implementation" : undefined} />
+                <ReferencesSection filter={item.id === 1 ? "implementation" : undefined} sortByVolume={item.id === 21} />
               </motion.div>
             )}
 
