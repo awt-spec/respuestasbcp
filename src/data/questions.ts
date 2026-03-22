@@ -514,7 +514,6 @@ export const questions: QuestionItem[] = [
         headers: ["Institución", "País", "Productos Activos", "Estado"],
         rows: [
           ["Banco de Costa Rica", "Costa Rica", "Leasing Financiero", "✅ Producción"],
-          ["Banco Nacional", "Costa Rica", "SYSDE PLUS Suite", "✅ Producción"],
           ["CMI", "Guatemala / 15 países", "Leasing + Factoring", "🔄 Implementación"],
           ["GNP", "México", "Leasing", "✅ Producción"],
           ["Bankaool", "México", "SYSDE PLUS", "✅ Producción"],
