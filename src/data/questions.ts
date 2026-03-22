@@ -1023,60 +1023,12 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Processing capacity",
     requerimiento: "¿Volumen máximo de operaciones soportadas actualmente?",
     requerimiento_en: "What is the maximum volume of operations currently supported?",
-    respuesta: "𝗖𝗮𝗽𝗮𝗰𝗶𝗱𝗮𝗱 𝗔𝗰𝘁𝘂𝗮𝗹 𝗲𝗻 𝗣𝗿𝗼𝗱𝘂𝗰𝗰𝗶ó𝗻:\n• +1,000 instituciones financieras operando simultáneamente\n• Millones de transacciones mensuales a nivel agregado\n• En pensiones (~82% del mercado regional), procesa volúmenes que superan ampliamente los requerimientos típicos de leasing\n\n𝗘𝘀𝗰𝗮𝗹𝗮𝗯𝗶𝗹𝗶𝗱𝗮𝗱 𝗧é𝗰𝗻𝗶𝗰𝗮:\n• Microservicios con auto-scaling horizontal basado en demanda\n• Sin límite teórico de operaciones (escalamiento elástico)\n• Procesamiento batch nocturno optimizado para cierres y facturación masiva\n• Bases de datos con particionamiento y réplicas de lectura\n\n𝗣𝗮𝗿𝗮 𝗕𝗖𝗣: El volumen de leasing proyectado se encuentra dentro de los rangos que la plataforma maneja cómodamente. Se realizan pruebas de carga durante el dimensionamiento para validar tiempos de respuesta.",
-    respuesta_en: "𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝗼𝗻 𝗖𝗮𝗽𝗮𝗰𝗶𝘁𝘆:\n• +1,000 financial institutions operating simultaneously\n• Millions of monthly transactions at aggregate level\n• In pensions (~82% of regional market), processes volumes far exceeding typical leasing requirements\n\n𝗧𝗲𝗰𝗵𝗻𝗶𝗰𝗮𝗹 𝗦𝗰𝗮𝗹𝗮𝗯𝗶𝗹𝗶𝘁𝘆:\n• Microservices with demand-based horizontal auto-scaling\n• No theoretical operation limit (elastic scaling)\n• Optimized nightly batch processing for closings and mass billing\n• Databases with partitioning and read replicas\n\n𝗙𝗼𝗿 𝗕𝗖𝗣: Projected leasing volume is within ranges the platform handles comfortably. Load testing is performed during dimensioning to validate response times.",
+    respuesta: "Sí. SYSDE PLUS maneja volúmenes que superan ampliamente los requerimientos de una operación de leasing bancario. Vea el detalle interactivo a continuación.",
+    respuesta_en: "Yes. SYSDE PLUS handles volumes that far exceed bank leasing operation requirements. See the interactive detail below.",
     valor: "La arquitectura escalable garantiza que SYSDE PLUS pueda crecer junto con BCP sin limitaciones de volumen, respaldado por la experiencia en operaciones de alta escala como pensiones.",
     valor_en: "Scalable architecture ensures SYSDE PLUS can grow with BCP without volume limitations, backed by experience in high-scale operations like pensions.",
-    diagrams: [
-      {
-        type: "grid" as const,
-        title: "Capacidad y Escalabilidad",
-        items: [
-          "1,000+ instituciones en producción simultánea",
-          "Millones de transacciones mensuales",
-          "Auto-scaling horizontal por demanda",
-          "Procesamiento batch optimizado",
-          "Base de datos particionada con réplicas",
-          "Pruebas de carga durante dimensionamiento",
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Arquitectura de Escalabilidad",
-        headers: ["Componente", "Tecnología", "Beneficio"],
-        rows: [
-          ["Computación", "Microservicios + Auto-scaling", "Escala elástica por demanda"],
-          ["Base de Datos", "Particionamiento + Réplicas", "Consultas de alto volumen optimizadas"],
-          ["Procesamiento", "Batch nocturno optimizado", "Cierres y facturación masiva"],
-          ["Infraestructura", "Microsoft Azure", "Redundancia y alta disponibilidad"],
-        ],
-      },
-    ],
-    diagrams_en: [
-      {
-        type: "grid" as const,
-        title: "Capacity and Scalability",
-        items: [
-          "1,000+ institutions in simultaneous production",
-          "Millions of monthly transactions",
-          "Horizontal auto-scaling on demand",
-          "Optimized batch processing",
-          "Partitioned database with replicas",
-          "Load testing during dimensioning",
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Scalability Architecture",
-        headers: ["Component", "Technology", "Benefit"],
-        rows: [
-          ["Compute", "Microservices + Auto-scaling", "Elastic demand-based scaling"],
-          ["Database", "Partitioning + Replicas", "Optimized high-volume queries"],
-          ["Processing", "Optimized nightly batch", "Mass closings and billing"],
-          ["Infrastructure", "Microsoft Azure", "Redundancy and high availability"],
-        ],
-      },
-    ],
+    diagrams: [],
+    diagrams_en: [],
   },
 
   // ── Gobernanza (L) ──
