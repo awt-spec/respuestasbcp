@@ -476,19 +476,6 @@ const DiagramCard = ({ item, index }: Props) => {
                   </motion.button>
                 )}
 
-                {item.id === 12 && (
-                  <motion.a
-                    href="https://sysde.com/mfleasing/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary/10 text-primary border-2 border-primary/30 text-sm font-bold hover:bg-primary/20 transition-colors shadow-md"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    {pick("🗺️ Ver Mapa Funcional Completo", "🗺️ View Complete Functional Map")}
-                  </motion.a>
-                )}
 
                 {item.id === 2 && (
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
