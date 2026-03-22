@@ -21,6 +21,7 @@ import InteractiveResponseCard from "./InteractiveResponseCard";
 import InteractiveSecurity from "./InteractiveSecurity";
 import InteractiveRoadmap from "./InteractiveRoadmap";
 import InteractiveScalability from "./InteractiveScalability";
+import InteractivePresence from "./InteractivePresence";
 
 /* ─── Diagram Renderers ─── */
 
