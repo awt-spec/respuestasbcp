@@ -1219,6 +1219,8 @@ export const questions: QuestionItem[] = [
         ],
       },
     ],
+    valor: "SYSDE ofrece presencia global con fábrica de software y equipo de soporte dedicado en Perú, eliminando riesgos de soporte remoto sin contexto local.",
+    valor_en: "SYSDE offers global presence with a software factory and dedicated support team in Peru, eliminating risks of remote support without local context.",
   },
   {
     id: 25,
