@@ -217,68 +217,6 @@ const LicensingShowcase = () => {
         })}
       </div>
 
-      {/* ── Act III: "And one more thing..." — BCP Roadmap ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="relative rounded-3xl overflow-hidden"
-      >
-        {/* Dramatic gradient bg */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.15)_0%,_transparent_60%)]" />
-
-        <div className="relative p-8 md:p-10">
-          <div className="flex items-center gap-2 mb-4">
-            <motion.div
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-            >
-              <Zap className="w-6 h-6 text-primary-foreground" />
-            </motion.div>
-            <span className="text-[10px] font-bold text-primary-foreground/70 uppercase tracking-[0.25em]">
-              {pick("Y una cosa más…", "And one more thing…")}
-            </span>
-          </div>
-
-          <h4 className="text-xl md:text-2xl font-black text-primary-foreground leading-tight mb-3">
-            {pick("Roadmap Evolutivo", "Evolutionary Roadmap")}
-            <br />
-            <span className="text-primary-foreground/80">
-              {pick("exclusivo para BCP", "exclusive to BCP")}
-            </span>
-          </h4>
-
-          <p className="text-sm text-primary-foreground/70 max-w-lg leading-relaxed mb-6">
-            {pick(
-              "Cualquier mejora, ajuste o nueva funcionalidad desarrollada sin costo adicional como parte de la evolución continua de la plataforma.",
-              "Any improvement, adjustment, or new functionality developed at no additional cost as part of the platform's continuous evolution."
-            )}
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            {[
-              { icon: Check, text: pick("Mejoras funcionales", "Functional improvements") },
-              { icon: Check, text: pick("Nuevas funcionalidades", "New features") },
-              { icon: Check, text: pick("Actualizaciones regulatorias", "Regulatory updates") },
-              { icon: Check, text: pick("Sin costo adicional", "No additional cost") },
-            ].map((tag, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + i * 0.1 }}
-                className="flex items-center gap-1.5 bg-primary-foreground/15 backdrop-blur-sm px-3.5 py-2 rounded-full"
-              >
-                <tag.icon className="w-3.5 h-3.5 text-primary-foreground" />
-                <span className="text-[11px] font-bold text-primary-foreground">{tag.text}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 };
