@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
-import { Search, PenTool, Settings, ChevronDown, BookOpen, TestTube, Code2, Shield, Zap, Globe, Activity, Database, BarChart3, Webhook } from "lucide-react";
+import { Search, PenTool, Settings, ChevronDown, BookOpen, TestTube, Code2, Shield, Zap, Globe, Activity, Database, BarChart3, Webhook, FileCode2, Layers } from "lucide-react";
 
 interface ApiCategory {
   id: string;
@@ -11,6 +11,12 @@ interface ApiCategory {
   color: string;
   gradient: string;
   endpoints: { name: string; name_en: string; desc: string; desc_en: string }[];
+}
+
+interface SwaggerGroup {
+  name: string;
+  name_en: string;
+  methods: { method: string; path: string; desc: string; desc_en: string }[];
 }
 
 const categories: ApiCategory[] = [
@@ -57,6 +63,64 @@ const categories: ApiCategory[] = [
   },
 ];
 
+const swaggerGroups: SwaggerGroup[] = [
+  {
+    name: "Acuerdos de Pagos", name_en: "Payment Agreements",
+    methods: [
+      { method: "GET", path: "/v2/acuerdos-pagos/encabezados", desc: "Obtiene los encabezados de acuerdos de pago", desc_en: "Get payment agreement headers" },
+      { method: "GET", path: "/v2/acuerdos-pagos/detalles", desc: "Obtiene el detalle de acuerdos de pago", desc_en: "Get payment agreement details" },
+      { method: "GET", path: "/v2/acuerdos-pagos/distribuciones-pago", desc: "Distribución de pago por tipo", desc_en: "Payment distribution by type" },
+      { method: "POST", path: "/v2/acuerdos-pagos/generar-acuerdo-pago", desc: "Genera un nuevo acuerdo de pago", desc_en: "Generate a new payment agreement" },
+      { method: "POST", path: "/v2/acuerdos-pagos/validar-anular", desc: "Validar anulación de acuerdo", desc_en: "Validate agreement annulment" },
+      { method: "POST", path: "/v2/acuerdos-pagos/validar-nuevo", desc: "Validar nuevo acuerdo", desc_en: "Validate new agreement" },
+      { method: "POST", path: "/v2/acuerdos-pagos/anular", desc: "Anular acuerdo de pago", desc_en: "Annul payment agreement" },
+    ],
+  },
+  {
+    name: "Agencias por Tipo de Crédito", name_en: "Agencies by Credit Type",
+    methods: [
+      { method: "GET", path: "/v2/agencias-tipos-credito/{codEmpresa}", desc: "Obtiene agencias por tipo de crédito", desc_en: "Get agencies by credit type" },
+      { method: "POST", path: "/v2/agencias-tipos-credito", desc: "Agrega agencia por tipo de crédito", desc_en: "Add agency by credit type" },
+      { method: "PUT", path: "/v2/agencias-tipos-credito", desc: "Actualiza agencia por tipo de crédito", desc_en: "Update agency by credit type" },
+      { method: "DELETE", path: "/v2/agencias-tipos-credito/{...}", desc: "Elimina configuración de agencia", desc_en: "Delete agency configuration" },
+      { method: "PATCH", path: "/v2/agencias-tipos-credito/{...}", desc: "Actualización parcial de agencia", desc_en: "Partial agency update" },
+    ],
+  },
+  {
+    name: "Artículos y Activos", name_en: "Articles & Assets",
+    methods: [
+      { method: "GET", path: "/v2/articulos/articulo-credito/{...}", desc: "Obtiene artículos relacionados a un crédito", desc_en: "Get articles related to a credit" },
+    ],
+  },
+  {
+    name: "Avances de Obras", name_en: "Work Progress",
+    methods: [
+      { method: "GET", path: "/v2/avances-obras/{...}", desc: "Estructura de avance de obra por crédito", desc_en: "Work progress structure by credit" },
+      { method: "GET", path: "/v2/avances-obras/historicos/{...}", desc: "Histórico de avances de obras", desc_en: "Work progress history" },
+      { method: "GET", path: "/v2/avances-obras/creditos-puentes", desc: "Créditos puente para avance de obra", desc_en: "Bridge credits for work progress" },
+      { method: "GET", path: "/v2/avances-obras/reportes/{...}", desc: "Reporte de proyección de avances", desc_en: "Progress projection report" },
+      { method: "POST", path: "/v2/avances-obras", desc: "Agrega nuevo avance de obra", desc_en: "Add new work progress" },
+    ],
+  },
+  {
+    name: "Cantidades y Cuotas", name_en: "Amounts & Installments",
+    methods: [
+      { method: "POST", path: "/v2/cantidades-cuotas", desc: "Sumatoria de montos de cuotas", desc_en: "Sum of installment amounts" },
+      { method: "GET", path: "/v2/cantidad-pagos-sostenido/{...}", desc: "Cantidades de pagos sostenidos", desc_en: "Sustained payment amounts" },
+      { method: "DELETE", path: "/v2/cantidad-pagos-sostenido/{...}", desc: "Eliminar pago sostenido", desc_en: "Delete sustained payment" },
+      { method: "PATCH", path: "/v2/cantidad-pagos-sostenido/{...}", desc: "Actualizar pago sostenido", desc_en: "Update sustained payment" },
+    ],
+  },
+];
+
+const methodColors: Record<string, string> = {
+  GET: "bg-blue-500 text-white",
+  POST: "bg-emerald-500 text-white",
+  PUT: "bg-amber-500 text-white",
+  PATCH: "bg-violet-500 text-white",
+  DELETE: "bg-rose-500 text-white",
+};
+
 const stats = [
   { value: "+250", label: "Endpoints", label_en: "Endpoints", icon: Zap, color: "text-blue-600 bg-blue-500/10 border-blue-500/20" },
   { value: "REST", label: "Arquitectura", label_en: "Architecture", icon: Globe, color: "text-emerald-600 bg-emerald-500/10 border-emerald-500/20" },
@@ -84,6 +148,8 @@ const InteractiveAPIs = () => {
   const { lang } = useI18n();
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [showSwagger, setShowSwagger] = useState(false);
+  const [expandedSwagger, setExpandedSwagger] = useState<number | null>(null);
 
   return (
     <div className="space-y-6">
@@ -173,6 +239,124 @@ const InteractiveAPIs = () => {
             );
           })}
         </div>
+      </div>
+
+      {/* Swagger API Explorer */}
+      <div>
+        <p className="text-xs font-bold text-primary uppercase tracking-[0.2em] text-center mb-4">
+          {pick("Documentación Swagger — Endpoints Reales", "Swagger Documentation — Real Endpoints")}
+        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <button
+            onClick={() => { setShowSwagger(!showSwagger); setExpandedSwagger(null); }}
+            className="w-full flex items-center gap-3 p-4 rounded-xl border bg-gradient-to-br from-primary/10 to-primary/5 border-primary/25 hover:shadow-lg transition-all cursor-pointer"
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+              <FileCode2 className="w-6 h-6 text-primary" />
+            </div>
+            <div className="flex-1 text-left">
+              <p className="text-sm font-bold text-foreground">
+                {pick("Explorador de APIs — Swagger/OpenAPI", "API Explorer — Swagger/OpenAPI")}
+              </p>
+              <p className="text-[11px] text-muted-foreground">
+                {pick("Muestra de endpoints reales documentados en el Swagger de SYSDE PLUS", "Sample of real endpoints documented in SYSDE PLUS Swagger")}
+              </p>
+            </div>
+            <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground">
+              {swaggerGroups.reduce((acc, g) => acc + g.methods.length, 0)} {pick("rutas", "routes")}
+            </span>
+            <motion.div animate={{ rotate: showSwagger ? 180 : 0 }} transition={{ duration: 0.2 }}>
+              <ChevronDown className="w-5 h-5 text-muted-foreground" />
+            </motion.div>
+          </button>
+
+          <AnimatePresence>
+            {showSwagger && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="pt-3 space-y-2">
+                  {swaggerGroups.map((group, gi) => {
+                    const isGroupOpen = expandedSwagger === gi;
+                    return (
+                      <motion.div
+                        key={gi}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: gi * 0.05 }}
+                      >
+                        <button
+                          onClick={() => setExpandedSwagger(isGroupOpen ? null : gi)}
+                          className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-all cursor-pointer ${
+                            isGroupOpen ? "bg-primary/5 border-primary/20 shadow-sm" : "bg-card border-border hover:bg-muted/30"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                            <Layers className="w-4 h-4 text-primary" />
+                          </div>
+                          <div className="flex-1 text-left">
+                            <p className="text-[13px] font-bold text-foreground">{pick(group.name, group.name_en)}</p>
+                            <p className="text-[10px] text-muted-foreground">{group.methods.length} {pick("rutas", "routes")}</p>
+                          </div>
+                          <motion.div animate={{ rotate: isGroupOpen ? 180 : 0 }} transition={{ duration: 0.15 }}>
+                            <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
+                          </motion.div>
+                        </button>
+                        <AnimatePresence>
+                          {isGroupOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-2 pb-1 space-y-1.5 px-2">
+                                {group.methods.map((m, mi) => (
+                                  <motion.div
+                                    key={mi}
+                                    initial={{ opacity: 0, x: -8 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: mi * 0.03 }}
+                                    className="flex items-center gap-2.5 p-2.5 rounded-lg bg-muted/30 border"
+                                  >
+                                    <span className={`text-[9px] font-black px-2 py-0.5 rounded-md shrink-0 ${methodColors[m.method] || "bg-muted text-foreground"}`}>
+                                      {m.method}
+                                    </span>
+                                    <div className="flex-1 min-w-0">
+                                      <p className="text-[11px] font-mono text-foreground truncate">{m.path}</p>
+                                      <p className="text-[10px] text-muted-foreground">{pick(m.desc, m.desc_en)}</p>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    );
+                  })}
+
+                  <div className="rounded-lg bg-muted/30 border p-3 mt-2">
+                    <p className="text-[10px] text-muted-foreground leading-relaxed">
+                      <span className="font-bold text-foreground">📋 {pick("Nota", "Note")}:</span>{" "}
+                      {pick(
+                        "Esta es una muestra representativa del Swagger de SYSDE PLUS Loan. La documentación completa incluye +250 endpoints agrupados por módulo funcional, disponible en el portal de desarrolladores.",
+                        "This is a representative sample of the SYSDE PLUS Loan Swagger. Complete documentation includes +250 endpoints grouped by functional module, available on the developer portal."
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       {/* Integrations grid */}

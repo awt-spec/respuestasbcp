@@ -60,10 +60,10 @@ const LicensingShowcase = () => {
       icon: HeadphonesIcon,
       number: "24/7",
       title: pick("Soporte", "Support"),
-      subtitle: pick("Incluido. Siempre. Sin tickets de pago.", "Included. Always. No paid tickets."),
+      subtitle: pick("Incluido e ilimitado. Sin tickets de pago. Sin cobro por incidente.", "Included and unlimited. No paid tickets. No per-incident charges."),
       detail: pick(
-        "Soporte técnico y funcional ilimitado, sin cobro por incidente, sin tiers de servicio. Siempre premium.",
-        "Unlimited technical and functional support, no per-incident charges, no service tiers. Always premium."
+        "Soporte técnico y funcional ilimitado, incluido en la suscripción sin costo adicional. Sin cobro por ticket, sin cobro por incidente, sin tiers de servicio. Siempre premium, sin restricciones.",
+        "Unlimited technical and functional support, included in the subscription at no additional cost. No per-ticket charges, no per-incident charges, no service tiers. Always premium, no restrictions."
       ),
       accent: "from-violet-500 to-violet-600",
       bg: "from-violet-500/10 to-violet-600/5",
