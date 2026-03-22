@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
-import { Server, Users, Database, TrendingUp, Zap, Shield, ChevronDown, BarChart3 } from "lucide-react";
+import { Server, Users, Database, TrendingUp, Zap, ChevronDown, BarChart3 } from "lucide-react";
 
 interface ScaleMetric {
   icon: React.ElementType;
