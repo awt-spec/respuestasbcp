@@ -2,16 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
 import {
-  Infinity as InfinityIcon,
   Users,
   Building2,
   HeadphonesIcon,
   GraduationCap,
-  Map,
   Puzzle,
   DollarSign,
-  Zap,
-  Check,
   ArrowRight,
   Sparkles,
 } from "lucide-react";
