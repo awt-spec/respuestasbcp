@@ -96,6 +96,19 @@ const LicensingShowcase = () => {
       border: "border-rose-500/20",
     },
     {
+      icon: Sparkles,
+      number: "$0",
+      title: pick("Desarrollo Evolutivo", "Evolutionary Development"),
+      subtitle: pick("Mejoras, nuevas funcionalidades y regulatorio — sin costo adicional.", "Improvements, new features and regulatory — at no additional cost."),
+      detail: pick(
+        "Todas las mejoras funcionales, ajustes regulatorios y nuevas funcionalidades se entregan como parte de la suscripción. Sin cargos por desarrollo evolutivo.",
+        "All functional improvements, regulatory adjustments and new functionalities are delivered as part of the subscription. No evolutionary development charges."
+      ),
+      accent: "from-teal-500 to-teal-600",
+      bg: "from-teal-500/10 to-teal-600/5",
+      border: "border-teal-500/20",
+    },
+    {
       icon: Puzzle,
       number: pick("Modular", "Modular"),
       title: pick("Arquitectura", "Architecture"),
