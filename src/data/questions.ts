@@ -1327,6 +1327,7 @@ export const questions: QuestionItem[] = [
           ["Municipalidades — Bienes", "Costa Rica", "Batch", "Configurable"],
           ["Registro Nacional — Propiedad", "Costa Rica", "API / Web Service", "Bajo demanda"],
           ["Tributación — Facturación", "Costa Rica", "API", "Tiempo real"],
+          ["Poder Judicial", "Costa Rica", "API / Web Service", "Bajo demanda"],
         ],
       },
       {
@@ -1337,6 +1338,7 @@ export const questions: QuestionItem[] = [
           ["SUNAT", "Facturación electrónica", "API", "Bajo (experiencia con SAT Guatemala)"],
           ["SUNARP", "Registro de bienes y gravámenes", "API / Web Service", "Bajo (experiencia con Registro Nacional CR)"],
           ["Municipalidades", "Consulta de papeletas vehiculares", "API / Batch", "Bajo (experiencia con municipalidades CR)"],
+          ["Poder Judicial", "Consulta de procesos y embargos", "API / Web Service", "Bajo (experiencia con Poder Judicial CR)"],
           ["SBS", "Reportes regulatorios", "Batch / API", "Medio (configuración nueva jurisdicción)"],
         ],
       },
