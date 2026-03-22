@@ -19,6 +19,7 @@ import LicensingShowcase from "./LicensingShowcase";
 import InteractiveLifecycle from "./InteractiveLifecycle";
 import InteractiveResponseCard from "./InteractiveResponseCard";
 import InteractiveSecurity from "./InteractiveSecurity";
+import InteractiveRoadmap from "./InteractiveRoadmap";
 
 /* ─── Diagram Renderers ─── */
 
