@@ -20,12 +20,6 @@ const metrics: ScaleMetric[] = [
   { icon: Server, value: "Auto-Scale", label: "Escalamiento Horizontal", label_en: "Horizontal Scaling", desc: "Arquitectura de microservicios sobre Azure con auto-scaling horizontal. El dimensionamiento de infraestructura se revisa anualmente para cada cliente", desc_en: "Microservices architecture on Azure with horizontal auto-scaling. Infrastructure dimensioning reviewed annually for each client", color: "violet-500" },
 ];
 
-const references = [
-  { name: "CCSS Costa Rica", metric: "65,000+", metricLabel: "usuarios internos", metricLabel_en: "internal users", desc: "Fondo de pensiones más grande de Centroamérica. Millones de registros de afiliados procesados mensualmente", desc_en: "Largest pension fund in Central America. Millions of affiliate records processed monthly" },
-  { name: "IVM / RIVM", metric: "3M+", metricLabel: "afiliados activos", metricLabel_en: "active affiliates", desc: "Régimen de pensiones con más de 3 millones de afiliados activos en el sistema", desc_en: "Pension regime with over 3 million active affiliates in the system" },
-  { name: "CMI (15 países)", metric: "54,000+", metricLabel: "colaboradores", metricLabel_en: "employees", desc: "Conglomerado más grande de Centroamérica. Operaciones multi-país y multi-moneda simultáneas", desc_en: "Largest conglomerate in Central America. Simultaneous multi-country multi-currency operations" },
-];
-
 const colorMap: Record<string, { bg: string; border: string; text: string; badge: string }> = {
   "primary": { bg: "bg-primary/10", border: "border-primary/25", text: "text-primary", badge: "bg-primary text-primary-foreground" },
   "emerald-500": { bg: "bg-emerald-500/10", border: "border-emerald-500/25", text: "text-emerald-500", badge: "bg-emerald-500 text-white" },
