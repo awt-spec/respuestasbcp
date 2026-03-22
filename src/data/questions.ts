@@ -1,6 +1,6 @@
 export type QuestionStatus = "answered" | "pending";
 
-export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing" | "lifecycle" | "interactive-security";
+export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing" | "lifecycle" | "interactive-security" | "interactive-roadmap";
 
 export type SectionKey = "A" | "B" | "C" | "D" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N";
 
@@ -689,16 +689,12 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Third-party system dependencies",
     requerimiento: "¿Qué fases requieren sistemas externos?",
     requerimiento_en: "What phases require external systems?",
-    respuesta: "𝗖𝗼𝗯𝗲𝗿𝘁𝘂𝗿𝗮 𝗡𝗮𝘁𝗶𝘃𝗮: SYSDE PLUS cubre la totalidad del ciclo de vida (ver consulta #12). Las integraciones externas son complementarias, no estructurales.\n\n𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝗰𝗶𝗼𝗻𝗲𝘀 𝗥𝗲𝗰𝗼𝗺𝗲𝗻𝗱𝗮𝗱𝗮𝘀:\n• 𝗖𝗥𝗠: Captación del prospecto y gestión comercial previo a solicitud formal (integración vía APIs)\n• 𝗖𝗼𝗿𝗲 𝗕𝗮𝗻𝗰𝗮𝗿𝗶𝗼: Verificación de saldos, productos existentes y registro de desembolsos (APIs REST / mensajería)\n• 𝗦𝗶𝘀𝘁𝗲𝗺𝗮 𝗱𝗲 𝗣𝗮𝗴𝗼𝘀: Ejecución de transferencias de fondos / ACH\n• 𝗕𝘂𝗿ó𝘀 𝗱𝗲 𝗖𝗿é𝗱𝗶𝘁𝗼: Consulta externa de historial (Equifax, TransUnion, etc.)\n• 𝗘𝗥𝗣 𝗖𝗲𝗻𝘁𝗿𝗮𝗹: Exportación de asientos al GL corporativo (SAP, Oracle)\n• 𝗙𝗶𝗿𝗺𝗮 𝗘𝗹𝗲𝗰𝘁𝗿ó𝗻𝗶𝗰𝗮: Integración con proveedor certificado del banco\n\n𝗖𝗮𝗽𝗮 𝗱𝗲 𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝗰𝗶ó𝗻: SYSDE PLUS cuenta con APIs preconstruidas y bus de integración que facilitan todas estas conexiones, minimizando esfuerzo de desarrollo.",
-    respuesta_en: "𝗡𝗮𝘁𝗶𝘃𝗲 𝗖𝗼𝘃𝗲𝗿𝗮𝗴𝗲: SYSDE PLUS covers the entire lifecycle (see query #12). External integrations are complementary, not structural.\n\n𝗥𝗲𝗰𝗼𝗺𝗺𝗲𝗻𝗱𝗲𝗱 𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗶𝗼𝗻𝘀:\n• 𝗖𝗥𝗠: Prospect management and commercial management (API integration)\n• 𝗖𝗼𝗿𝗲 𝗕𝗮𝗻𝗸𝗶𝗻𝗴: Balance verification, existing products, disbursement recording (REST APIs / messaging)\n• 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗦𝘆𝘀𝘁𝗲𝗺: Fund transfer / ACH execution\n• 𝗖𝗿𝗲𝗱𝗶𝘁 𝗕𝘂𝗿𝗲𝗮𝘂𝘀: External history query (Equifax, TransUnion, etc.)\n• 𝗖𝗲𝗻𝘁𝗿𝗮𝗹 𝗘𝗥𝗣: Entry export to corporate GL (SAP, Oracle)\n• 𝗘-𝗦𝗶𝗴𝗻𝗮𝘁𝘂𝗿𝗲: Integration with bank's certified provider\n\n𝗜𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗶𝗼𝗻 𝗟𝗮𝘆𝗲𝗿: SYSDE PLUS has pre-built APIs and an integration bus facilitating all connections, minimizing development effort.",
+    respuesta: "Sí. SYSDE PLUS cubre la totalidad del ciclo de vida (ver consulta #12). Las integraciones externas son complementarias, no estructurales. Todas se realizan mediante el Core de APIs de SYSDE PLUS.",
+    respuesta_en: "Yes. SYSDE PLUS covers the entire lifecycle (see query #12). External integrations are complementary, not structural. All are done through the SYSDE PLUS API Core.",
     valor: "Las dependencias externas son complementarias, no estructurales. SYSDE PLUS mantiene la lógica de negocio completa internamente y se conecta con los sistemas del banco mediante APIs estándar.",
     valor_en: "External dependencies are complementary, not structural. SYSDE PLUS maintains complete business logic internally and connects with bank systems via standard APIs.",
-    diagrams: [
-      { type: "integration-orbit" as DiagramType },
-    ],
-    diagrams_en: [
-      { type: "integration-orbit" as DiagramType },
-    ],
+    diagrams: [],
+    diagrams_en: [],
   },
 
   // ── Operaciones (G) ──
@@ -1095,52 +1091,16 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Product evolution vision",
     requerimiento: "¿Cuál es el roadmap de leasing a 3 años?",
     requerimiento_en: "What is the 3-year leasing roadmap?",
-    respuesta: "El roadmap de SYSDE PLUS contempla tres ejes de evolución:\n\n𝟮𝟬𝟮𝟲 — 𝗖𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝗰𝗶ó𝗻 𝘆 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝘇𝗮𝗰𝗶ó𝗻:\n• Motor de decisión crediticia con IA para pre-aprobación automática\n• Automatización de procesos operativos repetitivos (RPA)\n• Portal de autoservicio para arrendatarios\n• Expansión de conectores de integración preconstruidos\n\n𝟮𝟬𝟮𝟳 — 𝗜𝗻𝘁𝗲𝗹𝗶𝗴𝗲𝗻𝗰𝗶𝗮 𝘆 𝗣𝗿𝗲𝗱𝗶𝗰𝗰𝗶ó𝗻:\n• Analytics predictivo y scoring comportamental para anticipar mora\n• Optimización de portafolio (maximizar rentabilidad, minimizar riesgo)\n• Marketplace de activos devueltos o recuperados\n• Soporte para leasing verde / ESG con tracking de impacto ambiental\n\n𝟮𝟬𝟮𝟴 — 𝗘𝗰𝗼𝘀𝗶𝘀𝘁𝗲𝗺𝗮 𝗔𝗯𝗶𝗲𝗿𝘁𝗼:\n• Open Finance — APIs abiertas para Leasing-as-a-Service\n• Exploración de tokenización de activos (blockchain)\n• Smart contracts para ciertos tipos de operaciones\n• Expansión regulatoria a Sudamérica (Colombia, Chile, Argentina)",
-    respuesta_en: "The SYSDE PLUS roadmap encompasses three evolution axes:\n\n𝟮𝟬𝟮𝟲 — 𝗖𝗼𝗻𝘀𝗼𝗹𝗶𝗱𝗮𝘁𝗶𝗼𝗻 & 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝗼𝗻:\n• AI-powered credit decision engine for automatic pre-approval\n• Repetitive operational process automation (RPA)\n• Lessee self-service portal\n• Expansion of pre-built integration connectors\n\n𝟮𝟬𝟮𝟳 — 𝗜𝗻𝘁𝗲𝗹𝗹𝗶𝗴𝗲𝗻𝗰𝗲 & 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝗼𝗻:\n• Predictive analytics and behavioral scoring for arrears anticipation\n• Portfolio optimization (maximize profitability, minimize risk)\n• Marketplace for returned or recovered assets\n• Green leasing / ESG support with environmental impact tracking\n\n𝟮𝟬𝟮𝟴 — 𝗢𝗽𝗲𝗻 𝗘𝗰𝗼𝘀𝘆𝘀𝘁𝗲𝗺:\n• Open Finance — open APIs for Leasing-as-a-Service\n• Asset tokenization exploration (blockchain)\n• Smart contracts for certain operation types\n• Regulatory expansion to South America (Colombia, Chile, Argentina)",
-    valor: "El roadmap demuestra una visión estratégica clara con inversión continua en innovación, lo que asegura a BCP que la plataforma seguirá evolucionando con las tendencias del mercado.",
-    valor_en: "The roadmap demonstrates a clear strategic vision with continuous innovation investment, assuring BCP the platform will continue evolving with market trends.",
+    respuesta: "Sí. SYSDE PLUS cuenta con un roadmap evolutivo detallado con tres ejes principales de innovación. Vea el detalle interactivo a continuación.",
+    respuesta_en: "Yes. SYSDE PLUS has a detailed evolution roadmap with three main innovation axes. See the interactive detail below.",
     diagrams: [
-      {
-        type: "flow" as const,
-        title: "Roadmap de Leasing — SYSDE PLUS",
-        steps: [
-          { icon: "🤖", label: "2026", description: "IA crediticia + Automatización + Portal" },
-          { icon: "📈", label: "2027", description: "Predictivo + Portafolio + ESG" },
-          { icon: "🌐", label: "2028", description: "Open Finance + Tokenización + Expansión" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Detalle del Roadmap por Año",
-        headers: ["Año", "Eje Principal", "Funcionalidades Clave", "Impacto"],
-        rows: [
-          ["2026", "Automatización", "IA crediticia, RPA, portal autoservicio", "Reducción de tiempos operativos"],
-          ["2027", "Inteligencia", "Predictivo de mora, portafolio, marketplace, ESG", "Decisiones basadas en datos"],
-          ["2028", "Ecosistema", "Open Finance, tokenización, smart contracts", "Nuevos modelos de negocio"],
-        ],
-      },
+      { type: "interactive-roadmap" as DiagramType },
     ],
     diagrams_en: [
-      {
-        type: "flow" as const,
-        title: "Leasing Roadmap — SYSDE PLUS",
-        steps: [
-          { icon: "🤖", label: "2026", description: "AI credit + Automation + Portal" },
-          { icon: "📈", label: "2027", description: "Predictive + Portfolio + ESG" },
-          { icon: "🌐", label: "2028", description: "Open Finance + Tokenization + Expansion" },
-        ],
-      },
-      {
-        type: "table" as const,
-        title: "Roadmap Detail by Year",
-        headers: ["Year", "Main Axis", "Key Features", "Impact"],
-        rows: [
-          ["2026", "Automation", "AI credit, RPA, self-service portal", "Operational time reduction"],
-          ["2027", "Intelligence", "Arrears prediction, portfolio, marketplace, ESG", "Data-driven decisions"],
-          ["2028", "Ecosystem", "Open Finance, tokenization, smart contracts", "New business models"],
-        ],
-      },
+      { type: "interactive-roadmap" as DiagramType },
     ],
+    valor: "El roadmap demuestra una visión estratégica clara con inversión continua en innovación, lo que asegura a BCP que la plataforma seguirá evolucionando con las tendencias del mercado.",
+    valor_en: "The roadmap demonstrates a clear strategic vision with continuous innovation investment, assuring BCP the platform will continue evolving with market trends.",
   },
 
   // ── Transparencia (M) ──
@@ -1155,8 +1115,8 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Transparency on limitations",
     requerimiento: "¿Qué funcionalidades de leasing bancario NO cubre hoy la solución?",
     requerimiento_en: "What bank leasing functionalities does the solution NOT cover today?",
-    respuesta: "En línea con la transparencia que ha caracterizado la relación con BCP:\n\n𝗡𝗼 𝗖𝘂𝗯𝗶𝗲𝗿𝘁𝗮𝘀 𝗡𝗮𝘁𝗶𝘃𝗮𝗺𝗲𝗻𝘁𝗲:\n• 𝗣𝗼𝗿𝘁𝗮𝗹 𝗱𝗲 𝗮𝘂𝘁𝗼𝘀𝗲𝗿𝘃𝗶𝗰𝗶𝗼: Front-end de cliente final depende de canales digitales del banco (roadmap 2026)\n• 𝗠𝗮𝗿𝗸𝗲𝘁𝗽𝗹𝗮𝗰𝗲 𝗱𝗲 𝗮𝗰𝘁𝗶𝘃𝗼𝘀: Gestión del activo recuperado sí, pero sin plataforma de comercialización (roadmap 2027)\n• 𝗟𝗲𝗮𝘀𝗶𝗻𝗴 𝘀𝗶𝗻𝗱𝗶𝗰𝗮𝗱𝗼: Co-arrendadores múltiples no soportado nativamente (gestión manual posible)\n• 𝗦𝗰𝗼𝗿𝗶𝗻𝗴 𝗱𝗲 𝗮𝗰𝘁𝗶𝘃𝗼𝘀: Valoración por VIN/modelo requiere integración externa\n\n𝗖𝘂𝗯𝗶𝗲𝗿𝘁𝗮𝘀 𝗣𝗮𝗿𝗰𝗶𝗮𝗹𝗺𝗲𝗻𝘁𝗲:\n• 𝗟𝗲𝗮𝘀𝗶𝗻𝗴 𝘃𝗲𝗿𝗱𝗲/𝗘𝗦𝗚: Etiquetado de operaciones sí, tracking de impacto ambiental completo en roadmap 2027\n• 𝗜𝗔 𝗽𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝘃𝗮: Indicadores básicos sí, modelo completo en roadmap 2026\n\n𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁𝗲: Estas limitaciones no afectan el core de la operación de leasing financiero. La arquitectura abierta permite abordarlas mediante integraciones o desarrollos incrementales.",
-    respuesta_en: "In line with the transparency characterizing the relationship with BCP:\n\n𝗡𝗼𝘁 𝗡𝗮𝘁𝗶𝘃𝗲𝗹𝘆 𝗖𝗼𝘃𝗲𝗿𝗲𝗱:\n• 𝗦𝗲𝗹𝗳-𝘀𝗲𝗿𝘃𝗶𝗰𝗲 𝗽𝗼𝗿𝘁𝗮𝗹: End-client front-end depends on bank digital channels (roadmap 2026)\n• 𝗔𝘀𝘀𝗲𝘁 𝗺𝗮𝗿𝗸𝗲𝘁𝗽𝗹𝗮𝗰𝗲: Recovered asset management yes, but no commercialization platform (roadmap 2027)\n• 𝗦𝘆𝗻𝗱𝗶𝗰𝗮𝘁𝗲𝗱 𝗹𝗲𝗮𝘀𝗶𝗻𝗴: Multiple co-lessors not natively supported (manual management possible)\n• 𝗔𝘀𝘀𝗲𝘁 𝘀𝗰𝗼𝗿𝗶𝗻𝗴: Valuation by VIN/model requires external integration\n\n𝗣𝗮𝗿𝘁𝗶𝗮𝗹𝗹𝘆 𝗖𝗼𝘃𝗲𝗿𝗲𝗱:\n• 𝗚𝗿𝗲𝗲𝗻 𝗹𝗲𝗮𝘀𝗶𝗻𝗴/𝗘𝗦𝗚: Operation labeling yes, complete environmental impact tracking in roadmap 2027\n• 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝘃𝗲 𝗔𝗜: Basic indicators yes, complete model in roadmap 2026\n\n𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁: These limitations don't affect the core financial leasing operation. Open architecture allows addressing them through integrations or incremental development.",
+    respuesta: "La solución de leasing de SYSDE PLUS cumple con todo lo requerido para manejar una operación del nivel de BCP. La plataforma cubre el ciclo completo end-to-end con la robustez necesaria para entidades reguladas.\n\n𝗠𝗲𝗷𝗼𝗿𝗮 𝗖𝗼𝗻𝘁𝗶𝗻𝘂𝗮: SYSDE nunca se detiene — para no quedar obsoletos, contamos con un roadmap evolutivo que incluye:\n• 𝗔𝗽𝗼𝘆𝗼 𝗱𝗲 𝗜𝗔: Motor de decisión crediticia con IA para pre-aprobación automática (2026)\n• 𝗔𝗻𝗮𝗹𝘆𝘁𝗶𝗰𝘀 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝘃𝗼: Scoring comportamental y optimización de portafolio (2027)\n• 𝗢𝗽𝗲𝗻 𝗙𝗶𝗻𝗮𝗻𝗰𝗲: APIs abiertas para Leasing-as-a-Service (2028)\n• 𝗟𝗲𝗮𝘀𝗶𝗻𝗴 𝗩𝗲𝗿𝗱𝗲/𝗘𝗦𝗚: Tracking de impacto ambiental (2027)\n\n𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁𝗲: Todas las mejoras se implementan de forma progresiva y sin afectar la operación normal del sistema. La arquitectura modular permite incorporar nuevas funcionalidades como actualizaciones transparentes.",
+    respuesta_en: "SYSDE PLUS's leasing solution complies with everything required to manage a BCP-level operation. The platform covers the complete end-to-end cycle with the robustness needed for regulated entities.\n\n𝗖𝗼𝗻𝘁𝗶𝗻𝘂𝗼𝘂𝘀 𝗜𝗺𝗽𝗿𝗼𝘃𝗲𝗺𝗲𝗻𝘁: SYSDE never stops — to avoid becoming obsolete, we have an evolution roadmap that includes:\n• 𝗔𝗜 𝗦𝘂𝗽𝗽𝗼𝗿𝘁: AI credit decision engine for automatic pre-approval (2026)\n• 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝘃𝗲 𝗔𝗻𝗮𝗹𝘆𝘁𝗶𝗰𝘀: Behavioral scoring and portfolio optimization (2027)\n• 𝗢𝗽𝗲𝗻 𝗙𝗶𝗻𝗮𝗻𝗰𝗲: Open APIs for Leasing-as-a-Service (2028)\n• 𝗚𝗿𝗲𝗲𝗻 𝗟𝗲𝗮𝘀𝗶𝗻𝗴/𝗘𝗦𝗚: Environmental impact tracking (2027)\n\n𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁: All improvements are implemented progressively without affecting normal system operation. The modular architecture allows incorporating new functionalities as transparent updates.",
     valor: "La transparencia de SYSDE sobre limitaciones actuales, combinada con un roadmap que las aborda, genera confianza en la relación y demuestra madurez como proveedor.",
     valor_en: "SYSDE's transparency about current limitations, combined with a roadmap addressing them, builds trust and demonstrates maturity as a provider.",
     diagrams: [
@@ -1203,21 +1163,19 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Local support and implementation",
     requerimiento: "¿Tienen algún representante que implemente y soporte la aplicación de forma local o en la región?",
     requerimiento_en: "Do you have a representative who implements and supports the application locally or in the region?",
-    respuesta: "𝗣𝗿𝗲𝘀𝗲𝗻𝗰𝗶𝗮 𝗥𝗲𝗴𝗶𝗼𝗻𝗮𝗹: Sí, SYSDE International cuenta con presencia directa en la región:\n\n• 🇨🇷 𝗖𝗼𝘀𝘁𝗮 𝗥𝗶𝗰𝗮 (sede central): Desarrollo, arquitectura, producto, soporte 1er y 2do nivel\n• 🇬🇹 𝗚𝘂𝗮𝘁𝗲𝗺𝗮𝗹𝗮: Presencia operativa para Centroamérica norte (incluye CMI)\n• 🇲🇽 𝗠é𝘅𝗶𝗰𝗼: Equipo local para clientes como GNP y Bankaool\n• 🇵🇪 𝗣𝗲𝗿ú: Capacidad de establecer equipo dedicado para BCP\n\n𝗠𝗼𝗱𝗲𝗹𝗼 𝗱𝗲 𝗦𝗼𝗽𝗼𝗿𝘁𝗲:\n• Soporte 24/7 para incidentes críticos (Severidad 1) con SLA\n• Mesa de ayuda en español con conocimiento regulatorio por jurisdicción\n• Equipo de implementación dedicado: PM, consultores funcionales, arquitecto, integradores\n• Acompañamiento post-implementación (on-site o remoto)\n\n𝗣𝗮𝗿𝗮 𝗕𝗖𝗣: Equipo dedicado con presencia en Perú durante implementación, con transición a soporte remoto + visitas periódicas una vez estabilizada la operación.",
-    respuesta_en: "𝗥𝗲𝗴𝗶𝗼𝗻𝗮𝗹 𝗣𝗿𝗲𝘀𝗲𝗻𝗰𝗲: Yes, SYSDE International has direct regional presence:\n\n• 🇨🇷 𝗖𝗼𝘀𝘁𝗮 𝗥𝗶𝗰𝗮 (HQ): Development, architecture, product, L1/L2 support\n• 🇬🇹 𝗚𝘂𝗮𝘁𝗲𝗺𝗮𝗹𝗮: Operational presence for northern Central America (includes CMI)\n• 🇲🇽 𝗠𝗲𝘅𝗶𝗰𝗼: Local team for clients like GNP and Bankaool\n• 🇵🇪 𝗣𝗲𝗿𝘂: Capacity to establish dedicated team for BCP\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗼𝗱𝗲𝗹:\n• 24/7 support for critical incidents (Severity 1) with SLA\n• Spanish-language help desk with regulatory knowledge per jurisdiction\n• Dedicated implementation team: PM, functional consultants, architect, integrators\n• Post-implementation accompaniment (on-site or remote)\n\n𝗙𝗼𝗿 𝗕𝗖𝗣: Dedicated team with presence in Peru during implementation, transitioning to remote support + periodic visits once operations stabilize.",
-    valor: "SYSDE ofrece presencia regional directa con capacidad de asignar equipo dedicado en Perú, eliminando riesgos de soporte remoto sin contexto local.",
-    valor_en: "SYSDE offers direct regional presence with capacity to assign a dedicated team in Peru, eliminating risks of remote support without local context.",
+    respuesta: "𝗣𝗿𝗲𝘀𝗲𝗻𝗰𝗶𝗮 𝗚𝗹𝗼𝗯𝗮𝗹: Sí. SYSDE International tiene presencia en todo Latinoamérica, África, Europa y Asia, con más de 1,000 instituciones financieras operando con nuestra tecnología.\n\n𝗢𝗳𝗶𝗰𝗶𝗻𝗮𝘀 𝘆 𝗘𝗾𝘂𝗶𝗽𝗼𝘀:\n• 🇨🇷 𝗖𝗼𝘀𝘁𝗮 𝗥𝗶𝗰𝗮 (sede central): Desarrollo, arquitectura, producto, soporte 1er y 2do nivel\n• 🇬🇹 𝗚𝘂𝗮𝘁𝗲𝗺𝗮𝗹𝗮: Presencia operativa para Centroamérica norte (incluye CMI)\n• 🇲🇽 𝗠é𝘅𝗶𝗰𝗼: Equipo local para clientes como GNP y Bankaool\n• 🇵🇪 𝗣𝗲𝗿ú: Fábrica de software y equipo de soporte dedicado — capacidad de asignar equipo completo para BCP\n\n𝗠𝗼𝗱𝗲𝗹𝗼 𝗱𝗲 𝗦𝗼𝗽𝗼𝗿𝘁𝗲:\n• Soporte 24/7 para incidentes críticos (Severidad 1) con SLA\n• Mesa de ayuda en español con conocimiento regulatorio por jurisdicción\n• Equipo de implementación dedicado: PM, consultores funcionales, arquitecto, integradores\n• Acompañamiento post-implementación (on-site o remoto)\n\n𝗣𝗮𝗿𝗮 𝗕𝗖𝗣: Equipo dedicado con presencia en Perú (fábrica de software + soporte local) durante toda la implementación, con transición a soporte remoto + visitas periódicas una vez estabilizada la operación.",
+    respuesta_en: "𝗚𝗹𝗼𝗯𝗮𝗹 𝗣𝗿𝗲𝘀𝗲𝗻𝗰𝗲: Yes. SYSDE International has presence across all of Latin America, Africa, Europe and Asia, with over 1,000 financial institutions operating with our technology.\n\n𝗢𝗳𝗳𝗶𝗰𝗲𝘀 & 𝗧𝗲𝗮𝗺𝘀:\n• 🇨🇷 𝗖𝗼𝘀𝘁𝗮 𝗥𝗶𝗰𝗮 (HQ): Development, architecture, product, L1/L2 support\n• 🇬🇹 𝗚𝘂𝗮𝘁𝗲𝗺𝗮𝗹𝗮: Operational presence for northern Central America (includes CMI)\n• 🇲🇽 𝗠𝗲𝘅𝗶𝗰𝗼: Local team for clients like GNP and Bankaool\n• 🇵🇪 𝗣𝗲𝗿𝘂: Software factory and dedicated support team — capacity to assign full team for BCP\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗼𝗱𝗲𝗹:\n• 24/7 support for critical incidents (Severity 1) with SLA\n• Spanish-language help desk with regulatory knowledge per jurisdiction\n• Dedicated implementation team: PM, functional consultants, architect, integrators\n• Post-implementation accompaniment (on-site or remote)\n\n𝗙𝗼𝗿 𝗕𝗖𝗣: Dedicated team with presence in Peru (software factory + local support) throughout implementation, transitioning to remote support + periodic visits once operations stabilize.",
     diagrams: [
       {
         type: "grid" as const,
-        title: "Presencia Regional de SYSDE",
+        title: "Presencia Global de SYSDE",
         items: [
-          "🇨🇷 Costa Rica — Sede central, desarrollo y soporte",
-          "🇬🇹 Guatemala — Soporte Centroamérica norte",
-          "🇲🇽 México — Equipo local de implementación",
-          "🇵🇪 Perú — Equipo dedicado disponible para BCP",
-          "🌎 Soporte 24/7 — Incidentes críticos con SLA",
-          "👥 Equipo dedicado — PM, consultores, arquitectos",
+          "🌎 Latinoamérica — Presencia en toda la región",
+          "🌍 África — Instituciones financieras activas",
+          "🌍 Europa — Operaciones y clientes",
+          "🌏 Asia — Presencia y expansión",
+          "🇵🇪 Perú — Fábrica de software + soporte dedicado",
+          "🇨🇷 Costa Rica — Sede central, desarrollo y arquitectura",
         ],
       },
       {
@@ -1227,23 +1185,24 @@ export const questions: QuestionItem[] = [
         rows: [
           ["Gerente de Proyecto", "Coordinación y planificación", "Perú (on-site)"],
           ["Consultores Funcionales", "Análisis y configuración", "Perú (on-site)"],
+          ["Fábrica de Software", "Desarrollo y personalización", "Perú"],
           ["Arquitecto de Solución", "Diseño técnico e integraciones", "Perú / Remoto"],
+          ["Equipo de Soporte", "Soporte dedicado 24/7", "Perú"],
           ["Desarrolladores de Integración", "APIs, conectores, customización", "Costa Rica / Remoto"],
-          ["Soporte Post-implementación", "Acompañamiento y estabilización", "Perú / Remoto"],
         ],
       },
     ],
     diagrams_en: [
       {
         type: "grid" as const,
-        title: "SYSDE Regional Presence",
+        title: "SYSDE Global Presence",
         items: [
-          "🇨🇷 Costa Rica — Headquarters, development and support",
-          "🇬🇹 Guatemala — Northern Central America support",
-          "🇲🇽 Mexico — Local implementation team",
-          "🇵🇪 Peru — Dedicated team available for BCP",
-          "🌎 24/7 Support — Critical incidents with SLA",
-          "👥 Dedicated team — PM, consultants, architects",
+          "🌎 Latin America — Presence across the entire region",
+          "🌍 Africa — Active financial institutions",
+          "🌍 Europe — Operations and clients",
+          "🌏 Asia — Presence and expansion",
+          "🇵🇪 Peru — Software factory + dedicated support",
+          "🇨🇷 Costa Rica — Headquarters, development and architecture",
         ],
       },
       {
@@ -1253,12 +1212,15 @@ export const questions: QuestionItem[] = [
         rows: [
           ["Project Manager", "Coordination and planning", "Peru (on-site)"],
           ["Functional Consultants", "Analysis and configuration", "Peru (on-site)"],
+          ["Software Factory", "Development and customization", "Peru"],
           ["Solution Architect", "Technical design and integrations", "Peru / Remote"],
+          ["Support Team", "Dedicated 24/7 support", "Peru"],
           ["Integration Developers", "APIs, connectors, customization", "Costa Rica / Remote"],
-          ["Post-implementation Support", "Accompaniment and stabilization", "Peru / Remote"],
         ],
       },
     ],
+    valor: "SYSDE ofrece presencia global con fábrica de software y equipo de soporte dedicado en Perú, eliminando riesgos de soporte remoto sin contexto local.",
+    valor_en: "SYSDE offers global presence with a software factory and dedicated support team in Peru, eliminating risks of remote support without local context.",
   },
   {
     id: 25,
@@ -1369,6 +1331,7 @@ export const questions: QuestionItem[] = [
           ["Municipalidades — Bienes", "Costa Rica", "Batch", "Configurable"],
           ["Registro Nacional — Propiedad", "Costa Rica", "API / Web Service", "Bajo demanda"],
           ["Tributación — Facturación", "Costa Rica", "API", "Tiempo real"],
+          ["Poder Judicial", "Costa Rica", "API / Web Service", "Bajo demanda"],
         ],
       },
       {
@@ -1379,6 +1342,7 @@ export const questions: QuestionItem[] = [
           ["SUNAT", "Facturación electrónica", "API", "Bajo (experiencia con SAT Guatemala)"],
           ["SUNARP", "Registro de bienes y gravámenes", "API / Web Service", "Bajo (experiencia con Registro Nacional CR)"],
           ["Municipalidades", "Consulta de papeletas vehiculares", "API / Batch", "Bajo (experiencia con municipalidades CR)"],
+          ["Poder Judicial", "Consulta de procesos y embargos", "API / Web Service", "Bajo (experiencia con Poder Judicial CR)"],
           ["SBS", "Reportes regulatorios", "Batch / API", "Medio (configuración nueva jurisdicción)"],
         ],
       },
@@ -1393,6 +1357,7 @@ export const questions: QuestionItem[] = [
           ["Municipalities — Properties", "Costa Rica", "Batch", "Configurable"],
           ["National Registry — Property", "Costa Rica", "API / Web Service", "On-demand"],
           ["Tax Authority — Invoicing", "Costa Rica", "API", "Real-time"],
+          ["Judicial Branch", "Costa Rica", "API / Web Service", "On-demand"],
         ],
       },
       {
@@ -1403,6 +1368,7 @@ export const questions: QuestionItem[] = [
           ["SUNAT", "Electronic invoicing", "API", "Low (experience with SAT Guatemala)"],
           ["SUNARP", "Property and lien registry", "API / Web Service", "Low (experience with CR National Registry)"],
           ["Municipalities", "Vehicle ticket queries", "API / Batch", "Low (experience with CR municipalities)"],
+          ["Judicial Branch", "Process and lien queries", "API / Web Service", "Low (experience with CR Judicial Branch)"],
           ["SBS", "Regulatory reports", "Batch / API", "Medium (new jurisdiction config)"],
         ],
       },

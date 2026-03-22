@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiagramBlock, QuestionItem } from "@/data/questions";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Clock, MessageSquare, BarChart3, Users, MapPin, Layers, Briefcase, PiggyBank, TrendingUp } from "lucide-react";
+import { CheckCircle2, Clock, MessageSquare, BarChart3, Users, MapPin, Layers, Briefcase, PiggyBank, TrendingUp, ExternalLink } from "lucide-react";
 import ReferencesSection from "./ReferencesSection";
 import {
   AccordionContent,
@@ -19,6 +19,7 @@ import LicensingShowcase from "./LicensingShowcase";
 import InteractiveLifecycle from "./InteractiveLifecycle";
 import InteractiveResponseCard from "./InteractiveResponseCard";
 import InteractiveSecurity from "./InteractiveSecurity";
+import InteractiveRoadmap from "./InteractiveRoadmap";
 
 /* ─── Diagram Renderers ─── */
 
@@ -157,6 +158,7 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => (
         className="w-full h-[500px] md:h-[650px] border-0"
         title={block.title || "Demo"}
         allowFullScreen
+        allow="fullscreen"
       />
     </div>
   </div>
@@ -177,6 +179,7 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "licensing": return <LicensingShowcase key={key} />;
     case "lifecycle": return <InteractiveLifecycle key={key} />;
     case "interactive-security": return <InteractiveSecurity key={key} />;
+    case "interactive-roadmap": return <InteractiveRoadmap key={key} />;
     default: return null;
   }
 };
@@ -411,6 +414,8 @@ const DiagramCard = ({ item, index }: Props) => {
                   <InteractiveResponseCard response={displayRespuesta}>
                     {item.id === 6 && <LicensingShowcase />}
                     {item.id === 12 && <InteractiveLifecycle />}
+                    {item.id === 13 && <IntegrationOrbit />}
+                    {item.id === 22 && <InteractiveRoadmap />}
                     {item.id === 26 && <InteractiveSecurity />}
                   </InteractiveResponseCard>
                 ) : (
@@ -431,6 +436,20 @@ const DiagramCard = ({ item, index }: Props) => {
                     <Users className="w-4 h-4" />
                     {pick("👉 Ver Referencias de Clientes", "👉 View Client References")}
                   </motion.button>
+                )}
+
+                {item.id === 12 && (
+                  <motion.a
+                    href="https://sysde.com/mfleasing/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary/10 text-primary border-2 border-primary/30 text-sm font-bold hover:bg-primary/20 transition-colors shadow-md"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    {pick("🗺️ Ver Mapa Funcional Completo", "🗺️ View Complete Functional Map")}
+                  </motion.a>
                 )}
 
                 {item.id === 2 && (
