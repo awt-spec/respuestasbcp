@@ -441,7 +441,14 @@ const DiagramCard = ({ item, index }: Props) => {
                 {item.receivedDate === "20 marzo 2026" ? (
                   <InteractiveResponseCard response={displayRespuesta}>
                     {item.id === 6 && <LicensingShowcase />}
-                    {item.id === 12 && <InteractiveLifecycle />}
+                    {item.id === 12 && (
+                      <>
+                        <InteractiveLifecycle />
+                        <div className="mt-5">
+                          <EmbedDiagram block={{ type: "embed", title: pick("Demo Interactiva — SYSDE PLUS Leasing", "Interactive Demo — SYSDE PLUS Leasing"), url: "https://sysde.com/mfleasing/" }} />
+                        </div>
+                      </>
+                    )}
                     {item.id === 13 && <IntegrationOrbit />}
                     {item.id === 21 && <InteractiveScalability />}
                     {item.id === 22 && <InteractiveRoadmap />}
