@@ -158,6 +158,7 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => (
         className="w-full h-[500px] md:h-[650px] border-0"
         title={block.title || "Demo"}
         allowFullScreen
+        allow="fullscreen"
       />
     </div>
   </div>
