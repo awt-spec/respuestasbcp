@@ -154,6 +154,7 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showHint, setShowHint] = useState(true);
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
@@ -172,7 +173,24 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
   return (
     <div>
       {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
-      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background">
+      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background group"
+        onMouseEnter={() => setShowHint(false)}
+      >
+        {showHint && (
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm pointer-events-none transition-opacity">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center gap-2"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+              </div>
+              <p className="text-sm font-bold text-foreground">Cómo empezar</p>
+              <p className="text-xs text-muted-foreground">Pase el mouse para explorar el mapa funcional</p>
+            </motion.div>
+          </div>
+        )}
         <iframe
           ref={iframeRef}
           src={block.url}
