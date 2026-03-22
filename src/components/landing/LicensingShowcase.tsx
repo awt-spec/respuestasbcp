@@ -84,12 +84,12 @@ const LicensingShowcase = () => {
     },
     {
       icon: DollarSign,
-      number: "$0",
-      title: pick("Por Transacción", "Per Transaction"),
-      subtitle: pick("Desembolsos, cobros, consultas — sin cargo.", "Disbursements, collections, queries — no charge."),
+      number: "∞",
+      title: pick("Transacciones Ilimitadas", "Unlimited Transactions"),
+      subtitle: pick("Desembolsos, cobros, consultas — ilimitados sin costo adicional.", "Disbursements, collections, queries — unlimited at no additional cost."),
       detail: pick(
-        "No importa el volumen: 100 o 100,000 operaciones mensuales, el costo no cambia.",
-        "Volume doesn't matter: 100 or 100,000 monthly operations, the cost stays the same."
+        "No importa el volumen: 100 o 100,000 operaciones mensuales, el costo no cambia. Transacciones ilimitadas incluidas en la suscripción.",
+        "Volume doesn't matter: 100 or 100,000 monthly operations, the cost stays the same. Unlimited transactions included in the subscription."
       ),
       accent: "from-rose-500 to-rose-600",
       bg: "from-rose-500/10 to-rose-600/5",
