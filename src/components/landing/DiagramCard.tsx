@@ -493,7 +493,7 @@ const DiagramCard = ({ item, index }: Props) => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Users className="w-4 h-4" />
-                    {pick("👉 Ver Referencias de Clientes", "👉 View Client References")}
+                    {pick("👉 Referencias con Mayores Volúmenes", "👉 References with Highest Volumes")}
                   </motion.button>
                 )}
 
