@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
-import { Rocket, Brain, Globe, ChevronDown, MapPin, Cpu, Users, Shield, Zap, BarChart3, Leaf, Link2 } from "lucide-react";
+import { Rocket, Brain, Globe, ChevronDown, MapPin, Cpu, Shield, Zap, BarChart3, Leaf, Link2, Handshake } from "lucide-react";
 
 interface RoadmapItem {
   icon: React.ElementType;
@@ -45,7 +45,6 @@ const roadmap: RoadmapYear[] = [
     items: [
       { icon: BarChart3, title: "Analytics Predictivo", title_en: "Predictive Analytics", desc: "Scoring comportamental para anticipar mora, modelos ML de riesgo crediticio avanzado", desc_en: "Behavioral scoring for arrears anticipation, advanced ML credit risk models", quarter: "Q1-Q2" },
       { icon: Shield, title: "Optimización de Portafolio", title_en: "Portfolio Optimization", desc: "Maximizar rentabilidad y minimizar riesgo con recomendaciones basadas en datos", desc_en: "Maximize profitability and minimize risk with data-driven recommendations", quarter: "Q2-Q3" },
-      { icon: Users, title: "Marketplace de Activos", title_en: "Asset Marketplace", desc: "Plataforma de comercialización de activos devueltos o recuperados", desc_en: "Commercialization platform for returned or recovered assets", quarter: "Q3" },
       { icon: Leaf, title: "Leasing Verde / ESG", title_en: "Green Leasing / ESG", desc: "Tracking completo de impacto ambiental, etiquetado ESG de operaciones, reportes de sostenibilidad", desc_en: "Complete environmental impact tracking, ESG operation labeling, sustainability reports", quarter: "Q3-Q4" },
     ],
   },
@@ -77,11 +76,30 @@ const InteractiveRoadmap = () => {
 
   return (
     <div className="space-y-4 mt-4">
-      <div className="text-center mb-6">
-        <p className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">
-          {pick("Roadmap Evolutivo", "Evolution Roadmap")}
+      {/* Modelo evolutivo header */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center py-5 px-4 rounded-2xl bg-gradient-to-br from-primary/8 via-primary/4 to-transparent border border-primary/15 mb-2"
+      >
+        <Handshake className="w-8 h-8 text-primary mx-auto mb-3" />
+        <h4 className="text-base font-bold text-foreground mb-1.5">
+          {pick("Modelo Evolutivo Acordado", "Agreed Evolution Model")}
+        </h4>
+        <p className="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
+          {pick(
+            "Las mejoras, ajustes regulatorios y nuevas funcionalidades se definen de mutuo acuerdo con cada cliente y se incorporan sin costo adicional ni impacto en la operación.",
+            "Improvements, regulatory adjustments and new functionalities are mutually agreed with each client and incorporated at no additional cost without impacting operations."
+          )}
         </p>
-        <h4 className="text-lg font-extrabold text-foreground">
+      </motion.div>
+
+      <div className="text-center mb-4">
+        <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-[0.15em]">
+          {pick("Roadmap General de Referencia", "General Reference Roadmap")}
+        </p>
+        <h4 className="text-sm font-bold text-foreground">
           SYSDE PLUS <span className="text-primary">2026 — 2028</span>
         </h4>
       </div>
@@ -98,7 +116,6 @@ const InteractiveRoadmap = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            {/* Year header */}
             <button
               onClick={() => { setExpandedYear(isOpen ? "" : yr.year); setExpandedItem(null); }}
               className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all cursor-pointer ${
@@ -120,7 +137,6 @@ const InteractiveRoadmap = () => {
               </motion.div>
             </button>
 
-            {/* Items */}
             <AnimatePresence>
               {isOpen && (
                 <motion.div
@@ -131,7 +147,6 @@ const InteractiveRoadmap = () => {
                   className="overflow-hidden"
                 >
                   <div className="relative pl-8 pt-3 pb-1 space-y-2">
-                    {/* Timeline line */}
                     <div className={`absolute left-[23px] top-3 bottom-1 w-0.5 ${colors.dot} opacity-20 rounded-full`} />
 
                     {yr.items.map((item, i) => {
@@ -145,7 +160,6 @@ const InteractiveRoadmap = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.06 }}
                         >
-                          {/* Dot on timeline */}
                           <div className={`absolute left-[19px] w-2.5 h-2.5 rounded-full ${colors.dot} border-2 border-background`} style={{ marginTop: 14 }} />
 
                           <button
@@ -201,10 +215,10 @@ const InteractiveRoadmap = () => {
       {/* Note */}
       <div className="rounded-xl bg-muted/30 border p-4 mt-4">
         <p className="text-[11px] text-muted-foreground leading-relaxed">
-          <span className="font-bold text-foreground">💡 {pick("Nota", "Note")}:</span>{" "}
+          <span className="font-bold text-foreground">📋 {pick("Modelo de Trabajo", "Working Model")}:</span>{" "}
           {pick(
-            "El roadmap es indicativo y se ajusta según prioridades de mercado y feedback de clientes. Todas las mejoras se implementan sin afectar la operación normal del sistema.",
-            "The roadmap is indicative and adjusts based on market priorities and client feedback. All improvements are implemented without affecting normal system operation."
+            "Este roadmap es la base general de evolución de SYSDE PLUS. Para BCP se construye un plan específico, acordado de mutuo acuerdo, donde las prioridades se alinean a la operación y necesidades regulatorias de la institución. Las mejoras se implementan sin afectar la operación en producción.",
+            "This roadmap is the general evolution base for SYSDE PLUS. For BCP, a specific plan is built, mutually agreed, where priorities align with the institution's operations and regulatory needs. Improvements are implemented without affecting production operations."
           )}
         </p>
       </div>
