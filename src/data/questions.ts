@@ -1098,6 +1098,7 @@ export const questions: QuestionItem[] = [
     ],
     diagrams_en: [
       { type: "interactive-roadmap" as DiagramType },
+    ],
     valor: "El roadmap demuestra una visión estratégica clara con inversión continua en innovación, lo que asegura a BCP que la plataforma seguirá evolucionando con las tendencias del mercado.",
     valor_en: "The roadmap demonstrates a clear strategic vision with continuous innovation investment, assuring BCP the platform will continue evolving with market trends.",
   },
