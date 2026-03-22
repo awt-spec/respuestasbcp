@@ -419,7 +419,7 @@ const ReferenceCard = ({ item: r, index, onClick }: { item: ReferenceItem; index
 type ViewTab = "large" | "other";
 
 /* ─── Main Section ─── */
-const ReferencesSection = ({ filter }: { filter?: "implementation" }) => {
+const ReferencesSection = ({ filter, sortByVolume }: { filter?: "implementation"; sortByVolume?: boolean }) => {
   const [selectedRef, setSelectedRef] = useState<ReferenceItem | null>(null);
   const [activeTab, setActiveTab] = useState<ViewTab>("large");
 
