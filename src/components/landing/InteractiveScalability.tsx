@@ -37,7 +37,7 @@ const InteractiveScalability = () => {
   const { lang } = useI18n();
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
   const [expandedMetric, setExpandedMetric] = useState<number | null>(null);
-  const [showRefs, setShowRefs] = useState(false);
+  const [expandedMetric, setExpandedMetric] = useState<number | null>(null);
 
   return (
     <div className="space-y-6 mt-4">
