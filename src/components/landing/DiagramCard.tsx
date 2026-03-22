@@ -151,9 +151,9 @@ const ListDiagram = ({ block }: { block: DiagramBlock }) => (
 );
 
 const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
-  const iframeRef = React.useRef<HTMLIFrameElement>(null);
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const [isFullscreen, setIsFullscreen] = React.useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
@@ -163,7 +163,7 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handler);
     return () => document.removeEventListener("fullscreenchange", handler);
