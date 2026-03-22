@@ -641,7 +641,7 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Licensing structure",
     requerimiento: "¿Cuál es el modelo de licenciamiento de la herramienta? (número de clientes, número de créditos activos, cartera, número de operaciones).",
     requerimiento_en: "What is the tool's licensing model? (number of clients, number of active credits, portfolio, number of operations).",
-    respuesta: "Sí. SYSDE PLUS opera bajo un modelo de suscripción ilimitado. Vea el detalle visual a continuación.",
+    respuesta: "SYSDE PLUS opera bajo un modelo de suscripción ilimitado que incluye:\n\n𝗦𝗼𝗽𝗼𝗿𝘁𝗲 𝗜𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼: Soporte técnico y funcional incluido sin costo adicional, sin cobro por ticket, sin cobro por incidente. Siempre premium, sin restricciones.\n\n𝗗𝗲𝘀𝗮𝗿𝗿𝗼𝗹𝗹𝗼 𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝘃𝗼: Las mejoras funcionales, ajustes regulatorios y nuevas funcionalidades se entregan sin costo adicional como parte de la evolución continua de la plataforma.\n\n𝗦𝗶𝗻 𝗖𝗼𝗯𝗿𝗼𝘀 𝗢𝗰𝘂𝗹𝘁𝗼𝘀: Sin cargo por usuario, por transacción, por empresa ni por módulo activo. Una suscripción, todo ilimitado.",
     respuesta_en: "Yes. SYSDE PLUS operates under an unlimited subscription model. See the visual detail below.",
     valor: "El modelo de suscripción ilimitado con soporte y capacitación incluidos ofrece total predictibilidad de costos para BCP, eliminando sorpresas y facilitando la planificación presupuestaria.",
     valor_en: "The unlimited subscription model with included support and training offers total cost predictability for BCP, eliminating surprises and facilitating budget planning.",
