@@ -336,7 +336,7 @@ const DiagramCard = ({ item, index }: Props) => {
   if (displayDiagrams.length > 0) {
     tabs.push({ id: "visual", label: t("card.diagrams"), icon: BarChart3 });
   }
-  const clientRefIds = [1, 3, 4, 7, 8, 9, 11, 24];
+  const clientRefIds = [1, 3, 4, 7, 8, 9, 11, 21, 24];
   if (clientRefIds.includes(item.id)) {
     tabs.push({ id: "references", label: item.id === 1 ? pick("Implementación en Proceso", "Implementation in Progress") : t("card.references"), icon: Users });
   }
@@ -441,7 +441,14 @@ const DiagramCard = ({ item, index }: Props) => {
                 {item.receivedDate === "20 marzo 2026" ? (
                   <InteractiveResponseCard response={displayRespuesta}>
                     {item.id === 6 && <LicensingShowcase />}
-                    {item.id === 12 && <InteractiveLifecycle />}
+                    {item.id === 12 && (
+                      <>
+                        <InteractiveLifecycle />
+                        <div className="mt-5">
+                          <EmbedDiagram block={{ type: "embed", title: pick("Demo Interactiva — SYSDE PLUS Leasing", "Interactive Demo — SYSDE PLUS Leasing"), url: "https://sysde.com/mfleasing/" }} />
+                        </div>
+                      </>
+                    )}
                     {item.id === 13 && <IntegrationOrbit />}
                     {item.id === 21 && <InteractiveScalability />}
                     {item.id === 22 && <InteractiveRoadmap />}
@@ -469,19 +476,6 @@ const DiagramCard = ({ item, index }: Props) => {
                   </motion.button>
                 )}
 
-                {item.id === 12 && (
-                  <motion.a
-                    href="https://sysde.com/mfleasing/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary/10 text-primary border-2 border-primary/30 text-sm font-bold hover:bg-primary/20 transition-colors shadow-md"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    {pick("🗺️ Ver Mapa Funcional Completo", "🗺️ View Complete Functional Map")}
-                  </motion.a>
-                )}
 
                 {item.id === 2 && (
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">

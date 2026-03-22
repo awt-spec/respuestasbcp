@@ -641,8 +641,8 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Licensing structure",
     requerimiento: "¿Cuál es el modelo de licenciamiento de la herramienta? (número de clientes, número de créditos activos, cartera, número de operaciones).",
     requerimiento_en: "What is the tool's licensing model? (number of clients, number of active credits, portfolio, number of operations).",
-    respuesta: "Sí. SYSDE PLUS opera bajo un modelo de suscripción ilimitado. Vea el detalle visual a continuación.",
-    respuesta_en: "Yes. SYSDE PLUS operates under an unlimited subscription model. See the visual detail below.",
+    respuesta: "SYSDE PLUS opera bajo un modelo de suscripción ilimitado que incluye:\n\n𝗦𝗼𝗽𝗼𝗿𝘁𝗲 𝗜𝗹𝗶𝗺𝗶𝘁𝗮𝗱𝗼: Soporte técnico y funcional incluido sin costo adicional, sin cobro por ticket, sin cobro por incidente. Siempre premium, sin restricciones.\n\n𝗗𝗲𝘀𝗮𝗿𝗿𝗼𝗹𝗹𝗼 𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝘃𝗼: Las mejoras funcionales, ajustes regulatorios y nuevas funcionalidades se entregan sin costo adicional como parte de la evolución continua de la plataforma.\n\n𝗦𝗶𝗻 𝗖𝗼𝗯𝗿𝗼𝘀 𝗢𝗰𝘂𝗹𝘁𝗼𝘀: Sin cargo por usuario, por transacción, por empresa ni por módulo activo. Una suscripción, todo ilimitado.",
+    respuesta_en: "SYSDE PLUS operates under an unlimited subscription model that includes:\n\n𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗦𝘂𝗽𝗽𝗼𝗿𝘁: Technical and functional support included at no additional cost, no per-ticket charges, no per-incident charges. Always premium, no restrictions.\n\n𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝗼𝗻𝗮𝗿𝘆 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁: Functional improvements, regulatory adjustments and new functionalities are delivered at no additional cost as part of continuous platform evolution.\n\n𝗡𝗼 𝗛𝗶𝗱𝗱𝗲𝗻 𝗖𝗵𝗮𝗿𝗴𝗲𝘀: No per-user, per-transaction, per-company or per-module charges. One subscription, everything unlimited.",
     valor: "El modelo de suscripción ilimitado con soporte y capacitación incluidos ofrece total predictibilidad de costos para BCP, eliminando sorpresas y facilitando la planificación presupuestaria.",
     valor_en: "The unlimited subscription model with included support and training offers total cost predictability for BCP, eliminating surprises and facilitating budget planning.",
     diagrams: [
@@ -669,12 +669,8 @@ export const questions: QuestionItem[] = [
     respuesta_en: "SYSDE PLUS natively covers the complete leasing lifecycle (end-to-end), from origination to contract finalization. Click on each phase for details.",
     valor: "La cobertura end-to-end nativa elimina la necesidad de sistemas auxiliares para las operaciones core de leasing, reduciendo complejidad y riesgo operativo.",
     valor_en: "Native end-to-end coverage eliminates the need for auxiliary systems for core leasing operations, reducing complexity and operational risk.",
-    diagrams: [
-      { type: "embed" as DiagramType, title: "Demo Interactiva — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
-    ],
-    diagrams_en: [
-      { type: "embed" as DiagramType, title: "Interactive Demo — SYSDE PLUS Leasing", url: "https://sysde.com/mfleasing/" },
-    ],
+    diagrams: [],
+    diagrams_en: [],
   },
   {
     id: 13,
@@ -1041,16 +1037,12 @@ export const questions: QuestionItem[] = [
     subtitle_en: "Evolution model agreed with BCP",
     requerimiento: "¿Cuál es el roadmap de leasing a 3 años?",
     requerimiento_en: "What is the 3-year leasing roadmap?",
-    respuesta: "SYSDE PLUS opera bajo un modelo evolutivo acordado de mutuo acuerdo con cada cliente. Para BCP, esto implica un roadmap exclusivo donde las mejoras, ajustes regulatorios y nuevas funcionalidades se definen en conjunto y se incorporan a la plataforma de forma planificada.\n\nEste modelo evolutivo forma parte integral del acuerdo de servicio — no genera costos adicionales. Cada mejora se implementa sin afectar la operación en producción, siguiendo prácticas de despliegue controlado.\n\nA continuación se presenta el roadmap general de evolución de SYSDE PLUS, que sirve como base para construir el plan específico de BCP.",
-    respuesta_en: "SYSDE PLUS operates under an evolution model agreed upon mutually with each client. For BCP, this means an exclusive roadmap where improvements, regulatory adjustments and new functionalities are jointly defined and incorporated into the platform in a planned manner.\n\nThis evolution model is an integral part of the service agreement — it does not generate additional costs. Each improvement is implemented without affecting production operations, following controlled deployment practices.\n\nBelow is the general SYSDE PLUS evolution roadmap, which serves as the basis for building BCP's specific plan.",
-    diagrams: [
-      { type: "interactive-roadmap" as DiagramType },
-    ],
-    diagrams_en: [
-      { type: "interactive-roadmap" as DiagramType },
-    ],
-    valor: "BCP contará con un roadmap evolutivo exclusivo, definido de mutuo acuerdo, integrado al servicio y sin costos adicionales. Esto garantiza que la plataforma evolucione de forma continua según las necesidades específicas de la operación.",
-    valor_en: "BCP will have an exclusive evolution roadmap, mutually agreed, integrated into the service at no additional cost. This ensures the platform evolves continuously based on specific operational needs.",
+    respuesta: "SYSDE PLUS opera bajo un modelo evolutivo acordado de mutuo acuerdo con cada cliente. Para BCP, esto implica un roadmap exclusivo donde las mejoras, ajustes regulatorios y nuevas funcionalidades se definen en conjunto y se incorporan a la plataforma sin costo adicional — está incluido en la suscripción.\n\nCada mejora se implementa sin afectar la operación en producción, siguiendo prácticas de despliegue controlado.",
+    respuesta_en: "SYSDE PLUS operates under an evolution model agreed upon mutually with each client. For BCP, this means an exclusive roadmap where improvements, regulatory adjustments and new functionalities are jointly defined and incorporated into the platform at no additional cost — it is included in the subscription.\n\nEach improvement is implemented without affecting production operations, following controlled deployment practices.",
+    diagrams: [],
+    diagrams_en: [],
+    valor: "BCP contará con un roadmap evolutivo exclusivo, definido de mutuo acuerdo, incluido en la suscripción sin costos adicionales. Esto garantiza que la plataforma evolucione de forma continua según las necesidades específicas de la operación.",
+    valor_en: "BCP will have an exclusive evolution roadmap, mutually agreed, included in the subscription at no additional cost. This ensures the platform evolves continuously based on specific operational needs.",
   },
 
   // ── Transparencia (M) ──

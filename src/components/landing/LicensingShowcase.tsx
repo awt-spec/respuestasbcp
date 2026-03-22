@@ -60,10 +60,10 @@ const LicensingShowcase = () => {
       icon: HeadphonesIcon,
       number: "24/7",
       title: pick("Soporte", "Support"),
-      subtitle: pick("Incluido. Siempre. Sin tickets de pago.", "Included. Always. No paid tickets."),
+      subtitle: pick("Incluido e ilimitado. Sin tickets de pago. Sin cobro por incidente.", "Included and unlimited. No paid tickets. No per-incident charges."),
       detail: pick(
-        "Soporte técnico y funcional ilimitado, sin cobro por incidente, sin tiers de servicio. Siempre premium.",
-        "Unlimited technical and functional support, no per-incident charges, no service tiers. Always premium."
+        "Soporte técnico y funcional ilimitado, incluido en la suscripción sin costo adicional. Sin cobro por ticket, sin cobro por incidente, sin tiers de servicio. Siempre premium, sin restricciones.",
+        "Unlimited technical and functional support, included in the subscription at no additional cost. No per-ticket charges, no per-incident charges, no service tiers. Always premium, no restrictions."
       ),
       accent: "from-violet-500 to-violet-600",
       bg: "from-violet-500/10 to-violet-600/5",
@@ -94,6 +94,19 @@ const LicensingShowcase = () => {
       accent: "from-rose-500 to-rose-600",
       bg: "from-rose-500/10 to-rose-600/5",
       border: "border-rose-500/20",
+    },
+    {
+      icon: Sparkles,
+      number: "$0",
+      title: pick("Desarrollo Evolutivo", "Evolutionary Development"),
+      subtitle: pick("Mejoras, nuevas funcionalidades y regulatorio — sin costo adicional.", "Improvements, new features and regulatory — at no additional cost."),
+      detail: pick(
+        "Todas las mejoras funcionales, ajustes regulatorios y nuevas funcionalidades se entregan como parte de la suscripción. Sin cargos por desarrollo evolutivo.",
+        "All functional improvements, regulatory adjustments and new functionalities are delivered as part of the subscription. No evolutionary development charges."
+      ),
+      accent: "from-teal-500 to-teal-600",
+      bg: "from-teal-500/10 to-teal-600/5",
+      border: "border-teal-500/20",
     },
     {
       icon: Puzzle,
