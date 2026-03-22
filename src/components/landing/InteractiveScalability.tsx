@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
-import { Server, Users, Database, TrendingUp, Zap, Shield, ChevronDown, Infinity } from "lucide-react";
+import { Server, Users, Database, TrendingUp, Zap, Shield, ChevronDown, BarChart3 } from "lucide-react";
 
 interface ScaleMetric {
   icon: React.ElementType;
@@ -14,17 +14,16 @@ interface ScaleMetric {
 }
 
 const metrics: ScaleMetric[] = [
-  { icon: Users, value: "1,000+", label: "Instituciones en Producción", label_en: "Institutions in Production", desc: "Más de mil instituciones financieras operando simultáneamente con SYSDE PLUS, incluyendo bancos, cooperativas, fondos de pensión y empresas de leasing", desc_en: "Over a thousand financial institutions operating simultaneously with SYSDE PLUS, including banks, cooperatives, pension funds and leasing companies", color: "primary" },
-  { icon: Database, value: "∞", label: "Transacciones", label_en: "Transactions", desc: "Sin límite teórico de operaciones gracias al escalamiento elástico. Millones de transacciones mensuales a nivel agregado", desc_en: "No theoretical operation limit thanks to elastic scaling. Millions of monthly transactions at aggregate level", color: "emerald-500" },
-  { icon: TrendingUp, value: "~82%", label: "Pensiones Regional", label_en: "Regional Pensions", desc: "El ~82% del mercado regional de pensiones opera con SYSDE, procesando volúmenes que superan ampliamente cualquier operación de leasing", desc_en: "~82% of the regional pension market operates with SYSDE, processing volumes far exceeding any leasing operation", color: "blue-500" },
-  { icon: Server, value: "Auto-Scale", label: "Escalamiento Elástico", label_en: "Elastic Scaling", desc: "Microservicios con auto-scaling horizontal. El dimensionamiento de infraestructura se realiza anualmente para cada cliente", desc_en: "Microservices with horizontal auto-scaling. Infrastructure dimensioning performed annually for each client", color: "violet-500" },
+  { icon: Users, value: "1,000+", label: "Instituciones en Producción", label_en: "Institutions in Production", desc: "Más de mil instituciones financieras operando en producción con tecnología SYSDE, incluyendo bancos, cooperativas, fondos de pensión y empresas de leasing en América Latina, África, Europa y Asia", desc_en: "Over a thousand financial institutions operating in production with SYSDE technology, including banks, cooperatives, pension funds and leasing companies across Latin America, Africa, Europe and Asia", color: "primary" },
+  { icon: TrendingUp, value: "~82%", label: "Pensiones Regional", label_en: "Regional Pensions", desc: "Aproximadamente el 82% del mercado regional de plataformas de pensiones opera con SYSDE. Estos sistemas procesan volúmenes que superan ampliamente los requerimientos de una operación de leasing", desc_en: "Approximately 82% of the regional pension platform market operates with SYSDE. These systems process volumes far exceeding leasing operation requirements", color: "blue-500" },
+  { icon: Database, value: "~30%", label: "Microfinanzas LatAm", label_en: "Microfinance LatAm", desc: "Aproximadamente el 30% del mercado de microfinanzas en América Latina utiliza plataformas SYSDE, validando la capacidad de procesamiento masivo de operaciones", desc_en: "Approximately 30% of the microfinance market in Latin America uses SYSDE platforms, validating massive operation processing capacity", color: "emerald-500" },
+  { icon: Server, value: "Auto-Scale", label: "Escalamiento Horizontal", label_en: "Horizontal Scaling", desc: "Arquitectura de microservicios sobre Azure con auto-scaling horizontal. El dimensionamiento de infraestructura se revisa anualmente para cada cliente", desc_en: "Microservices architecture on Azure with horizontal auto-scaling. Infrastructure dimensioning reviewed annually for each client", color: "violet-500" },
 ];
 
 const references = [
-  { name: "CCSS Costa Rica", users: "65,000+", assets: "Millones", assets_en: "Millions", desc: "Fondo de pensiones más grande de Centroamérica", desc_en: "Largest pension fund in Central America" },
-  { name: "IVM / RIVM", users: "3M+", assets: "Millones de registros", assets_en: "Millions of records", desc: "Régimen de pensiones con millones de afiliados", desc_en: "Pension regime with millions of affiliates" },
-  { name: "CMI (15 países)", users: "54,000+", assets: "Multi-país", assets_en: "Multi-country", desc: "Conglomerado financiero más grande de CA", desc_en: "Largest financial conglomerate in CA" },
-  { name: "Banco Nacional CR", users: "10,000+", assets: "Suite completa", assets_en: "Full suite", desc: "Banco estatal con suite SYSDE PLUS completa", desc_en: "State bank with full SYSDE PLUS suite" },
+  { name: "CCSS Costa Rica", metric: "65,000+", metricLabel: "usuarios internos", metricLabel_en: "internal users", desc: "Fondo de pensiones más grande de Centroamérica. Millones de registros de afiliados procesados mensualmente", desc_en: "Largest pension fund in Central America. Millions of affiliate records processed monthly" },
+  { name: "IVM / RIVM", metric: "3M+", metricLabel: "afiliados activos", metricLabel_en: "active affiliates", desc: "Régimen de pensiones con más de 3 millones de afiliados activos en el sistema", desc_en: "Pension regime with over 3 million active affiliates in the system" },
+  { name: "CMI (15 países)", metric: "54,000+", metricLabel: "colaboradores", metricLabel_en: "employees", desc: "Conglomerado más grande de Centroamérica. Operaciones multi-país y multi-moneda simultáneas", desc_en: "Largest conglomerate in Central America. Simultaneous multi-country multi-currency operations" },
 ];
 
 const colorMap: Record<string, { bg: string; border: string; text: string; badge: string }> = {
@@ -42,21 +41,21 @@ const InteractiveScalability = () => {
 
   return (
     <div className="space-y-6 mt-4">
-      {/* Hero statement - Steve Jobs style */}
+      {/* Header — factual, not commercial */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center py-6 px-4 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20"
+        className="text-center py-5 px-4 rounded-2xl bg-gradient-to-br from-primary/8 via-primary/4 to-transparent border border-primary/15"
       >
-        <Infinity className="w-10 h-10 text-primary mx-auto mb-3" />
-        <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-2">
-          {pick("SYSDE no define el techo de ningún cliente.", "SYSDE doesn't define the ceiling for any client.")}
+        <BarChart3 className="w-8 h-8 text-primary mx-auto mb-3" />
+        <h3 className="text-lg font-bold text-foreground mb-2">
+          {pick("Capacidad de Escala Comprobada", "Proven Scale Capacity")}
         </h3>
-        <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+        <p className="text-xs text-muted-foreground max-w-lg mx-auto leading-relaxed">
           {pick(
-            "La infraestructura crece con usted. El dimensionamiento se realiza anualmente para garantizar que cada cliente — incluyendo instituciones del tamaño de BCP — opere siempre con capacidad de sobra.",
-            "Infrastructure grows with you. Dimensioning is performed annually to ensure each client — including BCP-sized institutions — always operates with capacity to spare."
+            "La misma arquitectura que soporta fondos de pensión con millones de afiliados y conglomerados multinacionales es la base de SYSDE PLUS Leasing. El dimensionamiento se revisa anualmente para cada cliente.",
+            "The same architecture supporting pension funds with millions of affiliates and multinational conglomerates is the foundation of SYSDE PLUS Leasing. Dimensioning is reviewed annually for each client."
           )}
         </p>
       </motion.div>
@@ -111,7 +110,7 @@ const InteractiveScalability = () => {
         })}
       </div>
 
-      {/* References with highest volumes */}
+      {/* Verifiable references */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -126,10 +125,10 @@ const InteractiveScalability = () => {
           </div>
           <div className="flex-1 text-left">
             <p className="text-sm font-bold text-foreground">
-              {pick("Clientes con Mayores Volúmenes", "Highest Volume Clients")}
+              {pick("Referencias de Volumen en Producción", "Production Volume References")}
             </p>
             <p className="text-[11px] text-muted-foreground">
-              {pick("Instituciones que validan nuestra capacidad de escala", "Institutions that validate our scale capacity")}
+              {pick("Clientes verificables con volúmenes superiores a leasing bancario", "Verifiable clients with volumes exceeding bank leasing")}
             </p>
           </div>
           <motion.div animate={{ rotate: showRefs ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -162,8 +161,8 @@ const InteractiveScalability = () => {
                       <p className="text-[10px] text-muted-foreground">{pick(ref.desc, ref.desc_en)}</p>
                     </div>
                     <div className="text-right shrink-0">
-                      <p className="text-xs font-bold text-primary">{ref.users}</p>
-                      <p className="text-[10px] text-muted-foreground">{pick("usuarios", "users")}</p>
+                      <p className="text-xs font-bold text-primary">{ref.metric}</p>
+                      <p className="text-[10px] text-muted-foreground">{pick(ref.metricLabel, ref.metricLabel_en)}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -173,13 +172,13 @@ const InteractiveScalability = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Annual dimensioning note */}
+      {/* Dimensioning note */}
       <div className="rounded-xl bg-muted/30 border p-4">
         <p className="text-[11px] text-muted-foreground leading-relaxed">
-          <span className="font-bold text-foreground">🏗️ {pick("Dimensionamiento Anual", "Annual Dimensioning")}:</span>{" "}
+          <span className="font-bold text-foreground">🏗️ {pick("Dimensionamiento", "Dimensioning")}:</span>{" "}
           {pick(
-            "SYSDE realiza un dimensionamiento de infraestructura anual para cada cliente, asegurando que la capacidad siempre esté por delante de la demanda. Contamos con clientes del tamaño de BCP y ninguno ha encontrado un techo de rendimiento.",
-            "SYSDE performs annual infrastructure dimensioning for each client, ensuring capacity is always ahead of demand. We have BCP-sized clients and none has encountered a performance ceiling."
+            "SYSDE revisa anualmente el dimensionamiento de infraestructura para cada cliente, asegurando que la capacidad esté siempre alineada con el crecimiento proyectado de la operación.",
+            "SYSDE reviews infrastructure dimensioning annually for each client, ensuring capacity is always aligned with projected operational growth."
           )}
         </p>
       </div>
