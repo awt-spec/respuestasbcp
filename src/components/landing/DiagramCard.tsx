@@ -154,14 +154,15 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showHint, setShowHint] = useState(true);
+  const [started, setStarted] = useState(false);
 
-  const toggleFullscreen = () => {
-    if (!isFullscreen) {
-      containerRef.current?.requestFullscreen?.();
-    } else {
-      document.exitFullscreen?.();
-    }
+  const startFullscreen = () => {
+    setStarted(true);
+    containerRef.current?.requestFullscreen?.();
+  };
+
+  const exitFullscreen = () => {
+    document.exitFullscreen?.();
   };
 
   useEffect(() => {
@@ -173,41 +174,47 @@ const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
   return (
     <div>
       {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
-      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background group">
-        {showHint && (
-          <div
-            className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm cursor-pointer transition-opacity"
-            onClick={() => setShowHint(false)}
-            onMouseEnter={() => setShowHint(false)}
-            onTouchStart={() => setShowHint(false)}
-          >
+      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background">
+        {!started && (
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-br from-primary/5 via-background to-primary/10">
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center gap-2"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex flex-col items-center gap-4"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <svg className="w-6 h-6 text-primary animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <ExternalLink className="w-7 h-7 text-primary" />
               </div>
-              <p className="text-sm font-bold text-foreground">Toque o pase el mouse para explorar</p>
-              <p className="text-xs text-muted-foreground">Haga clic aquí para comenzar</p>
+              <div className="text-center">
+                <p className="text-base font-bold text-foreground mb-1">Demo Interactiva</p>
+                <p className="text-xs text-muted-foreground max-w-xs">Explore el mapa funcional completo de SYSDE PLUS Leasing en pantalla completa</p>
+              </div>
+              <button
+                onClick={startFullscreen}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-bold shadow-lg hover:bg-primary/90 transition-all hover:scale-105 active:scale-95"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Empezar
+              </button>
             </motion.div>
           </div>
         )}
         <iframe
           ref={iframeRef}
-          src={block.url}
+          src={started ? block.url : undefined}
           className={`w-full border-0 ${isFullscreen ? "h-screen" : "h-[500px] md:h-[650px]"}`}
           title={block.title || "Demo"}
           allowFullScreen
           allow="fullscreen"
         />
-        <button
-          onClick={toggleFullscreen}
-          className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold shadow-lg hover:bg-primary/90 transition-colors"
-        >
-          {isFullscreen ? "✕ Salir" : "⛶ Pantalla Completa"}
-        </button>
+        {started && (
+          <button
+            onClick={isFullscreen ? exitFullscreen : startFullscreen}
+            className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold shadow-lg hover:bg-primary/90 transition-colors"
+          >
+            {isFullscreen ? "✕ Salir" : "⛶ Pantalla Completa"}
+          </button>
+        )}
       </div>
     </div>
   );
