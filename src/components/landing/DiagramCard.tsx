@@ -576,7 +576,7 @@ const DiagramCard = ({ item, index }: Props) => {
                     <p className="text-[11px] text-muted-foreground">{pick("Clientes que actualmente están en proceso de implementación con SYSDE.", "Clients currently in the implementation process with SYSDE.")}</p>
                   </div>
                 )}
-                <ReferencesSection filter={item.id === 1 ? "implementation" : undefined} />
+                <ReferencesSection filter={item.id === 1 ? "implementation" : undefined} sortByVolume={item.id === 21} />
               </motion.div>
             )}
 

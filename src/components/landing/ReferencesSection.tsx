@@ -448,7 +448,20 @@ const ReferencesSection = ({ filter, sortByVolume }: { filter?: "implementation"
     );
   }
 
-  const currentRefs = activeTab === "large" ? largeRefs : otherRefs;
+  const parseAfiliados = (s: string): number => {
+    const num = parseFloat(s.replace(/,/g, "").replace("M", ""));
+    return s.includes("M") ? num * 1_000_000 : num;
+  };
+  const sortedLargeRefs = sortByVolume
+    ? [...largeRefs].sort((a, b) => {
+        const aStats = PENSION_STATS[a.name];
+        const bStats = PENSION_STATS[b.name];
+        const aVal = aStats ? parseAfiliados(aStats.afiliados) : 0;
+        const bVal = bStats ? parseAfiliados(bStats.afiliados) : 0;
+        return bVal - aVal;
+      })
+    : largeRefs;
+  const currentRefs = activeTab === "large" ? sortedLargeRefs : otherRefs;
 
   return (
     <div>
