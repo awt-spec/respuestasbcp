@@ -693,12 +693,8 @@ export const questions: QuestionItem[] = [
     respuesta_en: "Yes. SYSDE PLUS covers the entire lifecycle (see query #12). External integrations are complementary, not structural. All are done through the SYSDE PLUS API Core.",
     valor: "Las dependencias externas son complementarias, no estructurales. SYSDE PLUS mantiene la lógica de negocio completa internamente y se conecta con los sistemas del banco mediante APIs estándar.",
     valor_en: "External dependencies are complementary, not structural. SYSDE PLUS maintains complete business logic internally and connects with bank systems via standard APIs.",
-    diagrams: [
-      { type: "integration-orbit" as DiagramType },
-    ],
-    diagrams_en: [
-      { type: "integration-orbit" as DiagramType },
-    ],
+    diagrams: [],
+    diagrams_en: [],
   },
 
   // ── Operaciones (G) ──
