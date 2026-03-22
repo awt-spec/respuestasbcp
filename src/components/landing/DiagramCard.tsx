@@ -409,6 +409,7 @@ const DiagramCard = ({ item, index }: Props) => {
                 {/* March 20 questions use interactive response cards */}
                 {item.receivedDate === "20 marzo 2026" ? (
                   <InteractiveResponseCard response={displayRespuesta}>
+                    {item.id === 6 && <LicensingShowcase />}
                     {item.id === 12 && <InteractiveLifecycle />}
                     {item.id === 26 && <InteractiveSecurity />}
                   </InteractiveResponseCard>
