@@ -256,8 +256,8 @@ const LicensingShowcase = () => {
 
           <p className="text-sm text-primary-foreground/70 max-w-lg leading-relaxed mb-6">
             {pick(
-              "Cualquier mejora, ajuste o nueva funcionalidad desarrollada dentro del alcance del proyecto se entrega sin costo adicional como parte de la evolución continua de la plataforma.",
-              "Any improvement, adjustment, or new functionality developed within the project scope is delivered at no additional cost as part of the platform's continuous evolution."
+              "Cualquier mejora, ajuste o nueva funcionalidad desarrollada sin costo adicional como parte de la evolución continua de la plataforma.",
+              "Any improvement, adjustment, or new functionality developed at no additional cost as part of the platform's continuous evolution."
             )}
           </p>
 
