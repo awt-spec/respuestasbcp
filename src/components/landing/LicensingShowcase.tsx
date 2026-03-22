@@ -1,116 +1,272 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
-import { Infinity as InfinityIcon, Users, Building2, HeadphonesIcon, GraduationCap, Map, Puzzle, DollarSign, Zap } from "lucide-react";
-
-const benefits = [
-  { icon: Users, label: "Usuarios Ilimitados", label_en: "Unlimited Users", desc: "Sin restricción de usuarios concurrentes", desc_en: "No concurrent user restrictions", color: "from-blue-500/15 to-blue-500/5 border-blue-500/25" },
-  { icon: Building2, label: "Empresas Ilimitadas", label_en: "Unlimited Companies", desc: "Multi-entidad sin costo adicional", desc_en: "Multi-entity at no additional cost", color: "from-emerald-500/15 to-emerald-500/5 border-emerald-500/25" },
-  { icon: HeadphonesIcon, label: "Soporte Ilimitado", label_en: "Unlimited Support", desc: "24/7 incluido en la suscripción", desc_en: "24/7 included in subscription", color: "from-violet-500/15 to-violet-500/5 border-violet-500/25" },
-  { icon: GraduationCap, label: "Capacitación Ilimitada", label_en: "Unlimited Training", desc: "Formación continua sin costos extra", desc_en: "Ongoing training at no extra cost", color: "from-amber-500/15 to-amber-500/5 border-amber-500/25" },
-  { icon: Puzzle, label: "Componente Modular", label_en: "Modular Component", desc: "Activa solo los módulos que necesites", desc_en: "Activate only the modules you need", color: "from-rose-500/15 to-rose-500/5 border-rose-500/25" },
-  { icon: DollarSign, label: "Sin Costos Ocultos", label_en: "No Hidden Costs", desc: "Precio predecible, sin sorpresas", desc_en: "Predictable pricing, no surprises", color: "from-cyan-500/15 to-cyan-500/5 border-cyan-500/25" },
-];
+import {
+  Infinity as InfinityIcon,
+  Users,
+  Building2,
+  HeadphonesIcon,
+  GraduationCap,
+  Map,
+  Puzzle,
+  DollarSign,
+  Zap,
+  Check,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 
 const LicensingShowcase = () => {
   const { lang } = useI18n();
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
+  const [revealedCards, setRevealedCards] = useState<Set<number>>(new Set());
+
+  const toggleCard = (i: number) => {
+    setRevealedCards((prev) => {
+      const next = new Set(prev);
+      next.has(i) ? next.delete(i) : next.add(i);
+      return next;
+    });
+  };
+
+  const pillars = [
+    {
+      icon: Users,
+      number: "∞",
+      title: pick("Usuarios", "Users"),
+      subtitle: pick("Sin límites. Sin cobro por usuario.", "No limits. No per-user charges."),
+      detail: pick(
+        "Usuarios concurrentes, registrados, administrativos — todos incluidos. Crece tu equipo sin preocuparte por el costo.",
+        "Concurrent, registered, administrative users — all included. Grow your team without worrying about cost."
+      ),
+      accent: "from-blue-500 to-blue-600",
+      bg: "from-blue-500/10 to-blue-600/5",
+      border: "border-blue-500/20",
+    },
+    {
+      icon: Building2,
+      number: "∞",
+      title: pick("Empresas", "Companies"),
+      subtitle: pick("Multi-entidad. Multi-país. Una suscripción.", "Multi-entity. Multi-country. One subscription."),
+      detail: pick(
+        "Sucursales, filiales, entidades reguladas — todas dentro de la misma plataforma sin cargos adicionales.",
+        "Branches, subsidiaries, regulated entities — all within the same platform at no extra cost."
+      ),
+      accent: "from-emerald-500 to-emerald-600",
+      bg: "from-emerald-500/10 to-emerald-600/5",
+      border: "border-emerald-500/20",
+    },
+    {
+      icon: HeadphonesIcon,
+      number: "24/7",
+      title: pick("Soporte", "Support"),
+      subtitle: pick("Incluido. Siempre. Sin tickets de pago.", "Included. Always. No paid tickets."),
+      detail: pick(
+        "Soporte técnico y funcional ilimitado, sin cobro por incidente, sin tiers de servicio. Siempre premium.",
+        "Unlimited technical and functional support, no per-incident charges, no service tiers. Always premium."
+      ),
+      accent: "from-violet-500 to-violet-600",
+      bg: "from-violet-500/10 to-violet-600/5",
+      border: "border-violet-500/20",
+    },
+    {
+      icon: GraduationCap,
+      number: "∞",
+      title: pick("Capacitación", "Training"),
+      subtitle: pick("Formación continua. Sin costo por sesión.", "Ongoing training. No per-session cost."),
+      detail: pick(
+        "Sesiones de onboarding, certificación, actualización de producto — todo incluido en tu suscripción.",
+        "Onboarding sessions, certification, product updates — all included in your subscription."
+      ),
+      accent: "from-amber-500 to-amber-600",
+      bg: "from-amber-500/10 to-amber-600/5",
+      border: "border-amber-500/20",
+    },
+    {
+      icon: DollarSign,
+      number: "$0",
+      title: pick("Por Transacción", "Per Transaction"),
+      subtitle: pick("Desembolsos, cobros, consultas — sin cargo.", "Disbursements, collections, queries — no charge."),
+      detail: pick(
+        "No importa el volumen: 100 o 100,000 operaciones mensuales, el costo no cambia.",
+        "Volume doesn't matter: 100 or 100,000 monthly operations, the cost stays the same."
+      ),
+      accent: "from-rose-500 to-rose-600",
+      bg: "from-rose-500/10 to-rose-600/5",
+      border: "border-rose-500/20",
+    },
+    {
+      icon: Puzzle,
+      number: pick("Modular", "Modular"),
+      title: pick("Arquitectura", "Architecture"),
+      subtitle: pick("Activa solo lo que necesitas. Expande sin renegociar.", "Activate only what you need. Expand without renegotiating."),
+      detail: pick(
+        "Leasing, Factoring, Créditos, Pensiones — módulos independientes que se integran perfectamente.",
+        "Leasing, Factoring, Credits, Pensions — independent modules that integrate seamlessly."
+      ),
+      accent: "from-cyan-500 to-cyan-600",
+      bg: "from-cyan-500/10 to-cyan-600/5",
+      border: "border-cyan-500/20",
+    },
+  ];
 
   return (
-    <div>
-      {/* Hero badge */}
-      <div className="flex justify-center mb-8">
+    <div className="space-y-10">
+      {/* ── Act I: The Big Statement ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, type: "spring" }}
+        className="text-center"
+      >
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
           viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 200, damping: 15 }}
-          className="relative"
+          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6"
         >
-          <div className="w-36 h-36 rounded-full bg-gradient-to-br from-primary via-primary to-[hsl(352,70%,35%)] flex flex-col items-center justify-center shadow-2xl shadow-primary/30">
-            <InfinityIcon className="w-10 h-10 text-primary-foreground mb-1" />
-            <p className="text-primary-foreground text-sm font-extrabold">{pick("ILIMITADO", "UNLIMITED")}</p>
-            <p className="text-primary-foreground/80 text-[9px] font-medium">{pick("Suscripción", "Subscription")}</p>
-          </div>
-          <motion.div
-            className="absolute -inset-4 rounded-full border-2 border-dashed border-primary/30"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute -inset-8 rounded-full border border-dotted border-primary/15"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          />
+          <Sparkles className="w-3.5 h-3.5 text-primary" />
+          <span className="text-[11px] font-bold text-primary tracking-wider uppercase">
+            {pick("Modelo de Licenciamiento", "Licensing Model")}
+          </span>
         </motion.div>
-      </div>
 
-      {/* Subscription model */}
-      <div className="text-center mb-6">
-        <p className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">
-          {pick("Modelo de Suscripción", "Subscription Model")}
+        <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight leading-tight">
+          {pick("Una suscripción.", "One subscription.")}
+          <br />
+          <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            {pick("Todo ilimitado.", "Everything unlimited.")}
+          </span>
+        </h3>
+        <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto leading-relaxed">
+          {pick(
+            "Sin sorpresas. Sin costos ocultos. Sin letra pequeña. Así de simple.",
+            "No surprises. No hidden costs. No fine print. That simple."
+          )}
         </p>
-        <h4 className="text-lg font-extrabold text-foreground">
-          {pick("Mensual o Anual — ", "Monthly or Annual — ")}
-          <span className="text-primary">{pick("Todo Incluido", "All Inclusive")}</span>
-        </h4>
-      </div>
+      </motion.div>
 
-      {/* Benefits grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-        {benefits.map((benefit, i) => {
-          const Icon = benefit.icon;
+      {/* ── Act II: The Reveal — "One more thing..." style cards ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {pillars.map((pillar, i) => {
+          const Icon = pillar.icon;
+          const isRevealed = revealedCards.has(i);
           return (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 16, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.35 }}
-              whileHover={{ scale: 1.03, y: -3 }}
-              className={`rounded-2xl border bg-gradient-to-br ${benefit.color} p-4 cursor-default`}
+              transition={{ delay: i * 0.08, duration: 0.4, type: "spring", stiffness: 180 }}
+              onClick={() => toggleCard(i)}
+              className={`group relative rounded-2xl border ${pillar.border} bg-gradient-to-br ${pillar.bg} p-6 cursor-pointer transition-all hover:shadow-xl overflow-hidden`}
             >
-              <Icon className="w-6 h-6 text-primary mb-2" />
-              <p className="text-xs font-bold text-foreground">{pick(benefit.label, benefit.label_en)}</p>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{pick(benefit.desc, benefit.desc_en)}</p>
+              {/* Background glow */}
+              <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-bl ${pillar.accent} opacity-[0.07] blur-2xl group-hover:opacity-[0.12] transition-opacity`} />
+
+              {/* Number — the star */}
+              <motion.p
+                className={`text-4xl font-black bg-gradient-to-br ${pillar.accent} bg-clip-text text-transparent mb-1 tracking-tighter`}
+                animate={isRevealed ? { scale: [1, 1.05, 1] } : {}}
+                transition={{ duration: 0.3 }}
+              >
+                {pillar.number}
+              </motion.p>
+
+              <div className="flex items-center gap-2 mb-1">
+                <Icon className="w-4 h-4 text-muted-foreground" />
+                <p className="text-sm font-extrabold text-foreground">{pillar.title}</p>
+              </div>
+
+              <p className="text-[11px] text-muted-foreground leading-snug">{pillar.subtitle}</p>
+
+              {/* Reveal detail */}
+              <AnimatePresence>
+                {isRevealed && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-3 pt-3 border-t border-foreground/10">
+                      <p className="text-[11px] text-foreground/80 leading-relaxed">{pillar.detail}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Click hint */}
+              <div className="absolute bottom-2 right-3 opacity-0 group-hover:opacity-60 transition-opacity">
+                <ArrowRight className="w-3 h-3 text-muted-foreground" />
+              </div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* BCP Roadmap banner */}
+      {/* ── Act III: "And one more thing..." — BCP Roadmap ── */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="rounded-2xl border-2 border-primary/30 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-5"
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="relative rounded-3xl overflow-hidden"
       >
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
-            <Map className="w-6 h-6 text-primary" />
+        {/* Dramatic gradient bg */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.15)_0%,_transparent_60%)]" />
+
+        <div className="relative p-8 md:p-10">
+          <div className="flex items-center gap-2 mb-4">
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+            >
+              <Zap className="w-6 h-6 text-primary-foreground" />
+            </motion.div>
+            <span className="text-[10px] font-bold text-primary-foreground/70 uppercase tracking-[0.25em]">
+              {pick("Y una cosa más…", "And one more thing…")}
+            </span>
           </div>
-          <div>
-            <p className="text-sm font-extrabold text-foreground flex items-center gap-2">
-              <Zap className="w-4 h-4 text-primary" />
-              {pick("Roadmap Evolutivo BCP", "BCP Evolutionary Roadmap")}
-            </p>
-            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-              {pick(
-                "Cualquier mejora, ajuste o nueva funcionalidad desarrollada dentro del alcance del proyecto se entrega sin costo adicional como parte de la evolución continua de la plataforma.",
-                "Any improvement, adjustment, or new functionality developed within the project scope is delivered at no additional cost as part of the platform's continuous evolution."
-              )}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {[
-                pick("Mejoras funcionales", "Functional improvements"),
-                pick("Nuevas funcionalidades", "New features"),
-                pick("Actualizaciones regulatorias", "Regulatory updates"),
-                pick("Sin costo adicional", "No additional cost"),
-              ].map((tag, i) => (
-                <span key={i} className="text-[10px] font-semibold bg-primary/10 text-primary px-2.5 py-1 rounded-full">
-                  ✓ {tag}
-                </span>
-              ))}
-            </div>
+
+          <h4 className="text-xl md:text-2xl font-black text-primary-foreground leading-tight mb-3">
+            {pick("Roadmap Evolutivo", "Evolutionary Roadmap")}
+            <br />
+            <span className="text-primary-foreground/80">
+              {pick("exclusivo para BCP", "exclusive to BCP")}
+            </span>
+          </h4>
+
+          <p className="text-sm text-primary-foreground/70 max-w-lg leading-relaxed mb-6">
+            {pick(
+              "Cualquier mejora, ajuste o nueva funcionalidad desarrollada dentro del alcance del proyecto se entrega sin costo adicional como parte de la evolución continua de la plataforma.",
+              "Any improvement, adjustment, or new functionality developed within the project scope is delivered at no additional cost as part of the platform's continuous evolution."
+            )}
+          </p>
+
+          <div className="flex flex-wrap gap-3">
+            {[
+              { icon: Check, text: pick("Mejoras funcionales", "Functional improvements") },
+              { icon: Check, text: pick("Nuevas funcionalidades", "New features") },
+              { icon: Check, text: pick("Actualizaciones regulatorias", "Regulatory updates") },
+              { icon: Check, text: pick("Sin costo adicional", "No additional cost") },
+            ].map((tag, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + i * 0.1 }}
+                className="flex items-center gap-1.5 bg-primary-foreground/15 backdrop-blur-sm px-3.5 py-2 rounded-full"
+              >
+                <tag.icon className="w-3.5 h-3.5 text-primary-foreground" />
+                <span className="text-[11px] font-bold text-primary-foreground">{tag.text}</span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.div>
