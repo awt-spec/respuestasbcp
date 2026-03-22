@@ -20,6 +20,7 @@ import InteractiveLifecycle from "./InteractiveLifecycle";
 import InteractiveResponseCard from "./InteractiveResponseCard";
 import InteractiveSecurity from "./InteractiveSecurity";
 import InteractiveRoadmap from "./InteractiveRoadmap";
+import InteractiveScalability from "./InteractiveScalability";
 
 /* ─── Diagram Renderers ─── */
 
@@ -415,7 +416,9 @@ const DiagramCard = ({ item, index }: Props) => {
                     {item.id === 6 && <LicensingShowcase />}
                     {item.id === 12 && <InteractiveLifecycle />}
                     {item.id === 13 && <IntegrationOrbit />}
+                    {item.id === 21 && <InteractiveScalability />}
                     {item.id === 22 && <InteractiveRoadmap />}
+                    {item.id === 23 && <InteractiveRoadmap />}
                     {item.id === 26 && <InteractiveSecurity />}
                   </InteractiveResponseCard>
                 ) : (

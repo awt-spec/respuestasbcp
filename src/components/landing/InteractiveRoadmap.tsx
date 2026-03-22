@@ -29,11 +29,11 @@ const roadmap: RoadmapYear[] = [
     icon: Rocket,
     color: "primary",
     items: [
-      { icon: Cpu, title: "Motor de Decisión con IA", title_en: "AI Decision Engine", desc: "Pre-aprobación automática de operaciones de leasing con scoring inteligente y análisis de riesgo en tiempo real", desc_en: "Automatic pre-approval of leasing operations with intelligent scoring and real-time risk analysis", quarter: "Q1-Q2" },
+      { icon: Cpu, title: "Motor de Decisión con IA", title_en: "AI Decision Engine", desc: "Pre-aprobación automática de operaciones de leasing con scoring inteligente, análisis de riesgo en tiempo real y modelos predictivos de comportamiento crediticio", desc_en: "Automatic pre-approval of leasing operations with intelligent scoring, real-time risk analysis and predictive credit behavior models", quarter: "Q1-Q4" },
       { icon: Zap, title: "Automatización RPA", title_en: "RPA Automation", desc: "Automatización de procesos operativos repetitivos (conciliaciones, notificaciones, generación de reportes)", desc_en: "Automation of repetitive operational processes (reconciliations, notifications, report generation)", quarter: "Q2-Q3" },
-      { icon: Users, title: "Portal de Autoservicio", title_en: "Self-Service Portal", desc: "Front-end para arrendatarios: consulta de estado, pagos en línea, solicitudes de servicio", desc_en: "Lessee front-end: status queries, online payments, service requests", quarter: "Q3-Q4" },
-      { icon: MapPin, title: "Expansión Regulatoria", title_en: "Regulatory Expansion", desc: "Chile, Argentina y Nicaragua — configuración de marcos regulatorios, reportes para superintendencias locales", desc_en: "Chile, Argentina and Nicaragua — regulatory framework configuration, local superintendency reports", quarter: "Q3-Q4" },
-      { icon: Link2, title: "Conectores de Integración", title_en: "Integration Connectors", desc: "Expansión de conectores preconstruidos para ERP, CRM y sistemas gubernamentales", desc_en: "Expansion of pre-built connectors for ERP, CRM and government systems", quarter: "Q4" },
+      { icon: MapPin, title: "Expansión Regulatoria", title_en: "Regulatory Expansion", desc: "Chile, Argentina y Nicaragua — configuración de marcos regulatorios, reportes para superintendencias locales y adaptación normativa", desc_en: "Chile, Argentina and Nicaragua — regulatory framework configuration, local superintendency reports and regulatory adaptation", quarter: "Q3-Q4" },
+      { icon: Shield, title: "Ciberseguridad Avanzada", title_en: "Advanced Cybersecurity", desc: "Implementación de Zero Trust Architecture, detección de amenazas con IA y hardening de infraestructura", desc_en: "Zero Trust Architecture implementation, AI threat detection and infrastructure hardening", quarter: "Q3-Q4" },
+      { icon: BarChart3, title: "Dashboards Ejecutivos con IA", title_en: "AI Executive Dashboards", desc: "Paneles de control inteligentes con insights automáticos, alertas predictivas y KPIs en tiempo real", desc_en: "Intelligent control panels with automatic insights, predictive alerts and real-time KPIs", quarter: "Q4" },
     ],
   },
   {
@@ -56,10 +56,9 @@ const roadmap: RoadmapYear[] = [
     icon: Globe,
     color: "violet-500",
     items: [
-      { icon: Globe, title: "Open Finance", title_en: "Open Finance", desc: "APIs abiertas para Leasing-as-a-Service, permitiendo a terceros consumir funcionalidades", desc_en: "Open APIs for Leasing-as-a-Service, enabling third parties to consume functionalities", quarter: "Q1-Q2" },
-      { icon: Link2, title: "Tokenización de Activos", title_en: "Asset Tokenization", desc: "Exploración de blockchain para tokenización de activos de leasing", desc_en: "Blockchain exploration for leasing asset tokenization", quarter: "Q2-Q3" },
-      { icon: Shield, title: "Smart Contracts", title_en: "Smart Contracts", desc: "Contratos inteligentes para ciertos tipos de operaciones de leasing", desc_en: "Smart contracts for certain types of leasing operations", quarter: "Q3-Q4" },
-      { icon: MapPin, title: "Expansión Sudamérica", title_en: "South America Expansion", desc: "Colombia, Brasil y mercados adicionales — marcos regulatorios y reportes locales", desc_en: "Colombia, Brazil and additional markets — regulatory frameworks and local reports", quarter: "Q4" },
+      { icon: Link2, title: "Tokenización de Activos", title_en: "Asset Tokenization", desc: "Exploración de blockchain para tokenización de activos de leasing", desc_en: "Blockchain exploration for leasing asset tokenization", quarter: "Q1-Q2" },
+      { icon: Shield, title: "Smart Contracts", title_en: "Smart Contracts", desc: "Contratos inteligentes para ciertos tipos de operaciones de leasing", desc_en: "Smart contracts for certain types of leasing operations", quarter: "Q2-Q3" },
+      { icon: Globe, title: "Expansión de Mercados", title_en: "Market Expansion", desc: "Nuevos mercados regulatorios en la región — adaptación normativa y reportes locales", desc_en: "New regulatory markets in the region — regulatory adaptation and local reports", quarter: "Q3-Q4" },
     ],
   },
 ];
