@@ -150,20 +150,47 @@ const ListDiagram = ({ block }: { block: DiagramBlock }) => (
   </div>
 );
 
-const EmbedDiagram = ({ block }: { block: DiagramBlock }) => (
-  <div>
-    {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
-    <div className="rounded-xl overflow-hidden border shadow-sm">
-      <iframe
-        src={block.url}
-        className="w-full h-[500px] md:h-[650px] border-0"
-        title={block.title || "Demo"}
-        allowFullScreen
-        allow="fullscreen"
-      />
+const EmbedDiagram = ({ block }: { block: DiagramBlock }) => {
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      containerRef.current?.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  };
+
+  React.useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", handler);
+    return () => document.removeEventListener("fullscreenchange", handler);
+  }, []);
+
+  return (
+    <div>
+      {block.title && <h4 className="text-xs font-bold text-foreground mb-3">{block.title}</h4>}
+      <div ref={containerRef} className="relative rounded-xl overflow-hidden border shadow-sm bg-background">
+        <iframe
+          ref={iframeRef}
+          src={block.url}
+          className={`w-full border-0 ${isFullscreen ? "h-screen" : "h-[500px] md:h-[650px]"}`}
+          title={block.title || "Demo"}
+          allowFullScreen
+          allow="fullscreen"
+        />
+        <button
+          onClick={toggleFullscreen}
+          className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold shadow-lg hover:bg-primary/90 transition-colors"
+        >
+          {isFullscreen ? "✕ Salir" : "⛶ Pantalla Completa"}
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const renderDiagram = (block: DiagramBlock, idx: number) => {
   const key = `${block.type}-${idx}`;
