@@ -45,7 +45,7 @@ const roadmap: RoadmapYear[] = [
     items: [
       { icon: BarChart3, title: "Analytics Predictivo", title_en: "Predictive Analytics", desc: "Scoring comportamental para anticipar mora, modelos ML de riesgo crediticio avanzado", desc_en: "Behavioral scoring for arrears anticipation, advanced ML credit risk models", quarter: "Q1-Q2" },
       { icon: Shield, title: "Optimización de Portafolio", title_en: "Portfolio Optimization", desc: "Maximizar rentabilidad y minimizar riesgo con recomendaciones basadas en datos", desc_en: "Maximize profitability and minimize risk with data-driven recommendations", quarter: "Q2-Q3" },
-      { icon: Leaf, title: "Leasing Verde / ESG", title_en: "Green Leasing / ESG", desc: "Tracking completo de impacto ambiental, etiquetado ESG de operaciones, reportes de sostenibilidad", desc_en: "Complete environmental impact tracking, ESG operation labeling, sustainability reports", quarter: "Q3-Q4" },
+      { icon: Link2, title: "Tokenización de Activos", title_en: "Asset Tokenization", desc: "Exploración de blockchain para tokenización de activos de leasing", desc_en: "Blockchain exploration for leasing asset tokenization", quarter: "Q3-Q4" },
     ],
   },
   {
