@@ -804,9 +804,9 @@ export const references: ReferenceItem[] = [
     region: "🇨🇷 Costa Rica",
     deployment: "On Premise / SaaS",
     product: "SYSDE PLUS",
-    detail: "Soluciones SYSDE implementadas en el banco estatal más grande de Costa Rica.",
-    result: "Operación activa con módulos de préstamos en SYSDE PLUS.",
-    focus: ["prestamos"],
+    detail: "Soluciones SYSDE implementadas para la gestión de fondos de pensiones del banco estatal más grande de Costa Rica.",
+    result: "Operación activa en gestión previsional con SYSDE PLUS.",
+    focus: ["pension"],
     core: "SYSDE PLUS",
   },
   {
