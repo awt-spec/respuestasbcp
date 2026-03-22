@@ -37,6 +37,12 @@ const Index = () => {
         (item.title_en && item.title_en.toLowerCase().includes(q)) ||
         item.requerimiento.toLowerCase().includes(q) ||
         item.requerimiento_en.toLowerCase().includes(q) ||
+        item.respuesta.toLowerCase().includes(q) ||
+        item.respuesta_en.toLowerCase().includes(q) ||
+        item.valor.toLowerCase().includes(q) ||
+        item.valor_en.toLowerCase().includes(q) ||
+        (item.consideraciones && item.consideraciones.toLowerCase().includes(q)) ||
+        (item.subtitle && item.subtitle.toLowerCase().includes(q)) ||
         `q${item.id}`.includes(q) ||
         `#${item.id}`.includes(q) ||
         String(item.id).includes(q)
