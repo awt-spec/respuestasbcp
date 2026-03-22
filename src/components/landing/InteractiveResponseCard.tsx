@@ -105,7 +105,7 @@ interface Props {
   children?: React.ReactNode; // For embedded components like InteractiveLifecycle
 }
 
-const InteractiveResponseCard = ({ response, children }: Props) => {
+const InteractiveResponseCard = ({ response, children }: Props) => { // v2
   const [expanded, setExpanded] = useState<number | null>(null);
   const { confirmation, sections } = parseResponse(response);
 
