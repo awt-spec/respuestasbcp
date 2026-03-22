@@ -73,10 +73,10 @@ const LicensingShowcase = () => {
       icon: GraduationCap,
       number: "∞",
       title: pick("Capacitación", "Training"),
-      subtitle: pick("Formación continua. Sin costo por sesión.", "Ongoing training. No per-session cost."),
+      subtitle: pick("Formación continua, consultas puntuales y sesiones de entrenamiento — sin costo.", "Ongoing training, ad-hoc consultations and enablement sessions — no cost."),
       detail: pick(
-        "Sesiones de onboarding, certificación, actualización de producto — todo incluido en tu suscripción.",
-        "Onboarding sessions, certification, product updates — all included in your subscription."
+        "Sesiones de onboarding, capacitación programada, entrenamiento por módulo, consultas puntuales funcionales o técnicas — todo incluido sin costo adicional. El equipo de BCP siempre tendrá acceso a acompañamiento.",
+        "Onboarding sessions, scheduled training, per-module enablement, ad-hoc functional or technical consultations — all included at no additional cost. BCP's team will always have access to support."
       ),
       accent: "from-amber-500 to-amber-600",
       bg: "from-amber-500/10 to-amber-600/5",
