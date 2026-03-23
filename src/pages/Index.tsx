@@ -6,7 +6,7 @@ import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
 import DiagramCard from "@/components/landing/DiagramCard";
 import ChatBot from "@/components/ChatBot";
-import { CheckCircle2, Clock, Search, ArrowUpDown } from "lucide-react";
+import { CheckCircle2, Clock, Search, ArrowUpDown, Maximize, Minimize } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
