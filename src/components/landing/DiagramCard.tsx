@@ -487,6 +487,7 @@ const DiagramCard = ({ item, index }: Props) => {
                     {item.id === 23 && <InteractiveRoadmap />}
                     {item.id === 24 && <InteractivePresence />}
                     {item.id === 15 && <InteractiveAPIs />}
+                    {item.id === 17 && <InteractiveExtractor />}
                     {item.id === 26 && <InteractiveSecurity />}
                   </InteractiveResponseCard>
                 ) : (
