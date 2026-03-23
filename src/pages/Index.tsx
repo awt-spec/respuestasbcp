@@ -113,7 +113,15 @@ const Index = () => {
       </div>
 
       <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex justify-end">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex justify-end gap-2">
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border text-muted-foreground hover:bg-muted transition-colors"
+            title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+          >
+            {isFullscreen ? <Minimize className="w-3.5 h-3.5" /> : <Maximize className="w-3.5 h-3.5" />}
+            {isFullscreen ? pick("Salir", "Exit") : pick("Expandir", "Expand")}
+          </button>
           <div className="shrink-0 flex items-center gap-1 border rounded-full overflow-hidden">
             {(["es", "en"] as const).map((l) => (
               <button
