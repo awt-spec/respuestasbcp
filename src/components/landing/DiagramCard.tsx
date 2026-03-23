@@ -23,6 +23,7 @@ import InteractiveRoadmap from "./InteractiveRoadmap";
 import InteractiveScalability from "./InteractiveScalability";
 import InteractivePresence from "./InteractivePresence";
 import InteractiveScalabilityRisk from "./InteractiveScalabilityRisk";
+import InteractiveExtractor from "./InteractiveExtractor";
 
 /* ─── Diagram Renderers ─── */
 
