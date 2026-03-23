@@ -350,8 +350,8 @@ const InteractiveAPIs = () => {
                     <p className="text-[10px] text-muted-foreground leading-relaxed">
                       <span className="font-bold text-foreground">📋 {pick("Nota", "Note")}:</span>{" "}
                       {pick(
-                        "Esta es una muestra representativa de las APIs de SYSDE PLUS Loan, entre otros. La documentación completa incluye +250 endpoints agrupados por módulo funcional, disponible en el portal de desarrolladores.",
-                        "This is a representative sample of SYSDE PLUS Loan APIs, among others. Complete documentation includes +250 endpoints grouped by functional module, available on the developer portal."
+                        "Esta es una muestra representativa de las APIs de SYSDE PLUS Loan, entre otros. La documentación completa incluye +450 endpoints agrupados por módulo funcional.",
+                        "This is a representative sample of SYSDE PLUS Loan APIs, among others. Complete documentation includes +450 endpoints grouped by functional module."
                       )}
                     </p>
                   </div>
