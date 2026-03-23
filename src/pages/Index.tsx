@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { questions, sections } from "@/data/questions";
 import HeroSection from "@/components/landing/HeroSection";
