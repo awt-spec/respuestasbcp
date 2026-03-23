@@ -22,6 +22,7 @@ import InteractiveSecurity from "./InteractiveSecurity";
 import InteractiveRoadmap from "./InteractiveRoadmap";
 import InteractiveScalability from "./InteractiveScalability";
 import InteractivePresence from "./InteractivePresence";
+import InteractiveScalabilityRisk from "./InteractiveScalabilityRisk";
 
 /* ─── Diagram Renderers ─── */
 
@@ -479,6 +480,7 @@ const DiagramCard = ({ item, index }: Props) => {
                       </>
                     )}
                     {item.id === 13 && <IntegrationOrbit />}
+                    {item.id === 7 && <InteractiveScalabilityRisk />}
                     {item.id === 21 && <InteractiveScalability />}
                     {item.id === 22 && <InteractiveRoadmap />}
                     {item.id === 23 && <InteractiveRoadmap />}
