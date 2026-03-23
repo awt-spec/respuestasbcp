@@ -84,8 +84,8 @@ const phases: Phase[] = [
   {
     icon: Flag, label: "Finalización", label_en: "Finalization",
     color: "text-teal-500", border: "border-teal-500/30", bg: "from-teal-500/15 to-teal-500/5",
-    details: ["Opción de compra", "Devolución del activo", "Renovación de contrato", "Terminación anticipada"],
-    details_en: ["Purchase option", "Asset return", "Contract renewal", "Early termination"],
+    details: ["Opción de compra", "Devolución del activo", "Renovación de contrato", "Terminación anticipada", "Trazabilidad de transferencia vehicular"],
+    details_en: ["Purchase option", "Asset return", "Contract renewal", "Early termination", "Vehicle transfer traceability"],
   },
 ];
 
