@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { questions, sections } from "@/data/questions";
 import HeroSection from "@/components/landing/HeroSection";
@@ -6,7 +6,7 @@ import DashboardSection from "@/components/landing/DashboardSection";
 import FooterSection from "@/components/landing/FooterSection";
 import DiagramCard from "@/components/landing/DiagramCard";
 import ChatBot from "@/components/ChatBot";
-import { CheckCircle2, Clock, Search, ArrowUpDown } from "lucide-react";
+import { CheckCircle2, Clock, Search, ArrowUpDown, Maximize, Minimize } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -25,6 +25,24 @@ const Index = () => {
   const { lang, setLang } = useI18n();
   const [searchQuery, setSearchQuery] = useState("");
   const [sortMode, setSortMode] = useState<SortMode>("section");
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  };
+
+  // Sync state if user exits fullscreen via Esc
+  React.useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", handler);
+    return () => document.removeEventListener("fullscreenchange", handler);
+  }, []);
 
   const pick = <T,>(es: T, en?: T): T => (lang === "en" && en ? en : es);
 
@@ -95,7 +113,15 @@ const Index = () => {
       </div>
 
       <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex justify-end">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex justify-end gap-2">
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border text-muted-foreground hover:bg-muted transition-colors"
+            title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+          >
+            {isFullscreen ? <Minimize className="w-3.5 h-3.5" /> : <Maximize className="w-3.5 h-3.5" />}
+            {isFullscreen ? pick("Salir", "Exit") : pick("Expandir", "Expand")}
+          </button>
           <div className="shrink-0 flex items-center gap-1 border rounded-full overflow-hidden">
             {(["es", "en"] as const).map((l) => (
               <button
