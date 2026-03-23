@@ -163,7 +163,7 @@ export const questions: QuestionItem[] = [
     respuesta_en: "SYSDE PLUS enables institutions of BCP's scale to incorporate and grow their leasing operation with total control, integrated into their existing technology ecosystem.\n\n𝗠𝗶𝘁𝗶𝗴𝗮𝘁𝗲𝗱 𝗥𝗶𝘀𝗸𝘀: Leasing decoupling from banking core, multi-jurisdiction regulatory compliance (SBS), governance and function segregation, and portfolio growth without losing visibility — all solved with architecture proven in 1,000+ institutions.\n\n𝗦𝗰𝗮𝗹𝗮𝗯𝗶𝗹𝗶𝘁𝘆: The same platform supports IVM (3M+ affiliates) and CMI (6 countries with SAP). Capacity far exceeds bank leasing requirements. Auto-scaling on Azure with annually reviewed dimensioning.",
     valor: "BCP puede crecer su operación de leasing con la confianza de que SYSDE PLUS escala a su nivel, con gobernanza, control regulatorio y capacidad comprobada muy superior a lo requerido.",
     valor_en: "BCP can grow its leasing operation with confidence that SYSDE PLUS scales to their level, with governance, regulatory control, and proven capacity far exceeding requirements.",
-    valor_en: "SYSDE PLUS mitigates the most critical operational and scalability risks in bank leasing, with architecture proven from pilot to massive multi-country operations.",
+    
     diagrams: [],
     diagrams_en: [],
   },
