@@ -125,7 +125,7 @@ const methodColors: Record<string, string> = {
 };
 
 const stats = [
-  { value: "+250", label: "Endpoints", label_en: "Endpoints", icon: Zap, color: "text-blue-600 bg-blue-500/10 border-blue-500/20" },
+  { value: "+450", label: "Endpoints", label_en: "Endpoints", icon: Zap, color: "text-blue-600 bg-blue-500/10 border-blue-500/20" },
   { value: "REST", label: "Arquitectura", label_en: "Architecture", icon: Globe, color: "text-emerald-600 bg-emerald-500/10 border-emerald-500/20" },
   { value: "24/7", label: "Disponibilidad", label_en: "Availability", icon: Activity, color: "text-violet-600 bg-violet-500/10 border-violet-500/20" },
   { value: "OAuth", label: "Seguridad", label_en: "Security", icon: Shield, color: "text-amber-600 bg-amber-500/10 border-amber-500/20" },
