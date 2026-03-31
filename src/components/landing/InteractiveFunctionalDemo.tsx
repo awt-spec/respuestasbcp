@@ -320,6 +320,15 @@ const ScheduleDemo = () => {
       { m: "11", cap: 5000, int: 1250, note: "" },
       { m: "12", cap: 45000, int: 625, note: pick("Balloon 🎈", "Balloon 🎈") },
     ],
+    flat: [
+      { m: "1", cap: 8333, int: 2500, note: pick("Cuota: $10,833", "Payment: $10,833") },
+      { m: "2", cap: 8333, int: 2292, note: pick("Cuota: $10,625", "Payment: $10,625") },
+      { m: "3", cap: 8333, int: 2083, note: pick("Cuota: $10,417", "Payment: $10,417") },
+      { m: "4", cap: 8333, int: 1875, note: "" },
+      { m: "6", cap: 8333, int: 1458, note: pick("↓ Cuota baja", "↓ Payment drops") },
+      { m: "9", cap: 8333, int: 833, note: "" },
+      { m: "12", cap: 8333, int: 208, note: pick("Cuota mínima 📉", "Min payment 📉") },
+    ],
     seasonal: [
       { m: pick("Ene", "Jan"), cap: 12000, int: 2500, note: pick("🔥 Alta", "🔥 Peak") },
       { m: pick("Mar", "Mar"), cap: 3000, int: 2200, note: pick("❄️ Baja", "❄️ Low") },
