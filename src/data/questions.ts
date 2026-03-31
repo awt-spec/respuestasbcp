@@ -1355,6 +1355,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "leaseback" },
       {
         type: "flow" as DiagramType,
         title: "Sale & Leaseback Flow",
