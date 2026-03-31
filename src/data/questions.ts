@@ -1397,6 +1397,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá gestionar gastos imprevistos sin disrumpir el cronograma de pagos, manteniendo control y trazabilidad sobre cada cargo adicional.",
     valor_en: "BCP will be able to manage unforeseen charges without disrupting the payment schedule, maintaining control and traceability over each additional charge.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "surcharge" },
       {
         type: "flow" as DiagramType,
         title: "Flujo de Gastos Sobrevinientes",
