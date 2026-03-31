@@ -1285,6 +1285,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "schedule" },
       {
         type: "grid" as DiagramType,
         title: "Supported Structure Types",
