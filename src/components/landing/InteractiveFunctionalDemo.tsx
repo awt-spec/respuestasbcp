@@ -383,7 +383,7 @@ const ScheduleDemo = () => {
       </div>
 
       {/* Preset cards */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+      <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5">
         {presets.map(p => (
           <button key={p.id} onClick={() => selectPreset(p.id)}
             className={`relative flex flex-col items-center gap-1 p-3 rounded-2xl text-[10px] font-bold transition-all overflow-hidden ${
