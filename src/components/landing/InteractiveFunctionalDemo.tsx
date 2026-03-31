@@ -410,8 +410,8 @@ const ScheduleDemo = () => {
         {viewMode === "chart" ? (
           /* ── VISUAL CHART VIEW ── */
           <motion.div key="chart" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-            <div className={`rounded-2xl border-2 ${active === "custom" ? "border-primary/30" : "border-border"} p-4`}>
-              <div className="flex items-end gap-1.5" style={{ height: 160 }}>
+            <div className={`rounded-2xl border-2 ${active === "custom" ? "border-primary/30" : "border-border"} p-4 overflow-hidden`}>
+              <div className="flex items-end gap-1.5 overflow-hidden" style={{ height: 160 }}>
                 {rows.map((row, i) => {
                   const total = row.cap + row.int;
                   const capH = maxTotal > 0 ? (row.cap / maxTotal) * 140 : 0;
