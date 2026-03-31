@@ -501,19 +501,11 @@ const LeasebackDemo = () => {
       <AnimatePresence>
         {editMode && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-gradient-to-br from-violet-500/5 to-transparent border border-violet-500/20">
-              {[
-                { label: pick("Valor activo", "Asset value"), value: assetValue, set: setAssetValue },
-                { label: pick("Tasación", "Appraisal"), value: appraisalValue, set: setAppraisalValue },
-                { label: pick("Plazo (meses)", "Term (months)"), value: term, set: setTerm },
-                { label: pick("Opción compra %", "Purchase opt %"), value: purchaseOption, set: setPurchaseOption },
-              ].map((f, i) => (
-                <div key={i}>
-                  <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{f.label}</label>
-                  <input type="number" value={f.value} onChange={e => f.set(Number(e.target.value) || 0)}
-                    className="w-full mt-1 px-3 py-2 rounded-xl bg-background border text-sm font-mono focus:ring-2 focus:ring-violet-500/30 outline-none" />
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-gradient-to-br from-violet-500/5 to-transparent border border-violet-500/20">
+              <SliderInput label={pick("Valor activo", "Asset value")} value={assetValue} onChange={setAssetValue} min={50000} max={1000000} step={5000} prefix="$" />
+              <SliderInput label={pick("Tasación", "Appraisal")} value={appraisalValue} onChange={setAppraisalValue} min={50000} max={1000000} step={5000} prefix="$" />
+              <SliderInput label={pick("Plazo (meses)", "Term (months)")} value={term} onChange={setTerm} min={6} max={120} step={6} />
+              <SliderInput label={pick("Opción compra %", "Purchase opt %")} value={purchaseOption} onChange={setPurchaseOption} min={1} max={30} step={1} suffix="%" />
             </div>
           </motion.div>
         )}
