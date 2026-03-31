@@ -1286,7 +1286,12 @@ export const questions: QuestionItem[] = [
     ],
   },
 ];
-          ["Tramo 2", "Avance obra 30%", "$200,000", "✅ Desembolsado", "28/02/2026"],
+
+export const counts = {
+  total: questions.length,
+  answered: questions.filter((q) => q.status === "answered").length,
+  pending: questions.filter((q) => q.status === "pending").length,
+};
           ["Tramo 3", "Avance obra 60%", "$200,000", "⏳ Pendiente", "—"],
           ["Tramo 4", "Entrega final + acta", "$150,000", "⏳ Pendiente", "—"],
         ],
