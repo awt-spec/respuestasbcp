@@ -1192,53 +1192,9 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will be able to manage leasing operations with progressive disbursements, ideal for construction projects or staged acquisitions, maintaining full control over each release.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "disbursement" },
-      {
-        type: "flow" as DiagramType,
-        title: "Flujo de Desembolso por Tramos",
-        steps: [
-          { label: "Solicitud", description: "Operador solicita liberación del tramo", icon: "📄" },
-          { label: "Validación", description: "Sistema verifica condiciones del tramo (avance, docs)", icon: "✅" },
-          { label: "Aprobación", description: "Flujo de aprobación según monto y política", icon: "🔐" },
-          { label: "Desembolso", description: "Liberación de fondos y asiento contable automático", icon: "💰" },
-          { label: "Actualización", description: "Saldo vigente y expediente actualizados en tiempo real", icon: "📊" },
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Ejemplo de Desembolso por Tramos",
-        headers: ["Tramo", "Condición", "Monto (USD)", "Estado", "Fecha"],
-        rows: [
-          ["Tramo 1", "Anticipo contractual", "$150,000", "✅ Desembolsado", "15/01/2026"],
-          ["Tramo 2", "Avance obra 30%", "$200,000", "✅ Desembolsado", "28/02/2026"],
-          ["Tramo 3", "Avance obra 60%", "$200,000", "⏳ Pendiente", "—"],
-          ["Tramo 4", "Entrega final + acta", "$150,000", "⏳ Pendiente", "—"],
-        ],
-      },
     ],
     diagrams_en: [
       { type: "functional-demo" as DiagramType, demoId: "disbursement" },
-      {
-        type: "flow" as DiagramType,
-        title: "Tranche Disbursement Flow",
-        steps: [
-          { label: "Request", description: "Operator requests tranche release", icon: "📄" },
-          { label: "Validation", description: "System verifies tranche conditions (progress, docs)", icon: "✅" },
-          { label: "Approval", description: "Approval flow per amount and policy", icon: "🔐" },
-          { label: "Disbursement", description: "Fund release and automatic accounting entry", icon: "💰" },
-          { label: "Update", description: "Outstanding balance and file updated in real time", icon: "📊" },
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Tranche Disbursement Example",
-        headers: ["Tranche", "Condition", "Amount (USD)", "Status", "Date"],
-        rows: [
-          ["Tranche 1", "Contractual advance", "$150,000", "✅ Disbursed", "01/15/2026"],
-          ["Tranche 2", "30% construction progress", "$200,000", "✅ Disbursed", "02/28/2026"],
-          ["Tranche 3", "60% construction progress", "$200,000", "⏳ Pending", "—"],
-          ["Tranche 4", "Final delivery + certificate", "$150,000", "⏳ Pending", "—"],
-        ],
-      },
     ],
   },
   {
@@ -1258,59 +1214,9 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will be able to structure leasing operations with fully customized schedules, adapting to client cash flows without calculation engine limitations.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "schedule" },
-      {
-        type: "grid" as DiagramType,
-        title: "Tipos de Estructura Soportados",
-        items: [
-          "📐 Cuota Fija — Capital + interés constante cada período",
-          "📊 Cuota Variable — Monto libre período a período",
-          "⏸️ Grace Period — Solo intereses durante N períodos",
-          "🎯 Bullet — Capital completo al vencimiento",
-          "🎈 Balloon — Cuota final significativamente mayor",
-          "🌊 Estacional — Cuotas ajustadas a ciclos de negocio",
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Ejemplo: Cronograma Tailor-Made (USD)",
-        headers: ["Período", "Capital", "Interés", "Cuota Total", "Tipo"],
-        rows: [
-          ["Mes 1-3", "$0", "$2,500", "$2,500", "Grace period"],
-          ["Mes 4", "$15,000", "$2,300", "$17,300", "Cuota regular"],
-          ["Mes 5", "$15,000", "$2,100", "$17,100", "Cuota regular"],
-          ["Mes 6", "$8,000", "$1,900", "$9,900", "Cuota estacional"],
-          ["Mes 12", "$0", "$1,500", "$1,500", "Solo intereses"],
-          ["Mes 24", "$62,000", "$800", "$62,800", "Balloon final"],
-        ],
-      },
     ],
     diagrams_en: [
       { type: "functional-demo" as DiagramType, demoId: "schedule" },
-      {
-        type: "grid" as DiagramType,
-        title: "Supported Structure Types",
-        items: [
-          "📐 Fixed Installment — Constant principal + interest each period",
-          "📊 Variable Installment — Free amount period by period",
-          "⏸️ Grace Period — Interest-only for N periods",
-          "🎯 Bullet — Full principal at maturity",
-          "🎈 Balloon — Significantly larger final installment",
-          "🌊 Seasonal — Installments adjusted to business cycles",
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Example: Tailor-Made Schedule (USD)",
-        headers: ["Period", "Principal", "Interest", "Total Payment", "Type"],
-        rows: [
-          ["Month 1-3", "$0", "$2,500", "$2,500", "Grace period"],
-          ["Month 4", "$15,000", "$2,300", "$17,300", "Regular payment"],
-          ["Month 5", "$15,000", "$2,100", "$17,100", "Regular payment"],
-          ["Month 6", "$8,000", "$1,900", "$9,900", "Seasonal payment"],
-          ["Month 12", "$0", "$1,500", "$1,500", "Interest only"],
-          ["Month 24", "$62,000", "$800", "$62,800", "Final balloon"],
-        ],
-      },
     ],
   },
   {
@@ -1330,55 +1236,9 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will be able to offer leaseback operations as a strategic product, allowing clients to monetize existing assets with full accounting traceability.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "leaseback" },
-      {
-        type: "flow" as DiagramType,
-        title: "Flujo Sale & Leaseback",
-        steps: [
-          { label: "Compraventa", description: "BCP adquiere el activo del cliente", icon: "🏢" },
-          { label: "Tasación", description: "Valoración del bien y registro contable", icon: "📋" },
-          { label: "Contrato Lease", description: "Constitución del arrendamiento financiero", icon: "📝" },
-          { label: "Desembolso", description: "Pago al cliente por el activo adquirido", icon: "💵" },
-          { label: "Operación Activa", description: "Cliente usa el bien y paga cuotas de leasing", icon: "🔄" },
-          { label: "Fin de Contrato", description: "Opción de compra, renovación o devolución", icon: "✅" },
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Tratamiento Contable Diferenciado",
-        headers: ["Concepto", "Compraventa", "Arrendamiento"],
-        rows: [
-          ["Registro", "Activo adquirido a valor comercial", "Contrato a valor presente de cuotas"],
-          ["Asiento", "Débito: Activo fijo / Crédito: Banco", "Débito: Cta. x cobrar / Crédito: Ingreso diferido"],
-          ["Depreciación", "Desde fecha de adquisición", "Según tabla configurada"],
-          ["Valor residual", "Determinado en tasación", "Incorporado en última cuota"],
-        ],
-      },
     ],
     diagrams_en: [
       { type: "functional-demo" as DiagramType, demoId: "leaseback" },
-      {
-        type: "flow" as DiagramType,
-        title: "Sale & Leaseback Flow",
-        steps: [
-          { label: "Purchase", description: "BCP acquires the asset from the client", icon: "🏢" },
-          { label: "Appraisal", description: "Asset valuation and accounting registration", icon: "📋" },
-          { label: "Lease Contract", description: "Financial lease constitution", icon: "📝" },
-          { label: "Disbursement", description: "Payment to client for acquired asset", icon: "💵" },
-          { label: "Active Operation", description: "Client uses asset and pays lease installments", icon: "🔄" },
-          { label: "End of Contract", description: "Purchase option, renewal, or return", icon: "✅" },
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Differentiated Accounting Treatment",
-        headers: ["Concept", "Purchase-Sale", "Lease"],
-        rows: [
-          ["Registration", "Asset acquired at market value", "Contract at present value of payments"],
-          ["Entry", "Debit: Fixed Asset / Credit: Bank", "Debit: Receivable / Credit: Deferred Income"],
-          ["Depreciation", "From acquisition date", "Per configured table"],
-          ["Residual Value", "Determined at appraisal", "Incorporated in final payment"],
-        ],
-      },
     ],
   },
   {
@@ -1398,55 +1258,9 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will be able to manage unforeseen charges without disrupting the payment schedule, maintaining control and traceability over each additional charge.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "surcharge" },
-      {
-        type: "flow" as DiagramType,
-        title: "Flujo de Gastos Sobrevinientes",
-        steps: [
-          { label: "Evento", description: "Surge impuesto, infracción o prima adicional", icon: "⚠️" },
-          { label: "Registro", description: "Operador crea cargo vinculado al expediente", icon: "📝" },
-          { label: "Decisión", description: "Cobro independiente o incorporar al siguiente período", icon: "🔀" },
-          { label: "Aprobación", description: "Flujo de autorización según monto y política", icon: "✅" },
-          { label: "Notificación", description: "Comprobante generado y arrendatario notificado", icon: "📧" },
-        ],
-      },
-      {
-        type: "grid" as DiagramType,
-        title: "Tipos de Gastos Sobrevinientes",
-        items: [
-          "🏛️ Impuestos — Tributos municipales, tenencia vehicular, predial",
-          "🚦 Infracciones — Multas de tránsito, penalizaciones",
-          "🛡️ Seguros — Primas adicionales, renovaciones",
-          "🔧 Mantenimiento — Reparaciones imputables al arrendatario",
-          "📋 Gastos legales — Notariales, registrales, trámites",
-          "💼 Otros — Cualquier cargo configurable por la institución",
-        ],
-      },
     ],
     diagrams_en: [
       { type: "functional-demo" as DiagramType, demoId: "surcharge" },
-      {
-        type: "flow" as DiagramType,
-        title: "Supervening Charges Flow",
-        steps: [
-          { label: "Event", description: "Tax, fine, or additional premium arises", icon: "⚠️" },
-          { label: "Registration", description: "Operator creates charge linked to file", icon: "📝" },
-          { label: "Decision", description: "Independent charge or incorporate into next period", icon: "🔀" },
-          { label: "Approval", description: "Authorization flow per amount and policy", icon: "✅" },
-          { label: "Notification", description: "Receipt generated and lessee notified", icon: "📧" },
-        ],
-      },
-      {
-        type: "grid" as DiagramType,
-        title: "Types of Supervening Charges",
-        items: [
-          "🏛️ Taxes — Municipal taxes, vehicle tenure, property",
-          "🚦 Fines — Traffic violations, penalties",
-          "🛡️ Insurance — Additional premiums, renewals",
-          "🔧 Maintenance — Repairs attributable to lessee",
-          "📋 Legal expenses — Notarial, registry, procedures",
-          "💼 Other — Any charge configurable by the institution",
-        ],
-      },
     ],
   },
   {
@@ -1466,67 +1280,9 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will have a centralized and detailed registry of each leasing asset, facilitating audits, regulatory reports, and asset management.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "asset-card" },
-      {
-        type: "table" as DiagramType,
-        title: "Ejemplo de Ficha Técnica del Activo",
-        headers: ["Campo", "Valor", "Editable"],
-        rows: [
-          ["Tipo de activo", "Vehículo pesado", "✅"],
-          ["Marca / Modelo", "Volvo FH16 — 2026", "✅"],
-          ["Nº de Serie", "YV2RTK0A5RB-XXXXX", "✅"],
-          ["Placa", "ABC-1234", "✅"],
-          ["Proveedor", "Divemotor S.A.", "✅"],
-          ["Valor comercial", "USD 185,000", "✅"],
-          ["Valor residual", "USD 37,000 (20%)", "✅"],
-          ["Depreciación", "Línea recta — 5 años", "✅"],
-          ["Ubicación", "Lima, Perú — Planta Norte", "✅"],
-          ["Documentos adjuntos", "3 archivos (factura, fotos, tasación)", "✅"],
-        ],
-      },
-      {
-        type: "grid" as DiagramType,
-        title: "Capacidades del Módulo de Activos",
-        items: [
-          "📸 Fotos y documentos — Adjuntar evidencia visual y documental al expediente",
-          "📉 Depreciación automática — Cálculo según método configurado (línea recta, acelerada, unidades)",
-          "🔍 Consulta en tiempo real — Información disponible desde cualquier punto del expediente",
-          "📤 Exportable — Datos exportables para reportes regulatorios y auditorías",
-          "🔗 Vinculación — Cada activo vinculado a su contrato, asegurador y proveedor",
-          "📍 Geolocalización — Registro de ubicación física del activo",
-        ],
-      },
     ],
     diagrams_en: [
       { type: "functional-demo" as DiagramType, demoId: "asset-card" },
-      {
-        type: "table" as DiagramType,
-        title: "Asset Technical Sheet Example",
-        headers: ["Field", "Value", "Editable"],
-        rows: [
-          ["Asset type", "Heavy vehicle", "✅"],
-          ["Brand / Model", "Volvo FH16 — 2026", "✅"],
-          ["Serial No.", "YV2RTK0A5RB-XXXXX", "✅"],
-          ["Plate", "ABC-1234", "✅"],
-          ["Supplier", "Divemotor S.A.", "✅"],
-          ["Market value", "USD 185,000", "✅"],
-          ["Residual value", "USD 37,000 (20%)", "✅"],
-          ["Depreciation", "Straight-line — 5 years", "✅"],
-          ["Location", "Lima, Peru — North Plant", "✅"],
-          ["Attachments", "3 files (invoice, photos, appraisal)", "✅"],
-        ],
-      },
-      {
-        type: "grid" as DiagramType,
-        title: "Asset Module Capabilities",
-        items: [
-          "📸 Photos & documents — Attach visual and documentary evidence to the file",
-          "📉 Automatic depreciation — Calculation per configured method (straight-line, accelerated, units)",
-          "🔍 Real-time query — Information available from any point in the file",
-          "📤 Exportable — Data exportable for regulatory reports and audits",
-          "🔗 Linkage — Each asset linked to its contract, insurer, and supplier",
-          "📍 Geolocation — Physical asset location registry",
-        ],
-      },
     ],
   },
 ];

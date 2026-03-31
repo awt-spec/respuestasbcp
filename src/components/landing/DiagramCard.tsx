@@ -471,7 +471,7 @@ const DiagramCard = ({ item, index }: Props) => {
                 transition={{ duration: 0.2 }}
               >
                 {/* March 20 questions use interactive response cards */}
-                {item.receivedDate === "20 marzo 2026" ? (
+                {(item.receivedDate === "20 marzo 2026" || item.receivedDate === "26 marzo 2026") ? (
                   <InteractiveResponseCard response={displayRespuesta}>
                     {item.id === 6 && <LicensingShowcase />}
                     {item.id === 12 && (
@@ -491,6 +491,11 @@ const DiagramCard = ({ item, index }: Props) => {
                     {item.id === 15 && <InteractiveAPIs />}
                     {item.id === 17 && <InteractiveExtractor />}
                     {item.id === 26 && <InteractiveSecurity />}
+                    {item.id === 31 && <InteractiveFunctionalDemo type="disbursement" />}
+                    {item.id === 32 && <InteractiveFunctionalDemo type="schedule" />}
+                    {item.id === 33 && <InteractiveFunctionalDemo type="leaseback" />}
+                    {item.id === 34 && <InteractiveFunctionalDemo type="surcharge" />}
+                    {item.id === 35 && <InteractiveFunctionalDemo type="asset-card" />}
                   </InteractiveResponseCard>
                 ) : (
                   <div className="space-y-3">
