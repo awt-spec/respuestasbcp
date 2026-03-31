@@ -1497,6 +1497,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "asset-card" },
       {
         type: "table" as DiagramType,
         title: "Asset Technical Sheet Example",
