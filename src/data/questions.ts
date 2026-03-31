@@ -1,6 +1,6 @@
 export type QuestionStatus = "answered" | "pending";
 
-export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing" | "lifecycle" | "interactive-security" | "interactive-roadmap";
+export type DiagramType = "flow" | "table" | "process" | "layers" | "timeline" | "grid" | "list" | "ecosystem" | "stats" | "embed" | "integration-orbit" | "interactive-ops" | "interactive-apis" | "licensing" | "lifecycle" | "interactive-security" | "interactive-roadmap" | "functional-demo";
 
 export type SectionKey = "A" | "B" | "C" | "D" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N";
 
@@ -8,6 +8,7 @@ export interface DiagramBlock {
   type: DiagramType;
   title?: string;
   url?: string;
+  demoId?: string;
   steps?: { label: string; description: string; icon?: string }[];
   headers?: string[];
   rows?: string[][];
@@ -1190,6 +1191,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá gestionar operaciones de leasing con desembolsos progresivos, ideal para proyectos de construcción o adquisiciones por etapas, manteniendo control total sobre cada liberación.",
     valor_en: "BCP will be able to manage leasing operations with progressive disbursements, ideal for construction projects or staged acquisitions, maintaining full control over each release.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "disbursement" },
       {
         type: "flow" as DiagramType,
         title: "Flujo de Desembolso por Tramos",
@@ -1214,6 +1216,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "disbursement" },
       {
         type: "flow" as DiagramType,
         title: "Tranche Disbursement Flow",
@@ -1254,6 +1257,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá estructurar operaciones de leasing con cronogramas totalmente personalizados, adaptándose a los flujos de caja del cliente sin limitaciones del motor de cálculo.",
     valor_en: "BCP will be able to structure leasing operations with fully customized schedules, adapting to client cash flows without calculation engine limitations.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "schedule" },
       {
         type: "grid" as DiagramType,
         title: "Tipos de Estructura Soportados",
@@ -1281,6 +1285,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "schedule" },
       {
         type: "grid" as DiagramType,
         title: "Supported Structure Types",
@@ -1324,6 +1329,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá ofrecer operaciones de leaseback como producto estratégico, permitiendo a sus clientes monetizar activos existentes con trazabilidad contable completa.",
     valor_en: "BCP will be able to offer leaseback operations as a strategic product, allowing clients to monetize existing assets with full accounting traceability.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "leaseback" },
       {
         type: "flow" as DiagramType,
         title: "Flujo Sale & Leaseback",
@@ -1349,6 +1355,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "leaseback" },
       {
         type: "flow" as DiagramType,
         title: "Sale & Leaseback Flow",
@@ -1390,6 +1397,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá gestionar gastos imprevistos sin disrumpir el cronograma de pagos, manteniendo control y trazabilidad sobre cada cargo adicional.",
     valor_en: "BCP will be able to manage unforeseen charges without disrupting the payment schedule, maintaining control and traceability over each additional charge.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "surcharge" },
       {
         type: "flow" as DiagramType,
         title: "Flujo de Gastos Sobrevinientes",
@@ -1415,6 +1423,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "surcharge" },
       {
         type: "flow" as DiagramType,
         title: "Supervening Charges Flow",
@@ -1456,6 +1465,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP tendrá un registro centralizado y detallado de cada activo bajo leasing, facilitando auditorías, reportes regulatorios y gestión patrimonial.",
     valor_en: "BCP will have a centralized and detailed registry of each leasing asset, facilitating audits, regulatory reports, and asset management.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "asset-card" },
       {
         type: "table" as DiagramType,
         title: "Ejemplo de Ficha Técnica del Activo",
@@ -1487,6 +1497,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "asset-card" },
       {
         type: "table" as DiagramType,
         title: "Asset Technical Sheet Example",
