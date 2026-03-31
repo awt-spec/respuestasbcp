@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/contexts/I18nContext";
 import {
@@ -7,8 +7,39 @@ import {
   ChevronRight, BarChart3, Shield, Settings, Edit3, X,
   Save, RotateCcw, Sparkles, Eye, Hash
 } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 
 type DemoType = "disbursement" | "schedule" | "leaseback" | "surcharge" | "asset-card";
+
+/* ─── Reusable slider-input control ─── */
+const SliderInput = ({ label, value, onChange, min, max, step = 1, prefix = "", suffix = "", color = "primary" }: {
+  label: string; value: number; onChange: (v: number) => void;
+  min: number; max: number; step?: number; prefix?: string; suffix?: string; color?: string;
+}) => {
+  const pct = Math.round(((value - min) / (max - min)) * 100);
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{label}</label>
+        <span className="text-sm font-bold font-mono text-foreground">{prefix}{value.toLocaleString()}{suffix}</span>
+      </div>
+      <div className="relative group">
+        <Slider
+          value={[value]}
+          onValueChange={([v]) => onChange(v)}
+          min={min}
+          max={max}
+          step={step}
+          className="w-full"
+        />
+        <div className="flex justify-between mt-1">
+          <span className="text-[8px] text-muted-foreground font-mono">{prefix}{min.toLocaleString()}{suffix}</span>
+          <span className="text-[8px] text-muted-foreground font-mono">{prefix}{max.toLocaleString()}{suffix}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 interface Props {
   type: DemoType;
