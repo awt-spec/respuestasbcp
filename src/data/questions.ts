@@ -8,6 +8,7 @@ export interface DiagramBlock {
   type: DiagramType;
   title?: string;
   url?: string;
+  demoId?: string;
   steps?: { label: string; description: string; icon?: string }[];
   headers?: string[];
   rows?: string[][];
