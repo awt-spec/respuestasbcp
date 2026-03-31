@@ -174,17 +174,17 @@ const DisbursementDemo = () => {
                   <div className="flex items-center gap-2 text-[11px] font-bold text-primary">
                     <Edit3 className="w-3.5 h-3.5" /> {pick("Editando tramo", "Editing tranche")}
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{pick("Monto USD", "Amount USD")}</label>
-                      <input type="number" value={editAmount} onChange={e => setEditAmount(e.target.value)}
-                        className="w-full mt-1 px-3 py-2 rounded-xl bg-background border text-sm font-mono focus:ring-2 focus:ring-primary/30 outline-none" />
-                    </div>
-                    <div>
-                      <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{pick("Condición", "Condition")}</label>
-                      <input type="text" value={editCondition} onChange={e => setEditCondition(e.target.value)}
-                        className="w-full mt-1 px-3 py-2 rounded-xl bg-background border text-sm focus:ring-2 focus:ring-primary/30 outline-none" />
-                    </div>
+                  <SliderInput
+                    label={pick("Monto USD", "Amount USD")}
+                    value={Number(editAmount) || 0}
+                    onChange={(v) => setEditAmount(String(v))}
+                    min={5000} max={500000} step={5000}
+                    prefix="$"
+                  />
+                  <div>
+                    <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{pick("Condición", "Condition")}</label>
+                    <input type="text" value={editCondition} onChange={e => setEditCondition(e.target.value)}
+                      className="w-full mt-1 px-3 py-2 rounded-xl bg-background border text-sm focus:ring-2 focus:ring-primary/30 outline-none" />
                   </div>
                   <div className="flex gap-2">
                     <button onClick={() => saveEdit(tranche.id)} className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-[10px] font-bold">
