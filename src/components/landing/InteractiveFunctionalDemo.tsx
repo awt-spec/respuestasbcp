@@ -289,6 +289,7 @@ const ScheduleDemo = () => {
     { id: "grace", label: "Grace Period", icon: "⏸️", desc: pick("Solo intereses iniciales", "Interest-only start"), color: "from-amber-500 to-amber-600" },
     { id: "bullet", label: "Bullet", icon: "🎯", desc: pick("Capital al final", "Principal at end"), color: "from-red-500 to-red-600" },
     { id: "balloon", label: "Balloon", icon: "🎈", desc: pick("Cuota final grande", "Large final payment"), color: "from-violet-500 to-violet-600" },
+    { id: "flat", label: "Flat", icon: "📉", desc: pick("Capital nivelado, cuota decreciente", "Level principal, decreasing payment"), color: "from-cyan-500 to-cyan-600" },
     { id: "seasonal", label: pick("Estacional", "Seasonal"), icon: "🌊", desc: pick("Según temporada", "Per season"), color: "from-teal-500 to-teal-600" },
     { id: "custom", label: pick("Personalizado", "Custom"), icon: "✏️", desc: pick("Tú defines todo", "You define all"), color: "from-emerald-500 to-emerald-600" },
   ];
@@ -318,6 +319,15 @@ const ScheduleDemo = () => {
       { m: "6", cap: 5000, int: 1875, note: "" }, { m: "9", cap: 5000, int: 1500, note: "" },
       { m: "11", cap: 5000, int: 1250, note: "" },
       { m: "12", cap: 45000, int: 625, note: pick("Balloon 🎈", "Balloon 🎈") },
+    ],
+    flat: [
+      { m: "1", cap: 8333, int: 2500, note: pick("Cuota: $10,833", "Payment: $10,833") },
+      { m: "2", cap: 8333, int: 2292, note: pick("Cuota: $10,625", "Payment: $10,625") },
+      { m: "3", cap: 8333, int: 2083, note: pick("Cuota: $10,417", "Payment: $10,417") },
+      { m: "4", cap: 8333, int: 1875, note: "" },
+      { m: "6", cap: 8333, int: 1458, note: pick("↓ Cuota baja", "↓ Payment drops") },
+      { m: "9", cap: 8333, int: 833, note: "" },
+      { m: "12", cap: 8333, int: 208, note: pick("Cuota mínima 📉", "Min payment 📉") },
     ],
     seasonal: [
       { m: pick("Ene", "Jan"), cap: 12000, int: 2500, note: pick("🔥 Alta", "🔥 Peak") },
@@ -373,7 +383,7 @@ const ScheduleDemo = () => {
       </div>
 
       {/* Preset cards */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+      <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5">
         {presets.map(p => (
           <button key={p.id} onClick={() => selectPreset(p.id)}
             className={`relative flex flex-col items-center gap-1 p-3 rounded-2xl text-[10px] font-bold transition-all overflow-hidden ${
