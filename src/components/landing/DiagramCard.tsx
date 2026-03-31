@@ -240,6 +240,7 @@ const renderDiagram = (block: DiagramBlock, idx: number) => {
     case "lifecycle": return <InteractiveLifecycle key={key} />;
     case "interactive-security": return <InteractiveSecurity key={key} />;
     case "interactive-roadmap": return <InteractiveRoadmap key={key} />;
+    case "functional-demo": return <InteractiveFunctionalDemo key={key} type={block.demoId as any} />;
     default: return null;
   }
 };
