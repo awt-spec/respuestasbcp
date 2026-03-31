@@ -289,6 +289,7 @@ const ScheduleDemo = () => {
     { id: "grace", label: "Grace Period", icon: "⏸️", desc: pick("Solo intereses iniciales", "Interest-only start"), color: "from-amber-500 to-amber-600" },
     { id: "bullet", label: "Bullet", icon: "🎯", desc: pick("Capital al final", "Principal at end"), color: "from-red-500 to-red-600" },
     { id: "balloon", label: "Balloon", icon: "🎈", desc: pick("Cuota final grande", "Large final payment"), color: "from-violet-500 to-violet-600" },
+    { id: "flat", label: "Flat", icon: "📉", desc: pick("Capital nivelado, cuota decreciente", "Level principal, decreasing payment"), color: "from-cyan-500 to-cyan-600" },
     { id: "seasonal", label: pick("Estacional", "Seasonal"), icon: "🌊", desc: pick("Según temporada", "Per season"), color: "from-teal-500 to-teal-600" },
     { id: "custom", label: pick("Personalizado", "Custom"), icon: "✏️", desc: pick("Tú defines todo", "You define all"), color: "from-emerald-500 to-emerald-600" },
   ];
