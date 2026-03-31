@@ -1192,6 +1192,7 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will be able to manage leasing operations with progressive disbursements, ideal for construction projects or staged acquisitions, maintaining full control over each release.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "disbursement" },
+      {
         type: "flow" as DiagramType,
         title: "Flujo de Desembolso por Tramos",
         steps: [
