@@ -1423,6 +1423,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "surcharge" },
       {
         type: "flow" as DiagramType,
         title: "Supervening Charges Flow",
