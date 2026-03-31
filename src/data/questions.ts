@@ -1465,6 +1465,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP tendrá un registro centralizado y detallado de cada activo bajo leasing, facilitando auditorías, reportes regulatorios y gestión patrimonial.",
     valor_en: "BCP will have a centralized and detailed registry of each leasing asset, facilitating audits, regulatory reports, and asset management.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "asset-card" },
       {
         type: "table" as DiagramType,
         title: "Ejemplo de Ficha Técnica del Activo",
