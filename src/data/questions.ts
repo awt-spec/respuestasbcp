@@ -1216,6 +1216,7 @@ export const questions: QuestionItem[] = [
       },
     ],
     diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "disbursement" },
       {
         type: "flow" as DiagramType,
         title: "Tranche Disbursement Flow",
