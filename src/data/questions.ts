@@ -1257,6 +1257,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá estructurar operaciones de leasing con cronogramas totalmente personalizados, adaptándose a los flujos de caja del cliente sin limitaciones del motor de cálculo.",
     valor_en: "BCP will be able to structure leasing operations with fully customized schedules, adapting to client cash flows without calculation engine limitations.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "schedule" },
       {
         type: "grid" as DiagramType,
         title: "Tipos de Estructura Soportados",
