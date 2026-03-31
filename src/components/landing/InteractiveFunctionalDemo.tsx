@@ -408,8 +408,18 @@ const ScheduleDemo = () => {
                     {editingRow === i ? (
                       <>
                         <td className="px-2 py-1.5"><input value={row.m} onChange={e => updateRow(i, "m", e.target.value)} className="w-14 px-2 py-1 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" /></td>
-                        <td className="px-2 py-1.5"><input type="number" value={row.cap} onChange={e => updateRow(i, "cap", e.target.value)} className="w-20 px-2 py-1 rounded-lg bg-background border text-[11px] font-mono text-right focus:ring-1 focus:ring-primary/30 outline-none" /></td>
-                        <td className="px-2 py-1.5"><input type="number" value={row.int} onChange={e => updateRow(i, "int", e.target.value)} className="w-20 px-2 py-1 rounded-lg bg-background border text-[11px] font-mono text-right focus:ring-1 focus:ring-primary/30 outline-none" /></td>
+                        <td className="px-2 py-2">
+                          <div className="w-28">
+                            <span className="text-[10px] font-mono font-bold">${row.cap.toLocaleString()}</span>
+                            <Slider value={[row.cap]} onValueChange={([v]) => updateRow(i, "cap", String(v))} min={0} max={150000} step={1000} className="mt-1" />
+                          </div>
+                        </td>
+                        <td className="px-2 py-2">
+                          <div className="w-28">
+                            <span className="text-[10px] font-mono font-bold">${row.int.toLocaleString()}</span>
+                            <Slider value={[row.int]} onValueChange={([v]) => updateRow(i, "int", String(v))} min={0} max={10000} step={100} className="mt-1" />
+                          </div>
+                        </td>
                         <td className="px-3 py-1.5 text-right font-mono font-bold">${(row.cap + row.int).toLocaleString()}</td>
                         <td className="px-2 py-1.5"><input value={row.note} onChange={e => updateRow(i, "note", e.target.value)} className="w-24 px-2 py-1 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" /></td>
                         <td className="px-2 py-1.5">
@@ -693,8 +703,9 @@ const SurchargeDemo = () => {
                 <div className="grid grid-cols-2 gap-2">
                   <input placeholder={pick("Descripción del gasto", "Charge description")} value={customLabel} onChange={e => setCustomLabel(e.target.value)}
                     className="px-3 py-2 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" />
-                  <input type="number" placeholder="USD" value={customAmount} onChange={e => setCustomAmount(e.target.value)}
-                    className="px-3 py-2 rounded-lg bg-background border text-[11px] font-mono focus:ring-1 focus:ring-primary/30 outline-none" />
+                  <div>
+                    <SliderInput label={customAmount ? `USD ${Number(customAmount).toLocaleString()}` : "USD"} value={Number(customAmount) || 500} onChange={v => setCustomAmount(String(v))} min={100} max={10000} step={50} prefix="$" />
+                  </div>
                 </div>
                 <button onClick={() => { if (customLabel && customAmount) { addCharge("📋", customLabel, Number(customAmount)); setCustomLabel(""); setCustomAmount(""); } }}
                   className="px-4 py-1.5 rounded-lg bg-primary text-primary-foreground text-[10px] font-bold">
@@ -794,10 +805,8 @@ const AssetCardDemo = () => {
           </div>
           <div className="text-right">
             {editMode ? (
-              <div>
-                <label className="text-[9px] text-muted-foreground">USD</label>
-                <input type="number" value={assetData.marketValue} onChange={e => updateField("marketValue", e.target.value)}
-                  className="w-28 px-2 py-1 rounded-lg bg-background border text-lg font-bold font-mono text-right focus:ring-1 focus:ring-emerald-500/30 outline-none" />
+              <div className="w-32">
+                <SliderInput label="USD" value={Number(assetData.marketValue)} onChange={v => updateField("marketValue", String(v))} min={50000} max={1000000} step={5000} prefix="$" />
               </div>
             ) : (
               <>
@@ -846,10 +855,8 @@ const AssetCardDemo = () => {
               <div className="rounded-xl border-2 bg-card p-3">
                 <p className="text-[9px] text-muted-foreground uppercase tracking-wider font-bold">{pick("Valor residual", "Residual")}</p>
                 {editMode ? (
-                  <div className="flex items-center gap-1 mt-1">
-                    <input type="number" value={assetData.residualPct} onChange={e => updateField("residualPct", e.target.value)}
-                      className="w-14 px-2 py-1 rounded-lg bg-background border text-[12px] font-bold font-mono focus:ring-1 focus:ring-emerald-500/30 outline-none" />
-                    <span className="text-[11px] text-muted-foreground">%</span>
+                  <div className="mt-1">
+                    <SliderInput label="" value={Number(assetData.residualPct)} onChange={v => updateField("residualPct", String(v))} min={5} max={50} step={1} suffix="%" />
                   </div>
                 ) : (
                   <p className="text-[12px] font-bold text-foreground mt-0.5">${residualValue.toLocaleString()} ({assetData.residualPct}%)</p>
