@@ -278,293 +278,474 @@ const DisbursementDemo = () => {
 };
 
 /* ═══════════════════════════════════════════════════════
-   DEMO 2: Cronograma Tailor-Made — TOTALMENTE EDITABLE
+   DEMO 2: Cronograma Tailor-Made — VISUAL & EDITABLE
    ═══════════════════════════════════════════════════════ */
 const ScheduleDemo = () => {
   const { lang } = useI18n();
   const pick = <T,>(es: T, en: T): T => lang === "en" ? en : es;
 
   const presets = [
-    { id: "regular", label: pick("Regular", "Regular"), icon: "📊", desc: pick("Cuotas iguales", "Equal payments") },
-    { id: "grace", label: "Grace Period", icon: "⏸️", desc: pick("Solo intereses iniciales", "Interest-only start") },
-    { id: "bullet", label: "Bullet", icon: "🎯", desc: pick("Capital al final", "Principal at end") },
-    { id: "balloon", label: "Balloon", icon: "🎈", desc: pick("Cuota final grande", "Large final payment") },
-    { id: "seasonal", label: pick("Estacional", "Seasonal"), icon: "🌊", desc: pick("Según temporada", "Per season") },
-    { id: "custom", label: pick("Personalizado", "Custom"), icon: "✏️", desc: pick("Tú defines todo", "You define all") },
+    { id: "regular", label: pick("Regular", "Regular"), icon: "📊", desc: pick("Cuotas iguales", "Equal payments"), color: "from-blue-500 to-blue-600" },
+    { id: "grace", label: "Grace Period", icon: "⏸️", desc: pick("Solo intereses iniciales", "Interest-only start"), color: "from-amber-500 to-amber-600" },
+    { id: "bullet", label: "Bullet", icon: "🎯", desc: pick("Capital al final", "Principal at end"), color: "from-red-500 to-red-600" },
+    { id: "balloon", label: "Balloon", icon: "🎈", desc: pick("Cuota final grande", "Large final payment"), color: "from-violet-500 to-violet-600" },
+    { id: "seasonal", label: pick("Estacional", "Seasonal"), icon: "🌊", desc: pick("Según temporada", "Per season"), color: "from-teal-500 to-teal-600" },
+    { id: "custom", label: pick("Personalizado", "Custom"), icon: "✏️", desc: pick("Tú defines todo", "You define all"), color: "from-emerald-500 to-emerald-600" },
   ];
 
   const presetSchedules: Record<string, { m: string; cap: number; int: number; note: string }[]> = {
     regular: [
       { m: "1", cap: 8333, int: 2500, note: "" }, { m: "2", cap: 8333, int: 2361, note: "" },
-      { m: "3", cap: 8333, int: 2222, note: "" }, { m: "...", cap: 8333, int: 0, note: "..." },
+      { m: "3", cap: 8333, int: 2222, note: "" }, { m: "4", cap: 8333, int: 2083, note: "" },
+      { m: "5", cap: 8333, int: 1944, note: "" }, { m: "6", cap: 8333, int: 1806, note: "" },
+      { m: "...", cap: 8333, int: 0, note: "..." },
       { m: "12", cap: 8333, int: 139, note: pick("Última cuota", "Last payment") },
     ],
     grace: [
       { m: "1", cap: 0, int: 2500, note: "Grace" }, { m: "2", cap: 0, int: 2500, note: "Grace" },
       { m: "3", cap: 0, int: 2500, note: "Grace" }, { m: "4", cap: 11111, int: 2500, note: pick("Inicio pagos", "Payments start") },
+      { m: "8", cap: 11111, int: 1389, note: "" },
       { m: "12", cap: 11111, int: 278, note: pick("Final", "Final") },
     ],
     bullet: [
-      { m: "1", cap: 0, int: 2500, note: pick("Solo interés", "Interest only") }, { m: "6", cap: 0, int: 2500, note: pick("Solo interés", "Interest only") },
-      { m: "11", cap: 0, int: 2500, note: pick("Solo interés", "Interest only") },
-      { m: "12", cap: 100000, int: 2500, note: pick("¡Pago único!", "Single payment!") },
+      { m: "1", cap: 0, int: 2500, note: pick("Solo interés", "Interest only") }, { m: "3", cap: 0, int: 2500, note: "" },
+      { m: "6", cap: 0, int: 2500, note: "" }, { m: "9", cap: 0, int: 2500, note: "" },
+      { m: "11", cap: 0, int: 2500, note: "" },
+      { m: "12", cap: 100000, int: 2500, note: pick("¡Pago único capital!", "Single principal!") },
     ],
     balloon: [
-      { m: "1", cap: 5000, int: 2500, note: "" }, { m: "6", cap: 5000, int: 1875, note: "" },
+      { m: "1", cap: 5000, int: 2500, note: "" }, { m: "3", cap: 5000, int: 2250, note: "" },
+      { m: "6", cap: 5000, int: 1875, note: "" }, { m: "9", cap: 5000, int: 1500, note: "" },
       { m: "11", cap: 5000, int: 1250, note: "" },
       { m: "12", cap: 45000, int: 625, note: pick("Balloon 🎈", "Balloon 🎈") },
     ],
     seasonal: [
-      { m: pick("Ene", "Jan"), cap: 12000, int: 2500, note: pick("Alta", "Peak") },
-      { m: pick("Mar", "Mar"), cap: 3000, int: 2200, note: pick("Baja", "Low") },
-      { m: pick("Jun", "Jun"), cap: 3000, int: 1800, note: pick("Baja", "Low") },
-      { m: pick("Nov", "Nov"), cap: 12000, int: 800, note: pick("Alta", "Peak") },
+      { m: pick("Ene", "Jan"), cap: 12000, int: 2500, note: pick("🔥 Alta", "🔥 Peak") },
+      { m: pick("Mar", "Mar"), cap: 3000, int: 2200, note: pick("❄️ Baja", "❄️ Low") },
+      { m: pick("Jun", "Jun"), cap: 3000, int: 1800, note: pick("❄️ Baja", "❄️ Low") },
+      { m: pick("Sep", "Sep"), cap: 8000, int: 1200, note: pick("📈 Media", "📈 Mid") },
+      { m: pick("Nov", "Nov"), cap: 12000, int: 800, note: pick("🔥 Alta", "🔥 Peak") },
     ],
     custom: [
-      { m: "1", cap: 10000, int: 3000, note: "" },
-      { m: "2", cap: 5000, int: 2800, note: "" },
-      { m: "3", cap: 15000, int: 2600, note: "" },
+      { m: "1", cap: 10000, int: 3000, note: "" }, { m: "2", cap: 5000, int: 2800, note: "" },
+      { m: "3", cap: 15000, int: 2600, note: "" }, { m: "4", cap: 8000, int: 2200, note: "" },
     ],
   };
 
   const [active, setActive] = useState("regular");
   const [rows, setRows] = useState(presetSchedules.regular);
   const [editingRow, setEditingRow] = useState<number | null>(null);
+  const [viewMode, setViewMode] = useState<"table" | "chart">("chart");
 
-  const selectPreset = (id: string) => {
-    setActive(id);
-    setRows([...presetSchedules[id]]);
-    setEditingRow(null);
-  };
-
+  const selectPreset = (id: string) => { setActive(id); setRows([...presetSchedules[id]]); setEditingRow(null); };
   const updateRow = (i: number, field: "cap" | "int" | "m" | "note", value: string) => {
     const updated = [...rows];
-    if (field === "cap" || field === "int") {
-      updated[i] = { ...updated[i], [field]: Number(value) || 0 };
-    } else {
-      updated[i] = { ...updated[i], [field]: value };
-    }
+    if (field === "cap" || field === "int") updated[i] = { ...updated[i], [field]: Number(value) || 0 };
+    else updated[i] = { ...updated[i], [field]: value };
     setRows(updated);
   };
-
-  const addRow = () => {
-    setRows([...rows, { m: String(rows.length + 1), cap: 5000, int: 1000, note: "" }]);
-  };
-
-  const removeRow = (i: number) => {
-    if (rows.length <= 1) return;
-    setRows(rows.filter((_, idx) => idx !== i));
-  };
+  const addRow = () => setRows([...rows, { m: String(rows.length + 1), cap: 5000, int: 1000, note: "" }]);
+  const removeRow = (i: number) => { if (rows.length <= 1) return; setRows(rows.filter((_, idx) => idx !== i)); };
 
   const totalCap = rows.reduce((s, r) => s + r.cap, 0);
   const totalInt = rows.reduce((s, r) => s + r.int, 0);
+  const maxTotal = Math.max(...rows.map(r => r.cap + r.int));
+  const activePreset = presets.find(p => p.id === active);
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h4 className="text-xs font-bold text-foreground flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-            <Calendar className="w-4 h-4 text-white" />
+            <Calendar className="w-4 h-4 text-primary-foreground" />
           </div>
           {pick("Editor de Cronogramas", "Schedule Editor")}
-          <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-[9px] font-bold uppercase tracking-wider">{pick("Editable", "Editable")}</span>
+          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-wider">Tailor-Made</span>
         </h4>
+        <div className="flex items-center gap-1 bg-muted/40 rounded-xl p-0.5 border">
+          <button onClick={() => setViewMode("chart")} className={`px-2.5 py-1.5 rounded-lg text-[10px] font-bold transition-all ${viewMode === "chart" ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground"}`}>
+            <BarChart3 className="w-3 h-3 inline mr-1" />{pick("Visual", "Visual")}
+          </button>
+          <button onClick={() => setViewMode("table")} className={`px-2.5 py-1.5 rounded-lg text-[10px] font-bold transition-all ${viewMode === "table" ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground"}`}>
+            <Hash className="w-3 h-3 inline mr-1" />{pick("Tabla", "Table")}
+          </button>
+        </div>
       </div>
 
-      {/* Preset selector */}
+      {/* Preset cards */}
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
         {presets.map(p => (
           <button key={p.id} onClick={() => selectPreset(p.id)}
-            className={`flex flex-col items-center gap-1 p-2.5 rounded-xl text-[10px] font-bold transition-all ${
+            className={`relative flex flex-col items-center gap-1 p-3 rounded-2xl text-[10px] font-bold transition-all overflow-hidden ${
               active === p.id
-                ? "bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/20 scale-105"
+                ? `bg-gradient-to-br ${p.color} text-white shadow-lg scale-105`
                 : "bg-muted/40 text-muted-foreground hover:bg-muted border border-transparent hover:border-border"
             }`}>
             <span className="text-lg">{p.icon}</span>
             <span>{p.label}</span>
+            {active === p.id && <motion.div layoutId="schedule-active" className="absolute inset-0 rounded-2xl ring-2 ring-white/30" />}
           </button>
         ))}
       </div>
 
-      {/* Live schedule table */}
-      <AnimatePresence mode="wait">
-        <motion.div key={active} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
-          <div className={`overflow-x-auto rounded-2xl border-2 ${active === "custom" ? "border-primary/30" : "border-border"}`}>
-            <table className="w-full text-[11px]">
-              <thead>
-                <tr className="bg-gradient-to-r from-primary/10 to-primary/5">
-                  <th className="px-3 py-3 text-left font-bold">{pick("Período", "Period")}</th>
-                  <th className="px-3 py-3 text-right font-bold">{pick("Capital", "Principal")}</th>
-                  <th className="px-3 py-3 text-right font-bold">{pick("Interés", "Interest")}</th>
-                  <th className="px-3 py-3 text-right font-bold">Total</th>
-                  <th className="px-3 py-3 text-left font-bold">{pick("Nota", "Note")}</th>
-                  <th className="px-3 py-3 w-16"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row, i) => (
-                  <motion.tr key={i} initial={{ opacity: 0, x: -5 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}
-                    className={`border-t transition-colors ${editingRow === i ? "bg-primary/5" : "hover:bg-muted/30"}`}>
-                    {editingRow === i ? (
-                      <>
-                        <td className="px-2 py-1.5"><input value={row.m} onChange={e => updateRow(i, "m", e.target.value)} className="w-14 px-2 py-1 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" /></td>
-                        <td className="px-2 py-2">
-                          <div className="w-28">
-                            <span className="text-[10px] font-mono font-bold">${row.cap.toLocaleString()}</span>
-                            <Slider value={[row.cap]} onValueChange={([v]) => updateRow(i, "cap", String(v))} min={0} max={150000} step={1000} className="mt-1" />
-                          </div>
-                        </td>
-                        <td className="px-2 py-2">
-                          <div className="w-28">
-                            <span className="text-[10px] font-mono font-bold">${row.int.toLocaleString()}</span>
-                            <Slider value={[row.int]} onValueChange={([v]) => updateRow(i, "int", String(v))} min={0} max={10000} step={100} className="mt-1" />
-                          </div>
-                        </td>
-                        <td className="px-3 py-1.5 text-right font-mono font-bold">${(row.cap + row.int).toLocaleString()}</td>
-                        <td className="px-2 py-1.5"><input value={row.note} onChange={e => updateRow(i, "note", e.target.value)} className="w-24 px-2 py-1 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" /></td>
-                        <td className="px-2 py-1.5">
-                          <div className="flex gap-1">
-                            <button onClick={() => setEditingRow(null)} className="p-1 rounded bg-primary text-primary-foreground"><Save className="w-3 h-3" /></button>
-                            <button onClick={() => removeRow(i)} className="p-1 rounded bg-destructive/10 text-destructive"><X className="w-3 h-3" /></button>
-                          </div>
-                        </td>
-                      </>
-                    ) : (
-                      <>
-                        <td className="px-3 py-2.5 font-medium">{row.m}</td>
-                        <td className={`px-3 py-2.5 text-right font-mono ${row.cap === 0 ? "text-muted-foreground" : "text-foreground font-bold"}`}>${row.cap.toLocaleString()}</td>
-                        <td className="px-3 py-2.5 text-right font-mono text-muted-foreground">${row.int.toLocaleString()}</td>
-                        <td className="px-3 py-2.5 text-right font-mono font-bold">${(row.cap + row.int).toLocaleString()}</td>
-                        <td className="px-3 py-2.5">{row.note && <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-medium">{row.note}</span>}</td>
-                        <td className="px-2 py-2.5">
-                          <button onClick={() => setEditingRow(i)} className="p-1.5 rounded-lg hover:bg-muted transition-colors">
-                            <Edit3 className="w-3 h-3 text-muted-foreground" />
-                          </button>
-                        </td>
-                      </>
-                    )}
-                  </motion.tr>
-                ))}
-                {/* Totals */}
-                <tr className="border-t-2 bg-primary/5 font-bold">
-                  <td className="px-3 py-2.5">TOTAL</td>
-                  <td className="px-3 py-2.5 text-right font-mono">${totalCap.toLocaleString()}</td>
-                  <td className="px-3 py-2.5 text-right font-mono">${totalInt.toLocaleString()}</td>
-                  <td className="px-3 py-2.5 text-right font-mono text-primary">${(totalCap + totalInt).toLocaleString()}</td>
-                  <td colSpan={2}></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <button onClick={addRow}
-            className="mt-2 w-full flex items-center justify-center gap-1.5 py-2 rounded-xl border-2 border-dashed border-border text-muted-foreground text-[10px] font-bold hover:bg-muted/30 hover:border-primary/30 hover:text-primary transition-all">
-            <Plus className="w-3 h-3" /> {pick("Agregar período", "Add period")}
-          </button>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-};
-
-/* ═══════════════════════════════════════════════════════
-   DEMO 3: Leaseback — simulación paso a paso EDITABLE
-   ═══════════════════════════════════════════════════════ */
-const LeasebackDemo = () => {
-  const { lang } = useI18n();
-  const pick = <T,>(es: T, en: T): T => lang === "en" ? en : es;
-
-  const [assetValue, setAssetValue] = useState(200000);
-  const [appraisalValue, setAppraisalValue] = useState(195000);
-  const [term, setTerm] = useState(48);
-  const [purchaseOption, setPurchaseOption] = useState(1);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [editMode, setEditMode] = useState(false);
-
-  const monthlyPayment = Math.round((appraisalValue * (1 - purchaseOption / 100)) / term);
-  const residual = Math.round(appraisalValue * purchaseOption / 100);
-  const diff = assetValue - appraisalValue;
-
-  const steps = [
-    { icon: "🏢", title: pick("Cliente vende activo", "Client sells asset"), detail: pick(`Valor: USD ${assetValue.toLocaleString()}`, `Value: USD ${assetValue.toLocaleString()}`), accounting: pick("Débito: Caja → Crédito: Activo Fijo", "Debit: Cash → Credit: Fixed Asset") },
-    { icon: "📋", title: pick("BCP tasa y registra", "BCP appraises"), detail: pick(`Tasación: USD ${appraisalValue.toLocaleString()} — Dif: $${diff.toLocaleString()}`, `Appraisal: USD ${appraisalValue.toLocaleString()} — Diff: $${diff.toLocaleString()}`), accounting: pick("Débito: Activo → Crédito: Banco", "Debit: Asset → Credit: Bank") },
-    { icon: "📝", title: pick("Constitución leasing", "Lease constitution"), detail: pick(`Plazo: ${term} meses — Opción: ${purchaseOption}% ($${residual.toLocaleString()})`, `Term: ${term} months — Option: ${purchaseOption}% ($${residual.toLocaleString()})`), accounting: pick("Débito: CxC Leasing → Crédito: Ingreso diferido", "Debit: Lease receivable → Credit: Deferred") },
-    { icon: "💵", title: pick("Desembolso", "Disbursement"), detail: pick(`USD ${appraisalValue.toLocaleString()} a cuenta del cliente`, `USD ${appraisalValue.toLocaleString()} to client`), accounting: pick("Débito: CxC → Crédito: Banco", "Debit: Receivable → Credit: Bank") },
-    { icon: "🔄", title: pick("Operación activa", "Active operation"), detail: pick(`Cuota mensual: ~USD ${monthlyPayment.toLocaleString()}`, `Monthly: ~USD ${monthlyPayment.toLocaleString()}`), accounting: pick("Débito: Banco → Crédito: Ingreso + Capital", "Debit: Bank → Credit: Income + Principal") },
-  ];
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h4 className="text-xs font-bold text-foreground flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-violet-600 flex items-center justify-center">
-            <ArrowRight className="w-4 h-4 text-white" />
-          </div>
-          {pick("Simulación Sale & Leaseback", "Sale & Leaseback Simulation")}
-        </h4>
-        <button onClick={() => setEditMode(!editMode)}
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all ${editMode ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}>
-          <Edit3 className="w-3 h-3" /> {pick("Editar valores", "Edit values")}
-        </button>
+      {/* Summary strip */}
+      <div className="grid grid-cols-4 gap-2">
+        {[
+          { label: pick("Tipo", "Type"), value: activePreset?.label || "", icon: activePreset?.icon },
+          { label: pick("Capital total", "Total principal"), value: `$${totalCap.toLocaleString()}` },
+          { label: pick("Interés total", "Total interest"), value: `$${totalInt.toLocaleString()}` },
+          { label: pick("Total a pagar", "Grand total"), value: `$${(totalCap + totalInt).toLocaleString()}`, highlight: true },
+        ].map((s, i) => (
+          <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
+            className={`rounded-xl border p-2.5 text-center ${s.highlight ? "bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30" : "bg-card"}`}>
+            <p className="text-[9px] text-muted-foreground uppercase tracking-wider">{s.label}</p>
+            <p className={`text-sm font-bold font-mono mt-0.5 ${s.highlight ? "text-primary" : "text-foreground"}`}>
+              {s.icon && <span className="mr-1">{s.icon}</span>}{s.value}
+            </p>
+          </motion.div>
+        ))}
       </div>
 
-      {/* Editable parameters */}
-      <AnimatePresence>
-        {editMode && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-gradient-to-br from-violet-500/5 to-transparent border border-violet-500/20">
-              <SliderInput label={pick("Valor activo", "Asset value")} value={assetValue} onChange={setAssetValue} min={50000} max={1000000} step={5000} prefix="$" />
-              <SliderInput label={pick("Tasación", "Appraisal")} value={appraisalValue} onChange={setAppraisalValue} min={50000} max={1000000} step={5000} prefix="$" />
-              <SliderInput label={pick("Plazo (meses)", "Term (months)")} value={term} onChange={setTerm} min={6} max={120} step={6} />
-              <SliderInput label={pick("Opción compra %", "Purchase opt %")} value={purchaseOption} onChange={setPurchaseOption} min={1} max={30} step={1} suffix="%" />
+      <AnimatePresence mode="wait">
+        {viewMode === "chart" ? (
+          /* ── VISUAL CHART VIEW ── */
+          <motion.div key="chart" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
+            <div className={`rounded-2xl border-2 ${active === "custom" ? "border-primary/30" : "border-border"} p-4`}>
+              <div className="flex items-end gap-1.5" style={{ height: 160 }}>
+                {rows.map((row, i) => {
+                  const total = row.cap + row.int;
+                  const capH = maxTotal > 0 ? (row.cap / maxTotal) * 140 : 0;
+                  const intH = maxTotal > 0 ? (row.int / maxTotal) * 140 : 0;
+                  const isEditing = editingRow === i;
+                  return (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-0.5 group cursor-pointer" onClick={() => setEditingRow(isEditing ? null : i)}>
+                      <span className="text-[8px] font-mono font-bold text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                        ${total.toLocaleString()}
+                      </span>
+                      <div className="w-full flex flex-col items-center justify-end" style={{ height: 140 }}>
+                        <motion.div initial={{ height: 0 }} animate={{ height: intH }}
+                          className={`w-full rounded-t-lg ${isEditing ? "bg-amber-400" : "bg-amber-500/60"} transition-colors relative group/bar`}
+                          style={{ minHeight: intH > 0 ? 4 : 0 }}>
+                          {intH > 16 && <span className="absolute inset-0 flex items-center justify-center text-[7px] font-bold text-amber-900">${row.int.toLocaleString()}</span>}
+                        </motion.div>
+                        <motion.div initial={{ height: 0 }} animate={{ height: capH }}
+                          className={`w-full ${isEditing ? "bg-primary" : "bg-primary/70"} transition-colors relative ${intH > 0 ? "" : "rounded-t-lg"}`}
+                          style={{ minHeight: capH > 0 ? 4 : 0 }}>
+                          {capH > 16 && <span className="absolute inset-0 flex items-center justify-center text-[7px] font-bold text-primary-foreground">${row.cap.toLocaleString()}</span>}
+                        </motion.div>
+                      </div>
+                      <span className={`text-[9px] font-bold mt-1 ${isEditing ? "text-primary" : "text-muted-foreground"}`}>{row.m}</span>
+                      {row.note && <span className="text-[7px] text-primary truncate max-w-full">{row.note}</span>}
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="flex items-center justify-center gap-4 mt-3 pt-2 border-t">
+                <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded bg-primary/70" /><span className="text-[9px] text-muted-foreground">{pick("Capital", "Principal")}</span></div>
+                <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded bg-amber-500/60" /><span className="text-[9px] text-muted-foreground">{pick("Interés", "Interest")}</span></div>
+              </div>
+            </div>
+
+            {/* Inline edit panel when bar is clicked */}
+            <AnimatePresence>
+              {editingRow !== null && rows[editingRow] && (
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
+                  className="mt-2 rounded-2xl border-2 border-primary/30 bg-primary/5 p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-primary flex items-center gap-1.5"><Edit3 className="w-3.5 h-3.5" /> {pick("Editando período", "Editing period")} {rows[editingRow].m}</span>
+                    <div className="flex gap-1">
+                      <button onClick={() => setEditingRow(null)} className="p-1.5 rounded-lg bg-primary text-primary-foreground"><Save className="w-3 h-3" /></button>
+                      <button onClick={() => removeRow(editingRow)} className="p-1.5 rounded-lg bg-destructive/10 text-destructive"><X className="w-3 h-3" /></button>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <SliderInput label={pick("Capital", "Principal")} value={rows[editingRow].cap} onChange={v => updateRow(editingRow, "cap", String(v))} min={0} max={150000} step={1000} prefix="$" />
+                    <SliderInput label={pick("Interés", "Interest")} value={rows[editingRow].int} onChange={v => updateRow(editingRow, "int", String(v))} min={0} max={10000} step={100} prefix="$" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{pick("Período", "Period")}</label>
+                      <input value={rows[editingRow].m} onChange={e => updateRow(editingRow, "m", e.target.value)} className="w-full mt-1 px-3 py-1.5 rounded-xl bg-background border text-[11px] font-bold focus:ring-1 focus:ring-primary/30 outline-none" />
+                    </div>
+                    <div>
+                      <label className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{pick("Nota", "Note")}</label>
+                      <input value={rows[editingRow].note} onChange={e => updateRow(editingRow, "note", e.target.value)} className="w-full mt-1 px-3 py-1.5 rounded-xl bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ) : (
+          /* ── TABLE VIEW ── */
+          <motion.div key="table" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
+            <div className={`overflow-x-auto rounded-2xl border-2 ${active === "custom" ? "border-primary/30" : "border-border"}`}>
+              <table className="w-full text-[11px]">
+                <thead>
+                  <tr className="bg-gradient-to-r from-primary/10 to-primary/5">
+                    <th className="px-3 py-3 text-left font-bold">{pick("Período", "Period")}</th>
+                    <th className="px-3 py-3 text-right font-bold">{pick("Capital", "Principal")}</th>
+                    <th className="px-3 py-3 text-right font-bold">{pick("Interés", "Interest")}</th>
+                    <th className="px-3 py-3 text-right font-bold">Total</th>
+                    <th className="px-3 py-3 text-left font-bold">{pick("Nota", "Note")}</th>
+                    <th className="px-3 py-3 w-16"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((row, i) => (
+                    <motion.tr key={i} initial={{ opacity: 0, x: -5 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.03 }}
+                      className={`border-t transition-colors ${editingRow === i ? "bg-primary/5" : "hover:bg-muted/30"}`}>
+                      {editingRow === i ? (
+                        <>
+                          <td className="px-2 py-1.5"><input value={row.m} onChange={e => updateRow(i, "m", e.target.value)} className="w-14 px-2 py-1 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" /></td>
+                          <td className="px-2 py-2">
+                            <div className="w-28">
+                              <span className="text-[10px] font-mono font-bold">${row.cap.toLocaleString()}</span>
+                              <Slider value={[row.cap]} onValueChange={([v]) => updateRow(i, "cap", String(v))} min={0} max={150000} step={1000} className="mt-1" />
+                            </div>
+                          </td>
+                          <td className="px-2 py-2">
+                            <div className="w-28">
+                              <span className="text-[10px] font-mono font-bold">${row.int.toLocaleString()}</span>
+                              <Slider value={[row.int]} onValueChange={([v]) => updateRow(i, "int", String(v))} min={0} max={10000} step={100} className="mt-1" />
+                            </div>
+                          </td>
+                          <td className="px-3 py-1.5 text-right font-mono font-bold">${(row.cap + row.int).toLocaleString()}</td>
+                          <td className="px-2 py-1.5"><input value={row.note} onChange={e => updateRow(i, "note", e.target.value)} className="w-24 px-2 py-1 rounded-lg bg-background border text-[11px] focus:ring-1 focus:ring-primary/30 outline-none" /></td>
+                          <td className="px-2 py-1.5">
+                            <div className="flex gap-1">
+                              <button onClick={() => setEditingRow(null)} className="p-1 rounded bg-primary text-primary-foreground"><Save className="w-3 h-3" /></button>
+                              <button onClick={() => removeRow(i)} className="p-1 rounded bg-destructive/10 text-destructive"><X className="w-3 h-3" /></button>
+                            </div>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td className="px-3 py-2.5 font-medium">{row.m}</td>
+                          <td className="px-3 py-2.5 text-right">
+                            <div className="flex items-center justify-end gap-2">
+                              <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
+                                <motion.div initial={{ width: 0 }} animate={{ width: `${maxTotal > 0 ? (row.cap / maxTotal) * 100 : 0}%` }} className="h-full bg-primary/70 rounded-full" />
+                              </div>
+                              <span className={`font-mono ${row.cap === 0 ? "text-muted-foreground" : "text-foreground font-bold"}`}>${row.cap.toLocaleString()}</span>
+                            </div>
+                          </td>
+                          <td className="px-3 py-2.5 text-right">
+                            <div className="flex items-center justify-end gap-2">
+                              <div className="w-12 h-1.5 rounded-full bg-muted overflow-hidden">
+                                <motion.div initial={{ width: 0 }} animate={{ width: `${maxTotal > 0 ? (row.int / maxTotal) * 100 : 0}%` }} className="h-full bg-amber-500/60 rounded-full" />
+                              </div>
+                              <span className="font-mono text-muted-foreground">${row.int.toLocaleString()}</span>
+                            </div>
+                          </td>
+                          <td className="px-3 py-2.5 text-right font-mono font-bold">${(row.cap + row.int).toLocaleString()}</td>
+                          <td className="px-3 py-2.5">{row.note && <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-medium">{row.note}</span>}</td>
+                          <td className="px-2 py-2.5">
+                            <button onClick={() => setEditingRow(i)} className="p-1.5 rounded-lg hover:bg-muted transition-colors"><Edit3 className="w-3 h-3 text-muted-foreground" /></button>
+                          </td>
+                        </>
+                      )}
+                    </motion.tr>
+                  ))}
+                  <tr className="border-t-2 bg-primary/5 font-bold">
+                    <td className="px-3 py-2.5">TOTAL</td>
+                    <td className="px-3 py-2.5 text-right font-mono">${totalCap.toLocaleString()}</td>
+                    <td className="px-3 py-2.5 text-right font-mono">${totalInt.toLocaleString()}</td>
+                    <td className="px-3 py-2.5 text-right font-mono text-primary">${(totalCap + totalInt).toLocaleString()}</td>
+                    <td colSpan={2}></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Summary cards */}
+      <button onClick={addRow}
+        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-2xl border-2 border-dashed border-primary/30 text-primary text-[10px] font-bold hover:bg-primary/5 hover:border-primary/50 transition-all group">
+        <Plus className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform" /> {pick("Agregar período", "Add period")}
+      </button>
+
+      {editingRow === null && viewMode === "chart" && (
+        <motion.p animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 2.5 }}
+          className="text-[10px] text-primary text-center flex items-center justify-center gap-1">
+          <Sparkles className="w-3 h-3" /> {pick("Haz clic en una barra para editar sus valores", "Click a bar to edit its values")}
+        </motion.p>
+      )}
+    </div>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════
+   DEMO 3: Leasing — Sale & Leaseback / Financiero / Puro
+   ═══════════════════════════════════════════════════════ */
+const LeasebackDemo = () => {
+  const { lang } = useI18n();
+  const pick = <T,>(es: T, en: T): T => lang === "en" ? en : es;
+
+  type LeaseType = "sale-leaseback" | "financiero" | "puro";
+  const [leaseType, setLeaseType] = useState<LeaseType>("sale-leaseback");
+  const [assetValue, setAssetValue] = useState(200000);
+  const [appraisalValue, setAppraisalValue] = useState(195000);
+  const [term, setTerm] = useState(48);
+  const [purchaseOption, setPurchaseOption] = useState(1);
+  const [rate, setRate] = useState(8);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [editMode, setEditMode] = useState(false);
+
+  const monthlyRate = rate / 100 / 12;
+  const financedAmount = leaseType === "sale-leaseback" ? appraisalValue : assetValue;
+  const residual = Math.round(financedAmount * purchaseOption / 100);
+  const netFinanced = financedAmount - residual;
+  const monthlyPayment = monthlyRate > 0
+    ? Math.round((netFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term)))
+    : Math.round(netFinanced / term);
+  const totalPayments = monthlyPayment * term + residual;
+  const totalInterest = totalPayments - financedAmount;
+  const diff = assetValue - appraisalValue;
+
+  const leaseTypes = [
+    { id: "sale-leaseback" as const, label: "Sale & Leaseback", icon: "🔄", desc: pick("Cliente vende y arrienda de vuelta", "Client sells & leases back"), color: "from-violet-500 to-violet-600" },
+    { id: "financiero" as const, label: pick("Financiero", "Financial"), icon: "🏦", desc: pick("Opción de compra al final", "Purchase option at end"), color: "from-blue-500 to-blue-600" },
+    { id: "puro" as const, label: pick("Puro / Operativo", "Pure / Operating"), icon: "📋", desc: pick("Sin transferencia de propiedad", "No ownership transfer"), color: "from-emerald-500 to-emerald-600" },
+  ];
+
+  const stepsForType: Record<LeaseType, { icon: string; title: string; detail: string; accounting: string }[]> = {
+    "sale-leaseback": [
+      { icon: "🏢", title: pick("Cliente vende activo a BCP", "Client sells asset to BCP"), detail: pick(`Valor de venta: USD ${assetValue.toLocaleString()}`, `Sale value: USD ${assetValue.toLocaleString()}`), accounting: pick("Débito: Caja → Crédito: Activo Fijo + Ganancia/Pérdida", "Debit: Cash → Credit: Fixed Asset + Gain/Loss") },
+      { icon: "📋", title: pick("BCP tasa y valida", "BCP appraises & validates"), detail: pick(`Tasación: USD ${appraisalValue.toLocaleString()} — Diferencia: $${diff.toLocaleString()}`, `Appraisal: USD ${appraisalValue.toLocaleString()} — Diff: $${diff.toLocaleString()}`), accounting: pick("Débito: Activo arrendado → Crédito: Proveedor", "Debit: Leased asset → Credit: Vendor") },
+      { icon: "📝", title: pick("Constitución del contrato", "Contract constitution"), detail: pick(`Plazo: ${term}m — Opción: ${purchaseOption}% ($${residual.toLocaleString()}) — Tasa: ${rate}%`, `Term: ${term}m — Option: ${purchaseOption}% ($${residual.toLocaleString()}) — Rate: ${rate}%`), accounting: pick("Débito: CxC Leasing → Crédito: Ingreso diferido", "Debit: Lease receivable → Credit: Deferred income") },
+      { icon: "💵", title: pick("Desembolso al cliente", "Disbursement to client"), detail: pick(`USD ${appraisalValue.toLocaleString()} transferidos`, `USD ${appraisalValue.toLocaleString()} transferred`), accounting: pick("Débito: CxC Leasing → Crédito: Banco", "Debit: Receivable → Credit: Bank") },
+      { icon: "🔄", title: pick("Operación activa — cobro mensual", "Active — monthly billing"), detail: pick(`Cuota: ~USD ${monthlyPayment.toLocaleString()}/mes × ${term} meses`, `Payment: ~USD ${monthlyPayment.toLocaleString()}/mo × ${term} months`), accounting: pick("Débito: Banco → Crédito: Ingreso financiero + Capital", "Debit: Bank → Credit: Financial income + Principal") },
+      { icon: "🎯", title: pick("Opción de compra", "Purchase option"), detail: pick(`Cliente ejerce opción: USD ${residual.toLocaleString()} (${purchaseOption}%)`, `Client exercises option: USD ${residual.toLocaleString()} (${purchaseOption}%)`), accounting: pick("Débito: Banco → Crédito: Activo + Ingreso", "Debit: Bank → Credit: Asset + Income") },
+    ],
+    financiero: [
+      { icon: "📦", title: pick("Selección del activo", "Asset selection"), detail: pick(`Cliente elige activo por USD ${assetValue.toLocaleString()}`, `Client selects asset for USD ${assetValue.toLocaleString()}`), accounting: pick("Registro de solicitud — sin impacto contable aún", "Request logged — no accounting impact yet") },
+      { icon: "🏦", title: pick("BCP adquiere el activo", "BCP acquires asset"), detail: pick(`BCP compra al proveedor por USD ${assetValue.toLocaleString()}`, `BCP buys from vendor for USD ${assetValue.toLocaleString()}`), accounting: pick("Débito: Activo en Leasing → Crédito: Banco / Proveedor", "Debit: Leasing Asset → Credit: Bank / Vendor") },
+      { icon: "📝", title: pick("Constitución del leasing financiero", "Financial lease constitution"), detail: pick(`Plazo: ${term}m — Tasa: ${rate}% — Opción: ${purchaseOption}%`, `Term: ${term}m — Rate: ${rate}% — Option: ${purchaseOption}%`), accounting: pick("Débito: CxC Leasing → Crédito: Ingreso diferido + Capital", "Debit: Receivable → Credit: Deferred + Capital") },
+      { icon: "🚛", title: pick("Entrega del activo al cliente", "Asset delivery to client"), detail: pick("Cliente recibe el bien y opera", "Client receives asset and operates"), accounting: pick("Actualización de expediente — activo en uso", "File update — asset in use") },
+      { icon: "💰", title: pick("Cobro de cuotas", "Payment collection"), detail: pick(`Cuota: ~USD ${monthlyPayment.toLocaleString()}/mes — Capital + Interés`, `Payment: ~USD ${monthlyPayment.toLocaleString()}/mo — Principal + Interest`), accounting: pick("Débito: Banco → Crédito: Ingreso financiero + Amortización", "Debit: Bank → Credit: Financial income + Amortization") },
+      { icon: "🎯", title: pick("Ejercicio opción de compra", "Purchase option exercise"), detail: pick(`Valor residual: USD ${residual.toLocaleString()} — Transferencia de propiedad`, `Residual: USD ${residual.toLocaleString()} — Ownership transfer`), accounting: pick("Débito: Banco → Crédito: Activo arrendado", "Debit: Bank → Credit: Leased asset") },
+    ],
+    puro: [
+      { icon: "📦", title: pick("Definición del activo", "Asset definition"), detail: pick(`Valor activo: USD ${assetValue.toLocaleString()} — uso operativo`, `Asset: USD ${assetValue.toLocaleString()} — operational use`), accounting: pick("Registro de solicitud — evaluación de riesgo", "Request — risk assessment") },
+      { icon: "🏦", title: pick("BCP adquiere y retiene propiedad", "BCP acquires & retains ownership"), detail: pick("El activo permanece en balance de BCP", "Asset stays on BCP's balance"), accounting: pick("Débito: Activo Fijo (BCP) → Crédito: Banco", "Debit: Fixed Asset (BCP) → Credit: Bank") },
+      { icon: "📝", title: pick("Contrato de arrendamiento puro", "Pure lease contract"), detail: pick(`Plazo: ${term}m — Canon mensual — Sin opción de compra obligatoria`, `Term: ${term}m — Monthly rent — No mandatory purchase option`), accounting: pick("Off-balance del arrendatario (IFRS 16 excepciones)", "Off-balance for lessee (IFRS 16 exceptions)") },
+      { icon: "💰", title: pick("Cobro de canon mensual", "Monthly rent collection"), detail: pick(`Canon: ~USD ${monthlyPayment.toLocaleString()}/mes — 100% gasto deducible`, `Rent: ~USD ${monthlyPayment.toLocaleString()}/mo — 100% deductible expense`), accounting: pick("Débito: Banco → Crédito: Ingreso por arrendamiento", "Debit: Bank → Credit: Lease income") },
+      { icon: "🔄", title: pick("Fin de contrato — opciones", "End of contract — options"), detail: pick("Devolver, renovar, o comprar a valor de mercado", "Return, renew, or buy at market value"), accounting: pick("Baja de activo o renovación según decisión", "Asset disposal or renewal per decision") },
+    ],
+  };
+
+  const steps = stepsForType[leaseType];
+  const activeType = leaseTypes.find(t => t.id === leaseType)!;
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h4 className="text-xs font-bold text-foreground flex items-center gap-2">
+          <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${activeType.color} flex items-center justify-center`}>
+            <ArrowRight className="w-4 h-4 text-primary-foreground" />
+          </div>
+          {pick("Tipos de Leasing", "Leasing Types")}
+          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-wider">SAF+</span>
+        </h4>
+        <button onClick={() => setEditMode(!editMode)}
+          className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all ${editMode ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}>
+          <Settings className="w-3 h-3" /> {pick("Parámetros", "Parameters")}
+        </button>
+      </div>
+
+      {/* Lease type selector */}
       <div className="grid grid-cols-3 gap-2">
+        {leaseTypes.map(lt => (
+          <button key={lt.id} onClick={() => { setLeaseType(lt.id); setCurrentStep(0); }}
+            className={`relative flex flex-col items-center gap-2 p-4 rounded-2xl text-center transition-all overflow-hidden ${
+              leaseType === lt.id
+                ? `bg-gradient-to-br ${lt.color} text-white shadow-xl scale-[1.02]`
+                : "bg-card border-2 border-border hover:border-primary/30 hover:shadow-md text-foreground"
+            }`}>
+            <span className="text-2xl">{lt.icon}</span>
+            <span className="text-[11px] font-bold">{lt.label}</span>
+            <span className={`text-[9px] leading-tight ${leaseType === lt.id ? "text-white/80" : "text-muted-foreground"}`}>{lt.desc}</span>
+            {leaseType === lt.id && (
+              <motion.div layoutId="lease-type-active" className="absolute bottom-0 left-0 right-0 h-1 bg-white/40 rounded-full" />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Parameters panel */}
+      <AnimatePresence>
+        {editMode && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+            <div className={`grid grid-cols-2 gap-4 p-4 rounded-2xl bg-gradient-to-br ${activeType.color.replace("from-", "from-").replace("to-", "to-")}/5 border`}>
+              <SliderInput label={pick("Valor activo", "Asset value")} value={assetValue} onChange={setAssetValue} min={50000} max={2000000} step={5000} prefix="$" />
+              {leaseType === "sale-leaseback" && (
+                <SliderInput label={pick("Tasación", "Appraisal")} value={appraisalValue} onChange={setAppraisalValue} min={50000} max={2000000} step={5000} prefix="$" />
+              )}
+              <SliderInput label={pick("Plazo (meses)", "Term (months)")} value={term} onChange={setTerm} min={6} max={120} step={6} />
+              <SliderInput label={pick("Tasa anual %", "Annual rate %")} value={rate} onChange={setRate} min={1} max={25} step={0.5} suffix="%" />
+              {leaseType !== "puro" && (
+                <SliderInput label={pick("Opción compra %", "Purchase opt %")} value={purchaseOption} onChange={setPurchaseOption} min={1} max={30} step={1} suffix="%" />
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Summary KPIs */}
+      <div className="grid grid-cols-4 gap-2">
         {[
-          { label: pick("Cuota mensual", "Monthly"), value: `$${monthlyPayment.toLocaleString()}`, color: "from-violet-500/10 border-violet-500/20" },
-          { label: pick("Valor residual", "Residual"), value: `$${residual.toLocaleString()}`, color: "from-emerald-500/10 border-emerald-500/20" },
-          { label: pick("Total operación", "Total operation"), value: `$${(monthlyPayment * term + residual).toLocaleString()}`, color: "from-blue-500/10 border-blue-500/20" },
+          { label: pick("Cuota mensual", "Monthly"), value: `$${monthlyPayment.toLocaleString()}`, icon: "💰" },
+          { label: pick("Financiado", "Financed"), value: `$${financedAmount.toLocaleString()}`, icon: "🏦" },
+          { label: pick("Interés total", "Total interest"), value: `$${totalInterest.toLocaleString()}`, icon: "📈" },
+          { label: leaseType !== "puro" ? pick("Valor residual", "Residual") : pick("Retorno", "Return"), value: leaseType !== "puro" ? `$${residual.toLocaleString()}` : pick("Devolver/Renovar", "Return/Renew"), icon: leaseType !== "puro" ? "🎯" : "🔄" },
         ].map((c, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
-            className={`rounded-xl bg-gradient-to-br ${c.color} border p-3 text-center`}>
-            <p className="text-[9px] text-muted-foreground uppercase tracking-wider">{c.label}</p>
-            <p className="text-sm font-bold font-mono text-foreground mt-0.5">{c.value}</p>
+          <motion.div key={`${leaseType}-${i}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
+            className="rounded-xl border bg-card p-2.5 text-center hover:shadow-md transition-shadow">
+            <span className="text-lg">{c.icon}</span>
+            <p className="text-[9px] text-muted-foreground uppercase tracking-wider mt-0.5">{c.label}</p>
+            <p className="text-[12px] font-bold font-mono text-foreground">{c.value}</p>
           </motion.div>
         ))}
       </div>
 
-      {/* Timeline */}
+      {/* Step timeline */}
       <div className="relative">
-        <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-500/40 via-primary/20 to-transparent" />
-        {steps.map((step, i) => (
-          <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }}
-            onClick={() => setCurrentStep(i)} className="relative flex gap-3 mb-3 cursor-pointer group">
-            <div className={`relative z-10 w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 transition-all ${
-              i <= currentStep ? "bg-gradient-to-br from-violet-500/20 to-primary/10 shadow-sm" : "bg-muted"
-            }`}>
-              {i < currentStep ? <CheckCircle2 className="w-5 h-5 text-success" /> : step.icon}
-            </div>
-            <div className={`flex-1 rounded-2xl border-2 p-3.5 transition-all ${
-              i === currentStep ? "bg-gradient-to-r from-violet-500/5 to-transparent border-violet-500/30 shadow-md" : i < currentStep ? "bg-success/5 border-success/20" : "bg-card border-border/50"
-            }`}>
-              <p className="text-[12px] font-bold text-foreground">{step.title}</p>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{step.detail}</p>
-              <AnimatePresence>
-                {i === currentStep && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-                    <div className="mt-2 pt-2 border-t border-violet-500/20">
-                      <p className="text-[10px] text-muted-foreground">{pick("Asiento contable:", "Accounting entry:")}</p>
-                      <p className="text-[11px] font-mono font-bold text-violet-600 mt-0.5">{step.accounting}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+        <div className={`absolute left-[19px] top-0 bottom-0 w-0.5 bg-gradient-to-b ${activeType.color.replace("from-", "from-").replace("to-", "to-")}/30 via-primary/10 to-transparent`} />
+        <AnimatePresence mode="wait">
+          <motion.div key={leaseType} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            {steps.map((step, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}
+                onClick={() => setCurrentStep(i)} className="relative flex gap-3 mb-3 cursor-pointer group">
+                <div className={`relative z-10 w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 transition-all ${
+                  i <= currentStep ? "bg-gradient-to-br from-primary/20 to-primary/5 shadow-sm" : "bg-muted"
+                }`}>
+                  {i < currentStep ? <CheckCircle2 className="w-5 h-5 text-success" /> : step.icon}
+                </div>
+                <div className={`flex-1 rounded-2xl border-2 p-3.5 transition-all ${
+                  i === currentStep ? `bg-gradient-to-r ${activeType.color.replace("from-", "from-").replace("to-", "to-")}/5 to-transparent border-primary/30 shadow-md` : i < currentStep ? "bg-success/5 border-success/20" : "bg-card border-border/50"
+                }`}>
+                  <div className="flex items-center gap-2">
+                    <span className="px-1.5 py-0.5 rounded bg-muted text-[8px] font-bold text-muted-foreground">{i + 1}/{steps.length}</span>
+                    <p className="text-[12px] font-bold text-foreground">{step.title}</p>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground mt-1">{step.detail}</p>
+                  <AnimatePresence>
+                    {i === currentStep && (
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+                        <div className="mt-2 pt-2 border-t border-primary/20">
+                          <p className="text-[9px] text-muted-foreground uppercase tracking-wider font-bold">{pick("Asiento contable", "Accounting entry")}</p>
+                          <p className="text-[11px] font-mono font-bold text-primary mt-0.5">{step.accounting}</p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
+        </AnimatePresence>
       </div>
 
       <div className="flex justify-between">
@@ -572,6 +753,12 @@ const LeasebackDemo = () => {
           className="px-4 py-2 rounded-xl text-[10px] font-bold bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-30 transition-all">
           ← {pick("Anterior", "Previous")}
         </button>
+        <div className="flex items-center gap-1">
+          {steps.map((_, i) => (
+            <button key={i} onClick={() => setCurrentStep(i)}
+              className={`w-2 h-2 rounded-full transition-all ${i === currentStep ? "bg-primary w-4" : i < currentStep ? "bg-success" : "bg-muted"}`} />
+          ))}
+        </div>
         <button onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))} disabled={currentStep === steps.length - 1}
           className="px-4 py-2 rounded-xl text-[10px] font-bold bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-30 transition-all">
           {pick("Siguiente", "Next")} →
