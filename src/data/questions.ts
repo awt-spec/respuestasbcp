@@ -1192,12 +1192,11 @@ export const questions: QuestionItem[] = [
     valor_en: "BCP will be able to manage leasing operations with progressive disbursements, ideal for construction projects or staged acquisitions, maintaining full control over each release.",
     diagrams: [
       { type: "functional-demo" as DiagramType, demoId: "disbursement" },
-      {
-        type: "flow" as DiagramType,
-        title: "Flujo de Desembolso por Tramos",
-        steps: [
-          { label: "Solicitud", description: "Operador solicita liberación del tramo", icon: "📄" },
-          { label: "Validación", description: "Sistema verifica condiciones del tramo (avance, docs)", icon: "✅" },
+    ],
+    diagrams_en: [
+      { type: "functional-demo" as DiagramType, demoId: "disbursement" },
+    ],
+  },
           { label: "Aprobación", description: "Flujo de aprobación según monto y política", icon: "🔐" },
           { label: "Desembolso", description: "Liberación de fondos y asiento contable automático", icon: "💰" },
           { label: "Actualización", description: "Saldo vigente y expediente actualizados en tiempo real", icon: "📊" },
