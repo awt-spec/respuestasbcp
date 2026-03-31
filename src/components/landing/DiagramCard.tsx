@@ -24,6 +24,7 @@ import InteractiveScalability from "./InteractiveScalability";
 import InteractivePresence from "./InteractivePresence";
 import InteractiveScalabilityRisk from "./InteractiveScalabilityRisk";
 import InteractiveExtractor from "./InteractiveExtractor";
+import InteractiveFunctionalDemo from "./InteractiveFunctionalDemo";
 
 /* ─── Diagram Renderers ─── */
 
