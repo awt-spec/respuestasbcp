@@ -1329,6 +1329,7 @@ export const questions: QuestionItem[] = [
     valor: "BCP podrá ofrecer operaciones de leaseback como producto estratégico, permitiendo a sus clientes monetizar activos existentes con trazabilidad contable completa.",
     valor_en: "BCP will be able to offer leaseback operations as a strategic product, allowing clients to monetize existing assets with full accounting traceability.",
     diagrams: [
+      { type: "functional-demo" as DiagramType, demoId: "leaseback" },
       {
         type: "flow" as DiagramType,
         title: "Flujo Sale & Leaseback",
