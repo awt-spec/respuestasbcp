@@ -1197,14 +1197,6 @@ export const questions: QuestionItem[] = [
       { type: "functional-demo" as DiagramType, demoId: "disbursement" },
     ],
   },
-          { label: "Aprobación", description: "Flujo de aprobación según monto y política", icon: "🔐" },
-          { label: "Desembolso", description: "Liberación de fondos y asiento contable automático", icon: "💰" },
-          { label: "Actualización", description: "Saldo vigente y expediente actualizados en tiempo real", icon: "📊" },
-        ],
-      },
-      {
-        type: "table" as DiagramType,
-        title: "Ejemplo de Desembolso por Tramos",
         headers: ["Tramo", "Condición", "Monto (USD)", "Estado", "Fecha"],
         rows: [
           ["Tramo 1", "Anticipo contractual", "$150,000", "✅ Desembolsado", "15/01/2026"],
